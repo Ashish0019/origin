@@ -1,0 +1,225 @@
+[login-container] {
+  height: 100%;
+  position: absolute;
+  background: url("../assets/images/login_bg.png") center center;
+  background-size: cover;
+  overflow: auto;
+  [login-panel] {
+    background-color: transparent;
+    width: 45%;
+    flex: 80;
+    height: 100%;
+    font-family: sans-serif;
+    color: #ffffff;
+
+
+    [logo-img]{
+      width: 12%;
+      height: 81%;
+      margin-top: 15px;
+      background: url(../assets/images/origin_logo_green.png) no-repeat;
+      background-size: 98% 80%;
+    }
+
+    [header-section] {
+      width: 100%;
+      height: 11%;
+      background: rgba(39, 37, 37, .8);
+
+
+      span {
+        color: #ffffff;
+      }
+
+      [brand] {
+        font-size: 1.3em;
+        letter-spacing: 0.2em;
+
+        color: #ffffff;
+      }
+
+      [sub-title] {
+        font-size: 0.7em;
+        letter-spacing: 0.2em;
+
+        color: #ffffff;
+      }
+    }
+    [user-types] {
+      color: #d4d4d4;
+
+      *:focus {
+        outline: 0;
+      }
+
+      [user] {
+        font-size: 0.8em;
+        font-weight: 700;
+      }
+
+      .user-icon {
+        width: 95px;
+        height: 95px;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        border-radius: 50%;
+        margin: 8px;
+        cursor: pointer;
+        border: 2px solid #ffffff;
+        background-image: url('../assets/images/sign_up_icons.png');
+      }
+
+      [user="student"] {
+        [icon] {
+          @extend .user-icon;
+          background-position: -10px -10px;
+        }
+
+        [icon].active {
+          background-position: -10px -110px;
+        }
+      }
+
+      [user="teacher"] {
+        [icon] {
+          @extend .user-icon;
+          background-position: -115px -10px;
+        }
+
+        [icon].active {
+          background-position: -115px -110px;
+        }
+      }
+    }
+
+    [form-section] {
+      background-color: rgba(39, 37, 37, 0.4);
+      width: 100%;
+
+      [tagline] {
+        font-size: 0.8em;
+        opacity: .6;
+        color: #ffffff;
+        margin: 8px;
+      }
+
+      [registration-details] {
+        width: 75%;
+        margin: 12px;
+
+        [input-feature] {
+          padding: 8px;
+          margin: 8px;
+          width: 86%;
+          border-radius: 3px;
+          border: 2px white solid;
+          outline-color: transparent;
+        }
+
+        .ng-dirty.ng-invalid {
+          background-color: rgb(248, 187, 208);
+          border-color: rgb(198, 40, 40);
+          box-shadow: inset 0 3px 3px rgba(0, 0, 0, 0.075), 0 0 6px rgb(255, 64, 129);
+        }
+
+        [input-feature].ng-valid {
+          background-color: rgba(250, 255, 189, 0.97);
+        }
+
+        .errorText {
+          color: #b6b6b6;
+          font-size: .8em;
+          margin-left: 4px;
+          color: rgb(198, 40, 40);
+
+        }
+
+        [email-errorText] {
+          @extend .errorText;
+        }
+
+        [pwd-errorText] {
+          @extend .errorText
+        }
+
+      }
+
+      [entity="check_box"] {
+        color: #ffffff;
+        font-size: 0.8em;
+        margin-left: 5px;
+
+        a {
+          color: #ffffff;
+        }
+      }
+
+      [registration="container"] {
+        width: 124px;
+        height: 40px;
+        color: #fff;
+        border-radius: 3px;
+        font-size: .8em;
+        margin: 10px;
+
+        [registration="register-button"] {
+          background-color: rgba(53, 60, 53, 0.87);
+        }
+
+        [registration="cancel-button"] {
+          background-color: #c24549;
+        }
+
+        [registration="register-button"].md-button.md-raised:not([disabled]) {
+          background-color: #00af9d;
+        }
+      }
+
+      [entity="hasAccount"] {
+        color: #ffffff;
+        font-size: 0.9em;
+        margin: 5px;
+
+        a {
+          color: #ffffff;
+        }
+      }
+
+      [entity="third-party-login"] {
+
+        .thirdPartyIcons {
+          background-repeat: no-repeat;
+          background-size: 25px 25px;
+          padding-bottom: 5px;
+          height: 25px;
+          padding-left: 25px;
+        }
+
+        [third-party="Facebook"] {
+
+          background-color: #3b5998;
+
+          .tpFacebook {
+            @extend .thirdPartyIcons;
+            background-image: url("../assets/images/fb_icon.png");
+            background-position:  -4px -4px;;
+          }
+
+        }
+
+        [third-party="Google"] {
+
+          background-color: #dc4e41;
+          .tpGoogle {
+            @extend .thirdPartyIcons;
+            margin-right: 3px;
+            background: url("../assets/images/google_icon.png") 0px -4px;
+          }
+
+        }
+
+      }
+
+    }
+  }
+}
