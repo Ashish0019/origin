@@ -2,7 +2,7 @@ export class LibraryController {
   constructor($scope, $mdDialog, $mdMedia) {
     'ngInject';
     this.searchBox = [];
-    this.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
+    /*this.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
 
     this.showLogin = function(ev) {
       var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
@@ -26,7 +26,7 @@ export class LibraryController {
 
 
     this.createAccount = function(ev) {
-      var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
+      var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
 
       $mdDialog.show({
         controller: DialogController,
@@ -44,10 +44,10 @@ export class LibraryController {
       });
 
     };
-
+*/
   }
 }
-
+/*
 function DialogController($scope, $mdDialog) {
   $scope.hide = function() {
     $mdDialog.hide();
@@ -55,4 +55,4 @@ function DialogController($scope, $mdDialog) {
   $scope.cancel = function() {
     $mdDialog.cancel();
   };
-}
+}*/

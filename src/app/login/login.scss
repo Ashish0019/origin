@@ -114,7 +114,7 @@
           outline-color: transparent;
         }
 
-        .ng-dirty.ng-invalid {
+        .ng-touched.ng-invalid {
           background-color: rgb(248, 187, 208);
           border-color: rgb(198, 40, 40);
           box-shadow: inset 0 3px 3px rgba(0, 0, 0, 0.075), 0 0 6px rgb(255, 64, 129);
@@ -162,20 +162,38 @@
         margin: 10px;
 
         [registration="register-button"] {
-          background-color: rgba(53, 60, 53, 0.87);
+          background-color: #575652;
+          color: rgba(210, 210, 247, 0.58);
+          opacity: .7;
         }
 
         [registration="cancel-button"] {
-          background-color: rgba(53, 60, 53, 0.87);
+          background-color: #575652;
+          opacity: .7;
+          color: rgba(210, 210, 247, 0.58);
         }
 
         [registration="register-button"].md-button.md-raised:not([disabled]) {
           background-color: #00af9d;
+          color: #ffffff;
+          opacity: 1;
         }
         [registration="cancel-button"].md-button.md-raised:not([disabled]) {
           background-color: #c24549;
+          color: #ffffff;
+          opacity: 1;
         }
 
+      }
+      [orline] {
+        width: 80%;
+        opacity: .7;
+        hr {
+          width: 100%
+        }
+        [orword] {
+          padding: 5px;
+        }
       }
 
       [entity="hasAccount"] {
@@ -197,8 +215,9 @@
         [third-party="SignEmail"] {
           width: 95%;
           text-transform: capitalize;
-          background-color: rgba(53, 60, 53, 0.87);
-          opacity: .1;
+          background-color: #575652;
+          color: rgba(210, 210, 247, 0.58);
+          opacity: .7;
           [emailIcon] {
             @extend .icons;
             background-image: url("../assets/images/email_icon1.svg");
@@ -207,13 +226,15 @@
         }
         [third-party="SignEmail"].md-button.md-raised:not([disabled]) {
           background-color: #00A995;
+          color: #ffffff;
           opacity: 1;
         }
         [third-party="Facebook"] {
-          opacity: .1;
+          opacity: .7;
           width: 95%;
           text-transform: capitalize;
-          background-color: rgba(53, 60, 53, 0.87);
+          background-color: #575652;
+          color: rgba(210, 210, 247, 0.58);
           [facebookIcon] {
             @extend .icons;
             background-image: url("../assets/images/fb_icon.svg");
@@ -222,13 +243,15 @@
         }
         [third-party="Facebook"].md-button.md-raised:not([disabled]) {
           background-color: #3F51B5;
+          color: #ffffff;
           opacity: 1;
         }
         [third-party="Google"] {
-          opacity: .1;
+          opacity: .7;
           width: 95%;
           text-transform: capitalize;
-          background-color: rgba(53, 60, 53, 0.87);
+          background-color: #575652;
+          color: rgba(210, 210, 247, 0.58);
           [googleIcon] {
             @extend .icons;
             background-image: url("../assets/images/google_icon.svg");
@@ -237,6 +260,7 @@
         }
         [third-party="Google"].md-button.md-raised:not([disabled]) {
           background-color: #D95032;
+          color: #ffffff;
           opacity: 1;
         }
 

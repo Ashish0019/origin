@@ -35,14 +35,14 @@
                ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
                type="email" required/>
 
-        <div email-errorText ng-show="registration.email.$invalid && !registration.email.$pristine">
+        <div email-errorText ng-if="registration.email.$touched && registration.email.$invalid">
           <i>Please enter valid email address.</i></div>
 
         <input input-feature name="pwd" ng-model="login.user.password" placeholder="Password"
                type="password" minlength="6" maxlength="20"
                required/>
 
-        <div pwd-errorText ng-show="registration.pwd.$invalid && !registration.pwd.$pristine">
+        <div pwd-errorText ng-show="!registration.pwd.$untouched && registration.pwd.$invalid">
           <i>Password must contain atleast 6 but not more than 20 characters.</i></div>
 
 
@@ -66,10 +66,10 @@
           CANCEL
         </md-button>
       </div>
-      <div ng-show="abc">
-        <hr/>
-        OR
-        <hr/>
+      <div orline layout="row" layout-align="space-between center" ng-show="abc">
+        <hr />
+        <div orword> OR </div>
+        <hr />
       </div>
       <div entity="third-party-login" layout="column" layout-align="center center">
 

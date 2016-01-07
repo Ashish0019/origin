@@ -30,24 +30,21 @@
       <form name="registration" registration-details layout="column" layout-align="center center">
         <input input-feature ng-model="signIn.user.fullname" placeholder="User Name" type="text" maxlength="60"
                value="Full Name" required/>
-       <!-- <input input-feature name="email" ng-model="signIn.user.email" placeholder="Email ID"
-               ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
-               type="email" required/>
 
-        <div email-errorText ng-show="registration.email.$invalid && !registration.email.$pristine">
-          <i>Please enter valid email address.</i></div>-->
-<div>
-        <input input-feature class="input-feature-pwd" name="pwd" ng-model="signIn.user.password" placeholder="Password"
-               type="password" minlength="6" maxlength="20"
-               required/>
+        <div layout="row" layout-align="space-between center">
+          <input input-feature class="input-feature-pwd" name="pwd" ng-model="signIn.user.password"
+                 placeholder="Password"
+                 type={{inputType}} maxlength="20"
+                 required/>
 
-          <img showpwd >
+
+          <img class ="hidePwd" ng-click="showPassword()" ng-model="showPassword">
+
         </div>
 
         <div forgotPwd-container><a forgotPwd href="">Forgot Password</a></div>
 
-       <!-- <div pwd-errorText ng-show="registration.pwd.$invalid && !registration.pwd.$pristine">
-          <i>Password must contain atleast 6 but not more than 20 characters.</i></div>-->
+
 
 
         <div entity="check_box">
@@ -56,22 +53,21 @@
         <span style="margin-left: -10px;">
          Remember me on this device
         </span>
-        </span>
+          </span>
         </div>
       </form>
 
       <div registration="container" layout="row" layout-align="center center">
         <md-button registration="register-button" class="md-raised md-primary"
-                   ng-disabled="registration.$invalid ">LOGIN
-        </md-button>
+                   ng-disabled="registration.$invalid ">LOGIN</md-button>
         <md-button registration="cancel-button" class="md-raised md-primary" ng-disabled="!signIn.imageProps.current">
           CANCEL
         </md-button>
       </div>
-      <div >
-        <hr/>
-        OR
-        <hr/>
+      <div orline layout="row" layout-align="space-between center">
+        <hr />
+      <div orword> OR </div>
+       <hr />
       </div>
       <div entity="third-party-signIn" layout="column" layout-align="center center">
 
@@ -86,7 +82,7 @@
         </md-button>
       </div>
       <div entity="hasAccount">
-       <a href=" "> Try Free </a>
+        <a href=" "> Try Free </a>
       </div>
     </div>
   </section>
