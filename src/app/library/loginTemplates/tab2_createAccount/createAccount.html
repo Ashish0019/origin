@@ -1,0 +1,40 @@
+<md-dialog   ng-cloak>
+  <section dialogBox>
+  <form createAccount-details name="createAccount" layout="column" layout-align="center center">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+
+        <h2 tagline > Join for Free and start learning </h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon removeIcon style="color: black; "></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <div user-types layout="row" layout-align="center center">
+          <div user="student" layout="column" layout-align="center center" >
+            <div icon ></div>
+            <md-button login-buttons class="md-raised ">Join as Student</md-button>
+          </div>
+          <div user="teacher" layout="column" layout-align="center center" >
+            <div icon ></div>
+            <md-button login-buttons class="md-raised ">Join as Teacher</md-button>
+          </div>
+        </div>
+        <div layout-align="center center" layout="column" style="font-weight:700"><hr/>OR<hr/></div>
+        <div layout="column" layout-align="center center">
+        <md-button third-party class="md-raised md-primary" >
+          <md-icon facebookIcon ></md-icon>
+          <label> Join with Facebook</label>
+        </md-button>
+        </div>
+        <div layout="column" layout-align="center center" >
+          <md-button underline>Already have an account</md-button></div>
+      </div>
+    </md-dialog-content>
+
+  </form>
+    </section>
+</md-dialog>

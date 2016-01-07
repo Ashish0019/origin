@@ -1,0 +1,97 @@
+<div login-container layout="column" layout-fill layout-align="center center">
+  <section login-panel layout-align="center center" layout="column">
+    <div header-section layout="row" layout-align="center center">
+      <div logo-img></div>
+
+    </div>
+
+    <div form-section layout="column" layout-align="center center">
+      <span tagline>
+        <i>You are one step away from getting your free K-12 content</i>
+      </span>
+
+      <div user-types layout="row" layout-align="center center">
+        <div user="student" layout="column" layout-align="center center" ng-model="imageProps"
+             ng-click="login.imageProps.current = 'student'">
+          <div icon ng-class="{'active': login.imageProps.current === 'student'}"></div>
+          <div>Join as Student</div>
+        </div>
+        <div user="teacher" layout="column" layout-align="center center" ng-model="imageProps"
+             ng-click="login.imageProps.current = 'teacher'">
+          <div icon ng-class="{'active': login.imageProps.current === 'teacher'}"></div>
+          <div>Join as Teacher</div>
+        </div>
+        <div user="publisher" layout="column" layout-align="center center" ng-model="imageProps"
+             ng-click="login.imageProps.current = 'publisher'">
+          <div icon ng-class="{'active': login.imageProps.current === 'publisher'}"></div>
+          <div>Join as Publisher</div>
+        </div>
+      </div>
+      <form name="registration" registration-details layout="column" layout-align="center center"
+            ng-show="abc">
+        <input input-feature ng-model="login.user.fullname" placeholder="Full Name" type="text" maxlength="60"
+               value="Full Name" required/>
+        <input input-feature name="email" ng-model="login.user.email" placeholder="Email ID"
+               ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
+               type="email" required/>
+
+        <div email-errorText ng-show="registration.email.$invalid && !registration.email.$pristine">
+          <i>Please enter valid email address.</i></div>
+
+        <input input-feature name="pwd" ng-model="login.user.password" placeholder="Password"
+               type="password" minlength="6" maxlength="20"
+               required/>
+
+        <div pwd-errorText ng-show="registration.pwd.$invalid && !registration.pwd.$pristine">
+          <i>Password must contain atleast 6 but not more than 20 characters.</i></div>
+
+
+        <div entity="check_box">
+          <md-checkbox md-ink class="md-primary" ng-model="login.user.checkedBox" style="display: inline-block">
+          </md-checkbox>
+        <span style="margin-left: -10px;">
+          By signing up, you agree to our <a href="http://magicbox.magicsw.com/privacypolicy.htm" target="_blank">
+          terms of use</a> <span style="margin-left: 12%;">and <a href="http://magicbox.magicsw.com/privacypolicy.htm"
+                                                                  target="_blank">privacy policy</a>
+        </span>
+        </span>
+        </div>
+      </form>
+
+      <div registration="container" layout="row" layout-align="center center" ng-show="abc">
+        <md-button registration="register-button" class="md-raised md-primary"
+                   ng-disabled="registration.$invalid ">SIGN UP
+        </md-button>
+        <md-button registration="cancel-button" class="md-raised md-primary" ng-disabled="!login.imageProps.current">
+          CANCEL
+        </md-button>
+      </div>
+      <div ng-show="abc">
+        <hr/>
+        OR
+        <hr/>
+      </div>
+      <div entity="third-party-login" layout="column" layout-align="center center">
+
+        <md-button third-party="SignEmail" class="md-raised md-primary" ng-disabled="!login.imageProps.current"
+                   ng-model="abc" ng-hide="abc" ng-click="ShowData()">
+          <md-icon emailIcon></md-icon>
+          <label> Sign Up with Email ID </label>
+        </md-button>
+        <md-button third-party="Facebook" class="md-raised md-primary" ng-disabled="!login.imageProps.current">
+          <md-icon facebookIcon></md-icon>
+          <label> Connect with Facebook</label>
+        </md-button>
+        <md-button third-party="Google" class="md-raised md-primary" ng-disabled="!login.imageProps.current">
+          <md-icon googleIcon></md-icon>
+          <label> Connect with Google + </label>
+
+        </md-button>
+      </div>
+      <div entity="hasAccount">
+        Already have an account? <a href=" "> Login now </a>
+      </div>
+    </div>
+  </section>
+</div>
+

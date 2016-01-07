@@ -1,0 +1,73 @@
+[outerPanel]{
+[library-container] {
+  position: absolute;
+  font-family: sans-serif;
+  background: url("../assets/images/login_bg.png") no-repeat;
+  background-size: 100% 90%;
+
+  [library-panel] {
+    background-color: transparent;
+    font-family: sans-serif;
+    color: #DFDDDE;
+    height: 35%;
+    [origin-logo] {
+      height: 100px;
+      margin: 17px;
+      background: url("../assets/images/babel.png") no-repeat;
+      background-size: 80%;
+    }
+    [store-links] {
+      font-size: 1em;
+      margin: 20px;
+      color: #ffffff;
+
+    }
+  }
+  [origin-contents] {
+    .md-chips .md-chip-input-container input, .md-chips .md-chip-input-container input:not([type]) {
+      color: #ffffff;
+    }
+
+    [tag-line] {
+      color: #DFDDDE;
+      font-size: 1.3em;
+    }
+
+    [searchContainer] {
+      width: 70%;
+
+    }
+    #searches {
+      color: #ffffff;
+    }
+    #searches:focused {
+      color: #ffffff;
+    }
+    .md-raised {
+      background-color: transparent;
+      padding: 5px;
+      font-size: 1.5em;
+      font-weight: 700;
+      border: 2px solid #fff;
+    }
+
+  }
+  [underline] {
+    text-decoration: underline;
+  }
+
+  md-chips .md-chips.md-focused {
+    box-shadow: 0 2px rgb(184, 178, 226);
+  }
+  [downIcon] {
+    width: 32px;
+    height: 32px;
+    background: url("../assets/images/down_Icon.svg") no-repeat;
+    outline-color: transparent;
+    cursor: pointer;
+  }
+
+}
+}
+
+

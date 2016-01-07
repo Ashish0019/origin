@@ -1,0 +1,247 @@
+[login-container] {
+  height: 100%;
+  position: absolute;
+  background: url("../assets/images/login_bg.png") center center;
+  background-size: cover;
+  overflow: auto;
+  [login-panel] {
+    background-color: transparent;
+    min-width: 370px;
+    max-width: 450px;
+    flex: 80;
+    height: 90%;
+    max-height: 780px;
+    font-family: sans-serif;
+    color: #ffffff;
+
+    [logo-img] {
+      width: 50%;
+      height: 80%;
+      margin-top: 15px;
+      background: url(../assets/images/babel.png) no-repeat;
+      background-size: 98% 80%;
+    }
+
+    [header-section] {
+      width: 100%;
+      min-height: 80px;
+      height: 11%;
+      background: rgba(39, 37, 37, .8);
+
+      span {
+        color: #ffffff;
+      }
+
+    }
+    [user-types] {
+      color: #d4d4d4;
+
+      *:focus {
+        outline: 0;
+      }
+
+      [user] {
+        font-size: 0.73em;
+        font-weight: 700;
+      }
+
+      .user-icon {
+        width: 95px;
+        height: 95px;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        border-radius: 50%;
+        margin: 8px;
+        cursor: pointer;
+        border: 2px solid #ffffff;
+        background-image: url('../assets/images/sign_up_icons.png');
+      }
+
+      [user="student"] {
+        [icon] {
+          @extend .user-icon;
+          background-position: -22px -20px;
+        }
+
+        [icon].active {
+          background-position: -22px -130px;
+        }
+      }
+
+      [user="teacher"] {
+        [icon] {
+          @extend .user-icon;
+          background-position: -139px -20px;
+        }
+
+        [icon].active {
+          background-position: -139px -130px;
+        }
+      }
+      [user="publisher"] {
+        [icon] {
+          @extend .user-icon;
+          background-position: -255px -20px;
+        }
+
+        [icon].active {
+          background-position: -255px -130px;
+        }
+      }
+    }
+
+    [form-section] {
+      background-color: rgba(39, 37, 37, 0.4);
+      width: 100%;
+
+      [tagline] {
+        font-size: 0.8em;
+        opacity: .6;
+        color: #ffffff;
+        margin: 8px;
+      }
+
+      [registration-details] {
+        width: 75%;
+        margin: 12px;
+
+        [input-feature] {
+          padding: 8px;
+          margin: 8px;
+          width: 86%;
+          border-radius: 3px;
+          border: 2px white solid;
+          outline-color: transparent;
+        }
+
+        .ng-dirty.ng-invalid {
+          background-color: rgb(248, 187, 208);
+          border-color: rgb(198, 40, 40);
+          box-shadow: inset 0 3px 3px rgba(0, 0, 0, 0.075), 0 0 6px rgb(255, 64, 129);
+        }
+
+        [input-feature].ng-valid {
+          background-color: rgba(250, 255, 189, 0.97);
+        }
+
+        .errorText {
+          width: 85%;
+          font-size: .8em;
+          margin-left: 4px;
+          color: rgb(198, 40, 40);
+
+        }
+
+        [email-errorText] {
+          @extend .errorText;
+        }
+
+        [pwd-errorText] {
+          @extend .errorText
+        }
+
+      }
+
+      [entity="check_box"] {
+        color: #ffffff;
+        font-size: 0.8em;
+        margin-left: 12px;
+        width: 96%;
+
+        a {
+          color: #ffffff;
+        }
+      }
+
+      [registration="container"] {
+        width: 124px;
+        height: 40px;
+        color: #fff;
+        border-radius: 3px;
+        font-size: .8em;
+        margin: 10px;
+
+        [registration="register-button"] {
+          background-color: rgba(53, 60, 53, 0.87);
+        }
+
+        [registration="cancel-button"] {
+          background-color: rgba(53, 60, 53, 0.87);
+        }
+
+        [registration="register-button"].md-button.md-raised:not([disabled]) {
+          background-color: #00af9d;
+        }
+        [registration="cancel-button"].md-button.md-raised:not([disabled]) {
+          background-color: #c24549;
+        }
+
+      }
+
+      [entity="hasAccount"] {
+        color: #ffffff;
+        font-size: 0.9em;
+        margin: 5px;
+
+        a {
+          color: #ffffff;
+        }
+      }
+
+      [entity="third-party-login"] {
+        text-transform: capitalize;
+        .icons {
+          background-size: 20px;
+
+        }
+        [third-party="SignEmail"] {
+          width: 95%;
+          text-transform: capitalize;
+          background-color: rgba(53, 60, 53, 0.87);
+          opacity: .1;
+          [emailIcon] {
+            @extend .icons;
+            background-image: url("../assets/images/email_icon1.svg");
+
+          }
+        }
+        [third-party="SignEmail"].md-button.md-raised:not([disabled]) {
+          background-color: #00A995;
+          opacity: 1;
+        }
+        [third-party="Facebook"] {
+          opacity: .1;
+          width: 95%;
+          text-transform: capitalize;
+          background-color: rgba(53, 60, 53, 0.87);
+          [facebookIcon] {
+            @extend .icons;
+            background-image: url("../assets/images/fb_icon.svg");
+
+          }
+        }
+        [third-party="Facebook"].md-button.md-raised:not([disabled]) {
+          background-color: #3F51B5;
+          opacity: 1;
+        }
+        [third-party="Google"] {
+          opacity: .1;
+          width: 95%;
+          text-transform: capitalize;
+          background-color: rgba(53, 60, 53, 0.87);
+          [googleIcon] {
+            @extend .icons;
+            background-image: url("../assets/images/google_icon.svg");
+
+          }
+        }
+        [third-party="Google"].md-button.md-raised:not([disabled]) {
+          background-color: #D95032;
+          opacity: 1;
+        }
+
+      }
+
+    }
+  }
+}
