@@ -1,52 +1,28 @@
-<div login-container layout="column" layout-fill layout-align="center center">
-  <section login-panel layout-align="center center" layout="column">
+<div signIn-container layout="column" layout-fill layout-align="center center">
+  <section signIn-panel layout-align="center center" layout="column">
     <div header-section layout="row" layout-align="center center">
       <div logo-img></div>
-
     </div>
-
     <div form-section layout="column" layout-align="center center">
       <span tagline>
         <i>You are one step away from getting your free K-12 content</i>
       </span>
 
-      <div user-types layout="row" layout-align="center center">
-        <div user="student" layout="column" layout-align="center center" ng-model="imageProps"
-             ng-click="signIn.imageProps.current = 'student'">
-          <div icon ng-class="{'active': signIn.imageProps.current === 'student'}"></div>
-          <div>Join as Student</div>
-        </div>
-        <div user="teacher" layout="column" layout-align="center center" ng-model="imageProps"
-             ng-click="signIn.imageProps.current = 'teacher'">
-          <div icon ng-class="{'active': signIn.imageProps.current === 'teacher'}"></div>
-          <div>Join as Teacher</div>
-        </div>
-        <div user="publisher" layout="column" layout-align="center center" ng-model="imageProps"
-             ng-click="signIn.imageProps.current = 'publisher'">
-          <div icon ng-class="{'active': signIn.imageProps.current === 'publisher'}"></div>
-          <div>Join as Publisher</div>
-        </div>
-      </div>
       <form name="registration" registration-details layout="column" layout-align="center center">
-        <input input-feature ng-model="signIn.user.fullname" placeholder="User Name" type="text" maxlength="60"
-               value="Full Name" required/>
+        <input class="input-feature" ng-model="signIn.user.fullname" placeholder="User Name" type="text"
+               maxlength="60" value="Full Name" required/>
 
         <div layout="row" layout-align="space-between center">
-          <input input-feature class="input-feature-pwd" name="pwd" ng-model="signIn.user.password"
+          <input class="input-feature" input-feature-pwd name="pwd" ng-model="signIn.user.password"
                  placeholder="Password"
                  type={{inputType}} maxlength="20"
                  required/>
-
-
-          <img class ="hidePwd" ng-click="showPassword()" ng-model="showPassword">
-
+          <div pwd-container>
+          <img ng-class="{'showPwd': inputType == 'password', 'hidePwd':inputType == 'text' }"
+               ng-click="showPassword()" ng-model="showPassword" ng-disabled="registration.pwd.$unto">
+            </div>
         </div>
-
-        <div forgotPwd-container><a forgotPwd href="">Forgot Password</a></div>
-
-
-
-
+        <div forgotPwd-container><a forgotPwd href="">Forgot Password?</a></div>
         <div entity="check_box">
           <md-checkbox md-ink class="md-primary" ng-model="signIn.user.checkedBox" style="display: inline-block">
           </md-checkbox>
@@ -56,28 +32,28 @@
           </span>
         </div>
       </form>
-
       <div registration="container" layout="row" layout-align="center center">
         <md-button registration="register-button" class="md-raised md-primary"
-                   ng-disabled="registration.$invalid ">LOGIN</md-button>
-        <md-button registration="cancel-button" class="md-raised md-primary" ng-disabled="!signIn.imageProps.current">
+                   ng-disabled="registration.$invalid ">LOGIN
+        </md-button>
+        <md-button registration="cancel-button" class="md-raised md-primary" >
           CANCEL
         </md-button>
       </div>
       <div orline layout="row" layout-align="space-between center">
-        <hr />
-      <div orword> OR </div>
-       <hr />
+        <hr/>
+        <div orword>  OR  </div>
+        <hr/>
       </div>
       <div entity="third-party-signIn" layout="column" layout-align="center center">
 
-        <md-button third-party="Facebook" class="md-raised md-primary" ng-disabled="!signIn.imageProps.current">
+        <md-button third-party="Facebook" class="md-raised md-primary">
           <md-icon facebookIcon></md-icon>
-          <label> Connect with Facebook</label>
+          <label> Connect with Facebook </label>
         </md-button>
-        <md-button third-party="Google" class="md-raised md-primary" ng-disabled="!signIn.imageProps.current">
+        <md-button third-party="Google" class="md-raised md-primary">
           <md-icon googleIcon></md-icon>
-          <label> Connect with Google + </label>
+          <label> Connect with Google  </label>
 
         </md-button>
       </div>

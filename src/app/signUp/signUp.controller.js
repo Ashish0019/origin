@@ -1,4 +1,4 @@
-export class LoginController {
+export class SignUpController {
   constructor($scope) {
     'ngInject';
 

@@ -1,22 +1,24 @@
 export class SignInController {
-  constructor($scope) {
+  constructor($scope, $log) {
     'ngInject';
-    this.inputType = 'password';
-    this.pwdClass = 'showPwd';
+    $scope.inputType = 'password';
+
 
     $scope.showPassword = function(){
       {
+
+        $log.debug("this.classList",this.classList);
         if (this.inputType == 'password')
         {
           this.inputType = 'text';
-          this.pwdClass = 'hidePwd'
+
         }
 
         else{
           this.inputType = 'password';
-          this.pwdClass = 'showPwd';
+
         }
-      };
+      }
 
 
     }

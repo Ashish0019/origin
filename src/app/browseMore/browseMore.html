@@ -1,0 +1,99 @@
+<div browseMore-container layout="column" layout-fill>
+  <div layout-align="space-around center" layout="row">
+    <md-toolbar flex="100" style="background-color: transparent">
+      <div browse-header class="md-toolbar-tools">
+        <span flex="8"  origin-logo></span>
+        <span flex-gt-sm tag-line>I want to LEARN / TEACH</span>
+      <span >
+      <md-input-container  layout-align="center" class="md-block">
+        <label search>Search</label>
+        <input flex-gt-sm search-bar ng-model="browseMore.search">
+      </md-input-container>
+        </span>
+        <md-button searchButton class="md-icon-button md-primary">
+          <md-icon searchIcon></md-icon>
+        </md-button>
+        <div flex-gt-md style="float:right;  margin-left: 50px;" layout="row" layout-align="end center">
+          <md-button bookshelf class=" md-primary">
+            <md-icon bookicon></md-icon>
+            <div>My Library</div>
+          </md-button>
+          <md-button cart class=" md-primary">
+            <md-icon carticon></md-icon>
+            <div>My Cart</div>
+          </md-button>
+          <md-button userinfo class=" md-primary">
+            <md-icon userinfoIcon></md-icon>
+            <div>Hi, Nikita</div>
+          </md-button>
+        </div>
+
+      </div>
+
+      <div menuBar layout="row" layout-align="space-between center">
+        <div library-tag> The Original Library</div>
+        <div additionalButtons>
+          <md-button butbackground class=" md-primary md-raised">
+            <md-icon create></md-icon>
+            <label>Create Course</label>
+          </md-button>
+          <md-button butbackground class=" md-primary md-raised">
+            <md-icon author></md-icon>
+            <label>Become an Author</label>
+          </md-button>
+
+        </div>
+
+      </div>
+    </md-toolbar>
+  </div>
+  <div>
+    <div outer layout="row" layout-align="start start">
+      <div flex="20" >
+        <md-button class=" md-raised md-ink-ripple">
+        <md-icon down></md-icon>
+        <label>Filter Options</label>
+      </md-button></div>
+      <div flex="70"> <md-content>
+        <md-tabs md-dynamic-height md-border-bottom>
+          <md-tab  label="All">
+            <md-content class="md-padding">
+              <span ng-repeat=" abc in productDetails ">
+                <img content-images ng-src="{{abc.thumnailImage}}"/>
+          {{abc.subject }}
+              </span>
+            </md-content>
+          </md-tab>
+          <md-tab  label="Latest">
+            <md-content class="md-padding">
+               <span ng-repeat=" abc in productDetails ">
+                <img content-images ng-src="{{abc.thumnailImage}}"/>
+          {{abc.subject }}
+              </span>
+            </md-content>
+          </md-tab>
+          <md-tab  label="Popular">
+            <md-content class="md-padding">
+               <span ng-repeat=" abc in productDetails ">
+                <img content-images ng-src="{{abc.thumnailImage}}"/>
+          {{abc.subject }}
+              </span>
+            </md-content>
+          </md-tab>
+          <md-tab  label="Free Resourses">
+            <md-content class="md-padding">
+               <span ng-repeat=" abc in productDetails ">
+                <img content-images ng-src="{{abc.thumnailImage}}"/>
+        {{abc.subject}}
+
+              </span>
+            </md-content>
+          </md-tab>
+        </md-tabs>
+      </md-content></div>
+
+    </div>
+
+  </div>
+</div>
+</div>

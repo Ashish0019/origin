@@ -6,17 +6,14 @@
   overflow: auto;
   [login-panel] {
     background-color: transparent;
-    min-width: 370px;
-    max-width: 450px;
-    flex: 80;
-    height: 90%;
-    max-height: 780px;
+    min-width: 540px;
+    min-height: 748px;
     font-family: sans-serif;
     color: #ffffff;
 
     [logo-img] {
-      width: 50%;
-      height: 80%;
+      width: 250px;
+      height: 80px;
       margin-top: 15px;
       background: url(../assets/images/babel.png) no-repeat;
       background-size: 98% 80%;
@@ -41,13 +38,13 @@
       }
 
       [user] {
-        font-size: 0.73em;
-        font-weight: 700;
+        font-size: 1em;
+        width:150px;
       }
 
       .user-icon {
-        width: 95px;
-        height: 95px;
+        width: 90px;
+        height: 90px;
         -webkit-border-radius: 50%;
         -moz-border-radius: 50%;
         border-radius: 50%;
@@ -60,32 +57,32 @@
       [user="student"] {
         [icon] {
           @extend .user-icon;
-          background-position: -22px -20px;
+          background-position: -25px -24px;
         }
 
         [icon].active {
-          background-position: -22px -130px;
+          background-position: -25px -134px;
         }
       }
 
       [user="teacher"] {
         [icon] {
           @extend .user-icon;
-          background-position: -139px -20px;
+          background-position: -142px -24px
         }
 
         [icon].active {
-          background-position: -139px -130px;
+          background-position: -142px -134px;
         }
       }
       [user="publisher"] {
         [icon] {
           @extend .user-icon;
-          background-position: -255px -20px;
+          background-position: -257px -24px
         }
 
         [icon].active {
-          background-position: -255px -130px;
+          background-position: -257px -134px;
         }
       }
     }
@@ -95,10 +92,11 @@
       width: 100%;
 
       [tagline] {
-        font-size: 0.8em;
-        opacity: .6;
+        font-size: 1em;
+        opacity: .7;
         color: #ffffff;
-        margin: 8px;
+        margin: 5px;
+        padding-top: 10px;
       }
 
       [registration-details] {
@@ -144,9 +142,8 @@
 
       [entity="check_box"] {
         color: #ffffff;
-        font-size: 0.8em;
-        margin-left: 12px;
-        width: 96%;
+        font-size: 0.9em;
+        width: 87%;
 
         a {
           color: #ffffff;
@@ -154,34 +151,34 @@
       }
 
       [registration="container"] {
-        width: 124px;
+        width: 300px;
         height: 40px;
         color: #fff;
         border-radius: 3px;
         font-size: .8em;
-        margin: 10px;
+        margin: 15px;
 
         [registration="register-button"] {
-          background-color: #575652;
-          color: rgba(210, 210, 247, 0.58);
-          opacity: .7;
+          background-color: #979797;
+          color: #5d5d5d;
+          width: 120px;
         }
 
         [registration="cancel-button"] {
-          background-color: #575652;
-          opacity: .7;
-          color: rgba(210, 210, 247, 0.58);
+          background-color: #979797;
+          color: #5d5d5d;
+          width: 120px;
         }
 
         [registration="register-button"].md-button.md-raised:not([disabled]) {
           background-color: #00af9d;
           color: #ffffff;
-          opacity: 1;
+          width: 120px;
         }
         [registration="cancel-button"].md-button.md-raised:not([disabled]) {
           background-color: #c24549;
           color: #ffffff;
-          opacity: 1;
+          width: 120px;
         }
 
       }
@@ -199,7 +196,7 @@
       [entity="hasAccount"] {
         color: #ffffff;
         font-size: 0.9em;
-        margin: 5px;
+        margin: 15px;
 
         a {
           color: #ffffff;
@@ -207,34 +204,37 @@
       }
 
       [entity="third-party-login"] {
-        text-transform: capitalize;
+
+        margin-top: 20px;
         .icons {
           background-size: 20px;
+
 
         }
         [third-party="SignEmail"] {
           width: 95%;
-          text-transform: capitalize;
-          background-color: #575652;
-          color: rgba(210, 210, 247, 0.58);
-          opacity: .7;
+          background-color: #979797;
+          color: #5d5d5d;;
+
           [emailIcon] {
             @extend .icons;
             background-image: url("../assets/images/email_icon1.svg");
+
 
           }
         }
         [third-party="SignEmail"].md-button.md-raised:not([disabled]) {
           background-color: #00A995;
           color: #ffffff;
-          opacity: 1;
+
+
+
         }
         [third-party="Facebook"] {
-          opacity: .7;
+
           width: 95%;
-          text-transform: capitalize;
-          background-color: #575652;
-          color: rgba(210, 210, 247, 0.58);
+          background-color: #979797;
+          color: #5d5d5d;
           [facebookIcon] {
             @extend .icons;
             background-image: url("../assets/images/fb_icon.svg");
@@ -244,14 +244,13 @@
         [third-party="Facebook"].md-button.md-raised:not([disabled]) {
           background-color: #3F51B5;
           color: #ffffff;
-          opacity: 1;
+
         }
         [third-party="Google"] {
-          opacity: .7;
+
           width: 95%;
-          text-transform: capitalize;
-          background-color: #575652;
-          color: rgba(210, 210, 247, 0.58);
+          background-color: #979797;
+          color: #5d5d5d;
           [googleIcon] {
             @extend .icons;
             background-image: url("../assets/images/google_icon.svg");
@@ -261,11 +260,13 @@
         [third-party="Google"].md-button.md-raised:not([disabled]) {
           background-color: #D95032;
           color: #ffffff;
-          opacity: 1;
+
         }
 
       }
-
+      .md-button[disabled] md-icon, .md-button.md-raised[disabled] md-icon {
+        opacity: .1;
+      }
     }
   }
 }

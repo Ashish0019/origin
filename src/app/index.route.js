@@ -1,11 +1,11 @@
 export function routerConfig($stateProvider, $urlRouterProvider) {
   'ngInject';
   $stateProvider
-    .state('login', {
-      url: '/login',
-      templateUrl: 'app/login/login.html',
-      controller: 'LoginController',
-      controllerAs: 'login'
+    .state('signUp', {
+      url: '/signUp',
+      templateUrl: 'app/signUp/signUp.html',
+      controller: 'SignUpController',
+      controllerAs: 'signUp'
     })
     .state('library', {
       url: '/library',
@@ -19,12 +19,12 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
       controller: 'BrowseController',
       controllerAs: 'browseMore'
     })
-.state('signIn', {
-    url: '/signin',
-    templateUrl: 'app/signIn/signIn.html',
-    controller: 'SignInController',
-    controllerAs: 'signIn'
-  });
+    .state('signIn', {
+      url: '/signin',
+      templateUrl: 'app/signIn/signIn.html',
+      controller: 'SignInController',
+      controllerAs: 'signIn'
+    });
 
-  $urlRouterProvider.otherwise('/signin');
+  $urlRouterProvider.otherwise('/browseMore');
 }

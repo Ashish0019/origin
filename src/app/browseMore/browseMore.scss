@@ -1,0 +1,116 @@
+[browseMore-container]{
+  height: 100%;
+  position: absolute;
+  color:#ffffff;
+  font-size:20px;
+  [origin-logo] {
+    height: 90px;
+    background: url("../assets/images/babel.png") no-repeat;
+    width: 100px;
+    background-position: 0px -23px;
+  }
+  [browse-header]{
+    background-color: #000000;
+    height: 110px;
+    max-height: 20%;
+    box-shadow: 0px 5px #888888;
+  [tag-line] {
+    font-size: 1.2em;
+    max-width: 300px;
+    min-width: 30%;
+  }
+
+    [search] {
+      color: white;
+      ;
+    }
+    [search-bar]{
+      margin-bottom: 10px;
+
+      border-bottom-color: #ffffff;
+      color:#ffffff;
+    }
+  [searchButton] {
+    [searchIcon] {
+      background-image: url("../assets/images/search_icon1.svg");
+      background-size: 20px;
+    }
+  }
+    .userHelpIcon {
+      background-size: 50px;
+      width:50px;
+      height: 50px;
+    }
+    [bookshelf] {
+      [bookIcon] {
+       @extend .userHelpIcon;
+        background-image: url("../assets/images/shelf_icon.png");
+
+      }
+    }
+    [cart] {
+      [carticon] {
+        @extend .userHelpIcon;
+        background-image: url("../assets/images/cart_Icon.svg");
+
+      }
+    }
+    [userinfo]{
+      [userinfoIcon]{
+        @extend .userHelpIcon;
+        background-image: url("../assets/images/user_Icon.svg");
+      }
+    }
+
+  }
+[menuBar] {
+  margin: 10px;
+  margin-left: 20px;
+[library-tag]{
+  font-size: 1.6em;
+color: #00af9d;
+}
+  [additionalButtons] {
+
+    .buttonBackground {
+      background-color: #00af9d;
+    }
+
+    [butbackground]{
+      @extend .buttonBackground;
+
+    }
+    [butbackground].md-button.md-primary.md-raised:not([disabled]):hover {
+      background-color: rgba(159,205,157,.75);
+    }
+    [create] {
+      background-image: url("../assets/images/hat_icon.svg");
+      background-size: 20px;
+    }
+    [author]{
+      background-image: url("../assets/images/pen_icon.svg");
+      background-size: 20px;
+    }
+
+  }
+
+}
+  [outer]{
+    color:#000000;
+    [down] {
+      background-image: url("../assets/images/arrow_right_icon.svg");
+      background-size: 20px;
+    }
+  }
+   md-tabs > md-tabs-wrapper > md-tabs-canvas > md-pagination-wrapper > md-tab-item:not([disabled]) {
+    color: #000000;
+  }
+  [content-images]{
+    height:120px ;
+    width:90px;
+    background-size: 100%
+  }
+  [subject-name]{
+    font-size: .8em;
+  }
+}

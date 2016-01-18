@@ -3,7 +3,7 @@
 import { config } from './index.config';
 import { routerConfig } from './index.route';
 import { runBlock } from './index.run';
-import { LoginController } from '../app/login/login.controller';
+import { SignUpController } from '../app/signUp/signUp.controller';
 import { LibraryController } from '../app/library/library.controller';
 import { BrowseController } from '../app/browseMore/browseMore.controller';
 import { SignInController } from '../app/signIn/signIn.controller';
@@ -22,8 +22,9 @@ angular.module('originWeb', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 
   .run(runBlock)
 
   .controller('LibraryController', LibraryController)
-  .controller('LoginController', LoginController)
+  .controller('SignUpController', SignUpController)
   .controller('BrowseController', BrowseController)
   .controller('SignInController', SignInController)
+
 //  .directive('scroll', ScrollDirective)
   .directive('navMenu', NavbarDirective);
