@@ -1,13 +1,12 @@
 <section>
   <div outerPanel layout-fill>
-    <nav-menu></nav-menu>
     <div library-container layout="column" layout-fill>
       <div library-panel layout="row" layout-align="space-between start">
         <div origin-logo flex="30"></div>
         <div store-links flex-order-xs layout="row" layout-align="space-around center">
           <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-            <md-button ng-click="library.showLogin()" underline> Join Free</md-button>
-            <md-button ng-click="library.createAccount()" underline> Login</md-button>
+            <md-button ui-sref="signUp" underline>Join Free</md-button>
+            <md-button ui-sref="signIn" underline>Login</md-button>
           </section>
         </div>
       </div>

@@ -5,7 +5,12 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
       url: '/signUp',
       templateUrl: 'app/signUp/signUp.html',
       controller: 'SignUpController',
-      controllerAs: 'signUp'
+      controllerAs: 'signUp',
+      resolve: {
+        /*$URLS: ($http) => {
+          return $http.get("http://origin.stg1.getmagicbox.com/services/common/getgooglefacebookurl.json");
+        }*/
+      }
     })
     .state('library', {
       url: '/library',
@@ -20,11 +25,11 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
       controllerAs: 'browseMore'
     })
     .state('signIn', {
-      url: '/signin',
+      url: '/signIn',
       templateUrl: 'app/signIn/signIn.html',
       controller: 'SignInController',
       controllerAs: 'signIn'
     });
 
-  $urlRouterProvider.otherwise('/browseMore');
+  $urlRouterProvider.otherwise('/library');
 }

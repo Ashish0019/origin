@@ -8,7 +8,6 @@ import { LibraryController } from '../app/library/library.controller';
 import { BrowseController } from '../app/browseMore/browseMore.controller';
 import { SignInController } from '../app/signIn/signIn.controller';
 import { NavbarDirective } from '../app/components/navbar/navbar.directive';
-//import { ScrollDirective } from '../app/components/scroll/scroll.directive';
 
 angular.module('originWeb', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages', 'ngAria',
   'ngResource', 'ui.router', 'ngMaterial', 'toastr'])
@@ -26,5 +25,4 @@ angular.module('originWeb', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 
   .controller('BrowseController', BrowseController)
   .controller('SignInController', SignInController)
 
-//  .directive('scroll', ScrollDirective)
   .directive('navMenu', NavbarDirective);

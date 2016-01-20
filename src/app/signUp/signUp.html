@@ -29,7 +29,7 @@
       </div>
       <form name="registration" registration-details layout="column" layout-align="center center"
             ng-show="abc">
-        <input input-feature ng-model="signUp.user.fullname" placeholder="Full Name" type="text" maxlength="60"
+        <input input-feature ng-model="signUp.user.fullName" placeholder="Full Name" type="text" maxlength="60"
                value="Full Name" required/>
         <input input-feature name="email" ng-model="signUp.user.email" placeholder="Email ID"
                ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
@@ -59,7 +59,9 @@
       </form>
 
       <div registration="container" layout="row" layout-align="center center" ng-show="abc">
-        <md-button registration="register-button" class="md-raised md-primary"
+        <md-button registration="register-button"
+                   ng-click="signUp.register()"
+                   class="md-raised md-primary"
                    ng-disabled="registration.$invalid ">SIGN UP
         </md-button>
         <md-button registration="cancel-button" class="md-raised md-primary" ng-disabled="!signUp.imageProps.current">
@@ -72,17 +74,20 @@
         <hr />
       </div>
       <div entity="third-party-login" layout="column" layout-align="center center">
-
         <md-button third-party="SignEmail" class="md-raised md-primary" ng-disabled="!signUp.imageProps.current"
-                   ng-model="abc" ng-hide="abc" ng-click="ShowData()">
+                   ng-model="abc" ng-hide="abc" ng-click="showData()">
           <md-icon ng-disabled="!signUp.imageProps.current" emailIcon></md-icon>
           <label> Sign Up with Email ID </label>
         </md-button>
-        <md-button third-party="Facebook" class="md-raised md-primary" ng-disabled="!signUp.imageProps.current">
+        <md-button third-party="Facebook"
+                   ng-click="signUp.connect('facebook')"
+                   class="md-raised md-primary" ng-disabled="!signUp.imageProps.current">
           <md-icon facebookIcon></md-icon>
           <label> Connect with Facebook</label>
         </md-button>
-        <md-button third-party="Google" class="md-raised md-primary" ng-disabled="!signUp.imageProps.current">
+        <md-button third-party="Google"
+                   ng-click="signUp.connect('google')"
+                   class="md-raised md-primary" ng-disabled="!signUp.imageProps.current">
           <md-icon googleIcon></md-icon>
           <label> Connect with Google + </label>
 
