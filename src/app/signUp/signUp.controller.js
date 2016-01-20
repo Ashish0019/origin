@@ -1,9 +1,9 @@
 export class SignUpController {
-  constructor($log, $window, $http, $scope) {
+  constructor($log, $window, $http, $scope, $URLS) {
     'ngInject';
 
     this.user = {email: '', fullName: '', password: ''};
-    //this.urls = $URLS.data.data;
+    this.urls = $URLS.data.data;
     this.keyMap = {
       teacher: {
         google: 'googleIndTeacherUrl',
