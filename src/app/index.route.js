@@ -7,9 +7,9 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
       controller: 'SignUpController',
       controllerAs: 'signUp',
       resolve: {
-        /*$URLS: ($http) => {
+        $URLS: ($http) => {
           return $http.get("http://origin.stg1.getmagicbox.com/services/common/getgooglefacebookurl.json");
-        }*/
+        }
       }
     })
     .state('library', {
