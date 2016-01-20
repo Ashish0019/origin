@@ -51,7 +51,8 @@
 
         <span >
           By signing up, you agree to our <a href="http://magicbox.magicsw.com/privacypolicy.htm" target="_blank">
-          terms of use</a>  and <span style="margin-left: 7%;"> <a href="http://magicbox.magicsw.com/privacypolicy.htm"
+          terms of use</a>  and <span style="margin-left: 7%;">
+          <a href="http://stcn-crg-mg127.staticmbx.com/static/magicbox/tresource/footer/privacypolicy.html"
                                                                   target="_blank">privacy policy</a>
         </span>
         </span>
@@ -75,9 +76,9 @@
         <hr />
       </div>
       <div entity="third-party-login" layout="column" layout-align="center center">
-        <md-button third-party="SignEmail" class="md-raised md-primary" ng-disabled="!signUp.imageProps.current"
+        <md-button  third-party="SignEmail" class="md-raised md-primary" ng-disabled="!signUp.imageProps.current"
                    ng-model="abc" ng-hide="abc" ng-click="showData()">
-          <md-icon ng-disabled="!signUp.imageProps.current" emailIcon></md-icon>
+          <md-icon style="margin-left: -5px;" ng-disabled="!signUp.imageProps.current" emailIcon></md-icon>
           <label> Sign Up with Email ID </label>
         </md-button>
         <md-button third-party="Facebook"
@@ -95,7 +96,7 @@
         </md-button>
       </div>
       <div entity="hasAccount">
-        Already have an account? <a href=" "> Login now </a>
+        Already have an account? <a href=" "  ui-sref="signIn"> Login now </a>
       </div>
     </div>
   </section>
