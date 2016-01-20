@@ -46,8 +46,9 @@ export class SignUpController {
 
     $scope.showData = function() {
       this.abc = true;
-    }
-      $log.debug($document.referrer)
+    };
+
+    $log.debug($document.referrer)
 
   }
 }
