@@ -4,6 +4,8 @@ export class SignUpController {
 
     this.user = {email: '', fullName: '', password: ''};
     this.urls = $URLS.data.data;
+    $scope.showError = false;
+    $scope.responseMessage = '';
     this.keyMap = {
       teacher: {
         google: 'googleIndTeacherUrl',
@@ -30,10 +32,10 @@ export class SignUpController {
         userType: this.keyMap[this.imageProps.current].userType
       });
       response.success((res) => {
-        $log.info(res);
-      });
-      response.error((res) => {
-        $log.error(res);
+        if (res.response.responseCode !== 200) {
+          $scope.showError = true;
+          $scope.responseMessage = res.response.message;
+        }
       });
     };
 

@@ -38,6 +38,10 @@
         <div email-errorText ng-if="registration.email.$touched && registration.email.$invalid">
           <i>Please enter valid email address.</i></div>
 
+        <div email-errorText
+             ng-if="showError">
+          <i>{{responseMessage}}</i></div>
+
         <input input-feature name="pwd" ng-model="signUp.user.password" placeholder="Password"
                type="password" minlength="6" maxlength="20"
                required/>
