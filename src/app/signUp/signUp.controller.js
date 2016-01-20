@@ -1,5 +1,5 @@
 export class SignUpController {
-  constructor($log, $window, $http, $scope, $URLS) {
+  constructor($log, $window, $http, $scope, $URLS ,$document) {
     'ngInject';
 
     this.user = {email: '', fullName: '', password: ''};
@@ -47,6 +47,7 @@ export class SignUpController {
     $scope.showData = function() {
       this.abc = true;
     }
+      $log.debug($document.referrer)
 
   }
 }
