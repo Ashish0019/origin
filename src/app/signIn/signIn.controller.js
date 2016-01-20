@@ -1,5 +1,5 @@
 export class SignInController {
-  constructor($log, $scope) {
+  constructor($log, $scope, $document) {
     'ngInject';
     $scope.inputType = 'password';
 
@@ -9,6 +9,8 @@ export class SignInController {
       } else {
         this.inputType = 'password';
       }
-    }
+    };
+
+    $log.debug($document.referrer)
   }
 }
