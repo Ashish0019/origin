@@ -88,13 +88,15 @@
         </md-button>
         <md-button third-party="Facebook"
                    ng-click="signUp.connect('facebook')"
-                   class="md-raised md-primary" ng-disabled="!signUp.imageProps.current">
+                   class="md-raised md-primary"
+                   ng-disabled = "signUp.imageProps.current === 'publisher' || !signUp.imageProps.current ">
           <md-icon facebookIcon></md-icon>
           <label> Connect with Facebook</label>
         </md-button>
         <md-button third-party="Google"
                    ng-click="signUp.connect('google')"
-                   class="md-raised md-primary" ng-disabled="!signUp.imageProps.current">
+                   class="md-raised md-primary"
+                   ng-disabled = "signUp.imageProps.current === 'publisher' || !signUp.imageProps.current ">
           <md-icon googleIcon></md-icon>
           <label> Connect with Google + </label>
 

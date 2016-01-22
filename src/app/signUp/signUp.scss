@@ -7,6 +7,9 @@
   *{
     text-transform: none;
   }
+  .md-button[disabled] {
+    cursor: not-allowed !important;
+  }
   [login-panel] {
     background-color: transparent;
     min-width: 540px;
