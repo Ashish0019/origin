@@ -1,3 +1,18 @@
-.acme-navbar-text{
-  color: white;
+[menu-container] {
+  section[origin-container] {
+    height: 50px;
+
+    [origin-logo] {
+      width: 253px;
+      height: 100%;
+      background-size: contain;
+      background: url("../assets/images/rsz_babel.png") no-repeat center center;
+    }
+  }
+
+  section[login-panel] {
+    * {
+      font-size: 0.8em;
+    }
+  }
 }
