@@ -4,7 +4,9 @@
   background: url("../assets/images/login_background_2x.png") center center;
   background-size: cover;
   overflow: auto;
-
+  *{
+    text-transform: none;
+  }
   [signIn-panel] {
     background-color: transparent;
     min-width: 540px;

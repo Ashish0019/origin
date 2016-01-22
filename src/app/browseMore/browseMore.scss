@@ -3,6 +3,10 @@
   position: absolute;
   color:#ffffff;
   font-size:20px;
+  *{
+    text-transform: none;
+  }
+
   [origin-logo] {
     height: 90px;
     background: url("../assets/images/babel.png") no-repeat;

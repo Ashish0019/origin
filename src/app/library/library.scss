@@ -4,7 +4,9 @@
     font-family: sans-serif;
     background: url("../assets/images/login_background_2x.png") no-repeat;
     background-size: 100% 90%;
-
+    *{
+      text-transform: none;
+    }
     [library-panel] {
       background-color: transparent;
       font-family: sans-serif;
