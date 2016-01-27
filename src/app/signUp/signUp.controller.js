@@ -23,6 +23,8 @@ export class SignUpController {
     };
 
     this.register = () => {
+      $scope.showError = false;
+      $scope.responseMessage = '';
       let response = $http.post('http://mbx-api-staging.getmagicbox.com/services/user/v1.0/' +
         'registeruser?token=ORIGIN_MAGICBOX_TOKEN', {
         firstname: this.user.fullName,
