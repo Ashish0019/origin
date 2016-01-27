@@ -1,9 +1,9 @@
-[browseMore-container]{
+[browseMore-container] {
   height: 100%;
   position: absolute;
-  color:#ffffff;
-  font-size:20px;
-  *{
+  color: #ffffff;
+  font-size: 20px;
+  * {
     text-transform: none;
   }
 
@@ -12,42 +12,42 @@
     background: url("../assets/images/babel.png") no-repeat;
     width: 100px;
     background-position: 0px -23px;
+    transform: scale(.7);
+    float: left;
   }
-  [browse-header]{
+  [browse-header] {
     background-color: #000000;
-    height: 110px;
-    max-height: 20%;
+    height: 85px;
+    max-height: 15%;
     box-shadow: 0px 5px #888888;
-  [tag-line] {
-    font-size: 1.2em;
-    max-width: 300px;
-    min-width: 30%;
-  }
-
+    [tag-line] {
+      font-size: 1.2em;
+      max-width: 300px;
+      min-width: 30%;
+    }
     [search] {
       color: white;
-      ;
     }
-    [search-bar]{
+    [search-bar] {
       margin-bottom: 10px;
 
       border-bottom-color: #ffffff;
-      color:#ffffff;
+      color: #ffffff;
     }
-  [searchButton] {
-    [searchIcon] {
-      background-image: url("../assets/images/search_icon1.svg");
-      background-size: 20px;
+    [searchButton] {
+      [searchIcon] {
+        background-image: url("../assets/images/search_icon1.svg");
+        background-size: 20px;
+      }
     }
-  }
     .userHelpIcon {
       background-size: 50px;
-      width:50px;
+      width: 50px;
       height: 50px;
     }
     [bookshelf] {
       [bookIcon] {
-       @extend .userHelpIcon;
+        @extend .userHelpIcon;
         background-image: url("../assets/images/shelf_icon.png");
 
       }
@@ -59,62 +59,134 @@
 
       }
     }
-    [userinfo]{
-      [userinfoIcon]{
+    [userinfo] {
+      [userinfoIcon] {
         @extend .userHelpIcon;
         background-image: url("../assets/images/user_Icon.svg");
       }
     }
 
   }
-[menuBar] {
-  margin: 10px;
-  margin-left: 20px;
-[library-tag]{
-  font-size: 1.6em;
-color: #00af9d;
-}
-  [additionalButtons] {
+  [menuBar] {
+    margin: 10px;
+    margin-left: 20px;
+    [library-tag] {
+      font-size: 1.6em;
+      color: #00af9d;
+    }
+    [additionalButtons] {
 
-    .buttonBackground {
-      background-color: #00af9d;
-    }
+      .buttonBackground {
+        background-color: #00af9d;
+      }
 
-    [butbackground]{
-      @extend .buttonBackground;
+      [butbackground] {
+        @extend .buttonBackground;
 
-    }
-    [butbackground].md-button.md-primary.md-raised:not([disabled]):hover {
-      background-color: rgba(159,205,157,.75);
-    }
-    [create] {
-      background-image: url("../assets/images/hat_icon.svg");
-      background-size: 20px;
-    }
-    [author]{
-      background-image: url("../assets/images/pen_icon.svg");
-      background-size: 20px;
+      }
+      [butbackground].md-button.md-primary.md-raised:not([disabled]):hover {
+        background-color: rgba(159, 205, 157, .75);
+      }
+      [create] {
+        background-image: url("../assets/images/hat_icon.svg");
+        background-size: 20px;
+      }
+      [author] {
+        background-image: url("../assets/images/pen_icon.svg");
+        background-size: 20px;
+      }
+
     }
 
   }
-
-}
-  [outer]{
-    color:#000000;
-    [down] {
-      background-image: url("../assets/images/arrow_right_icon.svg");
-      background-size: 20px;
-    }
+  [down] {
+    background-image: url("../assets/images/arrow_right_icon.svg");
+    background-size: 20px;
   }
-   md-tabs > md-tabs-wrapper > md-tabs-canvas > md-pagination-wrapper > md-tab-item:not([disabled]) {
+  [outer] {
     color: #000000;
+
+    md-tabs > md-tabs-wrapper > md-tabs-canvas > md-pagination-wrapper > md-tab-item:not([disabled]) {
+      color: #000000;
+    }
+    [sujectData] {
+      padding: 10px;
+      margin:10px;
+      border: 1px solid #CCCCCC;
+      box-shadow: 1px 1px 1px 1px #cccccc;
+      [content-images] {
+        height: 130px;
+        width: 100%;
+        background-size: contain;
+      }
+      .subjectInfo {
+        font-size: 10px;
+        text-transform: capitalize;
+      }
+
+      [subjectName] {
+        @extend .subjectInfo;
+      }
+      [subjectType] {
+        @extend .subjectInfo;
+        font-size: 15px;
+        padding-left: 5px;
+      }
+
+      [subjectTitle] {
+        font-size: 16px;
+        font-weight: 600;
+      }
+      .subjectIcons {
+        margin: 0 ;
+        background-size: 20px;
+      }
+      [dataOutline] {
+        border-top: 1px solid #CCCCCC;
+        border-bottom: 1px solid #CCCCCC;
+        padding: 4px;
+      }
+
+      .epub {
+        @extend .subjectIcons;
+        background-image: url("../assets/images/epub_icon.svg");
+      }
+      .audio {
+        @extend .subjectIcons;
+        background-image: url("../assets/images/audio_icon.svg");
+      }
+      .video {
+        @extend .subjectIcons;
+        background-image: url("../assets/images/video_icon.svg");
+      }
+      .game {
+        @extend .subjectIcons;
+        background-image: url("../assets/images/game_icon.svg");
+      }
+      .simulation {
+        @extend .subjectIcons;
+        background-size: contain;
+        background-image: url("../assets/images/simulator_icon.svg");
+      }
+      .assessment {
+        @extend .subjectIcons;
+        background-image: url("../assets/images/exam_icon.svg");
+      }
+      .pdf {
+        @extend .subjectIcons;
+        background-image: url("../assets/images/pdf_icon.svg");
+      }
+      .EXT_RESOURCE {
+        @extend .subjectIcons;
+        background-image: url("../assets/images/ext_resource-icon.svg");
+      }
+      .ebook {
+        @extend .subjectIcons;
+        background-image: url("../assets/images/ebook_icon.svg");
+      }
+    }
+
   }
-  [content-images]{
-    height:120px ;
-    width:90px;
-    background-size: 100%
-  }
-  [subject-name]{
-    font-size: .8em;
-  }
+
+
 }

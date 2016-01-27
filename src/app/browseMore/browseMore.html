@@ -1,11 +1,11 @@
 <div browseMore-container layout="column" layout-fill>
   <div layout-align="space-around center" layout="row">
-    <md-toolbar flex="100" style="background-color: transparent">
+    <md-toolbar md-scroll-shrink flex-gt-md="100" layout-wrap="" style="background-color: transparent">
       <div browse-header class="md-toolbar-tools">
-        <span flex="8"  origin-logo></span>
+        <span flex="8" origin-logo></span>
         <span flex-gt-sm tag-line>I want to LEARN / TEACH</span>
-      <span >
-      <md-input-container  layout-align="center" class="md-block">
+      <span>
+      <md-input-container layout-align="center" class="md-block">
         <label search>Search</label>
         <input flex-gt-sm search-bar ng-model="browseMore.search">
       </md-input-container>
@@ -13,7 +13,7 @@
         <md-button searchButton class="md-icon-button md-primary">
           <md-icon searchIcon></md-icon>
         </md-button>
-        <div flex-gt-md style="float:right;  margin-left: 50px;" layout="row" layout-align="end center">
+        <div flex-gt-md style="float: right; transform: scale(.8);" layout="row" layout-align="end center">
           <md-button bookshelf class=" md-primary">
             <md-icon bookicon></md-icon>
             <div>My Library</div>
@@ -48,49 +48,89 @@
     </md-toolbar>
   </div>
   <div>
+    <md-button class=" md-raised md-ink-ripple">
+    <md-icon down></md-icon>
+    <label>Filter Options</label>
+  </md-button>
     <div outer layout="row" layout-align="start start">
-      <div flex="20" >
-        <md-button class=" md-raised md-ink-ripple">
-        <md-icon down></md-icon>
-        <label>Filter Options</label>
-      </md-button></div>
-      <div flex="70"> <md-content>
-        <md-tabs md-dynamic-height md-border-bottom>
-          <md-tab  label="All">
-            <md-content class="md-padding">
-              <span ng-repeat=" abc in productDetails ">
-                <img content-images ng-src="{{abc.thumnailImage}}"/>
-          {{abc.subject }}
-              </span>
-            </md-content>
-          </md-tab>
-          <md-tab  label="Latest">
-            <md-content class="md-padding">
-               <span ng-repeat=" abc in productDetails ">
-                <img content-images ng-src="{{abc.thumnailImage}}"/>
-          {{abc.subject }}
-              </span>
-            </md-content>
-          </md-tab>
-          <md-tab  label="Popular">
-            <md-content class="md-padding">
-               <span ng-repeat=" abc in productDetails ">
-                <img content-images ng-src="{{abc.thumnailImage}}"/>
-          {{abc.subject }}
-              </span>
-            </md-content>
-          </md-tab>
-          <md-tab  label="Free Resourses">
-            <md-content class="md-padding">
-               <span ng-repeat=" abc in productDetails ">
-                <img content-images ng-src="{{abc.thumnailImage}}"/>
-        {{abc.subject}}
+      <!--<div flex="20">
 
-              </span>
-            </md-content>
-          </md-tab>
-        </md-tabs>
-      </md-content></div>
+      </div>-->
+      <div flex="80">
+        <md-content>
+          <md-tabs md-dynamic-height md-border-bottom>
+            <md-tab label="All">
+              <div layout="row" layout-align="space-between start" layout-wrap="">
+                <div  sujectData flex-sm="100" flex-md="40" flex-lg="30" flex-gt-lg="20"
+                     ng-repeat=" dataView in productDetails">
+                  <img content-images ng-src="{{dataView.thumnailImage}}"/>
+
+                  <p subjectTitle>{{dataView.title | limitTo : 15 : 0 }}</p>
+                  <p subjectName>{{dataView.subject || "subject" }}</p>
+                  <div dataOutline layout="row">
+                    <md-icon class="ng-class:dataView.productType"> </md-icon>
+                  <label subjectType>{{dataView.productType}}</label>
+                  </div>
+
+
+                </div>
+              </div>
+
+            </md-tab>
+            <md-tab label="Latest">
+              <div layout="row" layout-align="space-between start" layout-wrap="">
+                <div  sujectData flex-sm="100" flex-md="40" flex-lg="30" flex-gt-lg="20"
+                      ng-repeat=" dataView in productDetails">
+                  <img content-images ng-src="{{dataView.thumnailImage}}"/>
+
+                  <p subjectTitle>{{dataView.title | limitTo : 15 : 0 }}</p>
+                  <p subjectName>{{dataView.subject || "subject" }}</p>
+                  <div layout="row">
+                    <md-icon class="ng-class:dataView.productType"> </md-icon>
+                    <label subjectType>{{dataView.productType}}</label>
+                  </div>
+
+
+                </div>
+              </div>
+            </md-tab>
+            <md-tab label="Popular">
+              <div layout="row" layout-align="space-between start" layout-wrap="">
+                <div  sujectData flex-sm="100" flex-md="40" flex-lg="30" flex-gt-lg="20"
+                      ng-repeat=" dataView in productDetails">
+                  <img content-images ng-src="{{dataView.thumnailImage}}"/>
+
+                  <p subjectTitle>{{dataView.title | limitTo : 15 : 0 }}</p>
+                  <p subjectName>{{dataView.subject || "subject" }}</p>
+                  <div layout="row">
+                    <md-icon class="ng-class:dataView.productType"> </md-icon>
+                    <label subjectType>{{dataView.productType}}</label>
+                  </div>
+
+
+                </div>
+              </div>
+            </md-tab>
+            <md-tab label="Free Resourses">
+              <div layout="row" layout-align="space-between start" layout-wrap="">
+                <div  sujectData flex-sm="100" flex-md="40" flex-lg="30" flex-gt-lg="20"
+                      ng-repeat=" dataView in productDetails">
+                  <img content-images ng-src="{{dataView.thumnailImage}}"/>
+
+                  <p subjectTitle>{{dataView.title | limitTo : 15 : 0 }}</p>
+                  <p subjectName>{{dataView.subject || "subject" }}</p>
+                  <div layout="row">
+                    <md-icon class="ng-class:dataView.productType"> </md-icon>
+                    <label subjectType>{{dataView.productType}}</label>
+                  </div>
+
+
+                </div>
+              </div>
+            </md-tab>
+          </md-tabs>
+        </md-content>
+      </div>
 
     </div>
 
