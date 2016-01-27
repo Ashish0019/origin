@@ -10,7 +10,7 @@ import { SignInController } from '../app/signIn/signIn.controller';
 import { NavbarDirective } from '../app/components/navbar/navbar.directive';
 
 angular.module('originWeb', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages', 'ngAria',
-  'ngResource', 'ui.router', 'ngMaterial', 'toastr'])
+  'ngResource', 'ui.router', 'ngMaterial', 'toastr' , 'reCAPTCHA'])
 
   .constant('malarkey', malarkey)
   .constant('moment', moment)

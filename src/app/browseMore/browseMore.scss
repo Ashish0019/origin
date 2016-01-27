@@ -10,9 +10,10 @@
   [origin-logo] {
     height: 90px;
     background: url("../assets/images/babel.png") no-repeat;
-    width: 100px;
+    width: 22%;
     background-position: 0px -23px;
-    transform: scale(.7);
+    -webkit-transform: scale(0.7);
+    transform: scale(0.7);
     float: left;
   }
   [browse-header] {
@@ -22,23 +23,22 @@
     box-shadow: 0px 5px #888888;
     [tag-line] {
       font-size: 1.2em;
-      max-width: 300px;
-      min-width: 30%;
+
     }
     [search] {
       color: white;
     }
     [search-bar] {
       margin-bottom: 10px;
-
       border-bottom-color: #ffffff;
       color: #ffffff;
+      width: 300px;
     }
-    [searchButton] {
+
       [searchIcon] {
         background-image: url("../assets/images/search_icon1.svg");
         background-size: 20px;
-      }
+
     }
     .userHelpIcon {
       background-size: 50px;
@@ -74,29 +74,6 @@
       font-size: 1.6em;
       color: #00af9d;
     }
-    [additionalButtons] {
-
-      .buttonBackground {
-        background-color: #00af9d;
-      }
-
-      [butbackground] {
-        @extend .buttonBackground;
-
-      }
-      [butbackground].md-button.md-primary.md-raised:not([disabled]):hover {
-        background-color: rgba(159, 205, 157, .75);
-      }
-      [create] {
-        background-image: url("../assets/images/hat_icon.svg");
-        background-size: 20px;
-      }
-      [author] {
-        background-image: url("../assets/images/pen_icon.svg");
-        background-size: 20px;
-      }
-
-    }
 
   }
   [down] {
@@ -105,6 +82,7 @@
   }
   [outer] {
     color: #000000;
+    height: 100%;
 
     md-tabs > md-tabs-wrapper > md-tabs-canvas > md-pagination-wrapper > md-tab-item:not([disabled]) {
       color: #000000;
