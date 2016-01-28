@@ -37,7 +37,7 @@ export class SignUpController {
           $scope.showError = true;
           $scope.responseMessage = res.response.message;
         } else {
-          $log.debug($form);
+          $form.commit();
         }
       });
       response.error((res) => {
