@@ -22,7 +22,7 @@ export class SignUpController {
       current: ''
     };
 
-    this.register = () => {
+    this.register = ($form) => {
       $scope.showError = false;
       $scope.responseMessage = '';
       let response = $http.post('http://mbx-api-staging.getmagicbox.com/services/user/v1.0/' +
@@ -36,6 +36,8 @@ export class SignUpController {
         if (res.response.responseCode !== 200) {
           $scope.showError = true;
           $scope.responseMessage = res.response.message;
+        } else {
+          $log.debug($form);
         }
       });
       response.error((res) => {
@@ -53,7 +55,7 @@ export class SignUpController {
       this.abc = true;
     };
 
-    $log.debug($document.referrer)
+    $log.debug($document.referrer);
 
 
     reCAPTCHA.setPublicKey('6LdUu_cSAAAAAJT-SnxZm_EL_NwazPuCwgfb70Wo');
