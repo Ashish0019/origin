@@ -1,5 +1,5 @@
 export class BrowseController {
-  constructor($scope, $log,$http , $mdSidenav) {
+  constructor($scope, $log,$http , $mdSidenav, $URLS) {
     'ngInject';
     this.search = '';
 
@@ -35,10 +35,6 @@ export class BrowseController {
           $log.debug("close left is done");
         });
     };
-
-
-
-
 
 
   }
