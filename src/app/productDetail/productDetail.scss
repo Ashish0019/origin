@@ -69,7 +69,7 @@
   [menuBar] {
     margin: 10px;
     margin-left: 20px;
-    [library-tag] {
+    [library] {
       font-size: 1.6em;
       color: #7B7B7B;
       text-decoration: underline;
@@ -79,6 +79,90 @@
       font-size: 1.6em;
       color: #00af9d;
     }
+  }
+  [productBackground] {
+    background-color: #EEEEEE;
+    padding-bottom: 75px;
+    width: 100%;
+    color: #000000;
+    [headers] {
+      margin-left: 2%;
+      [dataTitle] {
+        font-weight: 600;
+        font-size: 32px;
+        color: #333333;
+      }
+      [metaData] {
+        font-size: 14px;
+        color: #333333;
+      }
+
+      [stars] {
+        .starRating:not(old) {
+          display: inline-block;
+          width: 7.5em;
+          height: 1.5em;
+          overflow: hidden;
+          vertical-align: bottom;
+        }
+        .starRating:not(old) > input {
+          margin-right: -100%;
+          opacity: 0;
+        }
+        .starRating:not(old) > label {
+          display: block;
+          float: right;
+          position: relative;
+          background-image: url('../assets/images/star_off.svg');
+          background-size: contain;
+        }
+        .starRating:not(old) > label:before {
+          content: '';
+          display: block;
+          width: 1.5em;
+          height: 1.5em;
+          background-image: url('../assets/images/star_on.svg');
+          background-size: contain;
+          opacity: 0;
+          transition: opacity 0.2s linear;
+        }
+        .starRating:not(old) > label:hover:before,
+        .starRating:not(old) > label:hover ~ label:before,
+        .starRating:not(:hover) > :checked ~ label:before {
+          opacity: 1;
+        }
+
+      }
+
+    }
+    [otherdata] {
+      margin-left: 2%;
+
+      [description] {
+        font-size: 14px;
+      }
+      table thead {
+        font-size: 14px;
+        color: #00af9d;
+        text-decoration: underline;
+        float:left;
+      }
+      .tableHeading {
+        font-size: 14px;
+        color: #333333;
+        font-weight: 600;
+      }
+      table tbody tr {
+        font-size: 14px;
+        color: #333333;
+      }
+      [contentContainer] {
+        margin-right: 30px;
+        height: 350px;
+        background-size: contain;
+      }
+    }
+
   }
 
 }

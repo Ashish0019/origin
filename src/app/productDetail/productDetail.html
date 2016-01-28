@@ -5,15 +5,15 @@
         <div flex="" layout="row" layout-align="start center">
           <div origin-logo></div>
           <div tag-line>I want to LEARN / TEACH</div>
-         <!-- <div style="width: 50%;">
-            <md-input-container style="margin-left: 25px" class="md-block">
-              <label search>Search</label>
-              <input search-bar ng-model="browseMore.search">
-            </md-input-container>
-          </div>
-          <div>
-            <md-icon searchIcon ng-click="Search()"></md-icon>
-          </div>-->
+          <!-- <div style="width: 50%;">
+             <md-input-container style="margin-left: 25px" class="md-block">
+               <label search>Search</label>
+               <input search-bar ng-model="browseMore.search">
+             </md-input-container>
+           </div>
+           <div>
+             <md-icon searchIcon ng-click="Search()"></md-icon>
+           </div>-->
         </div>
         <div flex="38" style="transform: scale(.8);" layout-align="end-center" layout="row">
           <md-button bookshelf class=" md-primary">
@@ -31,22 +31,90 @@
         </div>
       </div>
       <div menuBar>
-        <span library-tag ui-sref="browseMore"> The Original Library</span>
-        <span product-tag > / Product Details</span>
+        <span library ui-sref="browseMore"> The Original Library</span>
+        <span product-tag> / Product Details</span>
 
       </div>
     </md-toolbar>
   </div>
-<div>
+  <div productBackground layout="column">
+    <div headers layout="row">
+      <div layout="row">
+        <div layout="column" layout-align="start start">
+          <div dataTitle>{{sampleData.title}}</div>
+          <div metaData ng-bind-html="sampleContent"></div>
+          <div stars>
+            <span class="starRating">
+              <input id="rating5" type="radio">
+              <label for="rating5"></label>
+              <input id="rating4" type="radio">
+              <label for="rating4"></label>
+              <input id="rating3" type="radio">
+              <label for="rating3"></label>
+              <input id="rating2" type="radio">
+              <label for="rating2"></label>
+              <input id="rating1" type="radio">
+              <label for="rating1"></label>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div flex=""></div>
+      <div>
+        <!-- will contain share and review detail-->
+      </div>
+    </div>
+    <div otherdata layout-align="space-between start" layout="row">
+      <div flex="50">
+        <div layout="column">
+          <md-button flex="" class="md-primary md-raised" style="background-color: #00af9d; width:25%">
+            <label style="font-size: 16px;"> ADD TO LIBRARY </label>
+          </md-button>
+          <p description>Updated Invitation: Platform + Assessments + Analytics + Origin - Daily Scrum @ Weekly from
+            10:45am to
+            11:05am on weekdays from Wed Jan 13 to Wed Jan 27Updated Invitation: Platform + Assessments + Analytics +
+            Origin - Daily Scrum @ Weekly from 10:45am to 11:05am on weekdays from Wed Jan 13 to Wed Jan 27 </p>
+
+          <p description>Updated Invitation: Platform + Assessments + Analytics + Origin - Daily Scrum @ Weekly from
+            10:45am to
+            11:05am on weekdays from Wed Jan 13 to Wed Jan 27</p>
+          <table>
+            <thead>
+            <tr>
+              <th colspan="2">Product Details</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td class="tableHeading">Grades</td>
+              <td>{{sampleGrades}}</td>
+            </tr>
+            <tr>
+              <td class="tableHeading">Publisher</td>
+              <td>{{samplePublisher}}</td>
+            </tr>
+            <tr>
+              <td class="tableHeading">Standards</td>
+              <td>{{sampleGrades}}</td>
+            </tr>
+            <tr>
+              <td class="tableHeading">Resource Types</td>
+              <td>{{sampleType}}</td>
+            </tr>
+            </tbody>
+          </table>
+          <p description> ekdays from Wed Jan 13 to Wed Jan 27Updated Invitation: Platform + Assessments + Analytics +
+            Origin - Daily Scrum @ Weekly from 10:45am to 11:05am on w</p>
+
+        </div>
+      </div>
+      <div flex="40" layout="column">
+        <img contentContainer ng-src="{{sampleImage}}"/>
+      </div>
+    </div>
 
 
-
-
-
-
-
-
-
+  </div>
 
 </div>
 
