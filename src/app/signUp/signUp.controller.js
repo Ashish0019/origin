@@ -55,7 +55,7 @@ export class SignUpController {
       this.abc = true;
     };
 
-    $log.debug($document.referrer)
+    $log.debug($document.referrer);
 
 
     reCAPTCHA.setPublicKey('6LdUu_cSAAAAAJT-SnxZm_EL_NwazPuCwgfb70Wo');
