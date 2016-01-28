@@ -1,11 +1,11 @@
 <div browseMore-container layout="column" layout-fill>
   <div layout-align="space-around center" layout="row">
     <md-toolbar style="background-color: transparent">
-      <div browse-header  flex="100" class="md-toolbar-tools" layout="row" layout-align="start center">
+      <div browse-header flex="100" class="md-toolbar-tools" layout="row" layout-align="start center">
         <div flex="" layout="row" layout-align="start center">
           <div origin-logo></div>
           <div tag-line>I want to LEARN / TEACH</div>
-          <div>
+          <div style="width: 50%;">
             <md-input-container style="margin-left: 25px" class="md-block">
               <label search>Search</label>
               <input search-bar ng-model="browseMore.search">
@@ -36,10 +36,17 @@
     </md-toolbar>
   </div>
   <div>
-    <md-button class=" md-primary md-ink-ripple" ng-click="toggleleft()">
-      <md-icon down></md-icon>
-      <label>Filter Options</label>
-    </md-button>
+    <div layout="row" layout-align="space-between center">
+      <div>
+        <md-button class=" md-primary md-ink-ripple" ng-click="toggleleft()">
+          <md-icon down></md-icon>
+          <label>Filter Options</label>
+        </md-button>
+      </div>
+      <div contentNumber>
+        <p>{{contentNumber}}
+      </div>
+    </div>
     <md-sidenav flex="20" class="md-sidenav-left" md-component-id="left" style="position: absolute;top: 200px;">
       <md-content layout-padding="">
         <md-button ng-click="close()" class="md-primary">
@@ -56,11 +63,8 @@
                 <div sujectData flex-sm="90" flex-md="30" flex-lg="20" flex-gt-lg="15"
                      ng-repeat=" dataView in productDetails">
                   <img content-images ng-src="{{dataView.thumnailImage}}"/>
-
                   <p subjectTitle>{{dataView.title | limitTo : 15 : 0 }}</p>
-
                   <p subjectName>{{dataView.subject || "subject" }}</p>
-
                   <div dataOutline layout="row">
                     <md-icon class="ng-class:dataView.productType"></md-icon>
                     <label subjectType>{{dataView.productType}}</label>
@@ -73,11 +77,8 @@
                 <div sujectData flex-sm="60" flex-md="45" flex-lg="30" flex-gt-lg="15"
                      ng-repeat=" dataView in productDetails">
                   <img content-images ng-src="{{dataView.thumnailImage}}"/>
-
                   <p subjectTitle>{{dataView.title | limitTo : 15 : 0 }}</p>
-
                   <p subjectName>{{dataView.subject || "subject" }}</p>
-
                   <div dataOutline layout="row">
                     <md-icon class="ng-class:dataView.productType"></md-icon>
                     <label subjectType>{{dataView.productType}}</label>
@@ -90,11 +91,8 @@
                 <div sujectData flex-sm="60" flex-md="45" flex-lg="30" flex-gt-lg="15"
                      ng-repeat=" dataView in productDetails">
                   <img content-images ng-src="{{dataView.thumnailImage}}"/>
-
                   <p subjectTitle>{{dataView.title | limitTo : 15 : 0 }}</p>
-
                   <p subjectName>{{dataView.subject || "subject" }}</p>
-
                   <div dataOutline layout="row">
                     <md-icon class="ng-class:dataView.productType"></md-icon>
                     <label subjectType>{{dataView.productType}}</label>
@@ -102,16 +100,13 @@
                 </div>
               </div>
             </md-tab>
-            <md-tab label="Free Resourses">
+            <md-tab label="Free Resources">
               <div layout="row" layout-align="space-between start" layout-wrap="">
                 <div sujectData flex-sm="60" flex-md="45" flex-lg="30" flex-gt-lg="15"
                      ng-repeat=" dataView in productDetails">
                   <img content-images ng-src="{{dataView.thumnailImage}}"/>
-
                   <p subjectTitle>{{dataView.title | limitTo : 15 : 0 }}</p>
-
                   <p subjectName>{{dataView.subject || "subject" }}</p>
-
                   <div dataOutline layout="row">
                     <md-icon class="ng-class:dataView.productType"></md-icon>
                     <label subjectType>{{dataView.productType}}</label>

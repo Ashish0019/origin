@@ -12,7 +12,8 @@ export class BrowseController {
       data:{'searchobject':{}}
     }).then(function successCallback(response) {
       $scope.productDetails = response.data.productdetail;
-      $log.debug(1,response.data)
+      $scope.contentNumber = $scope.productDetails.length +" " +"resourses found";
+      $log.debug(1,response.data,$scope.contentNumber);
 
     }, function errorCallback(err) {
        $log.debug(err);
