@@ -1,5 +1,5 @@
 export class SignUpController {
-  constructor($log, $window, $http, $scope, $URLS ,$document ,reCAPTCHA) {
+  constructor($log, $window, $http, $scope, $URLS, $document, reCAPTCHA) {
     'ngInject';
     this.user = {email: '', fullName: '', password: ''};
     this.urls = $URLS.data.data;
@@ -54,9 +54,6 @@ export class SignUpController {
     $scope.showData = function() {
       this.abc = true;
     };
-
-    $log.debug($document.referrer);
-
 
     reCAPTCHA.setPublicKey('6LdUu_cSAAAAAJT-SnxZm_EL_NwazPuCwgfb70Wo');
 

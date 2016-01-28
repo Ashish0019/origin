@@ -3,7 +3,7 @@
  * @date: 28/1/16
  * @email: akshay.x666@gmail.com
  */
-export function FormCommitDirective($log) {
+export function FormCommitDirective() {
   'ngInject';
 
   let directive = {
