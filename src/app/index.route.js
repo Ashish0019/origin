@@ -29,6 +29,12 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
       templateUrl: 'app/signIn/signIn.html',
       controller: 'SignInController',
       controllerAs: 'signIn'
+    })
+    .state('productDetail', {
+      url: '/productDetail',
+      templateUrl: 'app/productDetail/productDetail.html',
+      controller: 'ProductController',
+      controllerAs: 'productDetail'
     });
 
   $urlRouterProvider.otherwise('/library');

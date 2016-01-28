@@ -7,11 +7,12 @@ import { SignUpController } from '../app/signUp/signUp.controller';
 import { LibraryController } from '../app/library/library.controller';
 import { BrowseController } from '../app/browseMore/browseMore.controller';
 import { SignInController } from '../app/signIn/signIn.controller';
+import { ProductController } from '../app/productDetail/productDetail.controller';
 import { NavbarDirective } from '../app/components/navbar/navbar.directive';
 import { FormCommitDirective } from '../app/components/formCommit/formCommit.directive';
 
 angular.module('originWeb', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages', 'ngAria',
-  'ngResource', 'ui.router', 'ngMaterial', 'toastr'])
+  'ngResource', 'ui.router', 'ngMaterial', 'toastr' , 'reCAPTCHA'])
 
   .constant('malarkey', malarkey)
   .constant('moment', moment)
@@ -25,6 +26,7 @@ angular.module('originWeb', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 
   .controller('SignUpController', SignUpController)
   .controller('BrowseController', BrowseController)
   .controller('SignInController', SignInController)
+  .controller('ProductController', ProductController)
 
   .directive('navMenu', NavbarDirective)
   .directive('formCommit', FormCommitDirective);

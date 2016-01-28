@@ -1,5 +1,5 @@
 export class BrowseController {
-  constructor($scope, $log,$http) {
+  constructor($scope, $log,$http , $mdSidenav) {
     'ngInject';
     this.search = '';
 
@@ -12,26 +12,30 @@ export class BrowseController {
       data:{'searchobject':{}}
     }).then(function successCallback(response) {
       $scope.productDetails = response.data.productdetail;
-      $log.debug(1,response.data)
+      $scope.contentNumber = $scope.productDetails.length +" " +"resourses found";
+      $log.debug(1,response.data,$scope.contentNumber);
 
     }, function errorCallback(err) {
-     $log.debug(err);
-      alert("sorry service unavailable");
+       $log.debug(err);
+      alert("book listing service unavailable");
     });
-
-
-   /* var contentSelfIcons = {
-      video : "../assets/images/video_icon.svg",
-      audio : "../assets/images/audio_icon.svg",
-      epub  : "../assets/images/epub_icon.svg",
-      ebook : "../assets/images/ebook_icon.svg",
-      simulation :"../assets/images/simulator_icon.svg",
-      game : "../assets/images/game_icon.svg",
-      assessment:"../assets/images/exam_icon.svg",
-      pdf:"../assets/images/pdf_icon.svg",
-      EXT_RESOURCE:"../assets/images/ext_resource-icon.svg"
+    $scope.toggleleft = buildToggler('left');
+    function buildToggler(navID) {
+      return function() {
+        $mdSidenav(navID)
+          .toggle()
+          .then(function () {
+            $log.debug("toggle " + navID + " is done");
+          });
+      }
     }
-    */
+    $scope.close = function () {
+      $mdSidenav('left').close()
+        .then(function () {
+          $log.debug("close left is done");
+        });
+    };
+
 
 
 
