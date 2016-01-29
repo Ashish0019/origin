@@ -22,7 +22,7 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
       url: '/browseMore',
       templateUrl: 'app/browseMore/browseMore.html',
       controller: 'BrowseController',
-      controllerAs: 'browseMore',
+      controllerAs: 'browseMore'
      /* resolve: {
         $URLS: ($http) => {
           return $http.post("http://amz.s-1.mdistribute.magicsw.com/services/catalog/allproductdetail.json");
@@ -39,7 +39,7 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
       url: '/productDetail',
       templateUrl: 'app/productDetail/productDetail.html',
       controller: 'ProductController',
-      controllerAs: 'productDetail',
+      controllerAs: 'productDetail'
     /*  resolve: {
         $URLS: ($http) => {
           return $http.post("http://amz.s-1.mdistribute.magicsw.com/services/catalog/allproductdetail.json");
