@@ -13,7 +13,9 @@ export class HomeController {
     };
 
     this.searchClicked = () => {
-      this.showNavBar = true;
+      if (!_.isEmpty(this.search.$current)) {
+        this.showNavBar = true;
+      }
     };
 
     $document[0].addEventListener('scroll', () => {

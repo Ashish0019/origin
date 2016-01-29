@@ -49,6 +49,11 @@ html {
   font-family: 'Open Sans', sans-serif;
 }
 
+body {
+  min-height: initial;
+  height: auto;
+}
+
 [layout=row] {
   flex-direction: row;
 }

@@ -8,6 +8,7 @@ import { HomeController } from '../app/home/home.controller';
 import { BrowseController } from '../app/browseMore/browseMore.controller';
 import { SignInController } from '../app/signIn/signIn.controller';
 import { NavbarDirective } from '../app/components/navbar/navbar.directive';
+import { RjResizeDirective } from '../app/components/rjResize.directive';
 
 angular.module('originWeb', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages', 'ngAria',
   'ngResource', 'ui.router', 'ngMaterial', 'toastr'])
@@ -25,4 +26,5 @@ angular.module('originWeb', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 
   .controller('BrowseController', BrowseController)
   .controller('SignInController', SignInController)
 
-  .directive('navMenu', NavbarDirective);
+  .directive('navMenu', NavbarDirective)
+  .directive('rjResize', RjResizeDirective);

@@ -12,8 +12,9 @@ export function NavbarDirective($log) {
       $scope.search = {
         $current: ''
       };
-      _.each($attrs.searchText, (item) => {
-        $scope.search.$current += item + ', '
+
+      _.each($scope.$eval($attrs.searchText), (item) => {
+        $scope.search.$current += item + ' '
       });
 
     }

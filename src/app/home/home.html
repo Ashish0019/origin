@@ -1,6 +1,7 @@
 <nav-menu ng-if="home.showNavBar" nav-text="I want to LEARN / TEACH"
           search-text="{{home.search.$current}}"></nav-menu>
-<section library-container="" layout="column" layout-align="center start" ng-if="!home.showNavBar">
+<section library-container="" layout="column" layout-align="center start" rj-resize rz-height=""
+         ng-if="!home.showNavBar" >
   <section search-screen>
     <div origin-logo=""></div>
 
@@ -24,7 +25,8 @@
             </span>
           </label>
         </md-input-container>
-        <md-button class="md-raised" ng-click="home.searchClicked()">SEARCH</md-button>
+        <md-button ng-disabled="home.search.$current.length <= 0"
+          class="md-raised" ng-click="home.searchClicked()">SEARCH</md-button>
       </section>
 
       <section down-icon>
@@ -34,4 +36,9 @@
       </section>
     </div>
   </section>
+</section>
+<section popular-listing ng-if="home.showNavBar" rj-resize rz-height="64"
+         layout="column" layout-align="center center">
+  <div>asdsd</div>
+  <div>asdsd</div>
 </section>
