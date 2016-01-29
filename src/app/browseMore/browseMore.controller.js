@@ -1,5 +1,5 @@
 export class BrowseController {
-  constructor($scope, $log,$http , $mdSidenav) {
+  constructor($scope, $log, $http, $mdSidenav) {
     'ngInject';
     this.search = '';
 
