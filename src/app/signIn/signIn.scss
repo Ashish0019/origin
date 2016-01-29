@@ -154,6 +154,67 @@
         }
       }
 
+
+
+      [user-types] {
+        color: #d4d4d4;
+
+        *:focus {
+          outline: 0;
+        }
+
+        [user] {
+          font-size: 1em;
+          width: 150px;
+        }
+
+        .user-icon {
+          width: 90px;
+          height: 90px;
+          -webkit-border-radius: 50%;
+          -moz-border-radius: 50%;
+          border-radius: 50%;
+          margin: 8px;
+          cursor: pointer;
+          border: 2px solid #ffffff;
+          background-image: url('../assets/images/sign_up_icons.png');
+        }
+
+        [user="student"] {
+          [icon] {
+            @extend .user-icon;
+            background-position: -25px -24px;
+          }
+
+          [icon].active {
+            background-position: -25px -134px;
+          }
+        }
+
+        [user="teacher"] {
+          [icon] {
+            @extend .user-icon;
+            background-position: -142px -24px
+          }
+
+          [icon].active {
+            background-position: -142px -134px;
+          }
+        }
+        [user="publisher"] {
+          [icon] {
+            @extend .user-icon;
+            background-position: -257px -24px
+          }
+
+          [icon].active {
+            background-position: -257px -134px;
+          }
+        }
+      }
+
+
+
       [entity="hasAccount"] {
         color: #ffffff;
         font-size: 0.9em;
@@ -165,20 +226,20 @@
       }
 
       [entity="third-party-signIn"] {
+        margin-top: 20px;
+
         * {
           cursor: pointer;
         }
 
         .icons {
           background-size: 20px;
-
         }
 
         [third-party="Facebook"] {
-          opacity: .6;
           width: 95%;
-          background-color: #575652;
-          color: rgba(210, 210, 247, 0.58);
+          background-color: #979797;
+          color: #5d5d5d;
           [facebookIcon] {
             @extend .icons;
             background-image: url("../assets/images/fb_icon.svg");
@@ -188,26 +249,27 @@
         [third-party="Facebook"].md-button.md-raised:not([disabled]) {
           background-color: #3F51B5;
           color: #ffffff;
-          opacity: 1;
+
         }
 
         [third-party="Google"] {
-          opacity: .6;
           width: 95%;
-          background-color: #575652;
-          color: rgba(210, 210, 247, 0.58);
-
+          background-color: #979797;
+          color: #5d5d5d;
           [googleIcon] {
             @extend .icons;
             background-image: url("../assets/images/google_icon.svg");
+            margin-left: -11px;
           }
         }
 
         [third-party="Google"].md-button.md-raised:not([disabled]) {
           background-color: #D95032;
           color: #ffffff;
-          opacity: 1;
         }
+      }
+      .md-button[disabled] md-icon, .md-button.md-raised[disabled] md-icon {
+        opacity: .1;
       }
     }
   }

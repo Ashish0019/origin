@@ -7,8 +7,8 @@
 
     <form form-commit name="signInForm" method="post" ng-hide="true"
           action="http://origin.stg1.getmagicbox.com/j_spring_security_check" target="_self">
-      <input name="j_username" type="hidden" value="{{signUp.user.email}}">
-      <input name="j_password" type="hidden" value="{{signUp.user.password}}">
+      <input name="j_username" type="hidden" ng-model="signUp.user.email">
+      <input name="j_password" type="hidden" ng-model="signUp.user.password">
       <input type="submit" name="SignInButton" value="Login">
     </form>
 
@@ -69,14 +69,14 @@
         </span>
         </span>
         </div>
-        <div re-captcha captchaCode ng-model="signUp.user.captcha" ng-show="signUp.imageProps.current === 'publisher'" ></div>
+      <!--  <div re-captcha captchaCode ng-model="signUp.user.captcha" ng-show="signUp.imageProps.current === 'publisher'" ></div>-->
       </form>
 
       <div registration="container" layout="row" layout-align="center center" ng-show="abc">
         <md-button registration="register-button"
                    ng-click="signUp.register(signInForm)"
                    class="md-raised md-primary"
-                   ng-disabled="registration.$invalid">SIGN UP
+                   ng-disabled="registration.$invalid ">SIGN UP
         </md-button>
         <md-button registration="cancel-button" class="md-raised md-primary"
                    ui-sref="library" ng-disabled="!signUp.imageProps.current">
@@ -97,14 +97,16 @@
         <md-button third-party="Facebook"
                    ng-click="signUp.connect('facebook')"
                    class="md-raised md-primary"
-                   ng-hide = "signUp.imageProps.current === 'publisher' || !signUp.imageProps.current ">
+                   ng-disabled="!signUp.imageProps.current">
           <md-icon facebookIcon></md-icon>
           <label> Connect with Facebook</label>
         </md-button>
         <md-button third-party="Google"
                    ng-click="signUp.connect('google')"
                    class="md-raised md-primary"
-                   ng-hide = "signUp.imageProps.current === 'publisher' || !signUp.imageProps.current ">
+                   ng-disabled="!signUp.imageProps.current">
+
+          <!-- ng-hide = "signUp.imageProps.current === 'publisher' || !signUp.imageProps.current "-->
           <md-icon googleIcon></md-icon>
           <label> Connect with Google + </label>
 
