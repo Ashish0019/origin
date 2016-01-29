@@ -7,8 +7,8 @@
 
     <form form-commit name="signInForm" method="post" ng-hide="true"
           action="http://origin.stg1.getmagicbox.com/j_spring_security_check" target="_self">
-      <input name="j_username" type="hidden" ng-model="signUp.user.email">
-      <input name="j_password" type="hidden" ng-model="signUp.user.password">
+      <input name="j_username" type="hidden" value="{{signUp.user.email}}">
+      <input name="j_password" type="hidden" value="{{signUp.user.password}}">
       <input type="submit" name="SignInButton" value="Login">
     </form>
 
@@ -76,7 +76,7 @@
         <md-button registration="register-button"
                    ng-click="signUp.register(signInForm)"
                    class="md-raised md-primary"
-                   >SIGN UP
+                   ng-disabled="registration.$invalid">SIGN UP
         </md-button>
         <md-button registration="cancel-button" class="md-raised md-primary"
                    ui-sref="library" ng-disabled="!signUp.imageProps.current">
