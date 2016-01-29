@@ -5,9 +5,10 @@
   <section search-screen>
     <div origin-logo=""></div>
 
-    <div login-panel>
-      <md-button login-component="free" ui-sref="signUp" underline>Join Free</md-button>
-      <md-button login-component="login" ui-sref="signIn" underline>Login</md-button>
+    <div login-panel layout="row">
+      <div login-component="free" ui-sref="signUp" style="width: 90px; color: #00af9d">Join Free</div>
+      <div flex="5"></div>
+      <div login-component="login" ui-sref="signIn" >Login</div>
     </div>
 
     <div search-panel layout="column" layout-align="center center">
