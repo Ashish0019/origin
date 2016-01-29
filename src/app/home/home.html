@@ -1,0 +1,44 @@
+<nav-menu ng-if="home.showNavBar" nav-text="I want to LEARN / TEACH"
+          search-text="{{home.search.$current}}"></nav-menu>
+<section library-container="" layout="column" layout-align="center start" rj-resize rz-height=""
+         ng-if="!home.showNavBar" >
+  <section search-screen>
+    <div origin-logo=""></div>
+
+    <div login-panel>
+      <md-button login-component="free" ui-sref="signUp" underline>Join Free</md-button>
+      <md-button login-component="login" ui-sref="signIn" underline>Login</md-button>
+    </div>
+
+    <div search-panel layout="column" layout-align="center center">
+      <section origin-contents layout="column" layout-align="space-between center">
+        <div tag-line>
+          I want to <span underline>LEARN</span> / <span>TEACH</span>
+        </div>
+        <md-input-container search-container class="md-block">
+          </br>
+          <md-chips ng-model="home.search.$current"></md-chips>
+          <label id="searches">
+            Popular Searches:
+            <span ng-repeat="searchData in home.search.$popular">
+              {{searchData}}<span ng-if="!$last">, </span>
+            </span>
+          </label>
+        </md-input-container>
+        <md-button ng-disabled="home.search.$current.length <= 0"
+          class="md-raised" ng-click="home.searchClicked()">SEARCH</md-button>
+      </section>
+
+      <section down-icon>
+        <md-button class="md-icon-button" aria-label="More" ng-click="home.downClick()">
+          <md-icon md-svg-icon="assets/images/down_Icon.svg"></md-icon>
+        </md-button>
+      </section>
+    </div>
+  </section>
+</section>
+<section popular-listing ng-if="home.showNavBar" rj-resize rz-height="64"
+         layout="column" layout-align="center center">
+  <div>asdsd</div>
+  <div>asdsd</div>
+</section>

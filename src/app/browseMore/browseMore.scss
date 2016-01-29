@@ -26,19 +26,25 @@
 
     }
     [search] {
-      color: white;
+      color: white;;
     }
     [search-bar] {
       margin-bottom: 10px;
       border-bottom-color: #ffffff;
-      color: #ffffff;
       width: 100%;
+      color: #ffffff;
     }
 
       [searchIcon] {
         background-image: url("../assets/images/search_icon1.svg");
         background-size: 20px;
 
+    }
+    [searchButton] {
+      [searchIcon] {
+        background-image: url("../assets/images/search_icon1.svg");
+        background-size: 20px;
+      }
     }
     .userHelpIcon {
       background-size: 50px;

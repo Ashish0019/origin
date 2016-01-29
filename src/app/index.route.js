@@ -12,11 +12,11 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
         }
       }
     })
-    .state('library', {
-      url: '/library',
-      templateUrl: 'app/library/library.html',
-      controller: 'LibraryController',
-      controllerAs: 'library'
+    .state('home', {
+      url: '/home',
+      templateUrl: 'app/home/home.html',
+      controller: 'HomeController',
+      controllerAs: 'home'
     })
     .state('browseMore', {
       url: '/browseMore',
@@ -47,5 +47,5 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
       }*/
     });
 
-  $urlRouterProvider.otherwise('/library');
+  $urlRouterProvider.otherwise('/home');
 }

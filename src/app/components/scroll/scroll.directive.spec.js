@@ -1,5 +1,0 @@
-/*
-describe('directive scroll', function() {
-
-});
-*/
