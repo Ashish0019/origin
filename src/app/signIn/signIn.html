@@ -45,12 +45,31 @@
         <div orword>  OR  </div>
         <hr/>
       </div>
+      <div user-types layout="row" layout-align="center center">
+        <div user="student" layout="column" layout-align="center center" ng-model="imageProps"
+             ng-click="signUp.imageProps.current = 'student'">
+          <div icon ng-class="{'active': signUp.imageProps.current === 'student'}"></div>
+          <div>Join as Student</div>
+        </div>
+        <div user="teacher" layout="column" layout-align="center center" ng-model="imageProps"
+             ng-click="signUp.imageProps.current = 'teacher'">
+          <div icon ng-class="{'active': signUp.imageProps.current === 'teacher'}"></div>
+          <div>Join as Teacher</div>
+        </div>
+        <!-- <div user="publisher" layout="column" layout-align="center center" ng-model="imageProps"
+              ng-click="signUp.imageProps.current = 'publisher'">
+           <div icon ng-class="{'active': signUp.imageProps.current === 'publisher'}"></div>
+           <div>Join as Publisher</div>
+         </div>-->
+      </div>
       <div entity="third-party-signIn" layout="column" layout-align="center center">
-        <md-button third-party="Facebook" class="md-raised md-primary">
+        <md-button third-party="Facebook" class="md-raised md-primary"
+                   ng-disabled="!signUp.imageProps.current">
           <md-icon facebookIcon></md-icon>
           <label> Connect with Facebook </label>
         </md-button>
-        <md-button third-party="Google" class="md-raised md-primary">
+        <md-button third-party="Google" class="md-raised md-primary"
+                   ng-disabled="!signUp.imageProps.current">
           <md-icon googleIcon></md-icon>
           <label>Connect with Google</label>
         </md-button>
