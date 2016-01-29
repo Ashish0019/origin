@@ -17,7 +17,7 @@ export class BrowseController {
 
     }, function errorCallback(err) {
        $log.debug(err);
-      alert("book listing service unavailable");
+      alert("book listing service is unavailable");
     });
     $scope.toggleleft = buildToggler('left');
     function buildToggler(navID) {
