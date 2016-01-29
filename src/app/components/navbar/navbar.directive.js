@@ -1,4 +1,4 @@
-export function NavbarDirective($log) {
+export function NavbarDirective() {
   'ngInject';
 
   let directive = {

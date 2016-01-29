@@ -1,5 +1,5 @@
 export class HomeController {
-  constructor($log, $document, $scope) {  // put $scope, $mdDialog, $mdMedia as args
+  constructor($log, $document) {  // put $scope, $mdDialog, $mdMedia as args
     'ngInject';
 
     this.search = {

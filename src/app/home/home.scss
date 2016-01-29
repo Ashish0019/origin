@@ -203,4 +203,50 @@
 
 section[popular-listing] {
   margin-top: 64px;
+
+  [book-listing-wrapper] {
+    width: 90%;
+
+    [book-listing] {
+      width: 100%;
+
+      overflow-y: auto;
+
+      [book-item] {
+        width: 150px;
+        height: 200px;
+
+        margin: 10px;
+
+        border: 1px solid #000000;
+      }
+    }
+  }
+
+  [ui-sref="browseMore"] {
+    background-color: #00a79d;
+    color: #ffffff;
+
+    padding: 2px 24px;
+  }
+
+  .md-button.md-raised:not([disabled]):hover {
+    background-color: #00a79d;
+  }
+
+  [popular-footer] {
+    width: 98%;
+    border-top: 1px solid #000000;
+
+    padding: 8px;
+
+    span[header] {
+      font-weight: 800;
+      font-size: 0.9em;
+    }
+
+    span[disclaimer] {
+      font-size: 0.7em;
+    }
+  }
 }

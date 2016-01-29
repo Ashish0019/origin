@@ -1,7 +1,7 @@
 <nav-menu ng-if="home.showNavBar" nav-text="I want to LEARN / TEACH"
           search-text="{{home.search.$current}}"></nav-menu>
 <section library-container="" layout="column" layout-align="center start" rj-resize rz-height=""
-         ng-if="!home.showNavBar" >
+         ng-if="!home.showNavBar">
   <section search-screen>
     <div origin-logo=""></div>
 
@@ -26,7 +26,8 @@
           </label>
         </md-input-container>
         <md-button ng-disabled="home.search.$current.length <= 0"
-          class="md-raised" ng-click="home.searchClicked()">SEARCH</md-button>
+                   class="md-raised" ng-click="home.searchClicked()">SEARCH
+        </md-button>
       </section>
 
       <section down-icon>
@@ -39,6 +40,63 @@
 </section>
 <section popular-listing ng-if="home.showNavBar" rj-resize rz-height="64"
          layout="column" layout-align="center center">
-  <div>asdsd</div>
-  <div>asdsd</div>
+  <div flex="80" book-listing-wrapper layout="column" layout-align="space-between center">
+    <div book-listing layout="row" layout-align="space-between start" layout-wrap="" flex="90"
+         rj-resize="" rz-height="250">
+      <div book-item flex-sm="90" flex-md="30" flex-lg="20" flex-gt-lg="15">
+        lol
+      </div><div book-item flex-sm="90" flex-md="30" flex-lg="20" flex-gt-lg="15">
+        lol
+      </div><div book-item flex-sm="90" flex-md="30" flex-lg="20" flex-gt-lg="15">
+        lol
+      </div><div book-item flex-sm="90" flex-md="30" flex-lg="20" flex-gt-lg="15">
+        lol
+      </div><div book-item flex-sm="90" flex-md="30" flex-lg="20" flex-gt-lg="15">
+        lol
+      </div><div book-item flex-sm="90" flex-md="30" flex-lg="20" flex-gt-lg="15">
+        lol
+      </div><div book-item flex-sm="90" flex-md="30" flex-lg="20" flex-gt-lg="15">
+        lol
+      </div><div book-item flex-sm="90" flex-md="30" flex-lg="20" flex-gt-lg="15">
+        lol
+      </div><div book-item flex-sm="90" flex-md="30" flex-lg="20" flex-gt-lg="15">
+        lol
+      </div><div book-item flex-sm="90" flex-md="30" flex-lg="20" flex-gt-lg="15">
+        lol
+      </div><div book-item flex-sm="90" flex-md="30" flex-lg="20" flex-gt-lg="15">
+        lol
+      </div><div book-item flex-sm="90" flex-md="30" flex-lg="20" flex-gt-lg="15">
+        lol
+      </div><div book-item flex-sm="90" flex-md="30" flex-lg="20" flex-gt-lg="15">
+        lol
+      </div><div book-item flex-sm="90" flex-md="30" flex-lg="20" flex-gt-lg="15">
+        lol
+      </div><div book-item flex-sm="90" flex-md="30" flex-lg="20" flex-gt-lg="15">
+        lol
+      </div><div book-item flex-sm="90" flex-md="30" flex-lg="20" flex-gt-lg="15">
+        lol
+      </div><div book-item flex-sm="90" flex-md="30" flex-lg="20" flex-gt-lg="15">
+        lol
+      </div><div book-item flex-sm="90" flex-md="30" flex-lg="20" flex-gt-lg="15">
+        lol
+      </div><div book-item flex-sm="90" flex-md="30" flex-lg="20" flex-gt-lg="15">
+        lol
+      </div><div book-item flex-sm="90" flex-md="30" flex-lg="20" flex-gt-lg="15">
+        lol
+      </div>
+    </div>
+    <md-button ui-sref="browseMore" class="md-raised">
+      Browse More
+    </md-button>
+  </div>
+  <div popular-footer layout="column" layout-align="center start">
+    <span header>About the Origin</span>
+    <span disclaimer>
+      Origin is the K-12 resource library, offering various eBooks, videos, assessments, homework assignments, games
+      and lesson plans for every Common Core English Language Arts standard. Origin lets Teachers create their own
+      virtual classroom, assign quizzes / homework to students, grade them and track progress. Origin also lets students
+      collaborate with their peers and discuss on a topic while they read. Origin is your one stop shop for all your
+      learning needs!
+    </span>
+  </div>
 </section>
