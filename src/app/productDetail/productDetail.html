@@ -1,42 +1,10 @@
 <div product-container layout="column" layout-fill>
-  <div layout-align="space-around center" layout="row">
-    <md-toolbar style="background-color: transparent">
-      <div product-header flex="100" class="md-toolbar-tools" layout="row" layout-align="start center">
-        <div flex="" layout="row" layout-align="start center">
-          <div origin-logo></div>
-          <div tag-line>I want to LEARN / TEACH</div>
-           <div style="width: 50%;">
-             <md-input-container style="margin-left: 25px" class="md-block">
-               <label search>Search</label>
-               <input search-bar ng-model="browseMore.search">
-             </md-input-container>
-           </div>
-           <div>
-             <md-icon searchIcon ng-click="Search()"></md-icon>
-           </div>
-        </div>
-        <div flex="38" style="transform: scale(.8);" layout-align="end-center" layout="row">
-          <md-button bookshelf class=" md-primary">
-            <md-icon bookicon></md-icon>
-            <div>My Library</div>
-          </md-button>
-          <md-button cart class=" md-primary">
-            <md-icon carticon></md-icon>
-            <div>My Cart</div>
-          </md-button>
-          <md-button userinfo class=" md-primary">
-            <md-icon userinfoIcon></md-icon>
-            <div>Hi, Nikita</div>
-          </md-button>
-        </div>
-      </div>
-      <div menuBar>
-        <span library ui-sref="browseMore"> The Original Library</span>
-        <span product-tag> / Product Details</span>
+  <nav-menu nav-text="I want to LEARN / TEACH"></nav-menu>
+    <div menuBar>
+      <span library ui-sref="browseMore"> The Original Library</span>
+      <span product-tag> / Product Details</span>
+    </div>
 
-      </div>
-    </md-toolbar>
-  </div>
   <div productBackground layout="column">
     <div headers layout="row">
       <div layout="row">
