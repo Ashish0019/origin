@@ -72,7 +72,7 @@
                 </div>
               </div>
             </md-tab>
-            <md-tab label="Latest">
+            <md-tab label="A-Z">
               <div layout="row" layout-align="space-between start" layout-wrap="">
                 <div sujectData flex-sm="60" flex-md="45" flex-lg="30" flex-gt-lg="15"
                      ng-repeat=" dataView in productDetails">
@@ -86,21 +86,7 @@
                 </div>
               </div>
             </md-tab>
-            <md-tab label="Popular">
-              <div layout="row" layout-align="space-between start" layout-wrap="">
-                <div sujectData flex-sm="60" flex-md="45" flex-lg="30" flex-gt-lg="15"
-                     ng-repeat=" dataView in productDetails">
-                  <img content-images ng-src="{{dataView.thumnailImage}}"/>
-                  <p subjectTitle>{{dataView.title | limitTo : 15 : 0 }}</p>
-                  <p subjectName>{{dataView.subject || "subject" }}</p>
-                  <div dataOutline layout="row">
-                    <md-icon class="ng-class:dataView.productType"></md-icon>
-                    <label subjectType>{{dataView.productType}}</label>
-                  </div>
-                </div>
-              </div>
-            </md-tab>
-            <md-tab label="Free Resources">
+            <md-tab label="Z-A">
               <div layout="row" layout-align="space-between start" layout-wrap="">
                 <div sujectData flex-sm="60" flex-md="45" flex-lg="30" flex-gt-lg="15"
                      ng-repeat=" dataView in productDetails">
