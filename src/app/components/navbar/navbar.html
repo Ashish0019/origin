@@ -1,11 +1,18 @@
-<md-toolbar menu-container layout="row" layout-align="center center">
+<md-toolbar menu-container layout="row" layout-align="start center">
 
-  <div class="md-toolbar-tools">
-    <section origin-container="">
+  <div class="md-toolbar-tools" layout="row" layout-align="space-between start">
+    <section origin-container="" layout="row" layout-align="center center" flex="22">
       <div origin-logo=""></div>
+      <div origin-text="">
+        {{navbarText}}
+      </div>
     </section>
-    <span flex=""></span>
-    <section login-panel="">
+    <section search-container layout="row" layout-align="center center" flex="60">
+      <md-input-container layout-align="center" class="md-block">
+        <input search-bar ng-model="search.$current">
+      </md-input-container>
+    </section>
+    <section login-panel="" flex="15" layout="row" layout-align="center center">
       <md-button ui-sref="signUp" underline>Join Free</md-button>
       <md-button ui-sref="signIn" underline>Login</md-button>
     </section>

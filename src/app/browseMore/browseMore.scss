@@ -25,21 +25,20 @@
   }
 
     [search] {
-      color: white;
-      ;
+      color: white;;
     }
-    [search-bar]{
+    [search-bar] {
       margin-bottom: 10px;
 
       border-bottom-color: #ffffff;
-      color:#ffffff;
+      color: #ffffff;
     }
-  [searchButton] {
-    [searchIcon] {
-      background-image: url("../assets/images/search_icon1.svg");
-      background-size: 20px;
+    [searchButton] {
+      [searchIcon] {
+        background-image: url("../assets/images/search_icon1.svg");
+        background-size: 20px;
+      }
     }
-  }
     .userHelpIcon {
       background-size: 50px;
       width:50px;

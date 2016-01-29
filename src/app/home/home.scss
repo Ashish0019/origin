@@ -104,6 +104,8 @@
 
       margin: 15px;
 
+      z-index: 9;
+
       background-size: contain;
       background: url("../assets/images/rsz_babel.png") no-repeat center center;
     }
@@ -114,11 +116,17 @@
       top: 0;
       right: 10px;
 
+      z-index: 9;
+
       margin: 20px;
 
-      * {
-        color: #fff;
+      [login-component] {
+        color: #ffffff;
         text-transform: none;
+      }
+
+      [login-component="free"]:hover {
+        color: #4BAE4F !important;
       }
     }
 
@@ -129,6 +137,66 @@
       height: 100%;
 
       top: 0;
+
+      [origin-contents] {
+        width: 80%;
+
+        .md-chips .md-chip-input-container input, .md-chips .md-chip-input-container input:not([type]) {
+          color: #ffffff;
+        }
+
+        [tag-line] {
+          color: #DFDDDE;
+          font-size: 1.5em;
+          letter-spacing: 2px;
+
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+
+          span {
+            cursor: pointer;
+          }
+        }
+
+        [underline] {
+          text-decoration: underline;
+        }
+
+        [search-container] {
+          width: 100%;
+
+        }
+
+        #searches {
+          color: #ffffff;
+        }
+
+        #searches:focused {
+          color: #ffffff;
+        }
+
+        .md-raised {
+          /*background-color: transparent;*/
+          padding: 8px 48px;
+          font-size: 1.2em;
+          font-weight: 700;
+          border: 2px solid #fff;
+        }
+
+        md-chips .md-chips.md-focused {
+          box-shadow: 0 2px rgb(184, 178, 226);
+        }
+      }
+    }
+
+    [down-icon] {
+      position: fixed;
+      bottom: 0;
+
+      left: 47%;
+      margin: 12px;
     }
   }
 }
