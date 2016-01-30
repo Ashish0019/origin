@@ -1,7 +1,16 @@
 export class BrowseController {
-  constructor($scope, $log, $http, $mdSidenav) {
+  constructor($scope, $log, $http) {
     'ngInject';
     this.search = '';
+    this.details = [];
+    this.categoryMapping = {
+      epub: {name: 'Epub', icon: 'assets/images/clipboard-text.svg'},
+      game: {name: 'Game', icon: 'assets/images/gamepad-variant.svg'},
+      video: {name: 'Video', icon: 'assets/images/video.svg'},
+      ebook: {name: 'E - Book', icon: 'assets/images/clipboard-text.svg'},
+      pdf: {name: 'PDF', icon: 'assets/images/file-pdf-box.svg'},
+      simulation: {name: 'Simulation', icon: 'assets/images/desktop-mac.svg'}
+    };
 
     $http({
       method: 'POST',
@@ -10,32 +19,22 @@ export class BrowseController {
         'Content-Type': 'application/json'
       },
       data:{'searchobject':{}}
-    }).then(function successCallback(response) {
-      $scope.productDetails = response.data.productdetail;
-      $scope.contentNumber = $scope.productDetails.length + "" + "resourses found";
-      $log.debug(1,response.data,$scope.contentNumber);
-
-    }, function errorCallback(err) {
-       $log.debug(err);
-      alert("book listing service is unavailable");
-    });
-    $scope.toggleleft = buildToggler('left');
-    function buildToggler(navID) {
-      return function() {
-        $mdSidenav(navID)
-          .toggle()
-          .then(function () {
-            $log.debug("toggle " + navID + " is done");
+    }).then((response) => {
+      $log.debug(response.data.productdetail);
+      _.each(response.data.productdetail, (item, index) => {
+        if (index < 50) {
+          this.details.push({
+            title: item.title,
+            author: item.subject,
+            coverImage: item.coverImage,
+            category: this.categoryMapping[item.productType],
+            analytics: {
+              shares: 43,
+              views: 78
+            }
           });
-      }
-    }
-    $scope.close = function () {
-      $mdSidenav('left').close()
-        .then(function () {
-          $log.debug("close left is done");
-        });
-    };
-
-
+        }
+      });
+    }, (err) => {$log.debug(err);});
   }
 }

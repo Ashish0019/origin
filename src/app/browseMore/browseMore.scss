@@ -1,115 +1,126 @@
 [browseMore-container] {
-  height: 100%;
   position: absolute;
-  color: #ffffff;
-  font-size: 20px;
-  * {
-    text-transform: none;
+  margin-top: 65px;
+
+  height: 100%;
+  width: 100%;
+  padding: 8px;
+
+  [element="title"] {
+    width: 100%;
+
+    font-size: 1.7em;
+    font-weight: 600;
+    color: #00cc99;
   }
 
-  [menuBar] {
-    margin: 10px;
-    margin-left: 20px;
-    [library-tag] {
-      font-size: 1.6em;
-      color: #00af9d;
-    }
+  [element="tab-header"] {
+    width: 100%;
 
-  }
-  [down] {
-    background-image: url("../assets/images/arrow_right_icon.svg");
-    background-size: 20px;
-  }
-  [contentNumber] {
-    font-size: 15px;
-    color: #000000;
-    margin-right: 5%;
-  }
-  [outer] {
-    color: #000000;
-    height: 100%;
+    margin-top: 24px;
+    margin-bottom: 18px;
 
-    md-tabs > md-tabs-wrapper > md-tabs-canvas > md-pagination-wrapper > md-tab-item:not([disabled]) {
-      color: #000000;
-    }
-    [sujectData] {
-      padding: 10px;
-      margin:10px;
-      border: 1px solid #CCCCCC;
-      box-shadow: 1px 1px 1px 1px #cccccc;
-      [content-images] {
-        height: 130px;
-        width: 100%;
-        background-size: contain;
-      }
-      .subjectInfo {
-        font-size: 10px;
-        text-transform: capitalize;
+    [tabs] {
+      span {
+        margin-right: 48px;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;;
       }
 
-      [subjectName] {
-        @extend .subjectInfo;
-      }
-      [subjectType] {
-        @extend .subjectInfo;
-        font-size: 15px;
-        padding-left: 5px;
-      }
-
-      [subjectTitle] {
-        font-size: 16px;
-        font-weight: 600;
-      }
-      .subjectIcons {
-        margin: 0 ;
-        background-size: 20px;
-      }
-      [dataOutline] {
-        border-top: 1px solid #CCCCCC;
-        border-bottom: 1px solid #CCCCCC;
-        padding: 4px;
-      }
-
-      .epub {
-        @extend .subjectIcons;
-        background-image: url("../assets/images/epub_icon.svg");
-      }
-      .audio {
-        @extend .subjectIcons;
-        background-image: url("../assets/images/audio_icon.svg");
-      }
-      .video {
-        @extend .subjectIcons;
-        background-image: url("../assets/images/video_icon.svg");
-      }
-      .game {
-        @extend .subjectIcons;
-        background-image: url("../assets/images/game_icon.svg");
-      }
-      .simulation {
-        @extend .subjectIcons;
-        background-size: contain;
-        background-image: url("../assets/images/simulator_icon.svg");
-      }
-      .assessment {
-        @extend .subjectIcons;
-        background-image: url("../assets/images/exam_icon.svg");
-      }
-      .pdf {
-        @extend .subjectIcons;
-        background-image: url("../assets/images/pdf_icon.svg");
-      }
-      .EXT_RESOURCE {
-        @extend .subjectIcons;
-        background-image: url("../assets/images/ext_resource-icon.svg");
-      }
-      .ebook {
-        @extend .subjectIcons;
-        background-image: url("../assets/images/ebook_icon.svg");
+      span[state="selected"] {
+        color: #00cc99;
       }
     }
-
   }
 
+  [element="tab-content"] {
+    [content-listing] {
+      width: 100%;
 
+      [content-item] {
+        width: 200px;
+        height: 320px;
+
+        margin: 10px;
+
+        border: 1px solid #d8d8d8;
+        cursor: pointer;
+
+        .content-item-children {
+          border: none;
+          margin-top: 2px;
+          margin-bottom: 2px;
+        }
+
+        [thumbnail-container] {
+          width: 180px;
+          height: 180px;
+
+          [item-info="thumbnail"] {
+            @extend .content-item-children;
+            height: 160px;
+            width: 180px;
+          }
+        }
+
+        [item-meta="info"] {
+          width: 90%;
+
+          margin-bottom: 24px;
+
+          * {margin: 0;}
+
+          [content-item="title"] {
+            @extend .content-item-children;
+            width: 90%;
+            height: auto;
+
+            border: none;
+
+            font-size: 1.1em;
+            font-weight: 800;
+          }
+
+          [content-item="author"] {
+            @extend .content-item-children;
+            width: 90%;
+            height: auto;
+
+            font-size: 0.8em;
+          }
+        }
+
+        [content-footer="category"] {
+          width: 100%;
+
+          padding: 8px;
+          font-size: 0.8em;
+          font-weight: 700;
+          color: #a3a3a3;
+          border-top: 1px solid #d8d8d8;
+
+          span {
+            margin-left: 18px;
+          }
+        }
+
+        [content-footer="analytics"] {
+          width: 100%;
+
+          padding: 8px;
+          font-size: 0.8em;
+          font-weight: 700;
+          color: #a3a3a3;
+          border-top: 1px solid #d8d8d8;
+
+          span {
+            margin-left: 18px;
+          }
+        }
+      }
+    }
+  }
 }

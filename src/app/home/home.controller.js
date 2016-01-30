@@ -7,6 +7,7 @@ export class HomeController {
       $current: []
     };
     this.showNavBar = false;
+    //TODO move to services
     this.categoryMapping = {
       epub: {name: 'Epub', icon: 'assets/images/clipboard-text.svg'},
       game: {name: 'Game', icon: 'assets/images/gamepad-variant.svg'},

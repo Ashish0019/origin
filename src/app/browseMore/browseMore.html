@@ -1,6 +1,49 @@
-<div browseMore-container layout="column" layout-fill>
-  <nav-menu nav-text="I want to LEARN / TEACH"></nav-menu>
-  <div menuBar layout="row" layout-align="space-between center" style="margin-top: 75px">
+<nav-menu nav-text="I want to LEARN / TEACH"></nav-menu>
+<section browseMore-container layout="column" layout-fill layout-align="start center">
+  <aside element="title">
+    The ORIGINal Library
+  </aside>
+  <aside element="tab-header" layout="row" layout-align="space-between center">
+    <div><md-icon md-svg-icon="assets/images/filter.svg"></md-icon> Filter</div>
+    <div tabs layout="row" layout-align="start start" flex="60">
+      <span state="selected">ALL</span>
+      <span>A - Z</span>
+      <span>Z - A</span>
+    </div>
+    <div>{{browseMore.details.length}} Results Found</div>
+  </aside>
+  <aside element="tab-content" layout="row" layout-align="space-between start" layout-wrap=""
+         ng-if="browseMore.details.length > 0">
+    <div content-listing layout="row" layout-align="space-between center" layout-wrap="">
+      <div content-item flex-sm="90" flex-md="32" flex-lg="28" flex-gt-lg="22"
+           layout="column" layout-align="center center"
+           ng-repeat="item in browseMore.details">
+        <div thumbnail-container layout="column" layout-align="center center">
+          <div item-info="thumbnail" back-img="{{item.coverImage}}"></div>
+        </div>
+        <div item-meta="info" layout="column" layout-align="center start">
+          <div content-item="title">{{item.title | characters:15}}</div>
+          <div content-item="author">{{item.author}}</div>
+        </div>
+        <div content-footer="category">
+          <span><md-icon md-svg-icon="{{item.category.icon}}"></md-icon> {{item.category.name}}</span>
+        </div>
+        <div content-footer="analytics">
+          <span><md-icon md-svg-icon="assets/images/share.svg"></md-icon> {{item.analytics.shares}}</span>
+          <span><md-icon md-svg-icon="assets/images/eye.svg"></md-icon> {{item.analytics.views}}</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <section loader ng-if="browseMore.details.length <= 0">
+    <div class="sk-folding-cube">
+      <div class="sk-cube1 sk-cube"></div>
+      <div class="sk-cube2 sk-cube"></div>
+      <div class="sk-cube4 sk-cube"></div>
+      <div class="sk-cube3 sk-cube"></div>
+    </div>
+  </section>
+  <!--<div menuBar layout="row" layout-align="space-between center" style="margin-top: 75px">
     <div library-tag> The Original Library</div>
   </div>
   <div>
@@ -74,6 +117,5 @@
 
     </div>
 
-  </div>
-</div>
-</div>
+  </div>-->
+</section>

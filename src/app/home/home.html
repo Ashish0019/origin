@@ -42,7 +42,8 @@
 <section popular-listing ng-if="home.showNavBar"
          layout="column" layout-align="center center">
   <div flex="80" content-listing-wrapper layout="column" layout-align="space-between center">
-    <div content-listing layout="row" layout-align="space-between start" layout-wrap="" flex="90">
+    <div content-listing layout="row" layout-align="space-between start" layout-wrap=""
+         flex="90" ng-if="home.details.length > 0">
       <div content-item flex-sm="90" flex-md="30" flex-lg="20"
            layout="column" layout-align="center center"
            flex-gt-lg="18" ng-repeat="item in home.details">
@@ -77,5 +78,13 @@
         </div>
       </div>
     </div>
+    <section loader ng-if="home.details.length <= 0">
+      <div class="sk-folding-cube">
+        <div class="sk-cube1 sk-cube"></div>
+        <div class="sk-cube2 sk-cube"></div>
+        <div class="sk-cube4 sk-cube"></div>
+        <div class="sk-cube3 sk-cube"></div>
+      </div>
+    </section>
   </div>
 </section>
