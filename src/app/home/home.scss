@@ -33,13 +33,26 @@
       margin: 20px;
 
       [login-component] {
-        color: #ffffff;
         text-transform: none;
         width: 90px;
+
+        cursor: pointer;
       }
 
-      [login-component]:hover {
-        color: #4effed !important;
+      [login-component="free"] {
+        color: #4effed;
+      }
+
+      [login-component="free"]:hover {
+        color: #ffffff;
+      }
+
+      [login-component="login"] {
+        color: #ffffff;
+      }
+
+      [login-component="login"]:hover {
+        color: #4effed;
       }
     }
 
@@ -117,21 +130,92 @@
 section[popular-listing] {
   margin-top: 64px;
 
-  [book-listing-wrapper] {
+  [content-listing-wrapper] {
     width: 90%;
 
-    [book-listing] {
+    [content-listing] {
       width: 100%;
 
-      overflow-y: auto;
-
-      [book-item] {
-        width: 150px;
-        height: 200px;
+      [content-item] {
+        width: 200px;
+        height: 320px;
 
         margin: 10px;
 
-        border: 1px solid #000000;
+        border: 1px solid #d8d8d8;
+        cursor: pointer;
+
+        .content-item-children {
+          border: none;
+          margin-top: 2px;
+          margin-bottom: 2px;
+        }
+
+        [thumbnail-container] {
+          width: 180px;
+          height: 180px;
+
+          [item-info="thumbnail"] {
+            @extend .content-item-children;
+            height: 160px;
+            width: 180px;
+          }
+        }
+
+        [item-meta="info"] {
+          width: 90%;
+
+          margin-bottom: 24px;
+
+          * {margin: 0;}
+
+          [content-item="title"] {
+            @extend .content-item-children;
+            width: 90%;
+            height: auto;
+
+            border: none;
+
+            font-size: 1.1em;
+            font-weight: 800;
+          }
+
+          [content-item="author"] {
+            @extend .content-item-children;
+            width: 90%;
+            height: auto;
+
+            font-size: 0.8em;
+          }
+        }
+
+        [content-footer="category"] {
+          width: 100%;
+
+          padding: 8px;
+          font-size: 0.8em;
+          font-weight: 700;
+          color: #a3a3a3;
+          border-top: 1px solid #d8d8d8;
+
+          span {
+            margin-left: 18px;
+          }
+        }
+
+        [content-footer="analytics"] {
+          width: 100%;
+
+          padding: 8px;
+          font-size: 0.8em;
+          font-weight: 700;
+          color: #a3a3a3;
+          border-top: 1px solid #d8d8d8;
+
+          span {
+            margin-left: 18px;
+          }
+        }
       }
     }
   }

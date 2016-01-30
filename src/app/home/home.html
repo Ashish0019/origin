@@ -6,9 +6,9 @@
     <div origin-logo=""></div>
 
     <div login-panel layout="row">
-      <div login-component="free" ui-sref="signUp" >Join Free</div>
+      <div login-component="free" ui-sref="signUp">Join Free</div>
       <div flex="5"></div>
-      <div login-component="login" ui-sref="signIn" >Login</div>
+      <div login-component="login" ui-sref="signIn">Login</div>
     </div>
 
     <div search-panel layout="column" layout-align="center center">
@@ -39,65 +39,43 @@
     </div>
   </section>
 </section>
-<section popular-listing ng-if="home.showNavBar" rj-resize rz-height="64"
+<section popular-listing ng-if="home.showNavBar"
          layout="column" layout-align="center center">
-  <div flex="80" book-listing-wrapper layout="column" layout-align="space-between center">
-    <div book-listing layout="row" layout-align="space-between start" layout-wrap="" flex="90"
-         rj-resize="" rz-height="250">
-      <div book-item flex-sm="90" flex-md="30" flex-lg="20" flex-gt-lg="15">
-        lol
-      </div><div book-item flex-sm="90" flex-md="30" flex-lg="20" flex-gt-lg="15">
-        lol
-      </div><div book-item flex-sm="90" flex-md="30" flex-lg="20" flex-gt-lg="15">
-        lol
-      </div><div book-item flex-sm="90" flex-md="30" flex-lg="20" flex-gt-lg="15">
-        lol
-      </div><div book-item flex-sm="90" flex-md="30" flex-lg="20" flex-gt-lg="15">
-        lol
-      </div><div book-item flex-sm="90" flex-md="30" flex-lg="20" flex-gt-lg="15">
-        lol
-      </div><div book-item flex-sm="90" flex-md="30" flex-lg="20" flex-gt-lg="15">
-        lol
-      </div><div book-item flex-sm="90" flex-md="30" flex-lg="20" flex-gt-lg="15">
-        lol
-      </div><div book-item flex-sm="90" flex-md="30" flex-lg="20" flex-gt-lg="15">
-        lol
-      </div><div book-item flex-sm="90" flex-md="30" flex-lg="20" flex-gt-lg="15">
-        lol
-      </div><div book-item flex-sm="90" flex-md="30" flex-lg="20" flex-gt-lg="15">
-        lol
-      </div><div book-item flex-sm="90" flex-md="30" flex-lg="20" flex-gt-lg="15">
-        lol
-      </div><div book-item flex-sm="90" flex-md="30" flex-lg="20" flex-gt-lg="15">
-        lol
-      </div><div book-item flex-sm="90" flex-md="30" flex-lg="20" flex-gt-lg="15">
-        lol
-      </div><div book-item flex-sm="90" flex-md="30" flex-lg="20" flex-gt-lg="15">
-        lol
-      </div><div book-item flex-sm="90" flex-md="30" flex-lg="20" flex-gt-lg="15">
-        lol
-      </div><div book-item flex-sm="90" flex-md="30" flex-lg="20" flex-gt-lg="15">
-        lol
-      </div><div book-item flex-sm="90" flex-md="30" flex-lg="20" flex-gt-lg="15">
-        lol
-      </div><div book-item flex-sm="90" flex-md="30" flex-lg="20" flex-gt-lg="15">
-        lol
-      </div><div book-item flex-sm="90" flex-md="30" flex-lg="20" flex-gt-lg="15">
-        lol
+  <div flex="80" content-listing-wrapper layout="column" layout-align="space-between center">
+    <div content-listing layout="row" layout-align="space-between start" layout-wrap="" flex="90">
+      <div content-item flex-sm="90" flex-md="30" flex-lg="20"
+           layout="column" layout-align="center center"
+           flex-gt-lg="18" ng-repeat="item in home.details">
+        <div thumbnail-container layout="column" layout-align="center center">
+          <div item-info="thumbnail" back-img="{{item.coverImage}}"></div>
+        </div>
+        <div item-meta="info" layout="column" layout-align="center start">
+          <div content-item="title">{{item.title | characters:15}}</div>
+          <div content-item="author">{{item.author}}</div>
+        </div>
+        <div content-footer="category">
+          <span><md-icon md-svg-icon="{{item.category.icon}}"></md-icon> {{item.category.name}}</span>
+        </div>
+        <div content-footer="analytics">
+          <span><md-icon md-svg-icon="assets/images/share.svg"></md-icon> {{item.analytics.shares}}</span>
+          <span><md-icon md-svg-icon="assets/images/eye.svg"></md-icon> {{item.analytics.views}}</span>
+        </div>
+      </div>
+      <div style="width: 100%;" layout="column" layout-align="center center">
+        <md-button ui-sref="browseMore" class="md-raised">
+          Browse More
+        </md-button>
+        <div popular-footer layout="column" layout-align="center start">
+          <span header>About the Origin</span>
+          <span disclaimer>
+            Origin is the K-12 resource library, offering various eBooks, videos, assessments, homework assignments,
+            games and lesson plans for every Common Core English Language Arts standard. Origin lets Teachers create
+            their own virtual classroom, assign quizzes / homework to students, grade them and track progress. Origin
+            also lets students collaborate with their peers and discuss on a topic while they read. Origin is your one
+            stop shop for all your learning needs!
+          </span>
+        </div>
       </div>
     </div>
-    <md-button ui-sref="browseMore" class="md-raised">
-      Browse More
-    </md-button>
-  </div>
-  <div popular-footer layout="column" layout-align="center start">
-    <span header>About the Origin</span>
-    <span disclaimer>
-      Origin is the K-12 resource library, offering various eBooks, videos, assessments, homework assignments, games
-      and lesson plans for every Common Core English Language Arts standard. Origin lets Teachers create their own
-      virtual classroom, assign quizzes / homework to students, grade them and track progress. Origin also lets students
-      collaborate with their peers and discuss on a topic while they read. Origin is your one stop shop for all your
-      learning needs!
-    </span>
   </div>
 </section>

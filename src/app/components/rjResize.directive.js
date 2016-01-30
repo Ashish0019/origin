@@ -1,9 +1,4 @@
 /**
- * @author: Akshay Kr Singh
- * @date: 29/1/16
- * @email: akshay.x666@gmail.com
- */
-/**
  * @author: Akshay Kr Singh.
  * @date:   27/10/15.
  * @github: https://github.com/akshayKrSingh

@@ -10,9 +10,10 @@ import { SignInController } from '../app/signIn/signIn.controller';
 import { ProductController } from '../app/productDetail/productDetail.controller';
 import { NavbarDirective } from '../app/components/navbar/navbar.directive';
 import { RjResizeDirective } from '../app/components/rjResize.directive';
+import { BackImage } from '../app/components/backImg.directive';
 import { FormCommitDirective } from '../app/components/formCommit/formCommit.directive';
 
-angular.module('originWeb', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages', 'ngAria',
+angular.module('originWeb', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'truncate', 'ngMessages', 'ngAria',
   'ngResource', 'ui.router', 'ngMaterial', 'toastr' , 'reCAPTCHA'])
 
   .constant('malarkey', malarkey)
@@ -31,4 +32,5 @@ angular.module('originWeb', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 
 
   .directive('navMenu', NavbarDirective)
   .directive('rjResize', RjResizeDirective)
+  .directive('backImg', BackImage)
   .directive('formCommit', FormCommitDirective);
