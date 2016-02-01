@@ -7,7 +7,7 @@ export class HomeController {
       $current: []
     };
 
-    this.MAX_SHOW_LIMIT = 10;
+    this.MAX_SHOW_LIMIT = 12;
 
     this.showNavBar = false;
     //TODO move to services
@@ -51,9 +51,7 @@ export class HomeController {
     };
 
     this.searchClicked = () => {
-      if (!_.isEmpty(this.search.$current)) {
-        this.showNavBar = true;
-      }
+      this.showNavBar = true;
     };
 
     $document[0].addEventListener('scroll', () => {
