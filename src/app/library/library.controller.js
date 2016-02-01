@@ -5,6 +5,16 @@ export class LibraryController {
     this.details = [];
     this.showFilter = false;
     this.showError = false;
+    this.filter = {
+      subject: {
+        grammar: false,
+        language: false,
+        reading: false,
+        research: false,
+        speakingListening: false,
+        writing: false
+      }
+    };
     this.errorMessage = {
       message: 'Could not connect with Server.'
     };
