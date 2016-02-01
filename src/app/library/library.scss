@@ -48,13 +48,17 @@
   }
 
   [element="sidebar-filter"] {
-    [filter-widget="grade"] {
+    [filter-widget] {
       width: 240px;
 
-      [grade="title"] {
-        font-size: 0.8em;
+      [filter-sub="title"] {
+        font-size: 1.0em;
         font-weight: 800;
       }
+    }
+
+    [filter-widget="grade"] {
+
     }
   }
 
