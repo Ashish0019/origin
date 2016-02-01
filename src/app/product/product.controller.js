@@ -18,9 +18,14 @@ export class ProductController {
           +"<b><u>" + detail.author + "</u></b>";
         this.description = detail.meta.description;
         this.info.Type = " : Youtube Video";
-        this.videoPath="http://www.youtube.com/embed/"+ detail.id;
+        // here I could have found video ID directly from response from you tube api but I didn't opted for that
+        // approach because in some case we get playlists in response which dont have a videoID
+        // hence I cropped the video Id from the Image path that I got from response for images
+        var regex = /\/vi\/(.*)\//;
+        var url = detail.coverImage;
+        var id = url.match(regex)[1];
+        this.videoPath="http://www.youtube.com/embed/"+ id;
         this.yVideo = $sce.trustAsResourceUrl(this.videoPath);
-        $log.debug(this.yvideo)
       }
       else {
         this.info.title = detail.title;
