@@ -38,7 +38,7 @@
             <label style="font-size: 16px;"> ADD TO LIBRARY </label>
           </md-button>
           <p description>{{product.description}}</p>
-          <table>
+          <table ng-hide="product.author=='Youtube'">
             <thead>
             <tr>
               <th colspan="2">Product Details</th>
