@@ -5,14 +5,15 @@ export class ProductController {
     this.info = {};
 
     var detail = $service.$query($stateParams.id, 'unique');
-
+$log.debug(detail);
     if (!_.isEmpty(detail)) {
       this.showDetails = true;
+      this.info.title = detail.title;
       this.info.Content = "in" +" "  + "<b><u>" + detail.subject + "</u></b>"  +" "+"by" + " "
         +"<b><u>" + detail.author + "</u></b>"  ;
       this.info.Grades = " : " + detail.meta.gradeFrom +" - " + detail.meta.gradeTo;
       this.info.Publisher = " : " + "Magic publisher";
-      this.info.Type = " : " + detail.productType;
+      this.info.Type = " : " + detail.productType || " : Youtube Video" ;
       this.description = detail.meta.description;
       this.info.Image = detail.coverImage;
     }

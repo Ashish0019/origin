@@ -8,8 +8,8 @@
     <div headers layout="row">
       <div layout="row">
         <div layout="column" layout-align="start start">
-          <div dataTitle>{{product.productData.title}}</div>
-          <div metaData ng-bind-html="product.productContent"></div>
+          <div dataTitle>{{product.info.title}}</div>
+          <div metaData ng-bind-html="product.info.Content"></div>
           <div stars>
             <span class="starRating">
               <input id="rating5" type="radio">
@@ -37,7 +37,7 @@
           <md-button flex="" class="md-primary md-raised" style="background-color: #00af9d; width:150px;">
             <label style="font-size: 16px;"> ADD TO LIBRARY </label>
           </md-button>
-          <p description>{{product.info.description}}</p>
+          <p description>{{product.description}}</p>
           <table>
             <thead>
             <tr>
