@@ -14,7 +14,7 @@ import { BackImage } from '../app/components/backImg.directive';
 import { FormCommitDirective } from '../app/components/formCommit/formCommit.directive';
 
 angular.module('originWeb', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'truncate', 'ngMessages', 'ngAria',
-  'ngResource', 'ui.router', 'ngMaterial', 'toastr' , 'reCAPTCHA'])
+  'ngResource', 'ui.router', 'ngMaterial', 'reCAPTCHA'])
 
   .constant('malarkey', malarkey)
   .constant('moment', moment)
