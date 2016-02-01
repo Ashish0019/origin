@@ -8,8 +8,8 @@
     <div headers layout="row">
       <div layout="row">
         <div layout="column" layout-align="start start">
-          <div dataTitle>{{productDetail.sampleData.title}}</div>
-          <div metaData ng-bind-html="productDetail.sampleContent"></div>
+          <div dataTitle>{{product.sampleData.title}}</div>
+          <div metaData ng-bind-html="product.sampleContent"></div>
           <div stars>
             <span class="starRating">
               <input id="rating5" type="radio">
@@ -52,19 +52,19 @@
             <tbody>
             <tr>
               <td class="tableHeading">Grades</td>
-              <td>{{productDetail.sampleGrades}}</td>
+              <td>{{product.sampleGrades}}</td>
             </tr>
             <tr>
               <td class="tableHeading">Publisher</td>
-              <td>{{productDetail.samplePublisher}}</td>
+              <td>{{product.samplePublisher}}</td>
             </tr>
             <tr>
               <td class="tableHeading">Standards</td>
-              <td>{{productDetail.sampleGrades}}</td>
+              <td>{{product.sampleGrades}}</td>
             </tr>
             <tr>
               <td class="tableHeading">Resource Types</td>
-              <td>{{productDetail.sampleType}}</td>
+              <td>{{product.sampleType}}</td>
             </tr>
             </tbody>
           </table>
@@ -74,7 +74,7 @@
         </div>
       </div>
       <div flex="40" layout="column">
-        <img contentContainer ng-src="{{productDetail.sampleImage}}"/>
+        <img contentContainer ng-src="{{product.sampleImage}}"/>
       </div>
      </div>
   </div>
