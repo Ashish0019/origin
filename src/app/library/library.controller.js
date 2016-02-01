@@ -28,7 +28,7 @@ export class LibraryController {
       pdf: {name: 'PDF', icon: 'assets/images/file-pdf-box.svg'},
       simulation: {name: 'Simulation', icon: 'assets/images/desktop-mac.svg'},
       audio: {name: 'Audio', icon: 'assets/images/audio_icon.svg'},
-      youtube: {name:'Youtube',icon:'assets/images/youtubeVideo_icon.svg'}
+      youtube: {name: 'Youtube', icon: 'assets/images/youtubeVideo_icon.svg'}
     };
 
     this.inform = (type, info) => {
