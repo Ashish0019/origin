@@ -41,7 +41,6 @@ export class SignUpController {
         }
       });
       response.error((res) => {
-        alert("Service unvailable");
         $log.debug(res);
       })
     };

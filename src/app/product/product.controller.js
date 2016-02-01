@@ -21,7 +21,6 @@ export class ProductController {
       $log.debug(this.sampleData, this.sampleGrades,this.sampleData.coverImage);
     }, (err) => {
       $log.debug(err);
-      alert("book listing service unavailable");
     });
   }
 }
