@@ -1,7 +1,7 @@
 export class ProductController {
   constructor($scope, $log, $http ) {
     'ngInject';
-
+    this.sampleData = [];
     $http({
       method: 'POST',
       url: 'http://amz.s-1.mdistribute.magicsw.com/services/catalog/allproductdetail.json',

@@ -4,7 +4,7 @@
       <span library ui-sref="library">The ORIGINal Library</span>
       <span product-tag> / Product Details</span>
     </aside>
-  <div productBackground layout="column">
+  <div productBackground layout="column" ng-if="product.sampleData.length > 0">
     <div headers layout="row">
       <div layout="row">
         <div layout="column" layout-align="start start">
@@ -77,9 +77,19 @@
       </div>
      </div>
   </div>
-  <div someMoreData layout="row">
+  <div someMoreData layout="row" ng-if="product.sampleData.length > 0">
     <div >You might also like</div>
     <div flex="80" orLine><hr ></div>
   </div>
+  <section loader ng-if="product.sampleData.length <= 0">
+
+    <div class="sk-folding-cube">
+      <div class="sk-cube1 sk-cube"></div>
+      <div class="sk-cube2 sk-cube"></div>
+      <div class="sk-cube4 sk-cube"></div>
+      <div class="sk-cube3 sk-cube"></div>
+    </div>
+
+  </section>
 </div>
 
