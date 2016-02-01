@@ -5,6 +5,8 @@ export class LibraryController {
     this.details = [];
     this.showFilter = false;
     this.showError = false;
+    this.MAX_LIMIT = 50;
+
     this.filter = {
       subject: {
         grammar: false,
@@ -29,8 +31,48 @@ export class LibraryController {
       youtube: {name:'youtube',icon:'assets/images/youtubeVideo_icon.svg'}
     };
 
+    this.inform = (type, info) => {
+      $log.warn(info);
+      this.showError = true;
+    };
+
+    this.populateDetails = (type, infoList) => {
+      _.each(infoList, (item, index) => {
+        if (index < this.MAX_LIMIT / 2) {
+          switch (type) {
+            case 'magic':
+              this.details.push({
+                title: item.title,
+                author: item.subject || item.subject2 || "English",
+                coverImage: item.coverImage,
+                category: this.categoryMapping[item.productType],
+                analytics: {
+                  shares: 43,
+                  views: 78
+                }
+              });
+              break;
+            case 'youtube':
+              this.details.push({
+                title: item.snippet.title,
+                author:"Burning desire",
+                coverImage: item.snippet.thumbnails.medium.url,
+                category: this.categoryMapping.youtube,
+                analytics: {
+                  shares: 4,
+                  views: 7
+                }
+              });
+              break;
+          }
+        }
+      });
+      this.details = _.shuffle(this.details);
+    };
+
     this.fetchData = () => {
       this.showError = false;
+
       $http({
         method: 'POST',
         url: 'http://amz.s-1.mdistribute.magicsw.com/services/catalog/allproductdetail.json',
@@ -39,46 +81,15 @@ export class LibraryController {
         },
         data:{'searchobject':{}}
       }).then((response) => {
-        $log.debug(response.data.productdetail);
-        _.each(response.data.productdetail, (item, index) => {
-          if (index < 50) {
-            this.details.push({
-              title: item.title,
-              author: item.subject || item.subject2 || "English",
-              coverImage: item.coverImage,
-              category: this.categoryMapping[item.productType],
-              analytics: {
-                shares: 43,
-                views: 78
-              }
-            });
-          }
-        });
-      }, (err) => {
-        $log.debug(err);
-        this.showError = true;
-      });
+        this.populateDetails('magic', response.data.productdetail);
+      }, (error) => {this.inform('err', error);});
+
       $http({
         method: 'GET',
         url: 'https://www.googleapis.com/youtube/v3/search?key=AIzaSyDf7G7HNHRaSXZOdIszJaU9aiRl9TZYorY&part=snippet&q=common+core+english+grades+k12&maxResults=50'
       }).then((response) => {
-        _.each(response.data.items, (item , index) => {
-          if (index < 50){
-            this.details.push({
-              title: item.snippet.title,
-              author:"Burning desire",
-              coverImage: item.snippet.thumbnails.medium.url,
-              category: this.categoryMapping.youtube,
-              analytics: {
-                shares: 4,
-                views: 7
-              }
-            })
-          }
-        });
-      }, (error) => {
-        $log.debug(error);
-      });
+        this.populateDetails('youtube', response.data.items);
+      }, (error) => {this.inform('err', error);});
     };
 
     this.fetchData();
