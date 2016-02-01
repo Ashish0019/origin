@@ -1,5 +1,5 @@
 export class LibraryController {
-  constructor($scope, $log, $http, $service) {
+  constructor($scope, $log, $http, $service, $state) {
     'ngInject';
     this.search = '';
     this.details = [];
@@ -44,9 +44,20 @@ export class LibraryController {
             case 'magic':
               temp.push({
                 title: item.title,
-                author: item.subject || item.subject2 || "English",
+                subject: item.subject || item.subject2 || "English",
+                author: item.author,
+                meta: {
+                  gradeFrom: item.gradeFrom,
+                  gradeTo: item.gradeTo
+                },
                 coverImage: item.coverImage,
                 category: this.categoryMapping[item.productType],
+                description: 'Updated Invitation: Platform + Assessments + Analytics + Origin - ' +
+                  'Daily Scrum @ Weekly from' +
+                  '10:45am to  11:05am on weekdays from Wed Jan 13 to Wed Jan 27Updated Invitation: ' +
+                  'Platform + Assessments' + 'Analytics + Origin - Daily Scrum @ Weekly from 10:45am to 11:05am ' +
+                  'on weekdays from Wed Jan 13 to' +
+                  'Wed Jan 27',
                 analytics: {
                   shares: 43,
                   views: 78
@@ -59,6 +70,9 @@ export class LibraryController {
                 author: "Youtube",
                 coverImage: item.snippet.thumbnails.medium.url,
                 category: this.categoryMapping.youtube,
+                meta: {
+                  description: item.snippet.description
+                },
                 analytics: {
                   shares: 4,
                   views: 7
@@ -74,6 +88,12 @@ export class LibraryController {
       $service.$append('library', domain, cat, temp);
       this.details = $service.$query('', 'full');
       this.details = _.shuffle(this.details);
+    };
+
+    this.openProduct = (id) => {
+      $state.go('product', {
+        id: id
+      });
     };
 
     this.fetchData = () => {

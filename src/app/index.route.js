@@ -36,7 +36,7 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
       controllerAs: 'signIn'
     })
     .state('product', {
-      url: '/product',
+      url: '/product?id',
       templateUrl: 'app/product/product.html',
       controller: 'ProductController',
       controllerAs: 'product'

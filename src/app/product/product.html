@@ -37,12 +37,7 @@
           <md-button flex="" class="md-primary md-raised" style="background-color: #00af9d; width:150px;">
             <label style="font-size: 16px;"> ADD TO LIBRARY </label>
           </md-button>
-          <p description>Updated Invitation: Platform + Assessments + Analytics + Origin - Daily Scrum @ Weekly from
-            10:45am to  11:05am on weekdays from Wed Jan 13 to Wed Jan 27Updated Invitation: Platform + Assessments
-            + Analytics + Origin - Daily Scrum @ Weekly from 10:45am to 11:05am on weekdays from Wed Jan 13 to
-            Wed Jan 27 </p>
-          <p description>Updated Invitation: Platform + Assessments + Analytics + Origin - Daily Scrum @ Weekly from
-            10:45am to 11:05am on weekdays from Wed Jan 13 to Wed Jan 27</p>
+          <p description>{{product.info.description}}</p>
           <table>
             <thead>
             <tr>
@@ -52,19 +47,19 @@
             <tbody>
             <tr>
               <td class="tableHeading">Grades</td>
-              <td>{{product.productGrades}}</td>
+              <td>{{product.info.Grades}}</td>
             </tr>
             <tr>
               <td class="tableHeading">Publisher</td>
-              <td>{{product.productPublisher}}</td>
+              <td>{{product.info.Publisher}}</td>
             </tr>
             <tr>
               <td class="tableHeading">Standards</td>
-              <td>{{product.productGrades}}</td>
+              <td>{{product.info.Grades}}</td>
             </tr>
             <tr>
               <td class="tableHeading">Resource Types</td>
-              <td>{{product.productType}}</td>
+              <td>{{product.info.Type}}</td>
             </tr>
             </tbody>
           </table>
@@ -73,7 +68,7 @@
         </div>
       </div>
       <div flex="40" layout="column">
-        <img contentContainer ng-src="{{product.productImage}}"/>
+        <img contentContainer ng-src="{{product.info.Image}}"/>
       </div>
      </div>
   </div>

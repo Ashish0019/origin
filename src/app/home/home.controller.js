@@ -28,7 +28,18 @@ export class HomeController {
       _.each(response.productdetail, (item) => {
         temp.push({
           title: item.title,
-          author: item.subject,
+          subject: item.subject,
+          author: item.author,
+          description: 'Updated Invitation: Platform + Assessments + Analytics + Origin - ' +
+            'Daily Scrum @ Weekly from' +
+            '10:45am to  11:05am on weekdays from Wed Jan 13 to Wed Jan 27Updated Invitation: ' +
+            'Platform + Assessments' + 'Analytics + Origin - Daily Scrum @ Weekly from 10:45am to 11:05am ' +
+            'on weekdays from Wed Jan 13 to' +
+            'Wed Jan 27',
+          meta: {
+            gradeFrom: item.gradeFrom,
+            gradeTo: item.gradeTo
+          },
           coverImage: item.coverImage,
           category: this.categoryMapping[item.productType],
           analytics: {

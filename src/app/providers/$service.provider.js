@@ -74,6 +74,7 @@ class $ServiceProvider {
       $append: (loc, domain, type, list) => {
         if (!this.$config.API[domain][type].appended) {
           _.each(list, (item) => {
+            item.ref = _.random(1, 10000);
             this[loc].push(item);
           });
           this[loc] = _.shuffle(this[loc]);
@@ -83,6 +84,7 @@ class $ServiceProvider {
       $query: (id, type, limit) => {
         var list = [];
         var max = limit || -1;
+        var query = {};
         switch (type) {
           case 'full':
             _.each(this.library, (item, index) => {
@@ -96,6 +98,13 @@ class $ServiceProvider {
               list.push(item);
             });
             break;
+          case 'unique':
+            query = _.find(this.library, {ref: parseInt(id, 10)});
+            break;
+        }
+
+        if (!_.isEmpty(query)) {
+          return query;
         }
 
         return list;

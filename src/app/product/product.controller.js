@@ -1,19 +1,20 @@
 export class ProductController {
-  constructor($scope, $log, $http, $service) {
+  constructor($scope, $log, $http, $service, $stateParams) {
     'ngInject';
-    this.productData = [];
     this.showDetails = false;
+    this.info = {};
 
-    var $details = $service.$query((data) => {
-      this.productData = data.productdetail[5];
+    var detail = $service.$query($stateParams.id, 'unique');
+
+    if (!_.isEmpty(detail)) {
       this.showDetails = true;
-      this.productContent = "in" +" "  + "<b><u>" + this.productData.subject+ "</u></b>"  +" "+"by" + " "
-        +"<b><u>" + this.productData.author + "</u></b>"  ;
-      this.productGrades = " : " + this.productData.gradeFrom +" - " + this.productData.gradeTo;
-      this.productPublisher = " : " + "Magic publisher";
-      this.productType = " : " + this.productData.productType;
-      this.productImage = this.productData.coverImage;
-      $log.debug(this.productData, this.productGrades,this.productData.coverImage);
-    });
+      this.info.Content = "in" +" "  + "<b><u>" + detail.subject + "</u></b>"  +" "+"by" + " "
+        +"<b><u>" + detail.author + "</u></b>"  ;
+      this.info.Grades = " : " + detail.meta.gradeFrom +" - " + detail.meta.gradeTo;
+      this.info.Publisher = " : " + "Magic publisher";
+      this.info.Type = " : " + detail.productType;
+      this.description = detail.meta.description;
+      this.info.Image = detail.coverImage;
+    }
   }
 }

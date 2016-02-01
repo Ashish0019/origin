@@ -59,7 +59,7 @@
       <div content-listing layout="row" layout-align="space-between center" layout-wrap="">
         <div content-item flex-sm="90" flex-md="32" flex-lg="28" flex-gt-lg="22"
              layout="column" layout-align="center center"
-             ng-repeat="item in library.details">
+             ng-repeat="item in library.details" ng-click="library.openProduct(item.ref)">
           <div thumbnail-container layout="column" layout-align="center center">
             <div item-info="thumbnail" back-img="{{item.coverImage}}"></div>
           </div>
