@@ -28,7 +28,7 @@ export class LibraryController {
       pdf: {name: 'PDF', icon: 'assets/images/file-pdf-box.svg'},
       simulation: {name: 'Simulation', icon: 'assets/images/desktop-mac.svg'},
       audio: {name: 'Audio', icon: 'assets/images/audio_icon.svg'},
-      youtube: {name:'Youtube',icon:'assets/images/youtubeVideo_icon.svg'}
+      youtube: {name: 'Youtube', icon: 'assets/images/youtubeVideo_icon.svg'}
     };
 
     this.inform = (type, info) => {
@@ -79,17 +79,23 @@ export class LibraryController {
         headers: {
           'Content-Type': 'application/json'
         },
-        data:{'searchobject':{}}
+        data: {'searchobject': {}}
       }).then((response) => {
         this.populateDetails('magic', response.data.productdetail);
-      }, (error) => {this.inform('err', error);});
-
+      }, (error) => {
+        this.inform('err', error);
+      });
+      var findText = "common+core+english+grades+k12";
+      var youtubeAPI = "https://www.googleapis.com/youtube/v3/search?key=AIzaSyDf7G7HNHRaSXZOdIszJaU9aiRl9TZYorY&part=snippet&"
+        + "q=" + findText + "&maxResults=50";
       $http({
         method: 'GET',
-        url: 'https://www.googleapis.com/youtube/v3/search?key=AIzaSyDf7G7HNHRaSXZOdIszJaU9aiRl9TZYorY&part=snippet&q=common+core+english+grades+k12&maxResults=50'
+        url: youtubeAPI
       }).then((response) => {
         this.populateDetails('youtube', response.data.items);
-      }, (error) => {this.inform('err', error);});
+      }, (error) => {
+        this.inform('err', error);
+      });
     };
 
     this.fetchData();
