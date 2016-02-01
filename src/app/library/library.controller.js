@@ -27,8 +27,8 @@ export class LibraryController {
       ebook: {name: 'E - Book', icon: 'assets/images/clipboard-text.svg'},
       pdf: {name: 'PDF', icon: 'assets/images/file-pdf-box.svg'},
       simulation: {name: 'Simulation', icon: 'assets/images/desktop-mac.svg'},
-      audio: {name: 'audio', icon: 'assets/images/audio_icon.svg'},
-      youtube: {name:'youtube',icon:'assets/images/youtubeVideo_icon.svg'}
+      audio: {name: 'Audio', icon: 'assets/images/audio_icon.svg'},
+      youtube: {name:'Youtube',icon:'assets/images/youtubeVideo_icon.svg'}
     };
 
     this.inform = (type, info) => {
@@ -55,7 +55,7 @@ export class LibraryController {
             case 'youtube':
               this.details.push({
                 title: item.snippet.title,
-                author:"Burning desire",
+                author: "Youtube",
                 coverImage: item.snippet.thumbnails.medium.url,
                 category: this.categoryMapping.youtube,
                 analytics: {
