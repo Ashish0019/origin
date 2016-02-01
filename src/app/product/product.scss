@@ -12,14 +12,14 @@
     margin: 70px 10px 10px 20px;
 
     [library] {
-      font-size: 1.6em;
-      color: #7B7B7B;
-      text-decoration: underline;
+      font-size: 1.4em;
+      font-weight: 600;
+      color: #00cc99;
       cursor: pointer;
     }
 
     [product-tag] {
-      font-size: 1.6em;
+      font-size: 0.9em;
       color: #00af9d;
     }
 
@@ -37,12 +37,12 @@
 
       [dataTitle] {
         font-weight: 600;
-        font-size: 32px;
+        font-size: 0.9em;
         color: #333333;
       }
 
       [metaData] {
-        font-size: 14px;
+        font-size: 0.6em;
         color: #333333;
       }
 
