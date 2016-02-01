@@ -24,20 +24,22 @@ export class HomeController {
     let $details = $service.$fetch('magic', 'productListing');
 
     $details.success((response) => {
-      _.each(response.productdetail, (item, index) => {
-        if (index < this.MAX_SHOW_LIMIT) {
-          this.details.push({
-            title: item.title,
-            author: item.subject,
-            coverImage: item.coverImage,
-            category: this.categoryMapping[item.productType],
-            analytics: {
-              shares: 43,
-              views: 78
-            }
-          });
-        }
+      var temp = [];
+      _.each(response.productdetail, (item) => {
+        temp.push({
+          title: item.title,
+          author: item.subject,
+          coverImage: item.coverImage,
+          category: this.categoryMapping[item.productType],
+          analytics: {
+            shares: 43,
+            views: 78
+          }
+        });
       });
+
+      $service.$append('library', 'magic', 'productListing', temp);
+      this.details = $service.$query('', 'full', this.MAX_SHOW_LIMIT);
     });
 
     $details.failure((error) => {

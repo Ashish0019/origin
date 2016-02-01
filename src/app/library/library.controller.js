@@ -37,11 +37,12 @@ export class LibraryController {
     };
 
     this.populateDetails = (type, infoList) => {
+      var temp = [];
       _.each(infoList, (item, index) => {
         if (index < this.MAX_LIMIT / 2) {
           switch (type) {
             case 'magic':
-              this.details.push({
+              temp.push({
                 title: item.title,
                 author: item.subject || item.subject2 || "English",
                 coverImage: item.coverImage,
@@ -53,7 +54,7 @@ export class LibraryController {
               });
               break;
             case 'google':
-              this.details.push({
+              temp.push({
                 title: item.snippet.title,
                 author: "Youtube",
                 coverImage: item.snippet.thumbnails.medium.url,
@@ -67,6 +68,11 @@ export class LibraryController {
           }
         }
       });
+
+      let domain = type;
+      let cat = (type === 'magic') ? 'productListing' : 'youtube';
+      $service.$append('library', domain, cat, temp);
+      this.details = $service.$query('', 'full');
       this.details = _.shuffle(this.details);
     };
 

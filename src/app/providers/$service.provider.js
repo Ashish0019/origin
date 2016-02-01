@@ -15,14 +15,18 @@ class $ServiceProvider {
               'Content-Type': 'application/json'
             },
             data:{'searchobject':{}},
-            method: 'POST'
+            method: 'POST',
+            retrieved: false,
+            appended: false
           }
         },
         google: {
           youtube: {
             method: 'GET',
             url: 'https://www.googleapis.com/youtube/v3/search?key=AIzaSyDf7G7HNHRaSXZOdIszJaU9aiRl9TZYorY' +
-            '&part=snippet&q=common+core+english+grades+k12&maxResults=50'
+            '&part=snippet&q=common+core+english+grades+k12&maxResults=50',
+            retrieved: false,
+            appended: false
           }
         }
       }
@@ -30,7 +34,7 @@ class $ServiceProvider {
     this.library = [];
   }
 
-  $get($q, $http) {
+  $get($log, $q, $http) {
     'ngInject';
 
     return {
@@ -56,13 +60,45 @@ class $ServiceProvider {
           return promise;
         };
 
-        $http(category[type]).then((response) => {
-          defer.resolve(response);
-        }, (error) => {
-          defer.reject(error);
-        });
+        if (!category[type].retrieved) {
+          $http(category[type]).then((response) => {
+            defer.resolve(response);
+            this.$config.API[domain][type].retrieved = true;
+          }, (error) => {
+            defer.reject(error);
+          });
+        }
 
         return promise;
+      },
+      $append: (loc, domain, type, list) => {
+        if (!this.$config.API[domain][type].appended) {
+          _.each(list, (item) => {
+            this[loc].push(item);
+          });
+          this[loc] = _.shuffle(this[loc]);
+          this.$config.API[domain][type].appended = true;
+        }
+      },
+      $query: (id, type, limit) => {
+        var list = [];
+        var max = limit || -1;
+        switch (type) {
+          case 'full':
+            _.each(this.library, (item, index) => {
+              if (max !== -1) {
+                if (index < max) {
+                  list.push(item);
+                }
+                return 1;
+              }
+
+              list.push(item);
+            });
+            break;
+        }
+
+        return list;
       }
     };
   }
