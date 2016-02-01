@@ -6,6 +6,9 @@ export class HomeController {
       $popular: ['k12', 'english'],
       $current: []
     };
+
+    this.MAX_SHOW_LIMIT = 10;
+
     this.showNavBar = false;
     //TODO move to services
     this.categoryMapping = {
@@ -28,7 +31,7 @@ export class HomeController {
     }).then((response) => {
       $log.debug(response.data.productdetail);
       _.each(response.data.productdetail, (item, index) => {
-        if (index < 20) {
+        if (index < this.MAX_SHOW_LIMIT) {
           this.details.push({
             title: item.title,
             author: item.subject,
