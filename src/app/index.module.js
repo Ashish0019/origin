@@ -5,7 +5,7 @@ import { routerConfig } from './index.route';
 import { runBlock } from './index.run';
 import { SignUpController } from '../app/signUp/signUp.controller';
 import { HomeController } from '../app/home/home.controller';
-import { BrowseController } from '../app/browseMore/browseMore.controller';
+import { LibraryController } from '../app/library/library.controller';
 import { SignInController } from '../app/signIn/signIn.controller';
 import { ProductController } from '../app/productDetail/productDetail.controller';
 import { NavbarDirective } from '../app/components/navbar/navbar.directive';
@@ -26,7 +26,7 @@ angular.module('originWeb', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 
 
   .controller('HomeController', HomeController)
   .controller('SignUpController', SignUpController)
-  .controller('BrowseController', BrowseController)
+  .controller('LibraryController', LibraryController)
   .controller('SignInController', SignInController)
   .controller('ProductController', ProductController)
 

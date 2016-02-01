@@ -1,5 +1,5 @@
 <nav-menu nav-text="I want to LEARN / TEACH"></nav-menu>
-<section browseMore-container layout="column" layout-fill layout-align="start center">
+<section library-container layout="column" layout-fill layout-align="start center">
   <aside element="title">
     The ORIGINal Library
   </aside>
@@ -10,14 +10,14 @@
       <span>A - Z</span>
       <span>Z - A</span>
     </div>
-    <div>{{browseMore.details.length}} Results Found</div>
+    <div>{{library.details.length}} Results Found</div>
   </aside>
   <aside element="tab-content" layout="row" layout-align="space-between start" layout-wrap=""
-         ng-if="browseMore.details.length > 0">
+         ng-if="library.details.length > 0">
     <div content-listing layout="row" layout-align="space-between center" layout-wrap="">
       <div content-item flex-sm="90" flex-md="32" flex-lg="28" flex-gt-lg="22"
            layout="column" layout-align="center center"
-           ng-repeat="item in browseMore.details">
+           ng-repeat="item in library.details">
         <div thumbnail-container layout="column" layout-align="center center">
           <div item-info="thumbnail" back-img="{{item.coverImage}}"></div>
         </div>
@@ -35,7 +35,7 @@
       </div>
     </div>
   </aside>
-  <section loader ng-if="browseMore.details.length <= 0">
+  <section loader ng-if="library.details.length <= 0">
     <div class="sk-folding-cube">
       <div class="sk-cube1 sk-cube"></div>
       <div class="sk-cube2 sk-cube"></div>

@@ -18,11 +18,11 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
       controller: 'HomeController',
       controllerAs: 'home'
     })
-    .state('browseMore', {
-      url: '/browseMore',
-      templateUrl: 'app/browseMore/browseMore.html',
-      controller: 'BrowseController',
-      controllerAs: 'browseMore'
+    .state('library', {
+      url: '/library',
+      templateUrl: 'app/library/library.html',
+      controller: 'LibraryController',
+      controllerAs: 'library'
      /* resolve: {
         $URLS: ($http) => {
           return $http.post("http://amz.s-1.mdistribute.magicsw.com/services/catalog/allproductdetail.json");

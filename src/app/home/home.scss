@@ -1,4 +1,4 @@
-[library-container] {
+[home-container] {
   position: absolute;
 
   width: 100%;
@@ -220,7 +220,7 @@ section[popular-listing] {
     }
   }
 
-  [ui-sref="browseMore"] {
+  [ui-sref="library"] {
     background-color: #00a79d;
     color: #ffffff;
 

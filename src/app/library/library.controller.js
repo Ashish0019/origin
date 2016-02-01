@@ -1,4 +1,4 @@
-export class BrowseController {
+export class LibraryController {
   constructor($scope, $log, $http) {
     'ngInject';
     this.search = '';

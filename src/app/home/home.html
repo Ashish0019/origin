@@ -1,6 +1,6 @@
 <nav-menu ng-if="home.showNavBar" nav-text="I want to LEARN / TEACH"
           search-text="{{home.search.$current}}"></nav-menu>
-<section library-container="" layout="column" layout-align="center start" rj-resize rz-height=""
+<section home-container="" layout="column" layout-align="center start" rj-resize rz-height=""
          ng-if="!home.showNavBar">
   <section search-screen>
     <div origin-logo=""></div>
@@ -14,7 +14,7 @@
     <div search-panel layout="column" layout-align="center center">
       <section origin-contents layout="column" layout-align="space-between center">
         <div tag-line>
-          I want to <span underline>LEARN</span> / <span>TEACH</span>
+          I want to <span>LEARN</span> / <span>TEACH</span>
         </div>
         <md-input-container search-container class="md-block">
           </br>
@@ -63,7 +63,7 @@
         </div>
       </div>
       <div style="width: 100%;" layout="column" layout-align="center center">
-        <md-button ui-sref="browseMore" class="md-raised">
+        <md-button ui-sref="library" class="md-raised">
           Browse More
         </md-button>
         <div popular-footer layout="column" layout-align="center start">

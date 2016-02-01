@@ -1,6 +1,6 @@
-[browseMore-container] {
+[library-container] {
   position: absolute;
-  margin-top: 65px;
+  margin-top: 48px;
 
   height: 100%;
   width: 100%;
@@ -12,6 +12,8 @@
     font-size: 1.7em;
     font-weight: 600;
     color: #00cc99;
+
+    margin-top: 18px;
   }
 
   [element="tab-header"] {
