@@ -73,6 +73,7 @@ export class LibraryController {
                 meta: {
                   description: item.snippet.description
                 },
+                id:item.id.videoId,
                 analytics: {
                   shares: 4,
                   views: 7
@@ -103,6 +104,7 @@ export class LibraryController {
 
       youtube.success((response) => {
         this.populateDetails('google', response.items);
+        $log.debug(response)
       });
 
       youtube.failure((error) => {

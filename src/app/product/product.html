@@ -67,8 +67,14 @@
             Origin - Daily Scrum @ Weekly from 10:45am to 11:05am on w</p>
         </div>
       </div>
-      <div flex="40" layout="column">
-        <img contentContainer ng-src="{{product.info.Image}}"/>
+      <div flex="40" layout="column" ng-switch on="product.author">
+        <div ng-switch-when='Youtube'>
+          <iframe width="400px" height="300px" ng-src="{{product.yVideo}}" allowfullscreen>
+          </iframe>
+        </div>
+        <div contentContainer ng-switch-default>
+          <img contentContainer ng-src="{{product.info.Image}}"/>
+        </div>
       </div>
      </div>
   </div>
