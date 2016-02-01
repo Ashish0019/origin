@@ -7,7 +7,7 @@ import { SignUpController } from '../app/signUp/signUp.controller';
 import { HomeController } from '../app/home/home.controller';
 import { LibraryController } from '../app/library/library.controller';
 import { SignInController } from '../app/signIn/signIn.controller';
-import { ProductController } from '../app/productDetail/productDetail.controller';
+import { ProductController } from '../app/product/product.controller';
 import { NavbarDirective } from '../app/components/navbar/navbar.directive';
 import { RjResizeDirective } from '../app/components/rjResize.directive';
 import { BackImage } from '../app/components/backImg.directive';

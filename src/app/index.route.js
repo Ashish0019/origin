@@ -35,11 +35,11 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
       controller: 'SignInController',
       controllerAs: 'signIn'
     })
-    .state('productDetail', {
-      url: '/productDetail',
-      templateUrl: 'app/productDetail/productDetail.html',
+    .state('product', {
+      url: '/product',
+      templateUrl: 'app/product/product.html',
       controller: 'ProductController',
-      controllerAs: 'productDetail'
+      controllerAs: 'product'
     /*  resolve: {
         $URLS: ($http) => {
           return $http.post("http://amz.s-1.mdistribute.magicsw.com/services/catalog/allproductdetail.json");

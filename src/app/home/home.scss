@@ -48,11 +48,11 @@
       }
 
       [login-component="login"] {
-        color: #ffffff;
+        color: #4effed;
       }
 
       [login-component="login"]:hover {
-        color: #4effed;
+        color: #ffffff;
       }
     }
 
@@ -81,9 +81,9 @@
           -ms-user-select: none;
           user-select: none;
 
-          span {
+          /*span {
             cursor: pointer;
-          }
+          }*/
         }
 
         [underline] {
@@ -92,7 +92,6 @@
 
         [search-container] {
           width: 100%;
-
         }
 
         #searches {
@@ -112,7 +111,11 @@
         }
 
         md-chips .md-chips.md-focused {
-          box-shadow: 0 2px rgb(184, 178, 226);
+          box-shadow: 0 2px rgb(255, 255, 255);
+        }
+
+        .md-chips .md-chip .md-chip-remove md-icon {
+          color: rgb(66,66,66);
         }
       }
     }
@@ -121,7 +124,7 @@
       position: fixed;
       bottom: 0;
 
-      left: 47%;
+      left: 46%;
       margin: 12px;
     }
   }
@@ -199,7 +202,7 @@ section[popular-listing] {
           border-top: 1px solid #d8d8d8;
 
           span {
-            margin-left: 18px;
+            margin-left: 4px;
           }
         }
 
@@ -213,7 +216,7 @@ section[popular-listing] {
           border-top: 1px solid #d8d8d8;
 
           span {
-            margin-left: 18px;
+            margin-left: 4px;
           }
         }
       }

@@ -12,6 +12,7 @@
       <span state="selected">ALL</span>
       <span>A - Z</span>
       <span>Z - A</span>
+      <span>Latest</span>
     </div>
     <div>{{library.details.length}} Results Found</div>
   </aside>
@@ -67,7 +68,10 @@
             <div content-item="author">{{item.author}}</div>
           </div>
           <div content-footer="category">
-            <span><md-icon md-svg-icon="{{item.category.icon}}"></md-icon> {{item.category.name}}</span>
+            <span>
+              <md-icon md-svg-icon="{{item.category.icon}}"></md-icon>
+              <span>{{item.category.name}}</span>
+            </span>
           </div>
           <div content-footer="analytics">
             <span><md-icon md-svg-icon="assets/images/share.svg"></md-icon> {{item.analytics.shares}}</span>

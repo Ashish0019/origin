@@ -8,9 +8,16 @@
         <i>You are one step away from getting your free K-12 content</i>
       </span>
 
+      <form form-commit name="signInForm" method="post" ng-hide="true"
+            action="http://origin.stg1.getmagicbox.com/j_spring_security_check" target="_self">
+        <input name="j_username" type="hidden" value="{{signIn.user.email}}">
+        <input name="j_password" type="hidden" value="{{signIn.user.password}}">
+        <input type="submit" name="SignInButton" value="Login">
+      </form>
+
       <form name="registration" registration-details layout="column" layout-align="center center">
-        <input class="input-feature" ng-model="signIn.user.fullname" placeholder="User Name" type="text"
-               maxlength="60" value="Full Name" required/>
+        <input class="input-feature" ng-model="signIn.user.username" placeholder="User Name" type="text"
+               maxlength="60" required/>
 
         <div layout="row" layout-align="space-between center">
           <input class="input-feature" input-feature-pwd name="pwd" ng-model="signIn.user.password"
@@ -34,7 +41,7 @@
       </form>
       <div registration="container" layout="row" layout-align="center center">
         <md-button registration="register-button" class="md-raised"
-                   ng-disabled="registration.$invalid ">LOGIN
+                   ng-disabled="registration.$invalid " ng-click="signIn.login(signInForm)">LOGIN
         </md-button>
         <md-button registration="cancel-button" ui-sref="library" class="md-raised">
           CANCEL
