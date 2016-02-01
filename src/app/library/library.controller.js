@@ -86,8 +86,8 @@ export class LibraryController {
         this.inform('err', error);
       });
       var findText = "common+core+english+grades+k12";
-      var youtubeAPI = "https://www.googleapis.com/youtube/v3/search?key=AIzaSyDf7G7HNHRaSXZOdIszJaU9aiRl9TZYorY&part=snippet&"
-        + "q=" + findText + "&maxResults=50";
+      var youtubeAPI = "https://www.googleapis.com/youtube/v3/search?key=AIzaSyDf7G7HNHRaSXZOdIszJaU9aiRl9TZYorY"
+        + "&part=snippet&q=" + findText + "&maxResults=50";
       $http({
         method: 'GET',
         url: youtubeAPI
