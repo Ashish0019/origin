@@ -4,7 +4,7 @@
     The ORIGINal Library
   </aside>
   <aside element="tab-header" layout="row" layout-align="space-between center">
-    <div filter layout="row" layout-align="center center">
+    <div filter layout="row" layout-align="center center" ng-click="library.showFilter = !library.showFilter">
       <md-icon md-svg-icon="assets/images/filter.svg" style="width: 16px; height: 16px"></md-icon>
       <span>Filter</span>
     </div>
@@ -15,30 +15,41 @@
     </div>
     <div>{{library.details.length}} Results Found</div>
   </aside>
-  <aside element="tab-content" layout="row" layout-align="space-between start" layout-wrap=""
-         ng-if="library.details.length > 0">
-    <div content-listing layout="row" layout-align="space-between center" layout-wrap="">
-      <div content-item flex-sm="90" flex-md="32" flex-lg="28" flex-gt-lg="22"
-           layout="column" layout-align="center center"
-           ng-repeat="item in library.details">
-        <div thumbnail-container layout="column" layout-align="center center">
-          <div item-info="thumbnail" back-img="{{item.coverImage}}"></div>
-        </div>
-        <div item-meta="info" layout="column" layout-align="center start">
-          <div content-item="title">{{item.title | characters:15}}</div>
-          <div content-item="author">{{item.author}}</div>
-        </div>
-        <div content-footer="category">
-          <span><md-icon md-svg-icon="{{item.category.icon}}"></md-icon> {{item.category.name}}</span>
-        </div>
-        <div content-footer="analytics">
-          <span><md-icon md-svg-icon="assets/images/share.svg"></md-icon> {{item.analytics.shares}}</span>
-          <span><md-icon md-svg-icon="assets/images/eye.svg"></md-icon> {{item.analytics.views}}</span>
+  <section library-content layout="row" layout-align="center start">
+    <aside element="sidebar-filter" ng-show="library.showFilter" ng-if="library.details.length > 0">
+      <div>asdasdasdasdasdasdasdasdasdasdasdasd</div>
+    </aside>
+    <aside element="tab-error" layout="row" layout-align="center center" ng-if="library.showError">
+      <div>{{library.errorMessage.message}}</div>
+      <md-button class="md-icon-button" aria-label="More" ng-click="library.fetchData()">
+        <md-icon md-svg-icon="assets/images/refresh.svg" style="color: #00a79d"></md-icon>
+      </md-button>
+    </aside>
+    <aside element="tab-content" layout="row" layout-align="space-between start" layout-wrap=""
+           ng-if="library.details.length > 0">
+      <div content-listing layout="row" layout-align="space-between center" layout-wrap="">
+        <div content-item flex-sm="90" flex-md="32" flex-lg="28" flex-gt-lg="22"
+             layout="column" layout-align="center center"
+             ng-repeat="item in library.details">
+          <div thumbnail-container layout="column" layout-align="center center">
+            <div item-info="thumbnail" back-img="{{item.coverImage}}"></div>
+          </div>
+          <div item-meta="info" layout="column" layout-align="center start">
+            <div content-item="title">{{item.title | characters:15}}</div>
+            <div content-item="author">{{item.author}}</div>
+          </div>
+          <div content-footer="category">
+            <span><md-icon md-svg-icon="{{item.category.icon}}"></md-icon> {{item.category.name}}</span>
+          </div>
+          <div content-footer="analytics">
+            <span><md-icon md-svg-icon="assets/images/share.svg"></md-icon> {{item.analytics.shares}}</span>
+            <span><md-icon md-svg-icon="assets/images/eye.svg"></md-icon> {{item.analytics.views}}</span>
+          </div>
         </div>
       </div>
-    </div>
-  </aside>
-  <section loader ng-if="library.details.length <= 0">
+    </aside>
+  </section>
+  <section loader ng-if="library.details.length <= 0" ng-hide="library.showError">
     <div class="sk-folding-cube">
       <div class="sk-cube1 sk-cube"></div>
       <div class="sk-cube2 sk-cube"></div>

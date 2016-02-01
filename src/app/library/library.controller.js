@@ -3,6 +3,11 @@ export class LibraryController {
     'ngInject';
     this.search = '';
     this.details = [];
+    this.showFilter = false;
+    this.showError = false;
+    this.errorMessage = {
+      message: 'Could not connect with Server.'
+    };
     this.categoryMapping = {
       epub: {name: 'Epub', icon: 'assets/images/clipboard-text.svg'},
       game: {name: 'Game', icon: 'assets/images/gamepad-variant.svg'},
@@ -12,29 +17,37 @@ export class LibraryController {
       simulation: {name: 'Simulation', icon: 'assets/images/desktop-mac.svg'}
     };
 
-    $http({
-      method: 'POST',
-      url: 'http://amz.s-1.mdistribute.magicsw.com/services/catalog/allproductdetail.json',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      data:{'searchobject':{}}
-    }).then((response) => {
-      $log.debug(response.data.productdetail);
-      _.each(response.data.productdetail, (item, index) => {
-        if (index < 50) {
-          this.details.push({
-            title: item.title,
-            author: item.subject,
-            coverImage: item.coverImage,
-            category: this.categoryMapping[item.productType],
-            analytics: {
-              shares: 43,
-              views: 78
-            }
-          });
-        }
+    this.fetchData = () => {
+      this.showError = false;
+      $http({
+        method: 'POST',
+        url: 'http://amz.s-1.mdistribute.magicsw.com/services/catalog/allproductdetail.json',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        data:{'searchobject':{}}
+      }).then((response) => {
+        $log.debug(response.data.productdetail);
+        _.each(response.data.productdetail, (item, index) => {
+          if (index < 50) {
+            this.details.push({
+              title: item.title,
+              author: item.subject,
+              coverImage: item.coverImage,
+              category: this.categoryMapping[item.productType],
+              analytics: {
+                shares: 43,
+                views: 78
+              }
+            });
+          }
+        });
+      }, (err) => {
+        $log.debug(err);
+        this.showError = true;
       });
-    }, (err) => {$log.debug(err);});
+    };
+
+    this.fetchData();
   }
 }
