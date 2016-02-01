@@ -4,12 +4,12 @@
       <span library ui-sref="library">The ORIGINal Library</span>
       <span product-tag> / Product Details</span>
     </aside>
-  <div productBackground layout="column" ng-if="product.sampleData.length > 0">
+  <div productBackground layout="column" ng-if="product.showDetails">
     <div headers layout="row">
       <div layout="row">
         <div layout="column" layout-align="start start">
-          <div dataTitle>{{product.sampleData.title}}</div>
-          <div metaData ng-bind-html="product.sampleContent"></div>
+          <div dataTitle>{{product.productData.title}}</div>
+          <div metaData ng-bind-html="product.productContent"></div>
           <div stars>
             <span class="starRating">
               <input id="rating5" type="radio">
@@ -52,19 +52,19 @@
             <tbody>
             <tr>
               <td class="tableHeading">Grades</td>
-              <td>{{product.sampleGrades}}</td>
+              <td>{{product.productGrades}}</td>
             </tr>
             <tr>
               <td class="tableHeading">Publisher</td>
-              <td>{{product.samplePublisher}}</td>
+              <td>{{product.productPublisher}}</td>
             </tr>
             <tr>
               <td class="tableHeading">Standards</td>
-              <td>{{product.sampleGrades}}</td>
+              <td>{{product.productGrades}}</td>
             </tr>
             <tr>
               <td class="tableHeading">Resource Types</td>
-              <td>{{product.sampleType}}</td>
+              <td>{{product.productType}}</td>
             </tr>
             </tbody>
           </table>
@@ -73,23 +73,21 @@
         </div>
       </div>
       <div flex="40" layout="column">
-        <img contentContainer ng-src="{{product.sampleImage}}"/>
+        <img contentContainer ng-src="{{product.productImage}}"/>
       </div>
      </div>
   </div>
-  <div someMoreData layout="row" ng-if="product.sampleData.length > 0">
+  <div someMoreData layout="row" ng-if="product.showDetails">
     <div >You might also like</div>
     <div flex="80" orLine><hr ></div>
   </div>
-  <section loader ng-if="product.sampleData.length <= 0">
-
+  <section loader ng-if="!product.showDetails">
     <div class="sk-folding-cube">
       <div class="sk-cube1 sk-cube"></div>
       <div class="sk-cube2 sk-cube"></div>
       <div class="sk-cube4 sk-cube"></div>
       <div class="sk-cube3 sk-cube"></div>
     </div>
-
   </section>
 </div>
 

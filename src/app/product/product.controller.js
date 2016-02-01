@@ -1,25 +1,19 @@
 export class ProductController {
-  constructor($scope, $log, $http ) {
+  constructor($scope, $log, $http, $service) {
     'ngInject';
-    this.sampleData = [];
-    $http({
-      method: 'POST',
-      url: 'http://amz.s-1.mdistribute.magicsw.com/services/catalog/allproductdetail.json',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      data:{'searchobject':{}}
-    }).then((response) => {
-      this.sampleData = response.data.productdetail[5];
-      this.sampleContent = "in" +" "  + "<b><u>" + this.sampleData.subject+ "</u></b>"  +" "+"by" + " "
-        +"<b><u>" + this.sampleData.author + "</u></b>"  ;
-      this.sampleGrades = " : " + this.sampleData.gradeFrom +" - " + this.sampleData.gradeTo;
-      this.samplePublisher = " : " + "Magic publisher";
-      this.sampleType = " : " + this.sampleData.productType;
-      this.sampleImage = this.sampleData.coverImage;
-      $log.debug(this.sampleData, this.sampleGrades,this.sampleData.coverImage);
-    }, (err) => {
-      $log.debug(err);
+    this.productData = [];
+    this.showDetails = false;
+
+    var $details = $service.$query((data) => {
+      this.productData = data.productdetail[5];
+      this.showDetails = true;
+      this.productContent = "in" +" "  + "<b><u>" + this.productData.subject+ "</u></b>"  +" "+"by" + " "
+        +"<b><u>" + this.productData.author + "</u></b>"  ;
+      this.productGrades = " : " + this.productData.gradeFrom +" - " + this.productData.gradeTo;
+      this.productPublisher = " : " + "Magic publisher";
+      this.productType = " : " + this.productData.productType;
+      this.productImage = this.productData.coverImage;
+      $log.debug(this.productData, this.productGrades,this.productData.coverImage);
     });
   }
 }

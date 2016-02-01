@@ -1,5 +1,5 @@
 export class HomeController {
-  constructor($log, $document, $http) {  // put $scope, $mdDialog, $mdMedia as args
+  constructor($log, $document, $http, $service) {  // put $scope, $mdDialog, $mdMedia as args
     'ngInject';
 
     this.search = {
@@ -21,16 +21,10 @@ export class HomeController {
     };
     this.details = [];
 
-    $http({
-      method: 'POST',
-      url: 'http://amz.s-1.mdistribute.magicsw.com/services/catalog/allproductdetail.json',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      data:{'searchobject':{}}
-    }).then((response) => {
-      $log.debug(response.data.productdetail);
-      _.each(response.data.productdetail, (item, index) => {
+    let $details = $service.$fetch('magic', 'productListing');
+
+    $details.success((response) => {
+      _.each(response.productdetail, (item, index) => {
         if (index < this.MAX_SHOW_LIMIT) {
           this.details.push({
             title: item.title,
@@ -44,7 +38,11 @@ export class HomeController {
           });
         }
       });
-    }, (err) => {$log.debug(err);});
+    });
+
+    $details.failure((error) => {
+      $log.debug(error);
+    });
 
     this.downClick = () => {
       this.showNavBar = true;

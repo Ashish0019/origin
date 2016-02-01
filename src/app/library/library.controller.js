@@ -1,5 +1,5 @@
 export class LibraryController {
-  constructor($scope, $log, $http) {
+  constructor($scope, $log, $http, $service) {
     'ngInject';
     this.search = '';
     this.details = [];
@@ -52,7 +52,7 @@ export class LibraryController {
                 }
               });
               break;
-            case 'youtube':
+            case 'google':
               this.details.push({
                 title: item.snippet.title,
                 author: "Youtube",
@@ -73,23 +73,25 @@ export class LibraryController {
     this.fetchData = () => {
       this.showError = false;
 
-      $http({
-        method: 'POST',
-        url: 'http://amz.s-1.mdistribute.magicsw.com/services/catalog/allproductdetail.json',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        data:{'searchobject':{}}
-      }).then((response) => {
-        this.populateDetails('magic', response.data.productdetail);
-      }, (error) => {this.inform('err', error);});
+      let youtube = $service.$fetch('google', 'youtube');
 
-      $http({
-        method: 'GET',
-        url: 'https://www.googleapis.com/youtube/v3/search?key=AIzaSyDf7G7HNHRaSXZOdIszJaU9aiRl9TZYorY&part=snippet&q=common+core+english+grades+k12&maxResults=50'
-      }).then((response) => {
-        this.populateDetails('youtube', response.data.items);
-      }, (error) => {this.inform('err', error);});
+      youtube.success((response) => {
+        this.populateDetails('google', response.items);
+      });
+
+      youtube.failure((error) => {
+        this.inform('err', error);
+      });
+
+      let magic = $service.$fetch('magic', 'productListing');
+
+      magic.success((response) => {
+        this.populateDetails('magic', response.productdetail);
+      });
+
+      magic.failure((error) => {
+        this.inform('err', error);
+      });
     };
 
     this.fetchData();
