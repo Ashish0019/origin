@@ -28,7 +28,7 @@ export class LibraryController {
       pdf: {name: 'PDF', icon: 'assets/images/file-pdf-box.svg'},
       simulation: {name: 'Simulation', icon: 'assets/images/desktop-mac.svg'},
       audio: {name: 'Audio', icon: 'assets/images/audio_icon.svg'},
-      youtube: {name: 'Youtube', icon: 'assets/images/youtubeVideo_icon.svg'}
+      youtube: {name: 'YouTube', icon: 'assets/images/youtubeVideo_icon.svg'}
     };
 
     this.inform = (type, info) => {
@@ -45,13 +45,13 @@ export class LibraryController {
               temp.push({
                 title: item.title,
                 subject: item.subject || item.subject2 || "English",
-                author: item.author,
+                author: item.author || "Magic",
                 meta: {
                   gradeFrom: item.gradeFrom,
                   gradeTo: item.gradeTo
                 },
                 coverImage: item.coverImage,
-                category: this.categoryMapping[item.productType],
+                category: this.categoryMapping[item.productType] ,
                 description: 'Updated Invitation: Platform + Assessments + Analytics + Origin - ' +
                   'Daily Scrum @ Weekly from' +
                   '10:45am to  11:05am on weekdays from Wed Jan 13 to Wed Jan 27Updated Invitation: ' +
