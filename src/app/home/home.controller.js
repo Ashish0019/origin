@@ -3,7 +3,7 @@ export class HomeController {
     'ngInject';
 
     this.search = {
-      $popular: ['k12', 'english',12333333333333333333,333333333333333,3411234135135143513512341523152351234],
+      $popular: ['k12', 'english'],
       $current: []
     };
 
