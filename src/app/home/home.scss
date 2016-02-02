@@ -14,7 +14,8 @@
       height: 50px;
       top: 0;
 
-      margin: 15px;
+      margin-left: 40px;
+      margin-top: 20px;
 
       z-index: 9;
 
@@ -48,7 +49,7 @@
       }
 
       [login-component="login"] {
-        color: #4effed;
+        color: #ffffff;
       }
 
       [login-component="login"]:hover {
@@ -70,10 +71,18 @@
         .md-chips .md-chip-input-container input, .md-chips .md-chip-input-container input:not([type]) {
           color: #ffffff;
         }
+        .md-chips .md-chip .md-chip-remove md-icon {
+          color: #424242;
+          padding-left: 6px;
+        }
 
+        md-chips .md-chip.md-focused {
+          background: #FFFFFF;
+          color: #343434;
+        }
         [tag-line] {
           color: #DFDDDE;
-          font-size: 1.5em;
+          font-size: 1.8em;
           letter-spacing: 2px;
 
           -webkit-user-select: none;
@@ -85,13 +94,16 @@
             cursor: pointer;
           }*/
         }
-
+        .md-chips .md-chip {
+          border-radius: 5px;
+        }
         [underline] {
           text-decoration: underline;
         }
 
         [search-container] {
           width: 100%;
+
         }
 
         #searches {
@@ -107,7 +119,6 @@
           padding: 8px 48px;
           font-size: 1.2em;
           font-weight: 700;
-          border: 2px solid #fff;
         }
 
         md-chips .md-chips.md-focused {
