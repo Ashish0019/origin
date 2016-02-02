@@ -21,7 +21,7 @@
   section[search-container] {
     md-input-container {
       width: 60%;
-      margin-left: -30px;
+
     }
 
     [search] {
@@ -32,7 +32,7 @@
       padding-top: 24px;
       border-bottom-color: #ffffff;
       color: #ffffff;
-      width: 300px;
+      width: 400px;
     }
 
     [searchButton] {
@@ -46,6 +46,19 @@
   section[login-panel] {
     * {
       font-size: 0.8em;
+    }
+  [JoinFree]{
+    color: #4effed;
+  }
+    [JoinFree]:hover{
+      color: #ffffff;
+    }
+  [login]{
+    color: #ffffff;
+  }
+
+    [login]:hover{
+      color: #ffffff;
     }
   }
 }

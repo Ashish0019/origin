@@ -14,7 +14,7 @@ import { NavbarDirective } from '../app/components/navbar/navbar.directive';
 import { RjResizeDirective } from '../app/components/rjResize.directive';
 import { BackImage } from '../app/components/backImg.directive';
 import { FormCommitDirective } from '../app/components/formCommit/formCommit.directive';
-
+import { FooterDirective } from '../app/components/footer/footer.directive';
 import $ServiceProvider from '../app/providers/$service.provider';
 
 angular.module('originWeb', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'truncate', 'ngMessages', 'ngAria',
@@ -38,4 +38,5 @@ angular.module('originWeb', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 
   .directive('navMenu', NavbarDirective)
   .directive('rjResize', RjResizeDirective)
   .directive('backImg', BackImage)
-  .directive('formCommit', FormCommitDirective);
+  .directive('formCommit', FormCommitDirective)
+  .directive('footer', FooterDirective);

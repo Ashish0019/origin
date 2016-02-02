@@ -38,19 +38,22 @@
   </section>
 </section>
 <section popular-listing ng-if="home.showNavBar"
-         layout="column" layout-align="center center">
-  <div flex="80" content-listing-wrapper layout="column" layout-align="space-between center">
+         layout="column" layout-align="center start">
+
+  <aside style=" font-size: 2.0em; padding: 10px" flex="60">Currently Trending on Origin</aside>
+
+  <div flex="90" content-listing-wrapper layout="column" layout-align="space-between center">
     <div content-listing layout="row" layout-align="start start" layout-wrap=""
-         flex="90" ng-if="home.details.length > 0">
-      <div content-item flex-sm="90" flex-md="40" flex-lg="25"
+         flex="100" ng-if="home.details.length > 0">
+      <div content-item flex-sm="90" flex-md="32" flex-lg="28" flex-gt-lg="22"
            layout="column" layout-align="center center"
-           flex-gt-lg="18" ng-repeat="item in home.details">
+            ng-repeat="item in home.details">
         <div thumbnail-container layout="column" layout-align="center center">
           <div item-info="thumbnail" back-img="{{item.coverImage}}"></div>
         </div>
         <div item-meta="info" layout="column" layout-align="center start">
           <div content-item="title">{{item.title | characters:15}}</div>
-          <div content-item="author">{{item.author}}</div>
+          <div content-item="author">{{item.author | characters:15}}</div>
         </div>
         <div content-footer="category">
           <span><md-icon md-svg-icon="{{item.category.icon}}"></md-icon> {{item.category.name}}</span>
@@ -74,6 +77,7 @@
             stop shop for all your learning needs!
           </span>
         </div>
+
       </div>
     </div>
     <section loader ng-if="home.details.length <= 0">
@@ -85,4 +89,5 @@
       </div>
     </section>
   </div>
+  <footer ng-if="home.details.length > 0" originfoot></footer>
 </section>

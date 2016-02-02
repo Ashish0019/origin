@@ -143,9 +143,10 @@
 
 section[popular-listing] {
   margin-top: 64px;
+  margin-left: 32px;
 
   [content-listing-wrapper] {
-    width: 90%;
+    width: 100%;
 
     [content-listing] {
       width: 100%;
@@ -153,9 +154,9 @@ section[popular-listing] {
       [content-item] {
         width: 200px;
         height: 320px;
-
-        margin: 32px;
-
+        margin-bottom: 27px;
+        margin-left: 20px;
+        margin-right: 10px;
         border: 1px solid #d8d8d8;
         cursor: pointer;
 
@@ -173,6 +174,7 @@ section[popular-listing] {
             @extend .content-item-children;
             height: 160px;
             width: 180px;
+            margin-top: 8px;
           }
         }
 
@@ -237,8 +239,9 @@ section[popular-listing] {
   [ui-sref="library"] {
     background-color: #00a79d;
     color: #ffffff;
-
     padding: 2px 24px;
+    margin-bottom: 32px;
+
   }
 
   .md-button.md-raised:not([disabled]):hover {
@@ -258,6 +261,19 @@ section[popular-listing] {
 
     span[disclaimer] {
       font-size: 0.7em;
+      margin-bottom: 40px;
     }
+  }
+
+ [originfoot] {
+    background-color: #000000;
+    color: #ffffff;
+    width: 100%;
+   height: 40px;
+   font-size: 0.7em;
+   position: absolute;
+   bottom: 0px;
+   left:0px;
+
   }
 }

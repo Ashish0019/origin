@@ -7,7 +7,7 @@ export class HomeController {
       $current: []
     };
 
-    this.MAX_SHOW_LIMIT = 12;
+    this.MAX_SHOW_LIMIT = 15;
 
     this.showNavBar = false;
     //TODO move to services
