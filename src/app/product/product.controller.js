@@ -24,8 +24,8 @@ export class ProductController {
         var regex = /\/vi\/(.*)\//;
         var url = detail.coverImage;
         var id = url.match(regex)[1];
-        this.videoPath="http://www.youtube.com/embed/"+ id;
-        this.yVideo = $sce.trustAsResourceUrl(this.videoPath);
+        var videoPath="http://www.youtube.com/embed/"+ id;
+        this.yVideo = $sce.trustAsResourceUrl(videoPath);
       }
       else {
         this.info.title = detail.title;
