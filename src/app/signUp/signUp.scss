@@ -14,7 +14,7 @@
   [login-panel] {
     background-color: transparent;
     min-width: 540px;
-    height: 640px;
+    min-height: 748px;
     font-family: sans-serif;
     color: #ffffff;
 
@@ -29,7 +29,8 @@
 
     [header-section] {
       width: 100%;
-      height: 13%;
+      min-height: 80px;
+      height: 11%;
       background: rgba(39, 37, 37, .8);
 
       span {
