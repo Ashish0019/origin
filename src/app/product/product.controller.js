@@ -14,8 +14,6 @@ export class ProductController {
 
       if(detail.author== "Youtube"){
         this.info.title = detail.title;
-        this.info.Content = "in" +" "  + "<b><u>" + detail.subject + "</u></b>"  +" "+"by" + " "
-          +"<b><u>" + detail.author + "</u></b>";
         this.description = detail.meta.description;
         this.info.Type = " : Youtube Video";
         // here I could have found video ID directly from response from you tube api but I didn't opted for that
