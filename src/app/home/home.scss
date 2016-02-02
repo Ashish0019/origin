@@ -152,13 +152,14 @@ section[popular-listing] {
       width: 100%;
 
       [content-item] {
-        width: 200px;
-        height: 320px;
+        width: 180px;
+        height: 260px;
         margin-bottom: 27px;
         margin-left: 20px;
         margin-right: 10px;
         border: 1px solid #d8d8d8;
         cursor: pointer;
+
 
         .content-item-children {
           border: none;
@@ -167,8 +168,8 @@ section[popular-listing] {
         }
 
         [thumbnail-container] {
-          width: 180px;
-          height: 180px;
+          width: 160px;
+          height: 160px;
 
           [item-info="thumbnail"] {
             @extend .content-item-children;
@@ -213,9 +214,10 @@ section[popular-listing] {
           font-weight: 700;
           color: #a3a3a3;
           border-top: 1px solid #d8d8d8;
+          box-shadow: 0px 2px rgba(102, 102, 102, 0.3);
 
           span {
-            margin-left: 4px;
+            margin-left:0;
           }
         }
 
