@@ -100,18 +100,17 @@ export class LibraryController {
     this.fetchData = () => {
       this.showError = false;
 
-      let youtube = $service.$fetch('google', 'youtube');
+      let youtube = $service.$fetch('library', 'google', 'youtube');
 
       youtube.success((response) => {
         this.populateDetails('google', response.items);
-        $log.debug(response)
       });
 
       youtube.failure((error) => {
         this.inform('err', error);
       });
 
-      let magic = $service.$fetch('magic', 'productListing');
+      let magic = $service.$fetch('library', 'magic', 'productListing');
 
       magic.success((response) => {
         this.populateDetails('magic', response.productdetail);

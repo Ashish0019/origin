@@ -21,7 +21,7 @@ export class HomeController {
     };
     this.details = [];
 
-    let $details = $service.$fetch('magic', 'productListing');
+    let $details = $service.$fetch('library', 'magic', 'productListing');
 
     $details.success((response) => {
       var temp = [];
