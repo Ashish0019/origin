@@ -75,8 +75,8 @@
       width: 100%;
 
       [content-item] {
-        width: 200px;
-        height: 320px;
+        width: 180px;
+        height: 260px;
 
         margin-bottom: 20px;
         margin-left: 10px;
@@ -92,13 +92,14 @@
         }
 
         [thumbnail-container] {
-          width: 180px;
-          height: 180px;
+          width: 160px;
+          height: 160px;
 
           [item-info="thumbnail"] {
             @extend .content-item-children;
             height: 160px;
             width: 180px;
+            margin-top: 8px;
           }
         }
 
@@ -140,6 +141,7 @@
           font-weight: 700;
           color: #a3a3a3;
           border-top: 1px solid #d8d8d8;
+          box-shadow: 0 2px rgba(102, 102, 102, 0.3);
 
           span {
             margin-left: 4px;
