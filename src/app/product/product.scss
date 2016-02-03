@@ -2,6 +2,7 @@
   height: 100%;
   color: #ffffff;
   font-size: 20px;
+  outline: 0;
 
   * {
     text-transform: none;
@@ -115,6 +116,41 @@
         height: 300px;
         width: 70%;
         background-size: cover;
+        outline: 0;
+
+        [zoomIcon]{
+          width: 40px;
+          position: relative;
+          left: 45%;
+          top: 43%;
+        }
+      }
+
+      [enlargeBG] {
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 10000000;
+        padding-top: 10%;
+        background: rgba(0, 0, 0, .7) no-repeat 50% 50%;
+        outline: 0;
+
+        .imageEnlarge {
+          width: 90%;
+          position: absolute;
+          left: 0;
+
+          background-size: 100% 100%;
+          background-repeat: no-repeat;
+          height: 70%;
+          margin-left: 5%;
+          margin-right: 5%;
+          cursor: zoom-out;
+        }
       }
     }
   }

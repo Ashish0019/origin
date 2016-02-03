@@ -2,6 +2,7 @@ export class ProductController {
   constructor($scope, $log, $http, $service, $stateParams, $sce) {
     'ngInject';
     this.showDetails = false;
+    this.showEnlargedImage = false;
     this.info = {};
 
 
