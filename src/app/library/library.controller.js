@@ -46,6 +46,7 @@ export class LibraryController {
                 title: item.title,
                 subject: item.subject || item.subject2 || "English",
                 author: item.author || "Magic",
+                id: item.productId,
                 meta: {
                   gradeFrom: item.gradeFrom,
                   gradeTo: item.gradeTo
@@ -73,7 +74,7 @@ export class LibraryController {
                 meta: {
                   description: item.snippet.description
                 },
-                id:item.id.videoId,
+                id: item.id.videoId,
                 analytics: {
                   shares: 4,
                   views: 7
@@ -457,7 +458,7 @@ export class LibraryController {
           ]
         }
       ]
-    }
+    };
     $log.debug(filterList);
 
   }
