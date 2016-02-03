@@ -151,7 +151,13 @@ class $ServiceProvider {
           });
           break;
         case 'unique':
-          query = _.find(this.library, {ref: parseInt(id, 10)});
+          query = _.find(this.library, (item) => {
+            if ((/[a-zA-Z]/.test(item.id))) {
+              return item.id === id;
+            }
+
+            return item.id === parseInt(id, 10);
+          });
           break;
       }
 

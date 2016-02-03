@@ -23,12 +23,14 @@ export class HomeController {
     let $details = $service.$fetch('library', 'magic', 'productListing');
 
     $details.success((response) => {
+      $log.debug(response);
       var temp = [];
       _.each(response.productdetail, (item) => {
         temp.push({
           title: item.title,
           subject: item.subject,
           author: item.author,
+          id: item.productId,
           description: 'Updated Invitation: Platform + Assessments + Analytics + Origin - ' +
             'Daily Scrum @ Weekly from' +
             '10:45am to  11:05am on weekdays from Wed Jan 13 to Wed Jan 27Updated Invitation: ' +
