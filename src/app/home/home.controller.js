@@ -3,10 +3,9 @@ export class HomeController {
     'ngInject';
 
     this.search = {
-      $popular: ['k12', 'english'],
+      $popular: ['K12', 'ELA' , 'english',' language', 'arts','K12 courses','K12 videos'],
       $current: []
     };
-
     this.MAX_SHOW_LIMIT = 15;
 
     this.showNavBar = false;

@@ -32,8 +32,7 @@ export class ProductController {
         this.info.Publisher = " : " + "Magic publisher";
         this.info.Type = " : " + detail.productType;
         this.description = detail.meta.description;
-        var imagePath = $sce.trustAsResourceUrl(detail.coverImage);
-        this.info.Image = imagePath;
+        this.info.Image = $sce.trustAsResourceUrl(detail.coverImage);
       }
     }
   }
