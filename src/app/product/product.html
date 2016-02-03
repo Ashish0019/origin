@@ -32,7 +32,7 @@
       </div>
     </div>
     <div otherdata layout-align="space-between start" layout="row">
-      <div flex-gt-lg="40" flex-gt="40" flex-md="70" flex="40">
+      <div flex-gt-lg="40" flex-gt="40" flex-md="60" flex="40">
         <div layout="column">
           <md-button flex="" class="md-primary md-raised"
                      ng-if="!product.book.hideAdd"
@@ -76,9 +76,19 @@
           <iframe width="90%" height="300px" ng-src="{{product.yVideo}}" allowfullscreen>
           </iframe>
         </div>
-        <div contentContainer ng-switch-default>
-          <img class="contentContainer" ng-src="{{product.info.Image}}" />
-         <!-- <x-image-enlarge ng-src="{{product.info.Image}}"></x-image-enlarge>-->
+        <div ng-switch-default>
+          <div class="contentContainer" ng-style="{'background-image':'url({{product.info.Image}})'}"
+               ng-click="showEnlargedImage = !showEnlargedImage" >
+            <img zoomIcon ng-src="assets/images/Zoom_in.svg"/>
+
+          </div>
+
+          <div enlargeBG  ng-show="showEnlargedImage" ng-click="showEnlargedImage = !showEnlargedImage">
+          <x-image-enlarge  class="imageEnlarge"
+                            ng-style="{'background-image':'url({{product.info.Image}})'}">
+
+          </x-image-enlarge>
+          </div>
         </div>
       </div>
      </div>
