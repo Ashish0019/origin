@@ -42,7 +42,7 @@ export class LibraryController {
         if (index < this.MAX_LIMIT / 2) {
           switch (type) {
             case 'magic':
-              temp.push({
+              var pushDetails = {
                 title: item.title,
                 subject: item.subject || item.subject2 || "English",
                 author: item.author || "Magic",
@@ -51,20 +51,26 @@ export class LibraryController {
                   gradeFrom: item.gradeFrom,
                   gradeTo: item.gradeTo
                 },
-                coverImage: item.coverImage,
-                category: this.categoryMapping[item.productType] ,
+                coverImage: item.thumbnail,
                 description: 'Updated Invitation: Platform + Assessments + Analytics + Origin - ' +
-                  'Daily Scrum @ Weekly from' +
-                  '10:45am to  11:05am on weekdays from Wed Jan 13 to Wed Jan 27Updated Invitation: ' +
-                  'Platform + Assessments' + 'Analytics + Origin - Daily Scrum @ Weekly from 10:45am to 11:05am ' +
-                  'on weekdays from Wed Jan 13 to' +
-                  'Wed Jan 27',
+                'Daily Scrum @ Weekly from' +
+                '10:45am to  11:05am on weekdays from Wed Jan 13 to Wed Jan 27Updated Invitation: ' +
+                'Platform + Assessments' + 'Analytics + Origin - Daily Scrum @ Weekly from 10:45am to 11:05am ' +
+                'on weekdays from Wed Jan 13 to' +
+                'Wed Jan 27',
                 analytics: {
                   shares: 43,
                   views: 78
                 }
-              });
+              };
+
+              if (item.productTypeTitle) {
+                pushDetails.category = this.categoryMapping[item.productTypeTitle.toLowerCase()];
+              }
+
+              temp.push(pushDetails);
               break;
+
             case 'google':
               temp.push({
                 title: item.snippet.title,
@@ -88,7 +94,7 @@ export class LibraryController {
       let domain = type;
       let cat = (type === 'magic') ? 'productListing' : 'youtube';
       $service.$append('library', domain, cat, temp);
-      this.details = $service.$query('', 'full');
+      this.details = $service.$query('library', '', 'full');
       this.details = _.shuffle(this.details);
     };
 
@@ -101,7 +107,7 @@ export class LibraryController {
     this.fetchData = () => {
       this.showError = false;
 
-      let youtube = $service.$fetch('library', 'google', 'youtube');
+      let youtube = $service.$connect('library', 'google', 'youtube');
 
       youtube.success((response) => {
         this.populateDetails('google', response.items);
@@ -111,10 +117,16 @@ export class LibraryController {
         this.inform('err', error);
       });
 
-      let magic = $service.$fetch('library', 'magic', 'productListing');
+      let magic = $service.$connect('library', 'magic', 'productListing', {
+        urlParams: {token: $service.token('get')},
+        requestParams: {
+          pageNumber: 1,
+          maxRecordCount: 50
+        }
+      });
 
       magic.success((response) => {
-        this.populateDetails('magic', response.productdetail);
+        this.populateDetails('magic', response.productSoList);
       });
 
       magic.failure((error) => {

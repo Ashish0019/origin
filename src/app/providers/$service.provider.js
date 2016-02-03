@@ -7,27 +7,68 @@ class $ServiceProvider {
   constructor() {
 
     this.$config = {
+      token: '',
       API: {
         magic: {
           productListing: {
-            url: 'http://amz.s-1.mdistribute.magicsw.com/services/catalog/allproductdetail.json',
+            HOST: 'mbx-api-staging.getmagicbox.com',
+            url: '/services/product/v1.0/getProductList',
+            preProcess: true,
             headers: {
               'Content-Type': 'application/json'
             },
-            data:{'searchobject':{}},
             method: 'POST',
             retrieved: false,
             appended: false,
+            $stored: true,
+            mapping: {}
+          },
+          addUpdateProduct: {
+            HOST: 'mbx-api-staging.getmagicbox.com',
+            url: '/services//product/v1.0/addUpdateFreeBookUserAccess',
+            preProcess: true,
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            method: 'POST',
+            retrieved: false,
+            appended: false,
+            $stored: false,
+            mapping: {}
+          },
+          sessionStatus: {
+            HOST: 'origin.stg1.getmagicbox.com',
+            url: '/services/user/account/sessionstatus.json',
+            method: 'GET',
+            preProcess: true,
+            retrieved: false,
+            appended: false,
+            $stored: false,
+            mapping: {}
+          },
+          freeBookListing: {
+            HOST: 'mbx-api-staging.getmagicbox.com',
+            url: '/services/product/v1.0/getUserFreeBookList',
+            preProcess: true,
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            method: 'GET',
+            retrieved: false,
+            appended: false,
+            $stored: true,
             mapping: {}
           }
         },
         google: {
           youtube: {
             method: 'GET',
+            preProcess: false,
             url: 'https://www.googleapis.com/youtube/v3/search?key=AIzaSyDf7G7HNHRaSXZOdIszJaU9aiRl9TZYorY' +
             '&part=snippet&q=common+core+english+grades+k12&maxResults=50',
             retrieved: false,
             appended: false,
+            $stored: true,
             mapping: {
               title: {struct: 'snippet.title', type: 'JSON'},
               author: {struct: 'Youtube', type: 'TEXT'},
@@ -40,13 +81,20 @@ class $ServiceProvider {
         }
       }
     };
+
     this.library = [];
+    this.freeBooks = [];
+
   }
 
-  $get($log, $q, $http) {
+  setToken(val) {
+    this.$config.token = val;
+  }
+
+  $get($log, $q, $http, $location) {
     'ngInject';
 
-    var fetch = (loc, domain, type) => {
+    var connect = (loc, domain, type, info) => {
       let category = this.$config.API[domain] || {};
 
       var defer = $q.defer();
@@ -68,8 +116,37 @@ class $ServiceProvider {
         return promise;
       };
 
-      if (!category[type].retrieved) {
-        $http(category[type]).then((response) => {
+      if (!category[type].retrieved || !category[type].$stored) {
+        var payload = category[type];
+        var connectUrl = $location.protocol() + '://' + payload.HOST;
+        var $httpPromise = {};
+
+        if (payload.preProcess) {
+          payload.url = connectUrl + payload.url;
+        }
+
+        if (info) {
+          if (!_.isEmpty(info.urlParams)) {
+            payload.url = payload.url + '?';
+            _.each(info.urlParams, (value, key) => {
+              payload.url += key + "=" + value + "&";
+            });
+
+            payload.url = payload.url.replace(/\&+$/, '');
+          }
+
+          if (!_.isEmpty(info.requestParams)) {
+            payload.data = info.requestParams;
+            $httpPromise = $http(payload);
+          } else {
+            $httpPromise = $http(payload);
+          }
+
+        } else {
+          $httpPromise = $http(payload);
+        }
+
+        $httpPromise.then((response) => {
           defer.resolve(response);
           this.$config.API[domain][type].retrieved = true;
         }, (error) => {
@@ -114,7 +191,7 @@ class $ServiceProvider {
       };
 
       if (domain === 'magic') {
-        defer.resolve({data: {productdetail: mapResponse()}});
+        defer.resolve({data: {productSoList: mapResponse()}});
       } else if (domain === 'google') {
         defer.resolve({data: {items: mapResponse()}});
       }
@@ -133,13 +210,13 @@ class $ServiceProvider {
       }
     };
 
-    var query = (id, type, limit) => {
+    var query = (loc, id, type, limit) => {
       var list = [];
       var max = limit || -1;
       var query = {};
       switch (type) {
         case 'full':
-          _.each(this.library, (item, index) => {
+          _.each(this[loc], (item, index) => {
             if (max !== -1) {
               if (index < max) {
                 list.push(item);
@@ -151,7 +228,7 @@ class $ServiceProvider {
           });
           break;
         case 'unique':
-          query = _.find(this.library, (item) => {
+          query = _.find(this[loc], (item) => {
             if ((/[a-zA-Z]/.test(item.id))) {
               return item.id === id;
             }
@@ -168,10 +245,21 @@ class $ServiceProvider {
       return list;
     };
 
+    var token = (mode, val) => {
+      switch (mode) {
+        case 'set':
+          this.$config.token = val;
+          break;
+        case 'get':
+          return this.$config.token;
+      }
+    };
+
     return {
-      $fetch: fetch,
+      $connect: connect,
       $append: append,
-      $query: query
+      $query: query,
+      token: token
     };
   }
 }
