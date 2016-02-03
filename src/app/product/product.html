@@ -32,7 +32,7 @@
       </div>
     </div>
     <div otherdata layout-align="space-between start" layout="row">
-      <div flex="50">
+      <div flex-gt-lg="40" flex-gt="40" flex-md="40" flex="40">
         <div layout="column">
           <md-button flex="" class="md-primary md-raised" style="background-color: #00af9d; width:150px;">
             <label style="font-size: 16px;"> ADD TO LIBRARY </label>
@@ -67,14 +67,15 @@
             Origin - Daily Scrum @ Weekly from 10:45am to 11:05am on w</p>
         </div>
       </div>
-      <div flex="40" layout="column" ng-switch on="product.author">
+      <div flex-gt-lg="40" flex-gt="50" flex-md="50" layout="column" flex="50"
+           ng-switch on="product.author" style="margin-right: 20px;">
         <div ng-switch-when='Youtube'>
-          <iframe width="400px" height="300px" ng-src="{{product.yVideo}}" allowfullscreen>
+          <iframe width="90%" height="300px" ng-src="{{product.yVideo}}" allowfullscreen>
           </iframe>
         </div>
         <div contentContainer ng-switch-default>
-          <img x-image-enlarge class="contentContainer" ng-src="{{product.info.Image}}"/>
-          <x-image-enlarge ng-src="{{product.info.Image}}"></x-image-enlarge>
+          <img class="contentContainer" ng-src="{{product.info.Image}}" />
+         <!-- <x-image-enlarge ng-src="{{product.info.Image}}"></x-image-enlarge>-->
         </div>
       </div>
      </div>
