@@ -1,6 +1,5 @@
 [product-container] {
   height: 100%;
-  position: absolute;
   color: #ffffff;
   font-size: 20px;
 
@@ -30,7 +29,6 @@
     padding-bottom: 35px;
     width: 100%;
     color: #000000;
-    position: absolute;
 
     [headers] {
       margin-left: 2%;
@@ -112,7 +110,7 @@
         color: #333333;
       }
 
-      [contentContainer] {
+      .contentContainer {
         margin-right: 30px;
         height: 300px;
         width: 400px;
@@ -122,18 +120,14 @@
   }
 
   [someMoreData] {
-    position: relative;
-    margin-left: 2%;
     font-size: 20px;
     color: #333333;
+    margin: 10px 10px 10px 30px;
     background-color: #ffffff;
-    top: 520px;
-    [orline] {
-      padding-top: 2px;
-      margin-left: 1%;
-      hr {
-        width: 100%
-      }
+
+    [separator] {
+      margin-left: 10px;
+      border-bottom: 1px solid #000000;
     }
   }
 
