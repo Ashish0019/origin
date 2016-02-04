@@ -2,9 +2,11 @@ export class ProductController {
   constructor($scope, $log, $state, $service, $stateParams, $sce) {
     'ngInject';
     this.showDetails = false;
+    this.showthings = true;
     this.showEnlargedImage = false;
     this.info = {};
     this.user = {};
+
     this.book = {
       hideAdd: true
     };
@@ -84,8 +86,10 @@ export class ProductController {
           }
         });
 
-        addPromise.success(() => {this.book.hideAdd = true;});
-
+        addPromise.success(() => {
+          this.book.hideAdd = true;
+          this.showthings = true;
+        });
         return 1;
       }
 
