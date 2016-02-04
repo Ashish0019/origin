@@ -64,11 +64,11 @@ export class ProductController {
       }
       else {
         this.info.title = detail.title;
-        this.info.Content = "in" + " " + "<b><u>" + detail.subject + "</u></b>" + " " + "by" + " "
-          + "<b><u>" + detail.author + "</u></b>";
-        this.info.Grades = " : " + detail.meta.gradeFrom + " - " + detail.meta.gradeTo;
-        this.info.Publisher = " : " + "Magic publisher";
-        this.info.Type = " : " + detail.productType;
+        this.info.Content = "in" + " " + "<b>" + detail.subject + "</b>" + " " + "by" + " "
+          + "<b>" + detail.author + "</b>";
+        this.info.Grades = "  " + detail.meta.gradeFrom + " - " + detail.meta.gradeTo;
+        this.info.Publisher = "  " + "Magic publisher";
+        this.info.Type = "  " + detail.productType;
         this.description = detail.meta.description;
         this.info.Image = $sce.trustAsResourceUrl(detail.coverImage);
       }
@@ -89,7 +89,7 @@ export class ProductController {
         return 1;
       }
 
-      $state.go('signIn');
+      //$state.go('signUp');
     }
   }
 }

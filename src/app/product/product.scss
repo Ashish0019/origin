@@ -13,21 +13,23 @@
     margin: 70px 10px 10px 20px;
 
     [library] {
-      font-size: 1.4em;
+      font-size: 1.1em;
       font-weight: 600;
-      color: #00cc99;
+      color: #7B7B7B;
       cursor: pointer;
+      text-decoration: underline;
     }
 
     [product-tag] {
-      font-size: 0.9em;
-      color: #00af9d;
+      font-size: 1.1em;
+      font-weight: 600;
+      color: #00cc99;
     }
 
   }
 
   [productBackground] {
-    background-color: #EEEEEE;
+    background-color: #FFFFFF;
     padding-bottom: 35px;
     width: 100%;
     color: #000000;
@@ -111,7 +113,14 @@
         font-size: 14px;
         color: #333333;
       }
+      [addedToLib]{
+        background-image: url("../assets/images/library_tag.png");
+        width: 80px;
+        height: 80px;
+        z-index: 55;
 
+        position: absolute;
+      }
       .contentContainer {
         margin-right: 30px;
         height: 300px;
@@ -119,6 +128,7 @@
         background-repeat: no-repeat;
         background-size: 100% 100%;
         outline: 0;
+
         [enlargerBackground] {
           background-color: rgba(0, 0, 0, 0.64);
           position: relative;
@@ -131,6 +141,7 @@
           fill:#fff;
         }
       }
+
       }
 
       [enlargeBG] {

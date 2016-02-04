@@ -38,7 +38,7 @@
                      ng-if="!product.book.hideAdd"
                      ng-click="product.addProduct()"
                      ng-show="product.showAddToLibrary"
-                     style="background-color: #00af9d; width:150px;">
+                     style="color: #ffffff;background-color: #00af9d; width:150px;">
             <label style="font-size: 16px; cursor: pointer;"> ADD TO LIBRARY </label>
           </md-button>
           <p description>{{product.description}}</p>
@@ -94,7 +94,7 @@
   </div>
   <div someMoreData layout="column" ng-if="product.showDetails">
     <div layout="row" layout-align="start center">
-      <div flex="19">You might also like</div>
+      <div flex="19" style="font-weight: 600">You might also like</div>
       <div separator flex="80"></div>
     </div>
   </div>
