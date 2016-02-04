@@ -1,7 +1,6 @@
 export class LibraryController {
   constructor($scope, $log, $http, $service, $state) {
     'ngInject';
-    this.search = '';
     this.details = [];
     this.showFilter = false;
     this.showError = false;
@@ -17,9 +16,19 @@ export class LibraryController {
         writing: false
       }
     };
+
+    this.search = (info) => {
+      this.refreshListing({
+        pageNumber: 1,
+        maxRecordCount: 50,
+        searchText: [info.$current]
+      });
+    };
+
     this.errorMessage = {
       message: 'Could not connect with Server.'
     };
+
     this.categoryMapping = {
       epub: {name: 'Epub', icon: 'assets/images/clipboard-text.svg'},
       game: {name: 'Game', icon: 'assets/images/gamepad-variant.svg'},
@@ -104,34 +113,71 @@ export class LibraryController {
       });
     };
 
-    this.fetchData = () => {
-      this.showError = false;
-
-      let youtube = $service.$connect('library', 'google', 'youtube');
-
-      youtube.success((response) => {
-        this.populateDetails('google', response.items);
-      });
-
-      youtube.failure((error) => {
-        this.inform('err', error);
-      });
-
-      let magic = $service.$connect('library', 'magic', 'productListing', {
-        urlParams: {token: $service.token('get')},
-        requestParams: {
+    this.refreshListing = (params) => {
+      var payload = params || {
           pageNumber: 1,
           maxRecordCount: 50
+        };
+      this.details = [];
+      this.fetchData({
+        action: 'refresh',
+        requestParams: payload,
+        disableYoutube: true,
+        filter: {0: ['section', 'magic']}
+      });
+    };
+
+    var filters = $service.$connect('filters', 'magic', 'filterDetails', {
+      urlParams: {token: $service.token('get')}
+    });
+
+    filters.success((response) => {$log.debug(response);});
+
+    this.fetchData = (params) => {
+      this.showError = false;
+      var payload = {
+        pageNumber: 1,
+        maxRecordCount: 50
+      };
+
+      this.disabled = {youtube: false, magic: false};
+
+      if (params) {
+        if (params.requestParams) {
+          payload = params.requestParams;
         }
-      });
 
-      magic.success((response) => {
-        this.populateDetails('magic', response.productSoList);
-      });
+        this.disabled.youtube = params.disableYoutube;
+        this.disabled.magic = params.disableMagic;
+      }
 
-      magic.failure((error) => {
-        this.inform('err', error);
-      });
+      if (!this.disabled.youtube) {
+        let youtube = $service.$connect('library', 'google', 'youtube');
+
+        youtube.success((response) => {
+          this.populateDetails('google', response.items);
+        });
+
+        youtube.failure((error) => {
+          this.inform('err', error);
+        });
+      }
+
+      if (!this.disabled.magic) {
+        let magic = $service.$connect('library', 'magic', 'productListing', {
+          urlParams: {token: $service.token('get')},
+          requestParams: payload,
+          options: params
+        });
+
+        magic.success((response) => {
+          this.populateDetails('magic', response.productSoList);
+        });
+
+        magic.failure((error) => {
+          this.inform('err', error);
+        });
+      }
     };
 
     this.fetchData();

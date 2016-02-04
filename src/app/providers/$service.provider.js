@@ -36,6 +36,16 @@ class $ServiceProvider {
             $stored: false,
             mapping: {}
           },
+          filterDetails: {
+            HOST: 'mbx-api-staging.getmagicbox.com',
+            url: '/services/product/v1.0/getProductFilterDetails',
+            method: 'GET',
+            preProcess: true,
+            retrieved: false,
+            appended: false,
+            $stored: true,
+            mapping: {}
+          },
           sessionStatus: {
             HOST: 'origin.stg1.getmagicbox.com',
             url: '/services/user/account/sessionstatus.json',
@@ -84,6 +94,7 @@ class $ServiceProvider {
 
     this.library = [];
     this.freeBooks = [];
+    this.filters = [];
 
   }
 
@@ -99,6 +110,19 @@ class $ServiceProvider {
 
       var defer = $q.defer();
       var promise = defer.promise;
+      var params = info || {};
+
+      if (!_.isEmpty(params.options)) {
+        if (params.options.action === 'refresh') {
+          //TODO abstract into another function
+          if (params.options.filter) {
+            _.remove(this[loc], (item) => {return item[params.options.filter['0'][0]] !== domain;})
+          }
+          _.remove(this[loc], (item) => {return item.section === domain;});
+          category[type].retrieved = false;
+          category[type].appended = false;
+        }
+      }
 
       promise.success = (fn) => {
         promise.then((res) => {

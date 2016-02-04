@@ -1,4 +1,5 @@
-<nav-menu nav-text="I want to LEARN / TEACH"></nav-menu>
+<nav-menu nav-text="I want to LEARN / TEACH"
+          search-text="{{library.search.$current}}" on-search="library.search"></nav-menu>
 <section library-container layout="column" layout-fill layout-align="start center">
   <aside element="title">
     The ORIGINal Library
@@ -12,7 +13,7 @@
       <span state="selected">ALL</span>
       <span>A - Z</span>
       <span>Z - A</span>
-      <span>Latest</span>
+      <span ng-click="library.refreshListing()">Latest</span>
     </div>
     <div>{{library.details.length}} Results Found</div>
   </aside>
