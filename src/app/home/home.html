@@ -18,14 +18,14 @@
         <md-input-container search-container class="md-block">
           </br>
           <md-chips ng-model="home.search.$current" style="font-size: 18px"></md-chips>
-          <label id="searches" style="color: #ffffff !important;">
+          <label id="searches" style="color: rgb(195, 195, 194);">
             Popular Searches:
             <span ng-repeat="searchData in home.search.$popular">
               {{searchData}}<span ng-if="!$last">,&nbsp;</span>
             </span>
           </label>
         </md-input-container>
-        <md-button md-ink-ripple class="md-raised" ui-sref="library">SEARCH
+        <md-button md-ink-ripple class="md-raised" ui-sref="library" style="color:#757575">SEARCH
         </md-button>
       </section>
 

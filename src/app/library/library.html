@@ -6,7 +6,7 @@
   </aside>
   <aside element="tab-header" layout="row" layout-align="space-between center">
     <div filter layout="row" layout-align="center center" ng-click="library.showFilter = !library.showFilter">
-      <md-icon md-svg-icon="assets/images/filter.svg" style="width: 16px; height: 16px"></md-icon>
+      <md-icon md-svg-icon="assets/images/filter_arrow.svg" style="width: 16px; height: 16px"></md-icon>
       <span>Filter</span>
     </div>
     <div tabs layout="row" layout-align="start start" flex="60">
@@ -48,29 +48,26 @@
           </table>
         </div>
       </div>
+
+
       <div filter-widget="subjects" layout="column" layout-align="start start">
         <div filter-sub="title">Subjects</div>
-        <div subjects="checkboxes" layout="column" layout-align="start start">
-          <md-checkbox ng-model="library.filter.subject.grammar" aria-label="Grammar">
-            Grammar
+        <div subjects="checkboxes" layout="column" layout-align="start start"
+          ng-repeat="SubjectData in library.subjectList">
+          <md-checkbox  aria-label="{{SubjectData}}">
+            {{SubjectData}}
           </md-checkbox>
-          <md-checkbox ng-model="library.filter.subject.language" aria-label="Language">
-            Language
-          </md-checkbox>
-          <md-checkbox ng-model="library.filter.subject.reading" aria-label="Reading">
-            Reading
-          </md-checkbox>
-          <md-checkbox ng-model="library.filter.subject.research" aria-label="Research">
-            Research
-          </md-checkbox>
-          <md-checkbox ng-model="library.filter.subject.speakingListening" aria-label="Speaking and Listening">
-            Speaking and Listening
-          </md-checkbox>
-          <md-checkbox ng-model="library.filter.subject.writing" aria-label="Writing">
-            Writing
+        </div>
+        <div filter-sub="title">Resource Type</div>
+        <div subjects="checkboxes" layout="column" layout-align="start start"
+             ng-repeat="ResourceTypes in library.contentList">
+          <md-checkbox  aria-label="{{ResourceTypes}}">
+            {{ResourceTypes}}
           </md-checkbox>
         </div>
       </div>
+
+
     </aside>
     <aside element="tab-error" layout="row" layout-align="center center" ng-if="library.showError">
       <div>{{library.errorMessage.message}}</div>
