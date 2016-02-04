@@ -12,7 +12,7 @@ export class ProductController {
     };
 
     var detail = $service.$query('library', $stateParams.id, 'unique');
-
+$log.debug("hie",detail);
     if (!_.isEmpty(detail)) {
       this.author = detail.author;
       this.showDetails = true;
@@ -70,8 +70,8 @@ export class ProductController {
           + "<b>" + detail.author + "</b>";
         this.info.Grades = "  " + detail.meta.gradeFrom + " - " + detail.meta.gradeTo;
         this.info.Publisher = "  " + "Magic publisher";
-        this.info.Type = "  " + detail.productType;
-        this.description = detail.meta.description;
+        this.info.Type = "  " + detail.category.name;
+        this.description = detail.description;
         this.info.Image = $sce.trustAsResourceUrl(detail.coverImage);
       }
     } else {$state.go('library');}
