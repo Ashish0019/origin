@@ -135,20 +135,16 @@
         bottom: 0;
         left: 0;
         z-index: 10000000;
-        padding-top: 10%;
         background: rgba(0, 0, 0, .7) no-repeat 50% 50%;
         outline: 0;
 
         .imageEnlarge {
-          width: 90%;
+          width: 100%;
           position: absolute;
           left: 0;
-
           background-size: 100% 100%;
           background-repeat: no-repeat;
-          height: 70%;
-          margin-left: 5%;
-          margin-right: 5%;
+          height: 100%;
           cursor: zoom-out;
         }
       }
