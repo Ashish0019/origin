@@ -194,7 +194,7 @@ section[popular-listing] {
             height: auto;
 
             border: none;
-
+          color: rgba(64, 64, 64, 0.54);
             font-size: 1.1em;
             font-weight: 800;
           }
@@ -203,7 +203,7 @@ section[popular-listing] {
             @extend .content-item-children;
             width: 90%;
             height: auto;
-
+            color:#A3A3A3;
             font-size: 0.8em;
           }
         }
