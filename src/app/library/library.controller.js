@@ -4,7 +4,7 @@ export class LibraryController {
     this.details = [];
     this.showFilter = false;
     this.showError = false;
-    this.MAX_LIMIT = 50;
+    this.MAX_LIMIT = 1000;
     this.searchInfo = {$current: ''};
     this.filterGrid = {
       show: {
@@ -29,7 +29,7 @@ export class LibraryController {
           this.refreshListing({
             requestParams: {
               pageNumber: 1,
-              maxRecordCount: 50,
+              maxRecordCount: 200,
               searchText: [info.$current]
             },
             youtube: {query: info.$current}
@@ -41,7 +41,7 @@ export class LibraryController {
         this.refreshListing({
           requestParams: {
             pageNumber: 1,
-            maxRecordCount: 50,
+            maxRecordCount: 200,
             searchText: info.search.arr
           },
           youtube: {query: info.search.youtube}
@@ -140,7 +140,7 @@ export class LibraryController {
     this.refreshListing = (params) => {
       var payload = params || {
           pageNumber: 1,
-          maxRecordCount: 50
+          maxRecordCount: 200
         };
       this.details = [];
       this.fetchData({
@@ -196,7 +196,7 @@ export class LibraryController {
       this.showError = false;
       var payload = {
         pageNumber: 1,
-        maxRecordCount: 50
+        maxRecordCount: 200
       };
 
       var youtubeQuery = 'common+core+english+grades+k12';

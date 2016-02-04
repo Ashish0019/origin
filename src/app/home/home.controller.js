@@ -68,6 +68,12 @@ export class HomeController {
       this.showNavBar = true;
     };
 
+    this.openProduct = (id) => {
+      $state.go('product', {
+        id: id
+      });
+    };
+
     this.searchClicked = () => {
       $service.search('set', this.search.$current);
       $state.go('library');
