@@ -116,7 +116,8 @@
         margin-right: 30px;
         height: 300px;
         width: 70%;
-        background-size: cover;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
         outline: 0;
         [enlargerBackground] {
           background-color: rgba(0, 0, 0, 0.64);

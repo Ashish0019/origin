@@ -250,13 +250,17 @@
           color: #5d5d5d;
           [facebookIcon] {
             @extend .icons;
-            background-image: url("../assets/images/fb_icon.svg");
+            background-image: url("../assets/images/fb_icon_disable.svg");
           }
         }
 
         [third-party="Facebook"].md-button.md-raised:not([disabled]) {
           background-color: #3F51B5;
           color: #ffffff;
+          [facebookIcon] {
+            @extend .icons;
+            background-image: url("../assets/images/fb_icon.svg");
+          }
 
         }
 
@@ -266,13 +270,18 @@
           color: #5d5d5d;
           [googleIcon] {
             @extend .icons;
-            background-image: url("../assets/images/google_icon.svg");
+            background-image: url("../assets/images/google_icon_disable.svg");
           }
         }
 
         [third-party="Google"].md-button.md-raised:not([disabled]) {
           background-color: #D95032;
           color: #ffffff;
+          [googleIcon] {
+            @extend .icons;
+            background-image: url("../assets/images/google_icon.svg");
+          }
+
         }
       }
 
