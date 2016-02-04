@@ -5,9 +5,11 @@ export class LibraryController {
     this.showFilter = false;
     this.showError = false;
     this.MAX_LIMIT = 50;
-    this.subjectList = [];
-    this.contentList = [];
     this.searchInfo = {$current: ''};
+    this.filterGrid = {
+      show: {grades: true, subjects: true, popularcat: true},
+      filterArr: []
+    };
 
     this.search = (info) => {
       if (!info.$bypass) {
@@ -137,27 +139,20 @@ export class LibraryController {
       });
     };
 
-    /*var filters = $service.$connect('filters', 'magic', 'filterDetails', {
+    var filters = $service.$connect('filters', 'magic', 'filterDetails', {
       urlParams: {token: $service.token('get')}
     });
 
     filters.success((response) => {
-      var tempArr, sub, tempArr1, content = [];
-
-      _.each(response.contentFilter[1].filterList, function (info) {
-        tempArr = info.name;
-        sub.push(tempArr)
+      _.each(response.contentFilter, (item) => {
+        _.each(item.filterList, (el) => {
+          el.checked = false;
+        });
+        if (this.filterGrid.show[item.id]) {
+          this.filterGrid.filterArr.push(item);
+        }
       });
-
-      _.each(response.contentFilter[6].filterList, function (item) {
-        tempArr1 = item.name;
-        content.push(tempArr1)
-      });
-
-      this.subjectList = sub;
-      this.contentList = content;
-      $log.debug(this.subjectList,this.contentList);
-    });*/
+    });
 
     this.fetchData = (params) => {
       this.showError = false;
