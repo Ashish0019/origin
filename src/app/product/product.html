@@ -34,6 +34,7 @@
     <div otherdata layout-align="space-between start" layout="row">
       <div flex-gt-lg="40" flex-gt="40" flex-md="60" flex="40">
         <div layout="column">
+
           <md-button flex="" class="md-primary md-raised"
                      ng-if="!product.book.hideAdd"
                      ng-click="product.addProduct()"
@@ -41,6 +42,10 @@
                      style="color: #ffffff;background-color: #00af9d; width:150px;">
             <label style="font-size: 16px; cursor: pointer;"> ADD TO LIBRARY </label>
           </md-button>
+
+
+
+
           <p description>{{product.description}}</p>
           <table ng-hide="product.author=='Youtube'">
             <thead>
