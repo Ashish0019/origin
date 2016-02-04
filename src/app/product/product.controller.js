@@ -5,6 +5,7 @@ export class ProductController {
     this.showEnlargedImage = false;
     this.info = {};
     this.user = {};
+    this.likes = [];
     this.book = {
       hideAdd: true
     };
@@ -25,12 +26,13 @@ export class ProductController {
 
         var freeBook = $service.$connect('freeBooks', 'magic', 'freeBookListing', {
           urlParams: {
-            username: this.user.userName,
+            username: 'user.demo@demo.com',
             token: $service.token('get')
           }});
 
         freeBook.success((response) => {
-          if (response.responseCode === 200) {
+          $log.debug(response);
+          if (response.response.responseCode === 200) {
             var query = _.find(response.userFreeBooks, (item) => {
               return item === parseInt($stateParams.id, 10);
             });
@@ -38,6 +40,10 @@ export class ProductController {
             if (query) {
               this.book.hideAdd = true;
             }
+
+            _.each(response.userFreeBooks, (item) => {
+              this.likes.push($service.$query('library', item, 'unique'));
+            });
 
             return 1;
           }

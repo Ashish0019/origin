@@ -5,7 +5,6 @@
   outline: 0;
   margin-bottom: 50px;
 
-
   * {
     text-transform: none;
   }
@@ -114,7 +113,7 @@
         font-size: 14px;
         color: #333333;
       }
-      [addedToLib]{
+      [addedToLib] {
         background-image: url("../assets/images/library_tag.png");
         width: 80px;
         height: 80px;
@@ -136,12 +135,12 @@
           top: 86%;
           left: -8px;
           width: 100%;
-        [zoomIcon]{
-          background-size: 30px;
-          position: relative;
-          fill:#fff;
+          [zoomIcon] {
+            background-size: 30px;
+            position: relative;
+            fill: #fff;
+          }
         }
-      }
 
       }
 
@@ -180,6 +179,95 @@
     [separator] {
       margin-left: 10px;
       border-bottom: 1px solid #000000;
+    }
+
+    [content-listing] {
+      width: 100%;
+
+      [content-item] {
+        width: 180px;
+        height: 260px;
+        margin-bottom: 27px;
+        margin-left: 20px;
+        margin-right: 10px;
+        border: 1px solid #d8d8d8;
+        cursor: pointer;
+
+
+        .content-item-children {
+          border: none;
+          margin-top: 2px;
+          margin-bottom: 2px;
+        }
+
+        [thumbnail-container] {
+          width: 160px;
+          height: 160px;
+
+          [item-info="thumbnail"] {
+            @extend .content-item-children;
+            height: 160px;
+            width: 180px;
+            margin-top: 8px;
+          }
+        }
+
+        [item-meta="info"] {
+          width: 90%;
+
+          margin-bottom: 24px;
+
+          * {margin: 0;}
+
+          [content-item="title"] {
+            @extend .content-item-children;
+            width: 90%;
+            height: auto;
+
+            border: none;
+            color: rgba(64, 64, 64, 0.54);
+            font-size: 1.1em;
+            font-weight: 800;
+          }
+
+          [content-item="author"] {
+            @extend .content-item-children;
+            width: 90%;
+            height: auto;
+            color:#A3A3A3;
+            font-size: 0.8em;
+          }
+        }
+
+        [content-footer="category"] {
+          width: 100%;
+
+          padding: 8px;
+          font-size: 0.8em;
+          font-weight: 700;
+          color: #a3a3a3;
+          border-top: 1px solid #d8d8d8;
+          box-shadow: 0px 2px rgba(102, 102, 102, 0.3);
+
+          span {
+            margin-left:0;
+          }
+        }
+
+        [content-footer="analytics"] {
+          width: 100%;
+
+          padding: 8px;
+          font-size: 0.8em;
+          font-weight: 700;
+          color: #a3a3a3;
+          border-top: 1px solid #d8d8d8;
+
+          span {
+            margin-left: 4px;
+          }
+        }
+      }
     }
   }
 

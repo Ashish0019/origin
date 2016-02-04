@@ -25,9 +25,22 @@ class $ServiceProvider {
             $stored: true,
             mapping: {}
           },
+          getProductDetails: {
+            HOST: 'mbx-api-staging.getmagicbox.com',
+            url: '/services/product/v1.0/getProductDetails',
+            preProcess: true,
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            method: 'GET',
+            retrieved: false,
+            appended: false,
+            $stored: false,
+            mapping: {}
+          },
           addUpdateProduct: {
             HOST: 'mbx-api-staging.getmagicbox.com',
-            url: '/services//product/v1.0/addUpdateFreeBookUserAccess',
+            url: '/services/product/v1.0/addUpdateFreeBookUserAccess',
             preProcess: true,
             headers: {
               'Content-Type': 'application/json'
