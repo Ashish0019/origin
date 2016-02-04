@@ -1,16 +1,43 @@
 export class ProductController {
-  constructor($scope, $log, $http, $service, $stateParams, $sce) {
+  constructor($scope, $log, $state, $service, $stateParams, $sce) {
     'ngInject';
     this.showDetails = false;
     this.showEnlargedImage = false;
     this.info = {};
+    this.user = {};
+    this.book = {
+      hideAdd: true
+    };
 
-
-    var detail = $service.$query($stateParams.id, 'unique');
+    var detail = $service.$query('library', $stateParams.id, 'unique');
 
     if (!_.isEmpty(detail)) {
       this.author = detail.author;
       this.showDetails = true;
+
+      var sessionStatus = $service.$connect('none', 'magic', 'sessionStatus');
+
+      sessionStatus.success((response) => {
+        var userInfo = response.userAccSrvRes.userSessionData;
+
+        if (!_.isEmpty(userInfo)) {this.user = userInfo;}
+
+        var freeBook = $service.$connect('freeBooks', 'magic', 'freeBookListing', {
+          urlParams: {
+            username: this.user.userName,
+            token: $service.token('get')
+          }});
+
+        freeBook.success((response) => {
+          var query = _.find(response.userFreeBooks, (item) => {
+            return item === parseInt($stateParams.id, 10);
+          });
+
+          if (query) {
+            this.book.hideAdd = true;
+          }
+        });
+      });
 
       if (detail.author == "Youtube") {
         this.info.title = detail.title;
@@ -35,6 +62,18 @@ export class ProductController {
         this.description = detail.meta.description;
         this.info.Image = $sce.trustAsResourceUrl(detail.coverImage);
       }
+    } else {$state.go('library');}
+
+    this.addProduct = () => {
+      var addPromise = $service.$connect('none', 'magic', 'addUpdateProduct', {
+        urlParams: {token: $service.token('get')},
+        requestParams: {
+          username: this.user.userName,
+          productid: $stateParams.id
+        }
+      });
+
+      addPromise.success(() => {this.book.hideAdd = true;});
     }
   }
 }

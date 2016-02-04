@@ -1,10 +1,8 @@
-export function config ($logProvider, reCAPTCHAProvider) {
+export function config ($logProvider, reCAPTCHAProvider, $serviceProvider) {
   'ngInject';
   // Enable log
-
-  $logProvider.debugEnabled(true);
   reCAPTCHAProvider.setPublicKey('6LdUu_cSAAAAAJT-SnxZm_EL_NwazPuCwgfb70Wo');
-  reCAPTCHAProvider.setOptions({
-    theme: 'blackglass'
-  });
+  reCAPTCHAProvider.setOptions({theme: 'blackglass'});
+
+  $serviceProvider.setToken('ORIGIN_MAGICBOX_TOKEN');
 }

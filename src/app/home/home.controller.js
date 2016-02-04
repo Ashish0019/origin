@@ -20,12 +20,17 @@ export class HomeController {
     };
     this.details = [];
 
-    let $details = $service.$fetch('library', 'magic', 'productListing');
+    let $details = $service.$connect('library', 'magic', 'productListing', {
+      urlParams: {token: $service.token('get')},
+      requestParams: {
+        pageNumber: 1,
+        maxRecordCount: 50
+      }
+    });
 
     $details.success((response) => {
-      $log.debug(response);
       var temp = [];
-      _.each(response.productdetail, (item) => {
+      _.each(response.productSoList, (item) => {
         temp.push({
           title: item.title,
           subject: item.subject,
@@ -41,8 +46,8 @@ export class HomeController {
             gradeFrom: item.gradeFrom,
             gradeTo: item.gradeTo
           },
-          coverImage: item.coverImage,
-          category: this.categoryMapping[item.productType],
+          coverImage: item.thumbnail,
+          category: this.categoryMapping[item.productTypeTitle.toLowerCase()],
           analytics: {
             shares: 43,
             views: 78
@@ -51,7 +56,7 @@ export class HomeController {
       });
 
       $service.$append('library', 'magic', 'productListing', temp);
-      this.details = $service.$query('', 'full', this.MAX_SHOW_LIMIT);
+      this.details = $service.$query('library', '', 'full', this.MAX_SHOW_LIMIT);
     });
 
     $details.failure((error) => {
