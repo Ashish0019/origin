@@ -70,23 +70,21 @@
             Origin - Daily Scrum @ Weekly from 10:45am to 11:05am on w</p>
         </div>
       </div>
-      <div flex-gt-lg="40" flex-gt="50" flex-md="50" layout="column" flex="50"
+      <div flex-gt-lg="40" flex-gt="50" flex-md="48" layout="column" flex="50"
            ng-switch on="product.author" style="margin-right: 20px;">
         <div ng-switch-when='Youtube'>
-          <iframe width="90%" height="300px" ng-src="{{product.yVideo}}" allowfullscreen>
+          <iframe width="80%" height="300px" ng-src="{{product.yVideo}}" allowfullscreen>
           </iframe>
         </div>
         <div ng-switch-default>
-          <div class="contentContainer" ng-style="{'background-image':'url({{product.info.Image}})'}"
-               ng-click="showEnlargedImage = !showEnlargedImage" >
-            <img zoomIcon ng-src="assets/images/Zoom_in.svg"/>
-
+          <div class="contentContainer" ng-style="{'background-image':'url({{product.info.Image}})'}">
+          <md-button enlargerBackground ng-click="showEnlargedImage = !showEnlargedImage">
+            <md-icon zoomIcon md-svg-icon="assets/images/fullscreen.svg"></md-icon>
+          </md-button>
           </div>
-
           <div enlargeBG  ng-show="showEnlargedImage" ng-click="showEnlargedImage = !showEnlargedImage">
           <x-image-enlarge  class="imageEnlarge"
                             ng-style="{'background-image':'url({{product.info.Image}})'}">
-
           </x-image-enlarge>
           </div>
         </div>
@@ -108,4 +106,4 @@
     </div>
   </section>
 </div>
-
+<footer></footer>

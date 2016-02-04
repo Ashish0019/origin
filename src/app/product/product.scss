@@ -3,6 +3,7 @@
   color: #ffffff;
   font-size: 20px;
   outline: 0;
+  margin-bottom: 50px;
 
   * {
     text-transform: none;
@@ -117,13 +118,18 @@
         width: 70%;
         background-size: cover;
         outline: 0;
-
-        [zoomIcon]{
-          width: 40px;
+        [enlargerBackground] {
+          background-color: rgba(0, 0, 0, 0.64);
           position: relative;
-          left: 45%;
-          top: 43%;
+          top: 86%;
+          left: -8px;
+          width: 100%;
+        [zoomIcon]{
+          background-size: 30px;
+          position: relative;
+          fill:#fff;
         }
+      }
       }
 
       [enlargeBG] {
