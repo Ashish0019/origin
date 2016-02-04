@@ -5,32 +5,34 @@ export class LibraryController {
     this.showFilter = false;
     this.showError = false;
     this.MAX_LIMIT = 50;
-    this.subjectList = [];
-    this.contentList = [];
-
-
-    this.filter = {
-      subject: {
-        grammar: false,
-        language: false,
-        reading: false,
-        research: false,
-        speakingListening: false,
-        writing: false
-      }
+    this.searchInfo = {$current: ''};
+    this.filterGrid = {
+      show: {grades: true, subjects: true, popularcat: true},
+      filterArr: []
     };
 
     this.search = (info) => {
-      if (!_.isEmpty(info.$current)) {
+      if (!info.$bypass) {
+        if (!_.isEmpty(info.$current)) {
+          this.refreshListing({
+            requestParams: {
+              pageNumber: 1,
+              maxRecordCount: 50,
+              searchText: [info.$current]
+            },
+            youtube: {query: info.$current}
+            /*,
+             filter: {0: ['section', 'magic']}*/
+          });
+        }
+      } else {
         this.refreshListing({
           requestParams: {
             pageNumber: 1,
             maxRecordCount: 50,
-            searchText: [info.$current]
+            searchText: info.search.arr
           },
-          youtube: {query: info.$current}
-          /*,
-           filter: {0: ['section', 'magic']}*/
+          youtube: {query: info.search.youtube}
         });
       }
     };
@@ -141,30 +143,15 @@ export class LibraryController {
       urlParams: {token: $service.token('get')}
     });
 
-    var tempArr, sub, tempArr1, content = [];
-
     filters.success((response) => {
-      _.each(response.contentFilter[1].filterList, function (info) {
-        tempArr = info.name;
-        sub.push(tempArr)
+      _.each(response.contentFilter, (item) => {
+        _.each(item.filterList, (el) => {
+          el.checked = false;
+        });
+        if (this.filterGrid.show[item.id]) {
+          this.filterGrid.filterArr.push(item);
+        }
       });
-
-      _.each(response.contentFilter[6].filterList, function (item) {
-        tempArr1 = item.name;
-        content.push(tempArr1)
-      });
-
-
-
-
-
-      this.subjectList = sub;
-      this.contentList = content;
-      $log.debug(this.subjectList,this.contentList);
-
-
-
-
     });
 
     this.fetchData = (params) => {
@@ -233,7 +220,20 @@ export class LibraryController {
       }
     };
 
-    this.fetchData();
+    if (!_.isEmpty($service.search('get'))) {
+      var youtubeSearch = '';
+      var arr = $service.search('get');
+      this.searchInfo.$current = [];
+      _.each(arr, (item) => {
+        youtubeSearch += item + '+';
+        this.searchInfo.$current.push(item);
+      });
 
+      youtubeSearch = youtubeSearch.replace(/\++$/, '');
+      this.search({$bypass: true, search: {arr: $service.search('get'), youtube: youtubeSearch}});
+
+    } else {
+      this.fetchData();
+    }
   }
 }

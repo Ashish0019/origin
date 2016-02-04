@@ -1,5 +1,5 @@
 export class HomeController {
-  constructor($log, $document, $http, $service) {  // put $scope, $mdDialog, $mdMedia as args
+  constructor($log, $document, $state, $service) {  // put $scope, $mdDialog, $mdMedia as args
     'ngInject';
 
     this.search = {
@@ -31,28 +31,29 @@ export class HomeController {
     $details.success((response) => {
       var temp = [];
       _.each(response.productSoList, (item) => {
-        temp.push({
+        var pushJson = {
           title: item.title,
           subject: item.subject,
           author: item.author,
           id: item.productId,
           description: 'Updated Invitation: Platform + Assessments + Analytics + Origin - ' +
-            'Daily Scrum @ Weekly from' +
-            '10:45am to  11:05am on weekdays from Wed Jan 13 to Wed Jan 27Updated Invitation: ' +
-            'Platform + Assessments' + 'Analytics + Origin - Daily Scrum @ Weekly from 10:45am to 11:05am ' +
-            'on weekdays from Wed Jan 13 to' +
-            'Wed Jan 27',
+          'Daily Scrum @ Weekly from' +
+          '10:45am to  11:05am on weekdays from Wed Jan 13 to Wed Jan 27Updated Invitation: ' +
+          'Platform + Assessments' + 'Analytics + Origin - Daily Scrum @ Weekly from 10:45am to 11:05am ' +
+          'on weekdays from Wed Jan 13 to' +
+          'Wed Jan 27',
           meta: {
             gradeFrom: item.gradeFrom,
             gradeTo: item.gradeTo
           },
           coverImage: item.thumbnail,
-          category: this.categoryMapping[item.productTypeTitle.toLowerCase()],
           analytics: {
             shares: 43,
             views: 78
           }
-        });
+        };
+        pushJson.category = (item.productTypeTitle) ? this.categoryMapping[item.productTypeTitle.toLowerCase()] : '';
+        temp.push(pushJson);
       });
 
       $service.$append('library', 'magic', 'productListing', temp);
@@ -68,7 +69,8 @@ export class HomeController {
     };
 
     this.searchClicked = () => {
-      this.showNavBar = true;
+      $service.search('set', this.search.$current);
+      $state.go('library');
     };
 
     $document[0].addEventListener('scroll', () => {

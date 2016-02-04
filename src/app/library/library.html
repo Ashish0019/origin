@@ -1,5 +1,5 @@
 <nav-menu nav-text="I want to LEARN / TEACH"
-          search-text="{{library.search.$current}}" on-search="library.search"></nav-menu>
+          search-text="{{library.searchInfo.$current}}" on-search="library.search"></nav-menu>
 <section library-container layout="column" layout-fill layout-align="start center">
   <aside element="title">
     The ORIGINal Library
@@ -24,7 +24,6 @@
       <div filter-widget="grade" layout="column" layout-align="start start">
         <div filter-sub="title">Grade</div>
         <div grade="table">
-
           <table>
             <tr>
               <td>K</td>
@@ -44,30 +43,20 @@
               <td>11</td>
               <td>12</td>
             </tr>
-
           </table>
         </div>
       </div>
-
-
       <div filter-widget="subjects" layout="column" layout-align="start start">
-        <div filter-sub="title">Subjects</div>
-        <div subjects="checkboxes" layout="column" layout-align="start start"
-          ng-repeat="SubjectData in library.subjectList">
-          <md-checkbox  aria-label="{{SubjectData}}">
-            {{SubjectData}}
-          </md-checkbox>
-        </div>
-        <div filter-sub="title">Resource Type</div>
-        <div subjects="checkboxes" layout="column" layout-align="start start"
-             ng-repeat="ResourceTypes in library.contentList">
-          <md-checkbox  aria-label="{{ResourceTypes}}">
-            {{ResourceTypes}}
-          </md-checkbox>
+        <div ng-repeat="filters in library.filterGrid.filterArr">
+          <div filter-sub="title">{{filters.title}}</div>
+          <div subjects="checkboxes" layout="column" layout-align="start start"
+               ng-repeat="item in filters.filterList">
+            <md-checkbox ng-model="filters.filterList[$index].checked" aria-label="{{item.name}}">
+              {{item.name}}
+            </md-checkbox>
+          </div>
         </div>
       </div>
-
-
     </aside>
     <aside element="tab-error" layout="row" layout-align="center center" ng-if="library.showError">
       <div>{{library.errorMessage.message}}</div>
