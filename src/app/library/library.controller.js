@@ -72,7 +72,7 @@ export class LibraryController {
     this.populateDetails = (type, infoList) => {
       var temp = [];
       _.each(infoList, (item, index) => {
-        if (index < this.MAX_LIMIT / 2) {
+        if (index < this.MAX_LIMIT) {
           switch (type) {
             case 'magic':
               var pushDetails = {
@@ -186,7 +186,7 @@ export class LibraryController {
         this.refreshListing({
           requestParams: _.merge({
             pageNumber: 1,
-            maxRecordCount: 50
+            maxRecordCount: 200
           }, buildRequest)
         });
       }, 400);
@@ -227,7 +227,7 @@ export class LibraryController {
             key: 'AIzaSyDf7G7HNHRaSXZOdIszJaU9aiRl9TZYorY',
             part: 'snippet',
             q: youtubeQuery,
-            maxResults: 50
+            maxResults: 15
           },
           options: youtubeOptions
         });
