@@ -3,7 +3,7 @@ export class HomeController {
     'ngInject';
 
     this.search = {
-      $popular: ['K12', 'ELA' , 'english',' language', 'arts','K12 courses','K12 videos'],
+      $popular: ['K12 books', 'ELA' , 'english language arts','K12 courses','K12 videos'],
       $current: []
     };
     this.MAX_SHOW_LIMIT = 15;
