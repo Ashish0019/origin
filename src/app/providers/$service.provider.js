@@ -117,7 +117,7 @@ class $ServiceProvider {
       };
 
       if (!category[type].retrieved || !category[type].$stored) {
-        var payload = category[type];
+        var payload = _.clone(category[type]);
         var connectUrl = $location.protocol() + '://' + payload.HOST;
         var $httpPromise = {};
 
