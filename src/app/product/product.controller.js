@@ -55,7 +55,10 @@ export class ProductController {
         // hence I cropped the video Id from the Image path that I got from response for images
         var regex = /\/vi\/(.*)\//;
         var url = detail.coverImage;
-        var id = url.match(regex)[1];
+        var id = '';
+        if (url.match(regex)) {
+          id = url.match(regex)[1];
+        }
         var videoPath = "http://www.youtube.com/embed/" + id;
         this.yVideo = $sce.trustAsResourceUrl(videoPath);
       }

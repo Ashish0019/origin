@@ -1,4 +1,4 @@
-export function NavbarDirective($log) {
+export function NavbarDirective() {
   'ngInject';
 
   let directive = {
@@ -15,7 +15,6 @@ export function NavbarDirective($log) {
       };
 
       _.each($scope.$eval($attrs.searchText), (item) => {
-        $log.debug(item);
         $scope.search.$current += item + ' '
       });
 
