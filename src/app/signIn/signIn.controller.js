@@ -1,14 +1,14 @@
 export class SignInController {
   constructor($log, $scope) {
     'ngInject';
-    $scope.inputType = 'password';
+    this.inputType = 'password';
 
     this.user = {
       username: '',
       password: ''
     };
 
-    $scope.showPassword = function () {
+    this.showPassword = function () {
       if (this.inputType == 'password') {
         this.inputType = 'text';
       } else {

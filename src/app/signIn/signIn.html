@@ -22,12 +22,13 @@
         <div layout="row" layout-align="space-between center">
           <input class="input-feature" input-feature-pwd name="pwd" ng-model="signIn.user.password"
                  placeholder="Password"
-                 type={{inputType}} maxlength="20"
+                 type={{signIn.inputType}} maxlength="20"
                  required/>
           <div pwd-container>
-          <img ng-class="{'showPwd': inputType == 'password', 'hidePwd':inputType == 'text' }"
-               ng-click="showPassword()" ng-model="showPassword" ng-disabled="registration.pwd.$unto">
+            <div ng-class="{'showPwd': signIn.inputType == 'password', 'hidePwd':signIn.inputType == 'text' }"
+               ng-click="signIn.showPassword()" ng-model="showPassword" ng-disabled="registration.pwd.$unto">
             </div>
+          </div>
         </div>
         <div forgotPwd-container><a forgotPwd href="">Forgot Password?</a></div>
         <div entity="check_box">

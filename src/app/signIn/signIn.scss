@@ -79,19 +79,21 @@
       }
 
       .showPwd {
-        cursor: pointer;
-        background-size: contain;
+        background-image: url("../assets/images/eye_open.png");
+        background-size: 30px;
         width: 30px;
         height: 30px;
-        background: url("../assets/images/eye_show.svg") no-repeat;
+        background-repeat: no-repeat;
+
       }
 
       .hidePwd {
-        cursor: pointer;
-        background-size: contain;
+        background-image: url("../assets/images/eye_close.png");
+        background-size: 30px;
         width: 30px;
         height: 30px;
-        background: url("../assets/images/eye_hide.svg") no-repeat;
+        background-repeat: no-repeat;
+
       }
 
       [forgotPwd-container] {
@@ -136,12 +138,12 @@
           color: #ffffff;
           width: 120px;
         }
-
         [registration="cancel-button"] {
           background-color: #c24549;
           color: #ffffff;
           width: 120px;
         }
+
       }
 
       [orline] {
@@ -212,6 +214,8 @@
         }
       }
 
+
+
       [entity="hasAccount"] {
         color: #ffffff;
         font-size: 0.9em;
@@ -247,6 +251,7 @@
         [third-party="Facebook"].md-button.md-raised:not([disabled]) {
           background-color: #3F51B5;
           color: #ffffff;
+
         }
 
         [third-party="Google"] {
@@ -265,7 +270,6 @@
           color: #ffffff;
         }
       }
-
       .md-button[disabled] md-icon, .md-button.md-raised[disabled] md-icon {
         opacity: .1;
       }
