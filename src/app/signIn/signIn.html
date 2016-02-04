@@ -4,9 +4,14 @@
       <div logo-img></div>
     </div>
     <div form-section layout="column" layout-align="center center">
-      <span tagline>
+      <span tagline ng-hide="forgotpwd">
         <i>You are one step away from getting your free K-12 content</i>
       </span>
+
+      <span tagline ng-show="forgotpwd">
+        Enter your email address and we will send you a</br> link to reset your password.
+      </span>
+
 
       <form form-commit name="signInForm" method="post" ng-hide="true"
             action="http://origin.stg1.getmagicbox.com/j_spring_security_check" target="_self">
@@ -19,19 +24,22 @@
         <input class="input-feature" ng-model="signIn.user.username" placeholder="User Name" type="text"
                maxlength="60" required/>
 
-        <div layout="row" layout-align="space-between center">
+        <div layout="row" layout-align="space-between center" ng-hide="forgotpwd">
           <input class="input-feature" input-feature-pwd name="pwd" ng-model="signIn.user.password"
                  placeholder="Password"
                  type={{signIn.inputType}} maxlength="20"
                  required/>
-          <div pwd-container>
+          <div pwd-container ng-hide="forgotpwd" >
             <div ng-class="{'showPwd': signIn.inputType == 'password', 'hidePwd':signIn.inputType == 'text' }"
                ng-click="signIn.showPassword()" ng-model="showPassword" ng-disabled="registration.pwd.$unto">
             </div>
           </div>
         </div>
-        <div forgotPwd-container><a forgotPwd href="">Forgot Password?</a></div>
-        <div entity="check_box">
+        <div forgotPwd-container>
+          <span forgotPwd ng-model="forgotpwd" ng-hide="forgotpwd"
+                ng-click="forgotpwd = !forgotpwd">Forgot Password?</span>
+        </div>
+        <div entity="check_box" ng-hide="forgotpwd">
           <input type="checkbox" md-ink class="md-primary" ng-model="signIn.user.checkedBox" style="display: inline-block">
           </input>
         <span >
@@ -41,19 +49,30 @@
         </div>
       </form>
       <div registration="container" layout="row" layout-align="center center">
-        <md-button registration="register-button" class="md-raised"
-                   ng-disabled="registration.$invalid " ng-click="signIn.login(signInForm)">LOGIN
+        <md-button registration="register-button" class="md-raised" ng-hide="forgotpwd"
+                   ng-disabled="registration.$invalid " ng-click="signIn.login(signInForm)">
+          LOGIN
         </md-button>
-        <md-button registration="cancel-button" ui-sref="library" class="md-raised">
+        <md-button registration="cancel-button" ui-sref="library" class="md-raised" ng-hide="forgotpwd">
+          CANCEL
+        </md-button>
+
+        <md-button registration="register-button" class="md-raised" ng-show="forgotpwd"
+                   ng-disabled="signIn.user.username.$invalid " ng-click="">
+          SUBMIT
+        </md-button>
+
+        <md-button registration="cancel-button" ui-sref="signIn"
+                   ui-sref-opts="{reload: true}"class="md-raised" ng-show="forgotpwd">
           CANCEL
         </md-button>
       </div>
-      <div orline layout="row" layout-align="space-between center">
+      <div orline layout="row" layout-align="space-between center" ng-hide="forgotpwd">
         <hr/>
         <div orword>  OR  </div>
         <hr/>
       </div>
-      <div user-types layout="row" layout-align="center center">
+      <div user-types layout="row" layout-align="center center" ng-hide="forgotpwd">
         <div user="student" layout="column" layout-align="center center" ng-model="imageProps"
              ng-click="signUp.imageProps.current = 'student'">
           <div icon ng-class="{'active': signUp.imageProps.current === 'student'}"></div>
@@ -70,7 +89,7 @@
            <div>Join as Publisher</div>
          </div>-->
       </div>
-      <div entity="third-party-signIn" layout="column" layout-align="center center">
+      <div entity="third-party-signIn" layout="column" layout-align="center center" ng-hide="forgotpwd">
         <md-button third-party="Facebook" class="md-raised md-primary"
                    ng-disabled="!signUp.imageProps.current">
           <md-icon facebookIcon></md-icon>
