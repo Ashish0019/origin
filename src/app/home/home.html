@@ -48,7 +48,7 @@
          flex="100" ng-if="home.details.length > 0">
       <div content-item flex-sm="90" flex-md="32" flex-lg="28" flex-gt-lg="22"
            layout="column" layout-align="center center"
-            ng-repeat="item in home.details">
+            ng-repeat="item in home.details" ng-click="home.openProduct(item.id)">
         <div thumbnail-container layout="column" layout-align="center center">
           <div item-info="thumbnail" back-img="{{item.coverImage}}"></div>
         </div>
