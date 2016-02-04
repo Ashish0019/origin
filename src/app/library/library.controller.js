@@ -18,11 +18,13 @@ export class LibraryController {
     };
 
     this.search = (info) => {
-      this.refreshListing({
-        pageNumber: 1,
-        maxRecordCount: 50,
-        searchText: [info.$current]
-      });
+      if (!_.isEmpty(info.$current)) {
+        this.refreshListing({
+          pageNumber: 1,
+          maxRecordCount: 50,
+          searchText: [info.$current]
+        });
+      }
     };
 
     this.errorMessage = {
