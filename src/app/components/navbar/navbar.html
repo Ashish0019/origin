@@ -12,8 +12,11 @@
         <div layout="row" layout-align="start-center" >
           <div style="  margin-top: 10px; width:50%">
         <input search-bar ng-model="search.$current" aria-label="Search">
-        <md-icon md-svg-icon="assets/images/search.svg"
-                 style="width: 20px; height: 20px; position: relative;float: right; top: -22px;"></md-icon>
+        <md-icon md-svg-icon="assets/images/search.svg" ng-click="clickSearch()"
+                 style="width: 20px; height: 20px;
+                 position: relative; cursor: pointer;
+                 outline: none;
+                 float: right; top: -22px;"></md-icon>
           </div>
           </div>
       </md-input-container>

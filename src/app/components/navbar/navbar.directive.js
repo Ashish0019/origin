@@ -5,7 +5,8 @@ export function NavbarDirective() {
     restrict: 'E',
     templateUrl: 'app/components/navbar/navbar.html',
     scope: {
-      searchText: '@'
+      searchText: '@',
+      onSearch: '='
     },
     link: ($scope, $el, $attrs) => {
       $scope.navbarText = $attrs.navText;
@@ -16,6 +17,12 @@ export function NavbarDirective() {
       _.each($scope.$eval($attrs.searchText), (item) => {
         $scope.search.$current += item + ' '
       });
+
+      $scope.clickSearch = () => {
+        if (_.isFunction($scope.onSearch)) {
+          $scope.onSearch($scope.search);
+        }
+      }
 
     }
   };
