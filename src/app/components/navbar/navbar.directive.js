@@ -1,4 +1,4 @@
-export function NavbarDirective() {
+export function NavbarDirective($service,$log) {
   'ngInject';
 
   let directive = {
@@ -9,11 +9,12 @@ export function NavbarDirective() {
       onSearch: '='
     },
     link: ($scope, $el, $attrs) => {
+      $scope.UserLogin = false;
       $scope.navbarText = $attrs.navText;
       $scope.search = {
         $current: ''
       };
-
+      this.UserLogin = false;
       _.each($scope.$eval($attrs.searchText), (item) => {
         $scope.search.$current += item + ' '
       });
@@ -22,7 +23,21 @@ export function NavbarDirective() {
         if (_.isFunction($scope.onSearch)) {
           $scope.onSearch($scope.search);
         }
-      }
+      };
+
+
+      var sessionStatus = $service.$connect('none', 'magic', 'sessionStatus');
+      sessionStatus.success((response)=>{
+        var sessionStat = response.userAccSrvRes.userSessionData;
+        $log.debug(sessionStat);
+        if(sessionStat){
+          $scope.UserLogin = true;
+        }
+        else {
+          $scope.UserLogin = false;
+        }
+      })
+
 
     }
   };
