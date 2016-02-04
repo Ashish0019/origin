@@ -23,16 +23,16 @@
     </section>
     <section flex="7" layout="row" layout-align="center center" style="width: 12%"></section>
     <section login-panel="" flex="15" layout="row" layout-align="center center">
-      <md-button ui-sref="signUp" JoinFree ng-show="!UserLogin">Join Free</md-button>
-      <md-button ui-sref="signIn" Login ng-show="!UserLogin">Login</md-button>
+      <md-button ui-sref="signUp" JoinFree ng-show="UserLogin">Join Free</md-button>
+      <md-button ui-sref="signIn" Login ng-show="UserLogin">Login</md-button>
 
-      <md-button ng-show="UserLogin" loginIcons>
+      <md-button ng-show="!UserLogin" loginIcons>
         <div><md-icon md-svg-icon="assets/images/library.svg">
         </md-icon></div>
-        <div>Add to library</div>
+        <div>My Library</div>
       </md-button>
 
-      <md-button ng-show="UserLogin" loginIcons>
+      <md-button ng-show="!UserLogin" loginIcons>
         <div><md-icon md-svg-icon="assets/images/account.svg">
         </md-icon></div>
         <div>User</div>
