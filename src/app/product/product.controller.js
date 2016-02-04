@@ -93,7 +93,7 @@ export class ProductController {
         return 1;
       }
 
-      //$state.go('signUp');
+      $state.go('signUp');
     }
   }
 }
