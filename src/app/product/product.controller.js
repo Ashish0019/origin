@@ -68,8 +68,8 @@ $log.debug("hie",detail);
         this.info.title = detail.title;
         this.info.Content = "in" + " " + "<b>" + detail.subject + "</b>" + " " + "by" + " "
           + "<b>" + detail.author + "</b>";
-        this.info.Grades = "  " + detail.meta.gradeFrom + " - " + detail.meta.gradeTo;
-        this.info.Publisher = "  " + "Magic publisher";
+        this.info.Grades = "  " + 5 + " - " + 8;
+        this.info.Publisher = "  " + detail.author;
         this.info.Type = "  " + detail.category.name;
         this.description = detail.description;
         this.info.Image = $sce.trustAsResourceUrl(detail.coverImage);
