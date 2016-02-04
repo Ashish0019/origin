@@ -74,8 +74,7 @@ class $ServiceProvider {
           youtube: {
             method: 'GET',
             preProcess: false,
-            url: 'https://www.googleapis.com/youtube/v3/search?key=AIzaSyDf7G7HNHRaSXZOdIszJaU9aiRl9TZYorY' +
-            '&part=snippet&q=common+core+english+grades+k12&maxResults=50',
+            url: 'https://www.googleapis.com/youtube/v3/search',
             retrieved: false,
             appended: false,
             $stored: true,

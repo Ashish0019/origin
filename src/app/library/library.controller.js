@@ -20,9 +20,14 @@ export class LibraryController {
     this.search = (info) => {
       if (!_.isEmpty(info.$current)) {
         this.refreshListing({
-          pageNumber: 1,
-          maxRecordCount: 50,
-          searchText: [info.$current]
+          requestParams: {
+            pageNumber: 1,
+            maxRecordCount: 50,
+            searchText: [info.$current]
+          },
+          youtube: {query: info.$current}
+          /*,
+          filter: {0: ['section', 'magic']}*/
         });
       }
     };
@@ -123,9 +128,9 @@ export class LibraryController {
       this.details = [];
       this.fetchData({
         action: 'refresh',
-        requestParams: payload,
-        disableYoutube: true,
-        filter: {0: ['section', 'magic']}
+        requestParams: payload.requestParams,
+        youtube: params.youtube,
+        filter: payload.filter
       });
     };
 
@@ -142,6 +147,8 @@ export class LibraryController {
         maxRecordCount: 50
       };
 
+      var youtubeQuery = 'common+core+english+grades+k12';
+
       this.disabled = {youtube: false, magic: false};
 
       if (params) {
@@ -151,10 +158,27 @@ export class LibraryController {
 
         this.disabled.youtube = params.disableYoutube;
         this.disabled.magic = params.disableMagic;
+        if (params.youtube) {
+          youtubeQuery = params.youtube.query;
+          delete params.youtube;
+        }
       }
 
       if (!this.disabled.youtube) {
-        let youtube = $service.$connect('library', 'google', 'youtube');
+        var youtubeOptions = _.clone(params);
+        if (youtubeOptions) {
+          delete youtubeOptions.requestParams;
+        }
+
+        let youtube = $service.$connect('library', 'google', 'youtube', {
+          urlParams: {
+            key: 'AIzaSyDf7G7HNHRaSXZOdIszJaU9aiRl9TZYorY',
+            part: 'snippet',
+            q: youtubeQuery,
+            maxResults: 50
+          },
+          options: youtubeOptions
+        });
 
         youtube.success((response) => {
           this.populateDetails('google', response.items);
