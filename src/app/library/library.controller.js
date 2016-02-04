@@ -1,5 +1,5 @@
 export class LibraryController {
-  constructor($scope, $log, $http, $service, $state) {
+  constructor($scope, $log, $http, $service, $state, $timeout) {
     'ngInject';
     this.details = [];
     this.showFilter = false;
@@ -7,7 +7,19 @@ export class LibraryController {
     this.MAX_LIMIT = 50;
     this.searchInfo = {$current: ''};
     this.filterGrid = {
-      show: {grades: true, subjects: true, popularcat: true},
+      show: {
+        grades: {
+          enabled: true,
+          filterKey: 'filteredGradesList'
+        },
+        subjects: {
+          enabled: true,
+          filterKey: 'filteredSubjectsList'
+        },
+        popularcat: {
+          enabled: true,
+          filterKey: 'filterProductTypeList'
+        }},
       filterArr: []
     };
 
@@ -140,7 +152,8 @@ export class LibraryController {
     };
 
     var filters = $service.$connect('filters', 'magic', 'filterDetails', {
-      urlParams: {token: $service.token('get')}
+      urlParams: {token: $service.token('get')},
+      options: {action: 'refresh'}
     });
 
     filters.success((response) => {
@@ -149,10 +162,35 @@ export class LibraryController {
           el.checked = false;
         });
         if (this.filterGrid.show[item.id]) {
-          this.filterGrid.filterArr.push(item);
+          if (this.filterGrid.show[item.id].enabled) {
+            this.filterGrid.filterArr.push(item);
+          }
         }
       });
     });
+
+    this.filterSelected = () => {
+      var json = {};
+      var buildRequest = {};
+      $timeout(() => {
+        _.each(this.filterGrid.filterArr, (filterSection) => {
+          json[filterSection.id] = filterSection.filterList;
+          buildRequest[this.filterGrid.show[filterSection.id].filterKey] = [];
+          _.each(filterSection.filterList, (item) => {
+            if (item.checked) {
+              buildRequest[this.filterGrid.show[filterSection.id].filterKey].push(item.id);
+            }
+          });
+        });
+
+        this.refreshListing({
+          requestParams: _.merge({
+            pageNumber: 1,
+            maxRecordCount: 50
+          }, buildRequest)
+        });
+      }, 400);
+    };
 
     this.fetchData = (params) => {
       this.showError = false;
