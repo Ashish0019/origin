@@ -39,7 +39,6 @@ export class LibraryController {
     this.populateDetails = (type, infoList) => {
       var temp = [];
       _.each(infoList, (item, index) => {
-        $log.debug(item);
         if (index < this.MAX_LIMIT / 2) {
           switch (type) {
             case 'magic':

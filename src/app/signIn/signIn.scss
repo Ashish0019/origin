@@ -4,9 +4,11 @@
   background: url("../assets/images/background.jpg") center center;
   background-size: cover;
   overflow: auto;
+
   *{
     text-transform: none;
   }
+
   [signIn-panel] {
     background-color: transparent;
     min-width: 540px;
@@ -77,21 +79,19 @@
       }
 
       .showPwd {
-        background-image: url("../assets/images/eye_show.svg");
-        background-size: 30px;
+        cursor: pointer;
+        background-size: contain;
         width: 30px;
         height: 30px;
-        background-repeat: no-repeat;
-
+        background: url("../assets/images/eye_show.svg") no-repeat;
       }
 
       .hidePwd {
-        background-image: url("../assets/images/eye_hide.svg");
-        background-size: 30px;
+        cursor: pointer;
+        background-size: contain;
         width: 30px;
         height: 30px;
-        background-repeat: no-repeat;
-
+        background: url("../assets/images/eye_hide.svg") no-repeat;
       }
 
       [forgotPwd-container] {
@@ -136,12 +136,12 @@
           color: #ffffff;
           width: 120px;
         }
+
         [registration="cancel-button"] {
           background-color: #c24549;
           color: #ffffff;
           width: 120px;
         }
-
       }
 
       [orline] {
@@ -212,8 +212,6 @@
         }
       }
 
-
-
       [entity="hasAccount"] {
         color: #ffffff;
         font-size: 0.9em;
@@ -249,7 +247,6 @@
         [third-party="Facebook"].md-button.md-raised:not([disabled]) {
           background-color: #3F51B5;
           color: #ffffff;
-
         }
 
         [third-party="Google"] {
@@ -268,6 +265,7 @@
           color: #ffffff;
         }
       }
+
       .md-button[disabled] md-icon, .md-button.md-raised[disabled] md-icon {
         opacity: .1;
       }

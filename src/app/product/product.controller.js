@@ -14,6 +14,7 @@ export class ProductController {
     if (!_.isEmpty(detail)) {
       this.author = detail.author;
       this.showDetails = true;
+      this.showAddToLibrary = detail.section === 'magic';
 
       var sessionStatus = $service.$connect('none', 'magic', 'sessionStatus');
 
@@ -29,13 +30,19 @@ export class ProductController {
           }});
 
         freeBook.success((response) => {
-          var query = _.find(response.userFreeBooks, (item) => {
-            return item === parseInt($stateParams.id, 10);
-          });
+          if (response.responseCode === 200) {
+            var query = _.find(response.userFreeBooks, (item) => {
+              return item === parseInt($stateParams.id, 10);
+            });
 
-          if (query) {
-            this.book.hideAdd = true;
+            if (query) {
+              this.book.hideAdd = true;
+            }
+
+            return 1;
           }
+
+          this.book.hideAdd = false;
         });
       });
 
@@ -65,15 +72,21 @@ export class ProductController {
     } else {$state.go('library');}
 
     this.addProduct = () => {
-      var addPromise = $service.$connect('none', 'magic', 'addUpdateProduct', {
-        urlParams: {token: $service.token('get')},
-        requestParams: {
-          username: this.user.userName,
-          productid: $stateParams.id
-        }
-      });
+      if (!_.isEmpty(this.user.userName)) {
+        var addPromise = $service.$connect('none', 'magic', 'addUpdateProduct', {
+          urlParams: {token: $service.token('get')},
+          requestParams: {
+            username: this.user.userName,
+            productid: $stateParams.id
+          }
+        });
 
-      addPromise.success(() => {this.book.hideAdd = true;});
+        addPromise.success(() => {this.book.hideAdd = true;});
+
+        return 1;
+      }
+
+      $state.go('signIn');
     }
   }
 }
