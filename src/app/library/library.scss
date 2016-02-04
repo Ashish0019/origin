@@ -48,6 +48,14 @@
   }
 
   [element="sidebar-filter"] {
+    md-checkbox.md-checked .md-icon {
+      background-color: rgb(0, 204, 153);
+    }
+
+    md-checkbox.md-checked .md-ink-ripple {
+      color: rgb(111, 226, 197);
+    }
+
     [filter-widget] {
       width: 240px;
       margin-right: 10px;

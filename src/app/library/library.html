@@ -5,8 +5,12 @@
     The ORIGINal Library
   </aside>
   <aside element="tab-header" layout="row" layout-align="space-between center">
-    <div filter layout="row" layout-align="center center" ng-click="library.showFilter = !library.showFilter">
-      <md-icon md-svg-icon="assets/images/filter_Arw.svg" style="width: 16px; height: 16px"></md-icon>
+    <div filter layout="row" layout-align="center center"
+         ng-click="library.showFilter = !library.showFilter">
+      <md-icon ng-show="!library.showFilter" md-svg-icon="assets/images/chevron-right.svg"
+               style="width: 16px; height: 16px"></md-icon>
+      <md-icon ng-show="library.showFilter" md-svg-icon="assets/images/chevron-left.svg"
+               style="width: 16px; height: 16px"></md-icon>
       <span>Filter</span>
     </div>
     <div tabs layout="row" layout-align="start start" flex="60">
