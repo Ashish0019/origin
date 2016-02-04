@@ -1,5 +1,5 @@
 <nav-menu nav-text="I want to LEARN / TEACH"
-          search-text="{{library.search.$current}}" on-search="library.search"></nav-menu>
+          search-text="{{library.searchInfo.$current}}" on-search="library.search"></nav-menu>
 <section library-container layout="column" layout-fill layout-align="start center">
   <aside element="title">
     The ORIGINal Library
@@ -24,7 +24,6 @@
       <div filter-widget="grade" layout="column" layout-align="start start">
         <div filter-sub="title">Grade</div>
         <div grade="table">
-
           <table>
             <tr>
               <td>K</td>
@@ -44,12 +43,9 @@
               <td>11</td>
               <td>12</td>
             </tr>
-
           </table>
         </div>
       </div>
-
-
       <div filter-widget="subjects" layout="column" layout-align="start start">
         <div filter-sub="title">Subjects</div>
         <div subjects="checkboxes" layout="column" layout-align="start start"
@@ -66,8 +62,6 @@
           </md-checkbox>
         </div>
       </div>
-
-
     </aside>
     <aside element="tab-error" layout="row" layout-align="center center" ng-if="library.showError">
       <div>{{library.errorMessage.message}}</div>

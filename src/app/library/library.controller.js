@@ -7,30 +7,30 @@ export class LibraryController {
     this.MAX_LIMIT = 50;
     this.subjectList = [];
     this.contentList = [];
-
-
-    this.filter = {
-      subject: {
-        grammar: false,
-        language: false,
-        reading: false,
-        research: false,
-        speakingListening: false,
-        writing: false
-      }
-    };
+    this.searchInfo = {$current: ''};
 
     this.search = (info) => {
-      if (!_.isEmpty(info.$current)) {
+      if (!info.$bypass) {
+        if (!_.isEmpty(info.$current)) {
+          this.refreshListing({
+            requestParams: {
+              pageNumber: 1,
+              maxRecordCount: 50,
+              searchText: [info.$current]
+            },
+            youtube: {query: info.$current}
+            /*,
+             filter: {0: ['section', 'magic']}*/
+          });
+        }
+      } else {
         this.refreshListing({
           requestParams: {
             pageNumber: 1,
             maxRecordCount: 50,
-            searchText: [info.$current]
+            searchText: info.search.arr
           },
-          youtube: {query: info.$current}
-          /*,
-           filter: {0: ['section', 'magic']}*/
+          youtube: {query: info.search.youtube}
         });
       }
     };
@@ -137,13 +137,13 @@ export class LibraryController {
       });
     };
 
-    var filters = $service.$connect('filters', 'magic', 'filterDetails', {
+    /*var filters = $service.$connect('filters', 'magic', 'filterDetails', {
       urlParams: {token: $service.token('get')}
     });
 
-    var tempArr, sub, tempArr1, content = [];
-
     filters.success((response) => {
+      var tempArr, sub, tempArr1, content = [];
+
       _.each(response.contentFilter[1].filterList, function (info) {
         tempArr = info.name;
         sub.push(tempArr)
@@ -154,18 +154,10 @@ export class LibraryController {
         content.push(tempArr1)
       });
 
-
-
-
-
       this.subjectList = sub;
       this.contentList = content;
       $log.debug(this.subjectList,this.contentList);
-
-
-
-
-    });
+    });*/
 
     this.fetchData = (params) => {
       this.showError = false;
@@ -233,7 +225,20 @@ export class LibraryController {
       }
     };
 
-    this.fetchData();
+    if (!_.isEmpty($service.search('get'))) {
+      var youtubeSearch = '';
+      var arr = $service.search('get');
+      this.searchInfo.$current = [];
+      _.each(arr, (item) => {
+        youtubeSearch += item + '+';
+        this.searchInfo.$current.push(item);
+      });
 
+      youtubeSearch = youtubeSearch.replace(/\++$/, '');
+      this.search({$bypass: true, search: {arr: $service.search('get'), youtube: youtubeSearch}});
+
+    } else {
+      this.fetchData();
+    }
   }
 }

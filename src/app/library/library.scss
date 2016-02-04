@@ -50,10 +50,17 @@
   [element="sidebar-filter"] {
     [filter-widget] {
       width: 240px;
+      margin-right: 10px;
 
       [filter-sub="title"] {
         font-size: 1.0em;
         font-weight: 800;
+      }
+
+      [subjects="checkboxes"] {
+        md-checkbox {
+          margin: 4px;
+        }
       }
     }
     [grade] {

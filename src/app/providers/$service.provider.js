@@ -6,6 +6,8 @@
 class $ServiceProvider {
   constructor() {
 
+    this.search = {$current: ''};
+
     this.$config = {
       token: '',
       API: {
@@ -282,7 +284,16 @@ class $ServiceProvider {
       $connect: connect,
       $append: append,
       $query: query,
-      token: token
+      token: token,
+      search: (mode, value) => {
+        switch (mode) {
+          case 'get':
+            return this.search.$current;
+          case 'set':
+            this.search.$current = value;
+            break;
+        }
+      }
     };
   }
 }
