@@ -34,7 +34,6 @@
     <div otherdata layout-align="space-between start" layout="row">
       <div flex-gt-lg="40" flex-gt="40" flex-md="60" flex="40">
         <div layout="column">
-
           <md-button flex="" class="md-primary md-raised"
                      ng-if="!product.book.hideAdd"
                      ng-click="product.addProduct()"
@@ -43,16 +42,11 @@
                      style="color: #ffffff;background-color: #00af9d; width:150px;">
             <label style="font-size: 16px; cursor: pointer;"> ADD TO LIBRARY </label>
           </md-button>
-
           <md-button flex="" class="md-primary md-raised"
                      ng-hide="product.showthings"
                      style="color: #ffffff;background-color: #00af9d; width:180px;">
             <label style="font-size: 16px; cursor: pointer;"> ADDED IN LIBRARY </label>
           </md-button>
-
-
-
-
           <p description>{{product.description}}</p>
           <table ng-hide="product.author=='Youtube'">
             <thead>
@@ -72,7 +66,6 @@
             <tr>
               <td class="tableHeading">Resource Types</td>
               <td>{{product.info.Type}}</td>
-
             </tr>
             </tbody>
           </table>
@@ -92,12 +85,13 @@
           <md-icon addedToLib
                    ng-hide="product.showthings"></md-icon>
           <div class="contentContainer" ng-style="{'background-image':'url({{product.info.Image}})'}">
-          <md-button enlargerBackground ng-click="showEnlargedImage = !showEnlargedImage">
+          <md-button enlargerBackground aria-label="Product View"
+                     ng-click="showEnlargedImage = !showEnlargedImage">
             <md-icon zoomIcon md-svg-icon="assets/images/fullscreen.svg"></md-icon>
           </md-button>
           </div>
           <div enlargeBG  ng-show="showEnlargedImage" ng-click="showEnlargedImage = !showEnlargedImage">
-          <x-image-enlarge  class="imageEnlarge"
+          <x-image-enlarge class="imageEnlarge"
                             ng-style="{'background-image':'url({{product.info.Image}})'}">
           </x-image-enlarge>
           </div>
@@ -105,10 +99,31 @@
       </div>
      </div>
   </div>
-  <div someMoreData layout="column" ng-if="product.showDetails">
+  <div someMoreData layout="column" ng-if="product.likes.length > 0">
     <div layout="row" layout-align="start center">
       <div flex="19" style="font-weight: 600">You might also like</div>
       <div separator flex="80"></div>
+    </div>
+    <div content-listing layout="row" layout-align="start start" layout-wrap="" flex="100">
+      <div content-item flex-sm="90" flex-md="32" flex-lg="28" flex-gt-lg="22"
+           layout="column" layout-align="center center"
+           ng-click="product.openProduct(item.id)"
+           ng-repeat="item in product.likes">
+        <div thumbnail-container layout="column" layout-align="center center">
+          <div item-info="thumbnail" back-img="{{item.coverImage}}"></div>
+        </div>
+        <div item-meta="info" layout="column" layout-align="center start">
+          <div content-item="title">{{item.title | characters:15}}</div>
+          <div content-item="author">{{item.author | characters:15 || "hello"}}</div>
+        </div>
+        <div content-footer="category">
+          <span><md-icon md-svg-icon="{{item.category.icon}}" style="padding-right: 2px;"></md-icon> {{item.category.name}}</span>
+        </div>
+        <!-- <div content-footer="analytics">
+           <span><md-icon md-svg-icon="assets/images/share.svg"></md-icon> {{item.analytics.shares}}</span>
+           <span><md-icon md-svg-icon="assets/images/eye.svg"></md-icon> {{item.analytics.views}}</span>
+         </div>-->
+      </div>
     </div>
   </div>
   <section loader ng-if="!product.showDetails">
