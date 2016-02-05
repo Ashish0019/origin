@@ -34,18 +34,16 @@
     <div otherdata layout-align="space-between start" layout="row">
       <div flex-gt-lg="40" flex-gt="40" flex-md="60" flex="40">
         <div layout="column">
-          <md-button flex="" class="md-primary md-raised"
+          <md-button addToLibrary flex="" class="md-primary md-raised"
                      ng-if="!product.book.hideAdd"
                      ng-click="product.addProduct()"
-                     ng-show="product.showAddToLibrary && !product.book.added"
-                     style="color: #ffffff;background-color: #00af9d; width:150px;">
-            <label style="font-size: 16px; cursor: pointer;"> ADD TO LIBRARY </label>
+                     ng-show="product.showAddToLibrary && !product.book.added">
+            <label addTo> ADD TO LIBRARY </label>
           </md-button>
-          <md-button flex="" class="md-primary md-raised"
+          <md-button addedInLibrary flex="" class="md-primary md-raised"
                      ng-show="product.book.added"
-                     ng-disabled="true"
-                     style="color: #ffffff; width:180px;">
-            <label style="font-size: 16px; cursor: pointer;"> ADDED IN LIBRARY </label>
+                     ng-disabled="true">
+            <label addTo> ADDED IN LIBRARY </label>
           </md-button>
           <p description>{{product.description}}</p>
           <table ng-hide="product.author=='Youtube'">
@@ -83,7 +81,7 @@
         </div>
         <div ng-switch-default>
           <md-icon addedToLib
-                   ng-hide="product.showthings"></md-icon>
+                   ng-show="product.book.added"></md-icon>
           <div class="contentContainer" ng-style="{'background-image':'url({{product.info.Image}})'}">
           <md-button enlargerBackground aria-label="Product View"
                      ng-click="showEnlargedImage = !showEnlargedImage">

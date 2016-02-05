@@ -67,7 +67,9 @@
 
       [origin-contents] {
         width: 80%;
-
+        md-button {
+         color:#757575;
+        }
         .md-chips .md-chip-input-container input, .md-chips .md-chip-input-container input:not([type]) {
           color: #ffffff;
         }
@@ -103,7 +105,9 @@
 
         [search-container] {
           width: 100%;
-
+          md-chips {
+            font-size: 18px
+          }
         }
 
         #searches {
@@ -146,6 +150,11 @@
 section[popular-listing] {
   margin-top: 64px;
   margin-left: 32px;
+aside {
+  color: #757575;
+  font-size: 2.0em;
+  padding: 10px;
+}
 
   [content-listing-wrapper] {
     width: 100%;
@@ -220,6 +229,9 @@ section[popular-listing] {
 
           span {
             margin-left:0;
+            md-icon {
+             padding-right: 2px;
+            }
           }
         }
 
@@ -236,6 +248,12 @@ section[popular-listing] {
             margin-left: 4px;
           }
         }
+      }
+      [browseMore] {
+        width: 250px;
+        height: 52px;
+        font-size: 20px;
+        padding-top: 8px;
       }
     }
   }
