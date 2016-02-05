@@ -186,7 +186,7 @@
 
       [content-item] {
         width: 180px;
-        height: 235px;
+        height: 245px;
         margin-bottom: 27px;
         margin-left: 20px;
         margin-right: 10px;
@@ -223,7 +223,7 @@
             @extend .content-item-children;
             width: 90%;
             height: auto;
-
+            padding-top: 5px;
             border: none;
             color: rgba(64, 64, 64, 0.54);
             font-size: 1.1em;
@@ -235,7 +235,7 @@
             width: 90%;
             height: auto;
             color:#A3A3A3;
-            font-size: 0.8em;
+            font-size: 0.65em;
           }
         }
 
@@ -243,7 +243,7 @@
           width: 100%;
 
           padding: 8px;
-          font-size: 0.8em;
+          font-size: 0.65em;
           font-weight: 700;
           color: #a3a3a3;
           border-top: 1px solid #d8d8d8;
