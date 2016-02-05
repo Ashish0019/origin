@@ -11,6 +11,17 @@ export class ProductController {
       hideAdd: true
     };
 
+    this.categoryMapping = {
+      epub: {name: 'Epub', icon: 'assets/images/clipboard-text.svg'},
+      game: {name: 'Game', icon: 'assets/images/gamepad-variant.svg'},
+      video: {name: 'Video', icon: 'assets/images/video.svg'},
+      ebook: {name: 'E - Book', icon: 'assets/images/clipboard-text.svg'},
+      pdf: {name: 'PDF', icon: 'assets/images/file-pdf-box.svg'},
+      simulation: {name: 'Simulation', icon: 'assets/images/desktop-mac.svg'},
+      audio: {name: 'Audio', icon: 'assets/images/audio_icon.svg'},
+      youtube: {name: 'YouTube', icon: 'assets/images/youtubeVideo_icon.svg'}
+    };
+
     var detail = $service.$query('library', $stateParams.id, 'unique');
 
     if (!_.isEmpty(detail)) {
@@ -25,15 +36,17 @@ export class ProductController {
 
         if (!_.isEmpty(userInfo)) {this.user = userInfo;}
 
-        var freeBook = $service.$connect('freeBooks', 'magic', 'freeBookListing', {
+        var freeBook = $service.$connect('freeBooks', 'magic', 'getProductDetails', {
           urlParams: {
-            username: this.user.userName,
+            id: $stateParams.id,
+            username: 'user.demo@demo.com',
             token: $service.token('get')
           }});
 
         freeBook.success((response) => {
-          if (response.response.responseCode === 200) {
-            var query = _.find(response.userFreeBooks, (item) => {
+          var data = response.response;
+          if (data.responseCode === 200) {
+            var query = _.find(response.relatedProducts, (item) => {
               return item === parseInt($stateParams.id, 10);
             });
 
@@ -41,8 +54,41 @@ export class ProductController {
               this.book.hideAdd = true;
             }
 
-            _.each(response.userFreeBooks, (item) => {
-              this.likes.push($service.$query('library', item, 'unique'));
+            _.each(response.relatedProducts, (item) => {
+              var pushDetails = {
+                title: item.title,
+                subject: item.subject || item.subject2 || "English",
+                author: item.author || "Magic",
+                id: item.productId,
+                meta: {
+                  gradeFrom: item.gradeFrom,
+                  gradeTo: item.gradeTo
+                },
+                coverImage: item.thumbnail,
+                description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry." +
+                "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer" +
+                "took a galley of type and scrambled it to make a type specimen book. " +
+                "It has survived not only five centuries, but also the leap into electronic " +
+                "typesetting, remaining essentially unchanged",
+                analytics: {
+                  shares: 43,
+                  views: 78
+                }
+              };
+
+              if (item.productTypeTitle) {
+                pushDetails.category = this.categoryMapping[item.productTypeTitle.toLowerCase()];
+              }
+
+              $service.$insert('library', $stateParams.id, {
+                $val: {
+                  key: 'related',
+                  data: pushDetails
+                },
+                $type: 'array'
+              });
+
+              this.likes.push(pushDetails);
             });
 
             return 1;
@@ -79,6 +125,12 @@ export class ProductController {
         this.info.Image = $sce.trustAsResourceUrl(detail.coverImage);
       }
     } else {$state.go('library');}
+
+    this.openProduct = (id) => {
+      $state.go('product', {
+        id: id
+      });
+    };
 
     this.addProduct = () => {
       if (!_.isEmpty(this.user.userName)) {

@@ -27,7 +27,7 @@ class $ServiceProvider {
           },
           getProductDetails: {
             HOST: 'mbx-api-staging.getmagicbox.com',
-            url: '/services/product/v1.0/getProductDetails',
+            url: '/services/product/v1.0/getProductDetails/:id',
             preProcess: true,
             headers: {
               'Content-Type': 'application/json'
@@ -167,6 +167,10 @@ class $ServiceProvider {
           if (!_.isEmpty(info.urlParams)) {
             payload.url = payload.url + '?';
             _.each(info.urlParams, (value, key) => {
+              var reg = new RegExp('(:' + key + ')');
+              if (reg.test(payload.url)) {
+                return payload.url = payload.url.replace(reg, value);
+              }
               payload.url += key + "=" + value + "&";
             });
 
@@ -248,6 +252,25 @@ class $ServiceProvider {
       }
     };
 
+    //TODO fix insertion delay. {NOT IN USE, for now}
+    var insert = (loc, id, object) => {
+      var val = object || {};
+      _.each(this[loc], (item, index) => {
+        if (item.id === parseInt(id)) {
+          switch (val.$type) {
+            case 'array':
+              if (item[val.$val.key]) {
+                var query = _.find(this[loc][index][val.$val.key], {id: parseInt(val.$val.data.id, 10)});
+                if (_.isEmpty(query)) {
+                  this[loc][index][val.$val.key].push(val.$val.data);
+                }
+              } else {this[loc][index][val.$val.key] = [];}
+              break;
+          }
+        }
+      });
+    };
+
     var query = (loc, id, type, limit) => {
       var list = [];
       var max = limit || -1;
@@ -297,6 +320,7 @@ class $ServiceProvider {
       $connect: connect,
       $append: append,
       $query: query,
+      $insert: insert,
       token: token,
       search: (mode, value) => {
         switch (mode) {

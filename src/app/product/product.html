@@ -85,7 +85,8 @@
           <md-icon addedToLib
                    ng-hide="product.showthings"></md-icon>
           <div class="contentContainer" ng-style="{'background-image':'url({{product.info.Image}})'}">
-          <md-button enlargerBackground ng-click="showEnlargedImage = !showEnlargedImage">
+          <md-button enlargerBackground aria-label="Product View"
+                     ng-click="showEnlargedImage = !showEnlargedImage">
             <md-icon zoomIcon md-svg-icon="assets/images/fullscreen.svg"></md-icon>
           </md-button>
           </div>
@@ -105,7 +106,9 @@
     </div>
     <div content-listing layout="row" layout-align="start start" layout-wrap="" flex="100">
       <div content-item flex-sm="90" flex-md="32" flex-lg="28" flex-gt-lg="22"
-           layout="column" layout-align="center center" ng-repeat="item in product.likes">
+           layout="column" layout-align="center center"
+           ng-click="product.openProduct(item.id)"
+           ng-repeat="item in product.likes">
         <div thumbnail-container layout="column" layout-align="center center">
           <div item-info="thumbnail" back-img="{{item.coverImage}}"></div>
         </div>
