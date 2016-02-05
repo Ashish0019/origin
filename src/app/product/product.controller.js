@@ -2,13 +2,13 @@ export class ProductController {
   constructor($scope, $log, $state, $service, $stateParams, $sce) {
     'ngInject';
     this.showDetails = false;
-    this.showthings = true;
     this.showEnlargedImage = false;
     this.info = {};
     this.user = {};
     this.likes = [];
     this.book = {
-      hideAdd: true
+      hideAdd: true,
+      added: false
     };
 
     this.categoryMapping = {
@@ -50,9 +50,7 @@ export class ProductController {
               return item === parseInt($stateParams.id, 10);
             });
 
-            if (query) {
-              this.book.hideAdd = true;
-            }
+            this.book.hideAdd = !!query;
 
             _.each(response.relatedProducts, (item) => {
               var pushDetails = {
@@ -90,11 +88,7 @@ export class ProductController {
 
               this.likes.push(pushDetails);
             });
-
-            return 1;
           }
-
-          this.book.hideAdd = false;
         });
       });
 
@@ -144,7 +138,7 @@ export class ProductController {
 
         addPromise.success(() => {
           this.book.hideAdd = true;
-          this.showthings = true;
+          this.book.added = true;
         });
         return 1;
       }

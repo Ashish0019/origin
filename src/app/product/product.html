@@ -37,13 +37,12 @@
           <md-button flex="" class="md-primary md-raised"
                      ng-if="!product.book.hideAdd"
                      ng-click="product.addProduct()"
-                     ng-show="product.showAddToLibrary"
-                     ng-hide="!product.showthings"
+                     ng-show="product.showAddToLibrary && !product.book.added"
                      style="color: #ffffff;background-color: #00af9d; width:150px;">
             <label style="font-size: 16px; cursor: pointer;"> ADD TO LIBRARY </label>
           </md-button>
           <md-button flex="" class="md-primary md-raised"
-                     ng-hide="product.showthings"
+                     ng-show="!product.showAddToLibrary && product.book.added"
                      style="color: #ffffff;background-color: #00af9d; width:180px;">
             <label style="font-size: 16px; cursor: pointer;"> ADDED IN LIBRARY </label>
           </md-button>
