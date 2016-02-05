@@ -1,5 +1,5 @@
 export class SignInController {
-  constructor($log, $service,$scope ) {
+  constructor($log, $scope, $service) {
     'ngInject';
     this.inputType = 'password';
     this.forgot = false;
@@ -20,13 +20,6 @@ export class SignInController {
     this.login = ($form) => {
       $form.commit();
     };
-    $scope.$watch('this.user.username', ()=>{
-      $log.debug(1,this.user.username)
-
-
-    });
-
-
 
     this.ForgotPassword = () => {
       var userName = this.user.username;
@@ -36,14 +29,16 @@ export class SignInController {
           tenant: "magic"
         }
       });
-        forgot.success((response) => {
-        this.ForgotPwdText = response.userAccSrvRes.diagMessage;
 
+      forgot.success((response) => {
+        this.ForgotPwdText = response.userAccSrvRes.diagMessage;
       });
-        forgot.failure((error) => {
+
+      forgot.failure((error) => {
         $log.debug(error);
         this.ForgotPwdText = 'Service Unavailable';
       });
+
       this.forgot = true;
     }
   }

@@ -1,4 +1,4 @@
-export function NavbarDirective($service, $log) {
+export function NavbarDirective($log, $service) {
   'ngInject';
 
   let directive = {
@@ -27,15 +27,9 @@ export function NavbarDirective($service, $log) {
 
 
       var sessionStatus = $service.$connect('none', 'magic', 'sessionStatus');
-      sessionStatus.success((response)=>{
+      sessionStatus.success((response) => {
         var sessionStat = response.userAccSrvRes.userSessionData;
-        $log.debug(sessionStat);
-        if(sessionStat){
-          $scope.UserLogin = true;
-        }
-        else {
-          $scope.UserLogin = false;
-        }
+        $scope.UserLogin = !!sessionStat;
       })
 
 

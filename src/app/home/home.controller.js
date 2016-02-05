@@ -3,7 +3,7 @@ export class HomeController {
     'ngInject';
     this.UserLogin = false;
     this.search = {
-      $popular: ['K12 books', 'ELA' , 'english language arts','K12 courses','K12 videos'],
+      $popular: ['K12 books', 'ELA', 'english language arts', 'K12 courses', 'K12 videos'],
       $current: []
     };
     this.MAX_SHOW_LIMIT = 15;
@@ -79,15 +79,9 @@ export class HomeController {
       $state.go('library');
     };
     var sessionStatus = $service.$connect('none', 'magic', 'sessionStatus');
-    sessionStatus.success((response)=>{
+    sessionStatus.success((response) => {
       var sessionStat = response.userAccSrvRes.userSessionData;
-      $log.debug(sessionStat);
-      if(sessionStat){
-        this.UserLogin = true;
-      }
-      else {
-        this.UserLogin = false;
-      }
+      this.UserLogin = !!sessionStat;
     });
     $document[0].addEventListener('scroll', () => {
 

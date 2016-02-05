@@ -163,7 +163,6 @@ export class LibraryController {
     });
 
     filters.success((response) => {
-      $log.debug(response.contentFilter);
       _.each(response.contentFilter, (item) => {
         _.each(item.filterList, (el) => {
           el.checked = false;

@@ -7,7 +7,7 @@ export class ProductController {
     this.user = {};
     this.likes = [];
     this.book = {
-      hideAdd: true,
+      hideAdd: false,
       added: false
     };
 
@@ -36,22 +36,16 @@ export class ProductController {
 
         if (!_.isEmpty(userInfo)) {this.user = userInfo;}
 
-        var freeBook = $service.$connect('freeBooks', 'magic', 'getProductDetails', {
+        var relatedProducts = $service.$connect('', 'magic', 'getProductDetails', {
           urlParams: {
             id: $stateParams.id,
             username: this.user.userName,
             token: $service.token('get')
           }});
 
-        freeBook.success((response) => {
+        relatedProducts.success((response) => {
           var data = response.response;
           if (data.responseCode === 200) {
-            var query = _.find(response.relatedProducts, (item) => {
-              return item === parseInt($stateParams.id, 10);
-            });
-
-            this.book.hideAdd = !!query;
-
             _.each(response.relatedProducts, (item) => {
               var pushDetails = {
                 title: item.title,
@@ -88,6 +82,27 @@ export class ProductController {
 
               this.likes.push(pushDetails);
             });
+          }
+        });
+
+        var ownedBooks = $service.$connect('freeBooks', 'magic', 'freeBookListing', {
+          urlParams: {
+            username: this.user.userName,
+            token: $service.token('get')
+          }
+        });
+
+        ownedBooks.success((response) => {
+          $log.debug(response);
+          if (response.response.responseCode === 200) {
+            var query = _.find(response.userFreeBooks, (item) => {
+              return item === parseInt($stateParams.id, 10);
+            });
+
+            this.book.hideAdd = !!query;
+            if (query) {
+              this.book.added = true;
+            }
           }
         });
       });
@@ -140,6 +155,7 @@ export class ProductController {
           this.book.hideAdd = true;
           this.book.added = true;
         });
+
         return 1;
       }
 

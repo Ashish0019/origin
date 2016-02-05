@@ -42,8 +42,9 @@
             <label style="font-size: 16px; cursor: pointer;"> ADD TO LIBRARY </label>
           </md-button>
           <md-button flex="" class="md-primary md-raised"
-                     ng-show="!product.showAddToLibrary && product.book.added"
-                     style="color: #ffffff;background-color: #00af9d; width:180px;">
+                     ng-show="product.book.added"
+                     ng-disabled="true"
+                     style="color: #ffffff; width:180px;">
             <label style="font-size: 16px; cursor: pointer;"> ADDED IN LIBRARY </label>
           </md-button>
           <p description>{{product.description}}</p>

@@ -74,14 +74,14 @@ class $ServiceProvider {
           freeBookListing: {
             HOST: 'mbx-api-staging.getmagicbox.com',
             url: '/services/product/v1.0/getUserFreeBookList',
-            preProcess: true,
             headers: {
               'Content-Type': 'application/json'
             },
             method: 'GET',
+            preProcess: true,
             retrieved: false,
             appended: false,
-            $stored: true,
+            $stored: false,
             mapping: {}
           },
           forgetpassword: {
