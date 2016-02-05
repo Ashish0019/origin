@@ -73,16 +73,26 @@
         }
       }
     }
-    [grade] {
-      padding-bottom: 5px;
-      table, th, td {
-        border: 1px solid black;
-        border-collapse: collapse;
-      }
-      th, td {
-        padding: 5px;
-        text-align: center;
-        width: 25px;
+
+    [filter-widget="grade"] {
+      [grade="table"] {
+        padding-bottom: 5px;
+
+        [grade-filter="item"] {
+          margin-right: -1px;
+          margin-bottom: -1px;
+
+          cursor: pointer;
+          outline: none;
+
+          font-size: 0.8em;
+          padding: 2px 4px;
+          border: 1px solid #a7a7a7;
+        }
+
+        [grade-filter="item"].checked {
+          background-color: #57DDBC;
+        }
       }
     }
   }

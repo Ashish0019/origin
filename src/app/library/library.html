@@ -19,7 +19,7 @@
       <span>Z - A</span>
       <span ng-click="library.refreshListing()">Latest</span>
     </div>
-    <div style="margin-right: 0px;">{{library.details.length}} Results Found</div>
+    <div style="margin-right: 0;">{{library.details.length}} Results Found</div>
   </aside>
   <section library-content layout="row" layout-align="center start">
     <aside element="sidebar-filter"
@@ -28,38 +28,28 @@
       <div filter-widget="grade" layout="column" layout-align="start start">
         <div filter-sub="title">Grade</div>
         <div grade="table">
-          <table>
-            <tr>
-              <td>K</td>
-              <td>0</td>
-              <td>1</td>
-              <td>2</td>
-              <td>3</td>
-              <td>4</td>
-              <td>5</td>
-            </tr>
-            <tr>
-              <td>6</td>
-              <td>7</td>
-              <td>8</td>
-              <td>9</td>
-              <td>10</td>
-              <td>11</td>
-              <td>12</td>
-            </tr>
-          </table>
+          <div layout="row" layout-align="start start" layout-wrap="">
+            <div grade-filter="item" ng-repeat="item in library.filterGrid.filterArr[0].filterList"
+                 layout-align="center center"
+                 ng-class="{'checked': library.filterGrid.filterArr[0].filterList[$index].checked}"
+                 layout="column" ng-click="library.gradeSelected($index)">
+              {{item.name}}
+            </div>
+          </div>
         </div>
       </div>
       <div filter-widget="subjects" layout="column" layout-align="start start">
         <div ng-repeat="filters in library.filterGrid.filterArr">
-          <div filter-sub="title">{{filters.title}}</div>
-          <div subjects="checkboxes" layout="column" layout-align="start start"
-               ng-repeat="item in filters.filterList">
-            <md-checkbox ng-model="filters.filterList[$index].checked"
-                         ng-click="library.filterSelected()"
-                         aria-label="{{item.name}}">
-              <span style="font-size: 0.8em;">{{item.name}}</span>
-            </md-checkbox>
+          <div ng-if="filters.id !== 'grade'">
+            <div filter-sub="title">{{filters.title}}</div>
+            <div subjects="checkboxes" layout="column" layout-align="start start"
+                 ng-repeat="item in filters.filterList">
+              <md-checkbox ng-model="filters.filterList[$index].checked"
+                           ng-click="library.filterSelected()"
+                           aria-label="{{item.name}}">
+                <span style="font-size: 0.8em;">{{item.name}}</span>
+              </md-checkbox>
+            </div>
           </div>
         </div>
       </div>

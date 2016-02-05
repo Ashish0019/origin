@@ -8,7 +8,7 @@ export class LibraryController {
     this.searchInfo = {$current: ''};
     this.filterGrid = {
       show: {
-        grades: {
+        grade: {
           enabled: true,
           filterKey: 'filteredGradesList'
         },
@@ -137,6 +137,12 @@ export class LibraryController {
       });
     };
 
+    this.gradeSelected = ($index) => {
+      this.filterGrid.filterArr[0].filterList[$index].checked = !this.filterGrid
+        .filterArr[0].filterList[$index].checked;
+      this.filterSelected();
+    };
+
     this.refreshListing = (params) => {
       var payload = params || {
           pageNumber: 1,
@@ -157,6 +163,7 @@ export class LibraryController {
     });
 
     filters.success((response) => {
+      $log.debug(response.contentFilter);
       _.each(response.contentFilter, (item) => {
         _.each(item.filterList, (el) => {
           el.checked = false;
