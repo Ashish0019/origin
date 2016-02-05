@@ -1,5 +1,5 @@
 export class SignInController {
-  constructor($log, $service ) {
+  constructor($log, $service,$scope ) {
     'ngInject';
     this.inputType = 'password';
     this.forgot = false;
@@ -20,6 +20,13 @@ export class SignInController {
     this.login = ($form) => {
       $form.commit();
     };
+    $scope.$watch('this.user.username', ()=>{
+      $log.debug(1,this.user.username)
+
+
+    });
+
+
 
     this.ForgotPassword = () => {
       var userName = this.user.username;
