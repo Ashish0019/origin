@@ -8,10 +8,12 @@
         <i>You are one step away from getting your free K-12 content</i>
       </span>
 
-      <span tagline ng-show="forgotpwd">
+      <span tagline ng-show="forgotpwd"  ng-if="!signIn.forgot">
         Enter your email address and we will send you a</br> link to reset your password.
       </span>
-
+        <span tagline ng-if="signIn.forgot">
+        {{signIn.ForgotPwdText}}
+      </span>
 
       <form form-commit name="signInForm" method="post" ng-hide="true"
             action="http://origin.stg1.getmagicbox.com/j_spring_security_check" target="_self">
@@ -57,8 +59,8 @@
           CANCEL
         </md-button>
 
-        <md-button registration="register-button" class="md-raised" ng-show="forgotpwd"
-                   ng-disabled="signIn.user.username.$invalid " ng-click="">
+        <md-button registration="submit-button" class="md-raised" ng-show="forgotpwd"
+                    ng-click="signIn.ForgotPassword()">
           SUBMIT
         </md-button>
 

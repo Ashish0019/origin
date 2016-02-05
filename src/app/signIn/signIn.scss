@@ -145,7 +145,16 @@
           color: #ffffff;
           width: 120px;
         }
-
+        [registration="submit-button"] {
+          background-color: #979797;
+          color: #5d5d5d;
+          width: 120px;
+        }
+        [registration="submit-button"].md-button.md-raised:not([disabled]) {
+          background-color: #00af9d;
+          color: #ffffff;
+          width: 120px;
+        }
       }
 
       [orline] {

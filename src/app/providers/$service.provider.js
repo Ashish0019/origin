@@ -83,6 +83,18 @@ class $ServiceProvider {
             appended: false,
             $stored: true,
             mapping: {}
+          },
+          forgetpassword: {
+            HOST: 'amz.s-1.mdistribute.magicsw.com',
+            url: '/services/user/account/forgetpassword.json',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            method: 'GET',
+            preProcess: true,
+            retrieved: false,
+            appended: false,
+            $stored: false
           }
         },
         google: {
@@ -141,6 +153,7 @@ class $ServiceProvider {
       promise.success = (fn) => {
         promise.then((res) => {
           fn(res.data, res.status, res.headers);
+
         });
 
         return promise;
