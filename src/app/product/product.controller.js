@@ -39,7 +39,7 @@ export class ProductController {
         var freeBook = $service.$connect('freeBooks', 'magic', 'getProductDetails', {
           urlParams: {
             id: $stateParams.id,
-            username: 'user.demo@demo.com',
+            username: this.user.userName,
             token: $service.token('get')
           }});
 
