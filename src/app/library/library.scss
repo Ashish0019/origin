@@ -84,7 +84,7 @@
 
           cursor: pointer;
           outline: none;
-
+          min-width: 60px;
           font-size: 0.8em;
           padding: 2px 4px;
           border: 1px solid #a7a7a7;
@@ -104,7 +104,7 @@
 
       [content-item] {
         width: 180px;
-        height: 235px;
+        height: 245px;
         margin-bottom: 30px;
         border: 1px solid #d8d8d8;
         cursor: pointer;
@@ -142,8 +142,8 @@
             height: auto;
 
             border: none;
-
-            font-size: 0.9em;
+            padding-top: 5px;
+            font-size: 1.1em;
             font-weight: 600;
           }
 

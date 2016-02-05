@@ -24,7 +24,7 @@
 
       <form name="registration" registration-details layout="column" layout-align="center center">
         <input class="input-feature" ng-model="signIn.user.username" placeholder="User Name" type="text"
-               maxlength="60" required/>
+               maxlength="60"  required/>
 
         <div layout="row" layout-align="space-between center" ng-hide="forgotpwd">
           <input class="input-feature" input-feature-pwd name="pwd" ng-model="signIn.user.password"
@@ -60,7 +60,7 @@
         </md-button>
 
         <md-button registration="submit-button" class="md-raised" ng-show="forgotpwd"
-                    ng-click="signIn.ForgotPassword()">
+                    ng-disabled="signIn.user.username.length ==0" ng-click="signIn.ForgotPassword()">
           SUBMIT
         </md-button>
 
