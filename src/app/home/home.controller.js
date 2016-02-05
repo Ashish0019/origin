@@ -1,7 +1,7 @@
 export class HomeController {
   constructor($log, $document, $state, $service) {  // put $scope, $mdDialog, $mdMedia as args
     'ngInject';
-
+    this.UserLogin = false;
     this.search = {
       $popular: ['K12 books', 'ELA' , 'english language arts','K12 courses','K12 videos'],
       $current: []
@@ -78,7 +78,17 @@ export class HomeController {
       $service.search('set', this.search.$current);
       $state.go('library');
     };
-
+    var sessionStatus = $service.$connect('none', 'magic', 'sessionStatus');
+    sessionStatus.success((response)=>{
+      var sessionStat = response.userAccSrvRes.userSessionData;
+      $log.debug(sessionStat);
+      if(sessionStat){
+        this.UserLogin = true;
+      }
+      else {
+        this.UserLogin = false;
+      }
+    });
     $document[0].addEventListener('scroll', () => {
 
     });

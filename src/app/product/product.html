@@ -38,8 +38,14 @@
                      ng-if="!product.book.hideAdd"
                      ng-click="product.addProduct()"
                      ng-show="product.showAddToLibrary"
+                     ng-hide="!product.showthings"
                      style="color: #ffffff;background-color: #00af9d; width:150px;">
             <label style="font-size: 16px; cursor: pointer;"> ADD TO LIBRARY </label>
+          </md-button>
+          <md-button flex="" class="md-primary md-raised"
+                     ng-hide="product.showthings"
+                     style="color: #ffffff;background-color: #00af9d; width:180px;">
+            <label style="font-size: 16px; cursor: pointer;"> ADDED IN LIBRARY </label>
           </md-button>
           <p description>{{product.description}}</p>
           <table ng-hide="product.author=='Youtube'">
@@ -58,26 +64,26 @@
               <td>{{product.info.Publisher}}</td>
             </tr>
             <tr>
-              <td class="tableHeading">Standards</td>
-              <td>{{product.info.Grades}}</td>
-            </tr>
-            <tr>
               <td class="tableHeading">Resource Types</td>
               <td>{{product.info.Type}}</td>
             </tr>
             </tbody>
           </table>
-          <p description> weekdays from Wed Jan 13 to Wed Jan 27Updated Invitation: Platform + Assessments + Analytics +
-            Origin - Daily Scrum @ Weekly from 10:45am to 11:05am on w</p>
+          <p description> "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+            "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer"
+            "took a galley of type and scrambled it to make a type specimen book. "
+          </p>
         </div>
       </div>
       <div flex-gt-lg="40" flex-gt="50" flex-md="48" layout="column" flex="50"
            ng-switch on="product.author" style="margin-right: 20px;">
         <div ng-switch-when='Youtube'>
-          <iframe width="80%" height="300px" ng-src="{{product.yVideo}}" allowfullscreen>
+          <iframe width="80%" height="300px" ng-src="{{product.yVideo}}"  allowfullscreen>
           </iframe>
         </div>
         <div ng-switch-default>
+          <md-icon addedToLib
+                   ng-hide="product.showthings"></md-icon>
           <div class="contentContainer" ng-style="{'background-image':'url({{product.info.Image}})'}">
           <md-button enlargerBackground ng-click="showEnlargedImage = !showEnlargedImage">
             <md-icon zoomIcon md-svg-icon="assets/images/fullscreen.svg"></md-icon>

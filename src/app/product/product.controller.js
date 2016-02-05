@@ -2,6 +2,7 @@ export class ProductController {
   constructor($scope, $log, $state, $service, $stateParams, $sce) {
     'ngInject';
     this.showDetails = false;
+    this.showthings = true;
     this.showEnlargedImage = false;
     this.info = {};
     this.user = {};
@@ -26,12 +27,11 @@ export class ProductController {
 
         var freeBook = $service.$connect('freeBooks', 'magic', 'freeBookListing', {
           urlParams: {
-            username: 'user.demo@demo.com',
+            username: this.user.userName,
             token: $service.token('get')
           }});
 
         freeBook.success((response) => {
-          $log.debug(response);
           if (response.response.responseCode === 200) {
             var query = _.find(response.userFreeBooks, (item) => {
               return item === parseInt($stateParams.id, 10);
@@ -72,10 +72,10 @@ export class ProductController {
         this.info.title = detail.title;
         this.info.Content = "in" + " " + "<b>" + detail.subject + "</b>" + " " + "by" + " "
           + "<b>" + detail.author + "</b>";
-        this.info.Grades = "  " + detail.meta.gradeFrom + " - " + detail.meta.gradeTo;
-        this.info.Publisher = "  " + "Magic publisher";
-        this.info.Type = "  " + detail.productType;
-        this.description = detail.meta.description;
+        this.info.Grades = "  " + 5 + " - " + 8;
+        this.info.Publisher = "  " + detail.author;
+        this.info.Type = "  " + detail.category.name;
+        this.description = detail.description;
         this.info.Image = $sce.trustAsResourceUrl(detail.coverImage);
       }
     } else {$state.go('library');}
@@ -90,12 +90,14 @@ export class ProductController {
           }
         });
 
-        addPromise.success(() => {this.book.hideAdd = true;});
-
+        addPromise.success(() => {
+          this.book.hideAdd = true;
+          this.showthings = true;
+        });
         return 1;
       }
 
-      //$state.go('signUp');
+      $state.go('signUp');
     }
   }
 }
