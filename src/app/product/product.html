@@ -34,13 +34,13 @@
     <div otherdata layout-align="space-between start" layout="row">
       <div flex-gt-lg="40" flex-gt="40" flex-md="60" flex="40">
         <div layout="column">
-          <md-button addToLibrary flex="" class="md-primary md-raised"
+          <md-button addToLibrary flex="" class="md-raised"
                      ng-if="!product.book.hideAdd"
                      ng-click="product.addProduct()"
                      ng-show="product.showAddToLibrary && !product.book.added">
             <label addTo> ADD TO LIBRARY </label>
           </md-button>
-          <md-button addedInLibrary flex="" class="md-primary md-raised"
+          <md-button addedInLibrary flex="" class="md-raised"
                      ng-show="product.book.added"
                      ng-disabled="true">
             <label addTo> ADDED IN LIBRARY </label>
