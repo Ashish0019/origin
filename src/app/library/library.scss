@@ -30,7 +30,7 @@
         margin: 8px;
       }
 
-      [filterChevron]{
+      [filterChevron] {
         width: 16px;
         height: 16px
       }
@@ -46,11 +46,12 @@
         user-select: none;;
       }
 
-      span[state="selected"] {
+      span.selected {
         color: #00cc99;
       }
     }
-    [libraryLength]{
+
+    [libraryLength] {
       margin-right: 0;
     }
   }
@@ -78,9 +79,9 @@
       [subjects="checkboxes"] {
         md-checkbox {
           margin: 4px;
-       span {
-         font-size: 0.8em;
-       }
+          span {
+            font-size: 0.8em;
+          }
         }
       }
     }

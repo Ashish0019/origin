@@ -14,10 +14,12 @@
       <span>Filter</span>
     </div>
     <div tabs layout="row" layout-align="start start" flex="60">
-      <span state="selected">ALL</span>
-      <span>A - Z</span>
-      <span>Z - A</span>
-      <span ng-click="library.refreshListing()">Latest</span>
+      <span ng-class="{'selected': library.sortStats.prop === 'title' && !library.sortStats.reverse}">ALL</span>
+      <span ng-class="{'selected': library.sortStats.prop === 'title' && !library.sortStats.reverse}"
+            ng-click="library.sort('title', 'asc')">A - Z</span>
+      <span ng-class="{'selected': library.sortStats.prop === 'title' && library.sortStats.reverse}"
+            ng-click="library.sort('title', 'desc')">Z - A</span>
+      <span>Latest</span>
     </div>
     <div libraryLength>{{library.details.length}} Results Found</div>
   </aside>
@@ -65,7 +67,8 @@
       <div content-listing layout="row" layout-align="space-between center" layout-wrap="">
         <div content-item flex-sm="90" flex-md="32" flex-lg="28" flex-gt-lg="22"
              layout="column" layout-align="center center"
-             ng-repeat="item in library.details" ng-click="library.openProduct(item.id)">
+             ng-repeat="item in library.details | orderBy:library.sortStats.prop:library.sortStats.reverse"
+             ng-click="library.openProduct(item.id)">
           <div thumbnail-container layout="column" layout-align="center center">
             <div item-info="thumbnail" back-img="{{item.coverImage}}"></div>
           </div>
