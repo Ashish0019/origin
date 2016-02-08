@@ -129,6 +129,7 @@ export class LibraryController {
       $service.$append('library', domain, cat, temp);
       this.details = $service.$query('library', '', 'full');
       this.details = _.shuffle(this.details);
+      $log.debug(this.details);
     };
 
     this.openProduct = (id) => {
@@ -163,6 +164,7 @@ export class LibraryController {
     });
 
     filters.success((response) => {
+      $log.debug(response);
       _.each(response.contentFilter, (item) => {
         _.each(item.filterList, (el) => {
           el.checked = false;
