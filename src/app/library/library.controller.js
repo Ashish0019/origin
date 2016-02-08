@@ -186,6 +186,9 @@ export class LibraryController {
           buildRequest[this.filterGrid.show[filterSection.id].filterKey] = [];
           _.each(filterSection.filterList, (item) => {
             if (item.checked) {
+              if (filterSection.id === 'grade') {
+                return buildRequest[this.filterGrid.show[filterSection.id].filterKey].push(item.name);
+              }
               buildRequest[this.filterGrid.show[filterSection.id].filterKey].push(item.id);
             }
           });
