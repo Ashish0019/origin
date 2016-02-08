@@ -1,0 +1,122 @@
+<div login-container layout="column" layout-fill="" flex="" layout-align="center center" rj-resize>
+  <div md-dynamic-height login-panel layout-align="center center" layout="column">
+    <div header-section layout="row" layout-align="center center">
+      <div logo-img></div>
+
+    </div>
+
+    <form form-commit name="signInForm" method="post" ng-hide="true"
+          action="http://origin.stg1.getmagicbox.com/j_spring_security_check" target="_self">
+      <input name="j_username" type="hidden" value="{{signUp.user.email}}">
+      <input name="j_password" type="hidden" value="{{signUp.user.password}}">
+      <input type="submit" name="SignInButton" value="Login">
+    </form>
+
+    <div form-section layout="column" layout-align="center center">
+      <span tagline>
+        <i>You are one step away from getting your free K-12 content</i>
+      </span>
+
+      <div user-types layout="row" layout-align="center center">
+        <div user="student" layout="column" layout-align="center center" ng-model="imageProps"
+             ng-click="signUp.imageProps.current = 'student'">
+          <div icon ng-class="{'active': signUp.imageProps.current === 'student'}"></div>
+          <div>Join as Student</div>
+        </div>
+        <div user="teacher" layout="column" layout-align="center center" ng-model="imageProps"
+             ng-click="signUp.imageProps.current = 'teacher'">
+          <div icon ng-class="{'active': signUp.imageProps.current === 'teacher'}"></div>
+          <div>Join as Teacher</div>
+        </div>
+       <!-- <div user="publisher" layout="column" layout-align="center center" ng-model="imageProps"
+             ng-click="signUp.imageProps.current = 'publisher'">
+          <div icon ng-class="{'active': signUp.imageProps.current === 'publisher'}"></div>
+          <div>Join as Publisher</div>
+        </div>-->
+      </div>
+      <form name="registration" registration-details layout="column" layout-align="center center"
+            ng-show="abc">
+        <input input-feature ng-model="signUp.user.fullName" placeholder="Full Name" type="text" maxlength="60"
+               value="Full Name" required/>
+        <input input-feature name="email" ng-model="signUp.user.email" placeholder="Email ID"
+               ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
+               type="email" required/>
+
+        <div email-errorText ng-if="registration.email.$touched && registration.email.$invalid">
+          <i>Please enter valid email address.</i></div>
+
+        <div email-errorText
+             ng-if="showError">
+          <i>{{responseMessage}}</i></div>
+
+        <input input-feature name="pwd" ng-model="signUp.user.password" placeholder="Password"
+               type="password" minlength="6" maxlength="20"
+               required/>
+
+        <div pwd-errorText ng-show="!registration.pwd.$untouched && registration.pwd.$invalid">
+          <i>Password must contain atleast 6 but not more than 20 characters.</i></div>
+
+
+        <div entity="check_box">
+          <input type="checkbox" md-ink class="md-primary" ng-model="signUp.user.checkedBox" style="display: inline-block" required/>
+
+        <span>
+          By signing up, you agree to our
+          <a href="http://stcn-crg-mg127.staticmbx.com/static/magicbox/tresource/footer/privacypolicy.html" target="_blank">
+          terms of use</a>  and <span style="margin-left: 7%;">
+          <a href="http://stcn-crg-mg127.staticmbx.com/static/magicbox/tresource/footer/privacypolicy.html"
+                                                                  target="_blank">privacy policy</a>
+        </span>
+        </span>
+        </div>
+      <!--  <div re-captcha captchaCode ng-model="signUp.user.captcha" ng-show="signUp.imageProps.current === 'publisher'" ></div>-->
+      </form>
+
+      <div registration="container" layout="row" layout-align="center center" ng-show="abc">
+        <md-button registration="register-button"
+                   ng-click="signUp.register(signInForm)"
+                   class="md-raised md-primary"
+                   ng-disabled="registration.$invalid ">SIGN UP
+        </md-button>
+        <md-button registration="cancel-button" class="md-raised md-primary"
+                   ui-sref="library" ng-disabled="!signUp.imageProps.current">
+          CANCEL
+        </md-button>
+      </div>
+      <div orline layout="row" layout-align="space-between center" ng-show="abc">
+        <hr />
+        <div orword> OR </div>
+        <hr />
+      </div>
+      <div entity="third-party-login" layout="column" layout-align="center center">
+        <md-button  third-party="SignEmail" class="md-raised md-primary"
+                    ng-disabled="!signUp.imageProps.current"
+                    ng-model="abc" ng-hide="abc" ng-click="showData()">
+          <md-icon style="margin-left: -5px;" ng-disabled="!signUp.imageProps.current" emailIcon></md-icon>
+          <label> Sign Up with Email ID </label>
+        </md-button>
+        <md-button third-party="Facebook"
+                   ng-click="signUp.connect('facebook')"
+                   class="md-raised md-primary"
+                   ng-disabled="!signUp.imageProps.current">
+          <md-icon facebookIcon></md-icon>
+          <label> Connect with Facebook</label>
+        </md-button>
+        <md-button third-party="Google"
+                   ng-click="signUp.connect('google')"
+                   class="md-raised md-primary"
+                   ng-disabled="!signUp.imageProps.current">
+
+          <!-- ng-hide = "signUp.imageProps.current === 'publisher' || !signUp.imageProps.current "-->
+          <md-icon googleIcon></md-icon>
+          <label> Connect with Google + </label>
+
+        </md-button>
+      </div>
+      <div entity="hasAccount">
+        Already have an account? <a href=" "  ui-sref="signIn"> Login now </a>
+      </div>
+    </div>
+  </div>
+</div>
+

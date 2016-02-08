@@ -1,3 +1,75 @@
-.acme-navbar-text{
-  color: white;
+[menu-container] {
+  position: fixed;
+  top: 0;
+
+  section[origin-container] {
+    height: 50px;
+
+    [origin-logo] {
+      width: 50px;
+      height: 100%;
+      background-size: contain;
+      cursor: pointer;
+      background: url("../assets/images/rsz_babel.png") no-repeat 2px -10px;
+    }
+
+    [origin-text] {
+      font-size: 0.9em;
+      padding-left: 8px;
+    }
+  }
+
+  section[search-container] {
+    md-input-container {
+      width: 60%;
+
+    }
+
+    [search] {
+      color: white;
+    }
+
+    [search-bar] {
+      padding-top: 24px;
+      border-bottom-color: #ffffff;
+      color: #ffffff;
+      padding-right: 25px;
+      width:100%
+    }
+
+    [searchButton] {
+      [searchIcon] {
+        background-image: url("../assets/images/search_icon1.svg");
+        background-size: 20px;
+      }
+    }
+  }
+
+  section[login-panel] {
+    * {
+      font-size: 0.8em;
+    }
+  [JoinFree]{
+    color: #4effed;
+  }
+    [JoinFree]:hover{
+      color: #ffffff;
+    }
+  [login]{
+    color: #ffffff;
+  }
+
+    [login]:hover{
+      color: #ffffff;
+    }
+    [loginIcons]{
+      font-size: 0.7em;
+    }
+
+  }
+}
+
+md-toolbar:not(.md-menu-toolbar) {
+  background-color: #333333;
+  color: rgba(255, 255, 255, 0.87);
 }

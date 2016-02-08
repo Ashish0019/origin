@@ -1,0 +1,96 @@
+<nav-menu ng-if="home.showNavBar" nav-text="I want to LEARN / TEACH"
+          search-text="{{home.search.$current}}"></nav-menu>
+<section home-container="" layout="column" layout-align="center start" rj-resize rz-height=""
+         ng-if="!home.showNavBar">
+  <section search-screen>
+    <div origin-logo=""></div>
+
+    <div login-panel layout="row">
+      <md-button md-ink-ripple login-component="free" ui-sref="signUp" ng-show="!home.UserLogin">Join Free</md-button>
+      <md-button md-ink-ripple login-component="login" ui-sref="signIn" ng-show="!home.UserLogin">Login</md-button>
+    </div>
+
+    <div search-panel layout="column" layout-align="center center">
+      <section origin-contents layout="column" layout-align="space-between center">
+        <div tag-line>
+          I want to <span>LEARN</span> / <span>TEACH</span>
+        </div>
+        <md-input-container search-container class="md-block">
+          </br>
+          <md-chips ng-model="home.search.$current" ></md-chips>
+          <label id="searches">
+            Popular Searches:
+            <span ng-repeat="searchData in home.search.$popular">
+              {{searchData}}<span ng-if="!$last">,&nbsp;</span>
+            </span>
+          </label>
+        </md-input-container>
+        <md-button md-ink-ripple class="md-raised" ng-click="home.searchClicked()" >SEARCH
+        </md-button>
+      </section>
+
+      <section down-icon>
+        <md-button class="md-icon-button" aria-label="More" ng-click="home.downClick()">
+          <md-icon md-svg-icon="assets/images/down_Icon.svg"></md-icon>
+        </md-button>
+      </section>
+    </div>
+  </section>
+</section>
+<section popular-listing ng-if="home.showNavBar"
+         layout="column" layout-align="center start">
+
+  <aside flex="60">Currently Trending on Origin</aside>
+
+  <div flex="90" content-listing-wrapper layout="column" layout-align="space-between center">
+    <div content-listing layout="row" layout-align="start start" layout-wrap=""
+         flex="100" ng-if="home.details.length > 0">
+      <div content-item flex-sm="90" flex-md="32" flex-lg="28" flex-gt-lg="22"
+           layout="column" layout-align="center center"
+            ng-repeat="item in home.details" ng-click="home.openProduct(item.id)">
+        <div thumbnail-container layout="column" layout-align="center center">
+          <div item-info="thumbnail" back-img="{{item.coverImage}}"></div>
+        </div>
+        <div item-meta="info" layout="column" layout-align="center start">
+          <div content-item="title">{{item.title | characters:15}}</div>
+          <div content-item="author">{{item.author | characters:15 || "hello"}}</div>
+        </div>
+        <div content-footer="category">
+          <span><md-icon md-svg-icon="{{item.category.icon}}"></md-icon> {{item.category.name}}</span>
+        </div>
+       <!-- <div content-footer="analytics">
+          <span><md-icon md-svg-icon="assets/images/share.svg"></md-icon> {{item.analytics.shares}}</span>
+          <span><md-icon md-svg-icon="assets/images/eye.svg"></md-icon> {{item.analytics.views}}</span>
+        </div>-->
+      </div>
+      <div style="width: 100%;" layout="column" layout-align="center center">
+        <md-button browseMore ui-sref="library" class="md-raised">
+          Browse More
+        </md-button>
+        <div popular-footer layout="column" layout-align="center start">
+          <span header>About the Origin</span>
+          <span disclaimer>
+           Origin is the K-12 resource library, offering various eBooks, videos, assessments, homework assignments,
+            games and lesson plans for every Common Core English Language Arts standard. Origin lets Teachers create
+            their own virtual classroom, assign quizzes / homework to students, grade them and track progress. Origin
+            also lets students collaborate with their peers and discuss on a topic while they read. Origin is your one
+            stop shop for all your learning needs!
+            </br>
+            </br>
+            Origin recordings are Public Domain in the USA. If you are not in the USA, please verify the copyright status
+            of these works in your own country before downloading, otherwise you may be violating copyright laws.
+          </span>
+        </div>
+      </div>
+    </div>
+    <section loader ng-if="home.details.length <= 0">
+      <div class="sk-folding-cube">
+        <div class="sk-cube1 sk-cube"></div>
+        <div class="sk-cube2 sk-cube"></div>
+        <div class="sk-cube4 sk-cube"></div>
+        <div class="sk-cube3 sk-cube"></div>
+      </div>
+    </section>
+  </div>
+  <footer ng-if="home.details.length > 0" ></footer>
+</section>

@@ -1,0 +1,297 @@
+[signIn-container] {
+  height: 100%;
+  position: absolute;
+  background: url("../assets/images/background.jpg") center center;
+  background-size: cover;
+  overflow: auto;
+
+  *{
+    text-transform: none;
+  }
+
+  [signIn-panel] {
+    background-color: transparent;
+    min-width: 540px;
+    min-height: 570px;
+    font-family: sans-serif;
+    color: #ffffff;
+
+    [logo-img] {
+      width: 250px;
+      height: 80px;
+      margin-top: 15px;
+      background: url(../assets/images/babel.png) no-repeat;
+      background-size: 98% 80%;
+    }
+
+    [header-section] {
+      width: 100%;
+      min-height: 90px;
+      height: 11%;
+      background: rgba(39, 37, 37, .8);
+      span {
+        color: #ffffff;
+      }
+    }
+
+    [form-section] {
+      background-color: rgba(39, 37, 37, 0.4);
+      width: 100%;
+
+      [tagline] {
+        font-size: 1em;
+        opacity: .7;
+        color: #ffffff;
+        margin: 5px;
+        padding-top: 10px;
+      }
+
+      [registration-details] {
+        width: 75%;
+        margin: 12px;
+
+        .input-feature {
+          padding: 8px;
+          margin: 8px;
+          width: 86%;
+          min-width: 238px;
+          border-radius: 3px;
+          border: 2px white solid;
+          outline-color: transparent;
+        }
+
+        [input-feature-pwd] {
+          width: 83%;
+          min-width: 348px;
+          margin-left: 28px;
+        }
+
+        *:focus {
+          outline: 0;
+        }
+
+        [pwd-container] {
+          background-color: white;
+          left: -10%;
+          position: relative;
+          margin-top: 2px;
+        }
+      }
+
+      .showPwd {
+        background-image: url("../assets/images/eye_open.png");
+        background-size: 30px;
+        width: 30px;
+        height: 30px;
+        background-repeat: no-repeat;
+
+      }
+
+      .hidePwd {
+        background-image: url("../assets/images/eye_close.png");
+        background-size: 30px;
+        width: 30px;
+        height: 30px;
+        background-repeat: no-repeat;
+
+      }
+
+      [forgotPwd-container] {
+        height: 20px;
+        width: 86%;
+
+        [forgotPwd] {
+          font-size: 14px;
+          color: #ffffff;
+          float: right;
+          opacity: .7;
+          text-decoration: underline;
+          cursor:pointer;
+        }
+      }
+
+      [entity="check_box"] {
+        color: #ffffff;
+        font-size: 0.8em;
+        margin-left: 30px;
+        width: 96%;
+
+        a {
+          color: #ffffff;
+        }
+      }
+
+      [registration="container"] {
+        width: 300px;
+        height: 40px;
+        color: #fff;
+        border-radius: 3px;
+        font-size: .8em;
+        margin: 10px;
+
+        [registration="register-button"] {
+          background-color: #979797;
+          color: #5d5d5d;
+          width: 120px;
+        }
+
+        [registration="register-button"].md-button.md-raised:not([disabled]) {
+          background-color: #00af9d;
+          color: #ffffff;
+          width: 120px;
+        }
+        [registration="cancel-button"] {
+          background-color: #c24549;
+          color: #ffffff;
+          width: 120px;
+        }
+        [registration="submit-button"] {
+          background-color: #979797;
+          color: #5d5d5d;
+          width: 120px;
+        }
+        [registration="submit-button"].md-button.md-raised:not([disabled]) {
+          background-color: #00af9d;
+          color: #ffffff;
+          width: 120px;
+        }
+      }
+
+      [orline] {
+        width: 80%;
+        opacity: .7;
+        hr {
+          width: 100%
+        }
+        [orword] {
+          padding: 15px;
+        }
+      }
+
+      [user-types] {
+        color: #d4d4d4;
+
+        *:focus {
+          outline: 0;
+        }
+
+        [user] {
+          font-size: 1em;
+          width: 150px;
+        }
+
+        .user-icon {
+          width: 90px;
+          height: 90px;
+          -webkit-border-radius: 50%;
+          -moz-border-radius: 50%;
+          border-radius: 50%;
+          margin: 8px;
+          cursor: pointer;
+          border: 2px solid #ffffff;
+          background-image: url('../assets/images/sign_up_icons.png');
+        }
+
+        [user="student"] {
+          [icon] {
+            @extend .user-icon;
+            background-position: -25px -24px;
+          }
+
+          [icon].active {
+            background-position: -25px -134px;
+          }
+        }
+
+        [user="teacher"] {
+          [icon] {
+            @extend .user-icon;
+            background-position: -142px -24px
+          }
+
+          [icon].active {
+            background-position: -142px -134px;
+          }
+        }
+        [user="publisher"] {
+          [icon] {
+            @extend .user-icon;
+            background-position: -257px -24px
+          }
+
+          [icon].active {
+            background-position: -257px -134px;
+          }
+        }
+      }
+
+
+
+      [entity="hasAccount"] {
+        color: #ffffff;
+        font-size: 0.9em;
+        margin: 15px;
+
+        a {
+          color: #ffffff;
+        }
+      }
+
+      [entity="third-party-signIn"] {
+        margin-top: 20px;
+        margin-bottom: 20px;
+
+        * {
+          cursor: pointer;
+        }
+
+        .icons {
+          background-size: 20px;
+        }
+
+        [third-party="Facebook"] {
+          width: 95%;
+          background-color: #979797;
+          color: #5d5d5d;
+          [facebookIcon] {
+            @extend .icons;
+            background-image: url("../assets/images/fb_icon_disable.svg");
+          }
+        }
+
+        [third-party="Facebook"].md-button.md-raised:not([disabled]) {
+          background-color: #3F51B5;
+          color: #ffffff;
+          [facebookIcon] {
+            @extend .icons;
+            background-image: url("../assets/images/fb_icon.svg");
+          }
+
+        }
+
+        [third-party="Google"] {
+          width: 95%;
+          background-color: #979797;
+          color: #5d5d5d;
+          [googleIcon] {
+            @extend .icons;
+            background-image: url("../assets/images/google_icon_disable.svg");
+            margin-left: -11px;
+          }
+        }
+
+        [third-party="Google"].md-button.md-raised:not([disabled]) {
+          background-color: #D95032;
+          color: #ffffff;
+          [googleIcon] {
+            @extend .icons;
+            background-image: url("../assets/images/google_icon.svg");
+          }
+        }
+      }
+      .md-button[disabled] md-icon, .md-button.md-raised[disabled] md-icon {
+        opacity: .1;
+      }
+    }
+  }
+}

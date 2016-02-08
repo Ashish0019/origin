@@ -1,0 +1,99 @@
+<nav-menu nav-text="I want to LEARN / TEACH"
+          search-text="{{library.searchInfo.$current}}" on-search="library.search"></nav-menu>
+<section library-container layout="column" layout-fill layout-align="start center">
+  <aside element="title">
+    The ORIGINal Library
+  </aside>
+  <aside element="tab-header" layout="row" layout-align="space-between center">
+    <div filter layout="row" layout-align="center center"
+         ng-click="library.showFilter = !library.showFilter">
+      <md-icon filterChevron ng-show="!library.showFilter" md-svg-icon="assets/images/chevron-right.svg"
+               ></md-icon>
+      <md-icon filterChevron ng-show="library.showFilter" md-svg-icon="assets/images/chevron-left.svg"
+               ></md-icon>
+      <span>Filter</span>
+    </div>
+    <div tabs layout="row" layout-align="start start" flex="60">
+      <span state="selected">ALL</span>
+      <span>A - Z</span>
+      <span>Z - A</span>
+      <span ng-click="library.refreshListing()">Latest</span>
+    </div>
+    <div libraryLength>{{library.details.length}} Results Found</div>
+  </aside>
+  <section library-content layout="row" layout-align="center start">
+    <aside element="sidebar-filter"
+           layout="column" layout-align="center center"
+           ng-show="library.showFilter" ng-if="library.details.length > 0">
+      <div filter-widget="grade" layout="column" layout-align="start start">
+        <div filter-sub="title">Grade</div>
+        <div grade="table">
+          <div layout="row" layout-align="start start" layout-wrap="">
+            <div grade-filter="item" ng-repeat="item in library.filterGrid.filterArr[0].filterList"
+                 layout-align="center center"
+                 ng-class="{'checked': library.filterGrid.filterArr[0].filterList[$index].checked}"
+                 layout="column" ng-click="library.gradeSelected($index)">
+              {{item.name}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div filter-widget="subjects" layout="column" layout-align="start start">
+        <div ng-repeat="filters in library.filterGrid.filterArr">
+          <div ng-if="filters.id !== 'grade'">
+            <div filter-sub="title">{{filters.title}}</div>
+            <div subjects="checkboxes" layout="column" layout-align="start start"
+                 ng-repeat="item in filters.filterList">
+              <md-checkbox ng-model="filters.filterList[$index].checked"
+                           ng-click="library.filterSelected()"
+                           aria-label="{{item.name}}">
+                <span>{{item.name}}</span>
+              </md-checkbox>
+            </div>
+          </div>
+        </div>
+      </div>
+    </aside>
+    <aside element="tab-error" layout="row" layout-align="center center" ng-if="library.showError">
+      <div>{{library.errorMessage.message}}</div>
+      <md-button class="md-icon-button" aria-label="More" ng-click="library.fetchData()">
+        <md-icon md-svg-icon="assets/images/refresh.svg"></md-icon>
+      </md-button>
+    </aside>
+    <aside element="tab-content" layout="row" layout-align="space-between start" layout-wrap=""
+           ng-if="library.details.length > 0">
+      <div content-listing layout="row" layout-align="space-between center" layout-wrap="">
+        <div content-item flex-sm="90" flex-md="32" flex-lg="28" flex-gt-lg="22"
+             layout="column" layout-align="center center"
+             ng-repeat="item in library.details" ng-click="library.openProduct(item.id)">
+          <div thumbnail-container layout="column" layout-align="center center">
+            <div item-info="thumbnail" back-img="{{item.coverImage}}"></div>
+          </div>
+          <div item-meta="info" layout="column" layout-align="center start">
+            <div content-item="title">{{item.title | characters:15}}</div>
+            <div content-item="author">{{item.author | characters:15 || "hello"}}</div>
+          </div>
+          <div content-footer="category">
+            <span>
+              <md-icon md-svg-icon="{{item.category.icon}}"></md-icon>
+              <span>{{item.category.name}}</span>
+            </span>
+          </div>
+          <!--<div content-footer="analytics">
+            <span><md-icon md-svg-icon="assets/images/share.svg"></md-icon> {{item.analytics.shares}}</span>
+            <span><md-icon md-svg-icon="assets/images/eye.svg"></md-icon> {{item.analytics.views}}</span>
+          </div>-->
+        </div>
+      </div>
+    </aside>
+  </section>
+  <section loader ng-if="library.details.length <= 0" ng-hide="library.showError">
+    <div class="sk-folding-cube">
+      <div class="sk-cube1 sk-cube"></div>
+      <div class="sk-cube2 sk-cube"></div>
+      <div class="sk-cube4 sk-cube"></div>
+      <div class="sk-cube3 sk-cube"></div>
+    </div>
+  </section>
+  <footer ng-if="library.details.length > 0"></footer>
+</section>
