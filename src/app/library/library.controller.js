@@ -6,6 +6,7 @@ export class LibraryController {
     this.showError = false;
     this.MAX_LIMIT = 1000;
     this.searchInfo = {$current: ''};
+    this.sortStats = {prop: 'title', reverse: false};
     this.filterGrid = {
       show: {
         grade: {
@@ -176,6 +177,19 @@ export class LibraryController {
         }
       });
     });
+
+    this.sort = (prop, order) => {
+      switch (order) {
+        case 'asc':
+         this.sortStats.prop = prop;
+         this.sortStats.reverse = false;
+         break;
+        case 'desc':
+         this.sortStats.prop = prop;
+         this.sortStats.reverse = true;
+         break;
+      }
+    };
 
     this.filterSelected = () => {
       var json = {};
