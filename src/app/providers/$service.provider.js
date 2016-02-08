@@ -7,13 +7,30 @@ class $ServiceProvider {
   constructor() {
 
     this.search = {$current: ''};
+    this.ENV = 'staging';
+    this.environment = {
+      staging: {
+        HOSTS: [
+          'mbx-api-staging.getmagicbox.com',
+          'origin.stg1.getmagicbox.com',
+          'amz.s-1.mdistribute.magicsw.com'
+        ]
+      },
+      production: {
+        HOSTS: [
+          'api.getmagicbox.com',
+          'origin.stg1.getmagicbox.com',
+          'amz.s-1.mdistribute.magicsw.com'
+        ]
+      }
+    };
 
     this.$config = {
       token: '',
       API: {
         magic: {
           productListing: {
-            HOST: 'mbx-api-staging.getmagicbox.com',
+            HOST: this.environment[this.ENV].HOSTS[0],
             url: '/services/product/v1.0/getProductList',
             preProcess: true,
             headers: {
@@ -26,7 +43,7 @@ class $ServiceProvider {
             mapping: {}
           },
           getProductDetails: {
-            HOST: 'mbx-api-staging.getmagicbox.com',
+            HOST: this.environment[this.ENV].HOSTS[0],
             url: '/services/product/v1.0/getProductDetails/:id',
             preProcess: true,
             headers: {
@@ -39,7 +56,7 @@ class $ServiceProvider {
             mapping: {}
           },
           addUpdateProduct: {
-            HOST: 'mbx-api-staging.getmagicbox.com',
+            HOST: this.environment[this.ENV].HOSTS[0],
             url: '/services/product/v1.0/addUpdateFreeBookUserAccess',
             preProcess: true,
             headers: {
@@ -52,7 +69,7 @@ class $ServiceProvider {
             mapping: {}
           },
           filterDetails: {
-            HOST: 'mbx-api-staging.getmagicbox.com',
+            HOST: this.environment[this.ENV].HOSTS[0],
             url: '/services/product/v1.0/getProductFilterDetails',
             method: 'GET',
             preProcess: true,
@@ -62,7 +79,7 @@ class $ServiceProvider {
             mapping: {}
           },
           sessionStatus: {
-            HOST: 'origin.stg1.getmagicbox.com',
+            HOST: this.environment[this.ENV].HOSTS[1],
             url: '/services/user/account/sessionstatus.json',
             method: 'GET',
             preProcess: true,
@@ -72,7 +89,7 @@ class $ServiceProvider {
             mapping: {}
           },
           freeBookListing: {
-            HOST: 'mbx-api-staging.getmagicbox.com',
+            HOST: this.environment[this.ENV].HOSTS[0],
             url: '/services/product/v1.0/getUserFreeBookList',
             headers: {
               'Content-Type': 'application/json'
@@ -85,7 +102,7 @@ class $ServiceProvider {
             mapping: {}
           },
           forgetpassword: {
-            HOST: 'amz.s-1.mdistribute.magicsw.com',
+            HOST: this.environment[this.ENV].HOSTS[2],
             url: '/services/user/account/forgetpassword.json',
             headers: {
               'Content-Type': 'application/json'
@@ -126,6 +143,16 @@ class $ServiceProvider {
 
   setToken(val) {
     this.$config.token = val;
+  }
+
+  setEnv(mode, value) {
+    switch (mode) {
+      case 'set':
+        this.ENV = value;
+        break;
+      case 'get':
+        return this.ENV;
+    }
   }
 
   $get($log, $q, $http, $location) {
