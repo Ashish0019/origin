@@ -17,15 +17,15 @@
         </div>
         <md-input-container search-container class="md-block">
           </br>
-          <md-chips ng-model="home.search.$current" style="font-size: 18px"></md-chips>
-          <label id="searches" style="color: rgb(195, 195, 194);">
+          <md-chips ng-model="home.search.$current" ></md-chips>
+          <label id="searches">
             Popular Searches:
             <span ng-repeat="searchData in home.search.$popular">
               {{searchData}}<span ng-if="!$last">,&nbsp;</span>
             </span>
           </label>
         </md-input-container>
-        <md-button md-ink-ripple class="md-raised" ng-click="home.searchClicked()" style="color:#757575">SEARCH
+        <md-button md-ink-ripple class="md-raised" ng-click="home.searchClicked()" >SEARCH
         </md-button>
       </section>
 
@@ -40,8 +40,7 @@
 <section popular-listing ng-if="home.showNavBar"
          layout="column" layout-align="center start">
 
-  <aside style=" color: #757575; font-size: 2.0em; padding: 10px"
-         flex="60">Currently Trending on Origin</aside>
+  <aside flex="60">Currently Trending on Origin</aside>
 
   <div flex="90" content-listing-wrapper layout="column" layout-align="space-between center">
     <div content-listing layout="row" layout-align="start start" layout-wrap=""
@@ -57,7 +56,7 @@
           <div content-item="author">{{item.author | characters:15 || "hello"}}</div>
         </div>
         <div content-footer="category">
-          <span><md-icon md-svg-icon="{{item.category.icon}}" style="padding-right: 2px;"></md-icon> {{item.category.name}}</span>
+          <span><md-icon md-svg-icon="{{item.category.icon}}"></md-icon> {{item.category.name}}</span>
         </div>
        <!-- <div content-footer="analytics">
           <span><md-icon md-svg-icon="assets/images/share.svg"></md-icon> {{item.analytics.shares}}</span>
@@ -65,8 +64,7 @@
         </div>-->
       </div>
       <div style="width: 100%;" layout="column" layout-align="center center">
-        <md-button ui-sref="library" class="md-raised" style="width: 250px; height: 52px; font-size: 20px;
-        padding-top: 8px;">
+        <md-button browseMore ui-sref="library" class="md-raised">
           Browse More
         </md-button>
         <div popular-footer layout="column" layout-align="center start">

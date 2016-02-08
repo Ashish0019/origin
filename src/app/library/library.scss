@@ -29,6 +29,11 @@
       span {
         margin: 8px;
       }
+
+      [filterChevron]{
+        width: 16px;
+        height: 16px
+      }
     }
 
     [tabs] {
@@ -44,6 +49,9 @@
       span[state="selected"] {
         color: #00cc99;
       }
+    }
+    [libraryLength]{
+      margin-right: 0;
     }
   }
 
@@ -70,6 +78,9 @@
       [subjects="checkboxes"] {
         md-checkbox {
           margin: 4px;
+       span {
+         font-size: 0.8em;
+       }
         }
       }
     }
@@ -98,6 +109,12 @@
   }
 
   [element="tab-content"] {
+    md-button {
+      md-icon {
+        color: #00a79d
+      }
+    }
+
     [content-listing] {
       width: 100%;
       margin-bottom: 40px;

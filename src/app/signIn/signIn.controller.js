@@ -32,6 +32,7 @@ export class SignInController {
 
       forgot.success((response) => {
         this.ForgotPwdText = response.userAccSrvRes.diagMessage;
+        $log.debug(response)
       });
 
       forgot.failure((error) => {
