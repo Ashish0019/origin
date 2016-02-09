@@ -9,7 +9,7 @@ export function NavbarDirective($log, $service) {
       onSearch: '='
     },
     link: ($scope, $el, $attrs) => {
-      $scope.UserLogin = false;
+      $scope.UserLogin = 'none';
       $scope.navbarText = $attrs.navText;
       $scope.myLibrary = document.referrer;
 
@@ -31,7 +31,10 @@ export function NavbarDirective($log, $service) {
       var sessionStatus = $service.$connect('none', 'magic', 'sessionStatus');
       sessionStatus.success((response) => {
         var sessionStat = response.userAccSrvRes.userSessionData;
-        $scope.UserLogin = !!sessionStat;
+        $scope.UserLogin = 'notLoggedIn';
+        if (sessionStat) {
+          $scope.UserLogin = 'loggedIn';
+        }
       })
 
 
