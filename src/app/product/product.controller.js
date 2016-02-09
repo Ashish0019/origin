@@ -152,8 +152,8 @@ export class ProductController {
       var sessionStatus = $service.$connect('none', 'magic', 'sessionStatus');
       sessionStatus.success((response) => {
         var userInfo = response.userAccSrvRes.userSessionData;
-        if (_.isEmpty(userInfo)) {
-          this.userLogin = true;
+        if (!_.isEmpty(userInfo)) {
+          this.userLogin = false;
           if (!_.isEmpty(this.user.userName)) {
             var addPromise = $service.$connect('none', 'magic', 'addUpdateProduct', {
               urlParams: {token: $service.token('get')},
