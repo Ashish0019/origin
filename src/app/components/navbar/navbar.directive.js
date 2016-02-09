@@ -31,8 +31,9 @@ export function NavbarDirective($log, $service) {
       var sessionStatus = $service.$connect('none', 'magic', 'sessionStatus');
       sessionStatus.success((response) => {
         var sessionStat = response.userAccSrvRes.userSessionData;
-        $scope.UserLogin = 'loggedIn';
-        if (!sessionStat) {
+        if (sessionStat) {
+          $scope.UserLogin = 'loggedIn';
+        }else{
           $scope.UserLogin = 'notLoggedIn';
         }
       })
