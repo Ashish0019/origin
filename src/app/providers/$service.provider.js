@@ -12,8 +12,8 @@ class $ServiceProvider {
       staging: {
         HOSTS: [
           'mbx-api-staging.getmagicbox.com',
-          'origin.stg1.getmagicbox.com'
-
+          'origin.stg1.getmagicbox.com',
+          'amz.s-1.mdistribute.magicsw.com'
         ]
       },
       production: {

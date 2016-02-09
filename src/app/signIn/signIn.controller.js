@@ -23,17 +23,20 @@ export class SignInController {
     };
 
     this.ForgotPassword = () => {
-      var userName = this.user.username;
       var forgot = $service.$connect('', 'magic', 'forgetpassword', {
         urlParams: {
-          username: userName,
-          tenant: "magic"
+          username: this.user.username || this.user.email,
+          tenant: "origin"
         }
       });
 
       forgot.success((response) => {
-        this.ForgotPwdText = response.userAccSrvRes.diagMessage;
-      });
+        this.ForgotPwdText = response.userAccSrvRes.diagMessage ;
+        if(response.userAccSrvRes.code == 200) {
+          this.ForgotPwdTextSuccess = "Email Sent Successfully";
+        }
+        }
+      );
 
       forgot.failure((error) => {
         $log.debug(error);
