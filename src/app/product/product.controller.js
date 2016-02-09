@@ -149,8 +149,8 @@ export class ProductController {
     };
 
     this.addProduct = () => {
-      var sessionStatus = $service.$connect('none', 'magic', 'sessionStatus');
-      sessionStatus.success((response) => {
+      var sessionStat = $service.$connect('none', 'magic', 'sessionStatus');
+      sessionStat.success((response) => {
         var userInfo = response.userAccSrvRes.userSessionData;
         if (!_.isEmpty(userInfo)) {
           this.userLogin = false;
