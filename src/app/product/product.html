@@ -1,9 +1,9 @@
 <nav-menu nav-text="I want to LEARN / TEACH"></nav-menu>
 <div product-container layout="column" layout-fill>
   <aside menuBar>
-      <span library ui-sref="library">The ORIGINal Library</span>
-      <span product-tag> / Product Details</span>
-    </aside>
+    <span library ui-sref="library">The ORIGINal Library</span>
+    <span product-tag> / Product Details</span>
+  </aside>
   <div productBackground layout="column" ng-if="product.showDetails">
     <div headers layout="row">
       <div layout="row">
@@ -45,6 +45,8 @@
                      ng-disabled="true">
             <label addTo> ADDED IN LIBRARY </label>
           </md-button>
+
+
           <p description>{{product.description}}</p>
           <table ng-hide="product.author=='Youtube'">
             <thead>
@@ -76,27 +78,56 @@
       <div flex-gt-lg="40" flex-gt="50" flex-md="48" layout="column" flex="50"
            ng-switch on="product.author" style="margin-right: 20px;">
         <div ng-switch-when='Youtube'>
-          <iframe width="80%" height="300px" ng-src="{{product.yVideo}}"  allowfullscreen>
+          <iframe width="80%" height="300px" ng-src="{{product.yVideo}}" allowfullscreen>
           </iframe>
         </div>
         <div ng-switch-default>
           <md-icon addedToLib
                    ng-show="product.book.added"></md-icon>
           <div class="contentContainer" ng-style="{'background-image':'url({{product.info.Image}})'}">
-          <md-button enlargerBackground aria-label="Product View"
-                     ng-click="showEnlargedImage = !showEnlargedImage">
-            <md-icon zoomIcon md-svg-icon="assets/images/fullscreen.svg"></md-icon>
-          </md-button>
+            <md-button enlargerBackground aria-label="Product View"
+                       ng-click="showEnlargedImage = !showEnlargedImage">
+              <md-icon zoomIcon md-svg-icon="assets/images/fullscreen.svg"></md-icon>
+            </md-button>
           </div>
-          <div enlargeBG  ng-show="showEnlargedImage" ng-click="showEnlargedImage = !showEnlargedImage">
-          <x-image-enlarge class="imageEnlarge"
-                            ng-style="{'background-image':'url({{product.info.Image}})'}">
-          </x-image-enlarge>
+          <div enlargeBG ng-show="showEnlargedImage" ng-click="showEnlargedImage = !showEnlargedImage">
+            <x-image-enlarge class="imageEnlarge"
+                             ng-style="{'background-image':'url({{product.info.Image}})'}">
+            </x-image-enlarge>
           </div>
         </div>
       </div>
-     </div>
+
+    </div>
+    <div notSignedInADDtolibraryBG ng-show="product.userLogin"
+         layout="center">
+      <div notSignedInADDtolibrary>
+        <md-icon crossInaddtolib md-svg-icon="assets/images/cross_icon.svg"
+                 ng-click="product.userLogin = !product.userLogin"></md-icon>
+
+        <div layout="column" layout-align="center center">
+          <div>You need to login to Origin
+            </br>before adding this resource.
+          </div>
+          <div>
+            <md-button loginButton class="md-raised" ui-sref="signIn">
+              LOGIN
+            </md-button>
+          </div>
+          <div dontHaveAccount>
+            Don't have an account?
+            <span joinfree ui-sref="signUp">Join Free Now</span>
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+
+
   </div>
+
   <div someMoreData layout="column" ng-if="product.likes.length > 0">
     <div layout="row" layout-align="start center">
       <div flex="19" style="font-weight: 600">You might also like</div>

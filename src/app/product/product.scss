@@ -95,26 +95,24 @@
       [description] {
         font-size: 14px;
       }
-        [addToLibrary] {
-          color: #ffffff;
-          background-color: #00af9d;
-          width: 150px;
-          [addTo] {
-            font-size: 16px;
-            cursor: pointer;
-          }
+      [addToLibrary] {
+        color: #ffffff;
+        background-color: #00af9d;
+        width: 150px;
+        [addTo] {
+          font-size: 16px;
+          cursor: pointer;
         }
-        [addedInLibrary] {
-          background-color: #adadad;
-          color: #ffffff;
-          width: 150px;
-          [addTo] {
-            font-size: 16px;
-            cursor: pointer;
-          }
+      }
+      [addedInLibrary] {
+        background-color: #adadad;
+        color: #ffffff;
+        width: 150px;
+        [addTo] {
+          font-size: 16px;
+          cursor: pointer;
         }
-
-
+      }
 
       table thead {
         font-size: 14px;
@@ -185,6 +183,55 @@
           height: 90%;
           margin: 5%;
           cursor: zoom-out;
+        }
+      }
+    }
+    [notSignedInADDtolibraryBG] {
+      height: 100%;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 10000000;
+      background: rgba(0, 0, 0, 0.7) no-repeat 50% 50%;
+      outline: 0;
+      [notsignedinaddtolibrary] {
+        position: absolute;
+        top: 43%;
+        left: 43%;
+        margin: -100px 0 0 -150px;
+        width: 400px;
+        color: #000;
+        z-index: 99999;
+        background: #ffffff;
+        outline: 0;
+        border: 1px solid black;
+        border-radius: 4px;
+        padding: 20px;
+        [crossInaddtolib]{
+          float: right;
+          position: absolute;
+          right: 2px;
+          top: 2px;
+          cursor: pointer;
+
+        }
+        [loginButton] {
+          background-color: #00af9d;
+          width: 150px;
+          color: #ffffff;
+          margin: 20px;
+        }
+        [dontHaveAccount] {
+          border-top: 1px solid #D0D0D0;
+          margin: 10px;
+          padding-top: 10px;
+          [joinfree] {
+            color: #00AF9D;
+            text-decoration: underline;
+          }
         }
       }
     }
