@@ -11,7 +11,7 @@
       <span tagline ng-show="forgotpwd"  ng-if="!signIn.forgot">
         Enter your email address and we will send you a</br> link to reset your password.
       </span>
-        <span tagline ng-if="signIn.forgot">
+        <span pwd-error ng-if="signIn.forgot">
         {{signIn.ForgotPwdText}}
       </span>
 

@@ -6,6 +6,7 @@ export class ProductController {
     this.info = {};
     this.user = {};
     this.likes = [];
+    this.userLogin = false;
     this.book = {
       hideAdd: false,
       added: false
@@ -34,14 +35,18 @@ export class ProductController {
       sessionStatus.success((response) => {
         var userInfo = response.userAccSrvRes.userSessionData;
 
-        if (!_.isEmpty(userInfo)) {this.user = userInfo;}
+        if (!_.isEmpty(userInfo)) {
+          this.user = userInfo;
+        }
+
 
         var relatedProducts = $service.$connect('', 'magic', 'getProductDetails', {
           urlParams: {
             id: $stateParams.id,
             username: this.user.userName,
             token: $service.token('get')
-          }});
+          }
+        });
 
         relatedProducts.success((response) => {
           var data = response.response;
@@ -133,7 +138,9 @@ export class ProductController {
         this.description = detail.description;
         this.info.Image = $sce.trustAsResourceUrl(detail.coverImage);
       }
-    } else {$state.go('library');}
+    } else {
+      $state.go('library');
+    }
 
     this.openProduct = (id) => {
       $state.go('product', {
@@ -142,24 +149,33 @@ export class ProductController {
     };
 
     this.addProduct = () => {
-      if (!_.isEmpty(this.user.userName)) {
-        var addPromise = $service.$connect('none', 'magic', 'addUpdateProduct', {
-          urlParams: {token: $service.token('get')},
-          requestParams: {
-            username: this.user.userName,
-            productid: $stateParams.id
+      var sessionStatus = $service.$connect('none', 'magic', 'sessionStatus');
+      sessionStatus.success((response) => {
+        var userInfo = response.userAccSrvRes.userSessionData;
+        if (_.isEmpty(userInfo)) {
+          this.userLogin = true;
+          if (!_.isEmpty(this.user.userName)) {
+            var addPromise = $service.$connect('none', 'magic', 'addUpdateProduct', {
+              urlParams: {token: $service.token('get')},
+              requestParams: {
+                username: this.user.userName,
+                productid: $stateParams.id
+              }
+            });
+            addPromise.success(() => {
+              this.book.hideAdd = true;
+
+            });
+            return 1;
           }
-        });
+        }
+        else {
+          this.userLogin = true;
+        }
 
-        addPromise.success(() => {
-          this.book.hideAdd = true;
-          this.book.added = true;
-        });
+      });
 
-        return 1;
-      }
 
-      $state.go('signUp');
     }
   }
 }
