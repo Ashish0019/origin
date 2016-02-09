@@ -11,6 +11,8 @@ export function NavbarDirective($log, $service) {
     link: ($scope, $el, $attrs) => {
       $scope.UserLogin = false;
       $scope.navbarText = $attrs.navText;
+      $scope.myLibrary = document.referrer;
+
       $scope.search = {
         $current: ''
       };
