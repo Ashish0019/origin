@@ -31,10 +31,10 @@ export class SignInController {
       });
 
       forgot.success((response) => {
-        this.ForgotPwdText = response.userAccSrvRes.diagMessage ;
-        if(response.userAccSrvRes.code == 200) {
-          this.ForgotPwdTextSuccess = "Email Sent Successfully";
-        }
+          this.ForgotPwdText = response.userAccSrvRes.diagMessage;
+          if (response.userAccSrvRes.code == 200) {
+            this.ForgotPwdTextSuccess = "Email Sent Successfully";
+          }
         }
       );
 
