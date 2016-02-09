@@ -14,6 +14,9 @@
         <span pwd-error ng-if="signIn.forgot">
         {{signIn.ForgotPwdText}}
       </span>
+        <span pwd-success ng-if="signIn.frgtPwdSuccess == 200">
+        {{signIn.ForgotPwdTextSuccess}}
+      </span>
 
       <form form-commit name="signInForm" method="post" ng-hide="true"
             action="{{signIn.postUrl}}" target="_self">
