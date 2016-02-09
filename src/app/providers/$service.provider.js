@@ -12,8 +12,8 @@ class $ServiceProvider {
       staging: {
         HOSTS: [
           'mbx-api-staging.getmagicbox.com',
-          'origin.stg1.getmagicbox.com',
-          'amz.s-1.mdistribute.magicsw.com'
+          'origin.stg1.getmagicbox.com'
+
         ]
       },
       production: {
@@ -102,7 +102,7 @@ class $ServiceProvider {
             mapping: {}
           },
           forgetpassword: {
-            HOST: 2,
+            HOST: 1,
             url: '/services/user/account/forgetpassword.json',
             headers: {
               'Content-Type': 'application/json'

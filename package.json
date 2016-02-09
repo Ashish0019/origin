@@ -2,7 +2,7 @@
   "name": "originWeb",
   "version": "0.3.2",
   "dependencies": {
-    "gulp-util": "^3.0.7"
+    "gulp-util": "^3.0.8"
   },
   "scripts": {
     "test": "gulp test"
