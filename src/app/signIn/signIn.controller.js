@@ -31,8 +31,10 @@ export class SignInController {
       });
 
       forgot.success((response) => {
+          $log.debug(response)
         this.ForgotPwdText = response.userAccSrvRes.diagMessage ;
-        if(response.userAccSrvRes.code == 200) {
+          this.frgtPwdSuccess=response.userAccSrvRes.code;
+        if(this.frgtPwdSuccess == 200) {
           this.ForgotPwdTextSuccess = "Email Sent Successfully";
         }
         }
