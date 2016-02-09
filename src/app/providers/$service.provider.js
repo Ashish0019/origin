@@ -19,8 +19,8 @@ class $ServiceProvider {
       production: {
         HOSTS: [
           'api.getmagicbox.com',
-          'origin.stg1.getmagicbox.com',
-          'amz.s-1.mdistribute.magicsw.com'
+          'www.k12origin.com',
+          'www.k12origin.com'
         ]
       }
     };
@@ -362,6 +362,13 @@ class $ServiceProvider {
       $query: query,
       $insert: insert,
       token: token,
+      config: (key, pos) => {
+        if (key === 'HOSTS') {
+          return this.environment[this.ENV][key][pos];
+        }
+
+        return this.$config;
+      },
       search: (mode, value) => {
         switch (mode) {
           case 'get':

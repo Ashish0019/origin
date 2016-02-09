@@ -1,8 +1,9 @@
 export class SignInController {
-  constructor($log, $scope, $service) {
+  constructor($log, $scope, $service, $sce) {
     'ngInject';
     this.inputType = 'password';
     this.forgot = false;
+    this.postUrl = $sce.trustAsResourceUrl('http://' + $service.config('HOSTS', 1) + '/j_spring_security_check');
 
     this.user = {
       username: '',
@@ -18,7 +19,7 @@ export class SignInController {
     };
 
     this.login = ($form) => {
-      $form.commit();
+      $form.commit(this.user);
     };
 
     this.ForgotPassword = () => {
@@ -32,7 +33,6 @@ export class SignInController {
 
       forgot.success((response) => {
         this.ForgotPwdText = response.userAccSrvRes.diagMessage;
-        $log.debug(response)
       });
 
       forgot.failure((error) => {
