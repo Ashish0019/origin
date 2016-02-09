@@ -6,6 +6,7 @@ export class LibraryController {
     this.showError = false;
     this.MAX_LIMIT = 1000;
     this.searchInfo = {$current: ''};
+    this.requests = {youtube: 'pending', magic: 'pending'};
     this.sortStats = {prop: 'title', reverse: false};
     this.filterGrid = {
       show: {
@@ -130,7 +131,6 @@ export class LibraryController {
       $service.$append('library', domain, cat, temp);
       this.details = $service.$query('library', '', 'full');
       this.details = _.shuffle(this.details);
-      $log.debug(this.details);
     };
 
     this.openProduct = (id) => {
@@ -219,6 +219,9 @@ export class LibraryController {
 
     this.fetchData = (params) => {
       this.showError = false;
+      this.requests.youtube = 'pending';
+      this.requests.magic = 'pending';
+
       var payload = {
         pageNumber: 1,
         maxRecordCount: 200
@@ -236,7 +239,7 @@ export class LibraryController {
         this.disabled.youtube = params.disableYoutube;
         this.disabled.magic = params.disableMagic;
         if (params.youtube) {
-          youtubeQuery = params.youtube.query;
+          youtubeQuery += '+' + params.youtube.query;
           delete params.youtube;
         }
       }
@@ -258,10 +261,12 @@ export class LibraryController {
         });
 
         youtube.success((response) => {
+          this.requests.youtube = 'complete';
           this.populateDetails('google', response.items);
         });
 
         youtube.failure((error) => {
+          this.requests.youtube = 'complete';
           this.inform('err', error);
         });
       }
@@ -274,10 +279,12 @@ export class LibraryController {
         });
 
         magic.success((response) => {
+          this.requests.magic = 'complete';
           this.populateDetails('magic', response.productSoList);
         });
 
         magic.failure((error) => {
+          this.requests.magic = 'complete';
           this.inform('err', error);
         });
       }

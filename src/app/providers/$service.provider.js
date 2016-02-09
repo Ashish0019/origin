@@ -30,7 +30,7 @@ class $ServiceProvider {
       API: {
         magic: {
           productListing: {
-            HOST: this.environment[this.ENV].HOSTS[0],
+            HOST: 0,
             url: '/services/product/v1.0/getProductList',
             preProcess: true,
             headers: {
@@ -43,7 +43,7 @@ class $ServiceProvider {
             mapping: {}
           },
           getProductDetails: {
-            HOST: this.environment[this.ENV].HOSTS[0],
+            HOST: 0,
             url: '/services/product/v1.0/getProductDetails/:id',
             preProcess: true,
             headers: {
@@ -56,7 +56,7 @@ class $ServiceProvider {
             mapping: {}
           },
           addUpdateProduct: {
-            HOST: this.environment[this.ENV].HOSTS[0],
+            HOST: 0,
             url: '/services/product/v1.0/addUpdateFreeBookUserAccess',
             preProcess: true,
             headers: {
@@ -69,7 +69,7 @@ class $ServiceProvider {
             mapping: {}
           },
           filterDetails: {
-            HOST: this.environment[this.ENV].HOSTS[0],
+            HOST: 0,
             url: '/services/product/v1.0/getProductFilterDetails',
             method: 'GET',
             preProcess: true,
@@ -79,7 +79,7 @@ class $ServiceProvider {
             mapping: {}
           },
           sessionStatus: {
-            HOST: this.environment[this.ENV].HOSTS[1],
+            HOST: 1,
             url: '/services/user/account/sessionstatus.json',
             method: 'GET',
             preProcess: true,
@@ -89,7 +89,7 @@ class $ServiceProvider {
             mapping: {}
           },
           freeBookListing: {
-            HOST: this.environment[this.ENV].HOSTS[0],
+            HOST: 0,
             url: '/services/product/v1.0/getUserFreeBookList',
             headers: {
               'Content-Type': 'application/json'
@@ -102,7 +102,7 @@ class $ServiceProvider {
             mapping: {}
           },
           forgetpassword: {
-            HOST: this.environment[this.ENV].HOSTS[2],
+            HOST: 2,
             url: '/services/user/account/forgetpassword.json',
             headers: {
               'Content-Type': 'application/json'
@@ -196,7 +196,7 @@ class $ServiceProvider {
 
       if (!category[type].retrieved || !category[type].$stored) {
         var payload = _.clone(category[type]);
-        var connectUrl = $location.protocol() + '://' + payload.HOST;
+        var connectUrl = $location.protocol() + '://' + this.environment[this.ENV].HOSTS[payload.HOST];
         var $httpPromise = {};
 
         if (payload.preProcess) {

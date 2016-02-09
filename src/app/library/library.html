@@ -63,7 +63,8 @@
       </md-button>
     </aside>
     <aside element="tab-content" layout="row" layout-align="space-between start" layout-wrap=""
-           ng-if="library.details.length > 0">
+           ng-if="library.details.length > 0"
+           ng-hide="library.requests.magic === 'pending' && library.requests.youtube === 'pending'">
       <div content-listing layout="row" layout-align="space-between center" layout-wrap="">
         <div content-item flex-sm="90" flex-md="32" flex-lg="28" flex-gt-lg="22"
              layout="column" layout-align="center center"
@@ -90,7 +91,13 @@
       </div>
     </aside>
   </section>
-  <section loader ng-if="library.details.length <= 0" ng-hide="library.showError">
+  <section layout="column" layout-align="center center"
+           ng-show="library.requests.youtube === 'complete' &&
+           library.requests.magic === 'complete' && library.details.length === 0">
+    No results found. Try a different keyword.
+  </section>
+  <section loader ng-if="library.details.length <= 0"
+           ng-hide="library.requests.youtube === 'complete' && library.requests.magic === 'complete'">
     <div class="sk-folding-cube">
       <div class="sk-cube1 sk-cube"></div>
       <div class="sk-cube2 sk-cube"></div>
