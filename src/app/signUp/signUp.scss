@@ -7,6 +7,7 @@
 
   *{
     text-transform: none;
+    font-weight: 500;
   }
   .md-button[disabled] {
     cursor: not-allowed !important;
@@ -15,7 +16,7 @@
     background-color: transparent;
     min-width: 540px;
     min-height: 748px;
-    font-family: sans-serif;
+    font-family: 'Open Sans', sans-serif;
     color: #ffffff;
 
 
@@ -152,6 +153,7 @@
         color: #ffffff;
         font-size: 0.9em;
         width: 87%;
+        margin-left: 0;
 
         a {
           color: #ffffff;

@@ -23,11 +23,6 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
       templateUrl: 'app/library/library.html',
       controller: 'LibraryController',
       controllerAs: 'library'
-     /* resolve: {
-        $URLS: ($http) => {
-          return $http.post("http://amz.s-1.mdistribute.magicsw.com/services/catalog/allproductdetail.json");
-        }
-      }*/
     })
     .state('signIn', {
       url: '/signIn',
@@ -40,11 +35,6 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
       templateUrl: 'app/product/product.html',
       controller: 'ProductController',
       controllerAs: 'product'
-    /*  resolve: {
-        $URLS: ($http) => {
-          return $http.post("http://amz.s-1.mdistribute.magicsw.com/services/catalog/allproductdetail.json");
-        }
-      }*/
     });
 
   $urlRouterProvider.otherwise('/home');

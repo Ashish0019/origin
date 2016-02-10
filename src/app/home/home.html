@@ -6,8 +6,12 @@
     <div origin-logo=""></div>
 
     <div login-panel layout="row">
-      <md-button md-ink-ripple login-component="free" ui-sref="signUp" ng-show="!home.UserLogin">Join Free</md-button>
-      <md-button md-ink-ripple login-component="login" ui-sref="signIn" ng-show="!home.UserLogin">Login</md-button>
+      <md-button md-ink-ripple login-component="free" ui-sref="signUp"
+                 ng-show="home.UserLogin==='notLogged'">Join Free
+      </md-button>
+      <md-button md-ink-ripple login-component="login" ui-sref="signIn"
+                 ng-show="home.UserLogin==='notLogged'">Login
+      </md-button>
     </div>
 
     <div search-panel layout="column" layout-align="center center">

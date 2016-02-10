@@ -1,9 +1,7 @@
 [home-container] {
   position: absolute;
-
   width: 100%;
   height: 100%;
-
   background: url("../assets/images/background.jpg") no-repeat center center;
   background-size: cover;
 
@@ -13,30 +11,23 @@
       width: 253px;
       height: 50px;
       top: 0;
-
       margin-left: 40px;
       margin-top: 20px;
-
       z-index: 9;
-
       background-size: contain;
       background: url("../assets/images/rsz_babel.png") no-repeat center center;
     }
 
     [login-panel] {
       position: absolute;
-
       top: 0;
       right: 10px;
-
       z-index: 9;
-
       margin: 20px;
 
       [login-component] {
         text-transform: none;
         width: 90px;
-
         cursor: pointer;
       }
 
@@ -59,16 +50,14 @@
 
     [search-panel] {
       position: absolute;
-
       width: 100%;
       height: 100%;
-
       top: 0;
 
       [origin-contents] {
         width: 80%;
         md-button {
-         color:#757575;
+          color: #757575;
         }
         .md-chips .md-chip-input-container input, .md-chips .md-chip-input-container input:not([type]) {
           color: #ffffff;
@@ -86,7 +75,6 @@
           color: #DFDDDE;
           font-size: 1.8em;
           letter-spacing: 2px;
-
           -webkit-user-select: none;
           -moz-user-select: none;
           -ms-user-select: none;
@@ -110,7 +98,7 @@
           }
         }
 
-        [searches]{
+        [searches] {
           color: rgb(195, 195, 194);
           font-size: 1.15em;
         }
@@ -133,7 +121,7 @@
         }
 
         .md-chips .md-chip .md-chip-remove md-icon {
-          color: rgb(66,66,66);
+          color: rgb(66, 66, 66);
         }
       }
     }
@@ -141,7 +129,6 @@
     [down-icon] {
       position: fixed;
       bottom: 0;
-
       left: 46%;
       margin: 12px;
     }
@@ -151,11 +138,14 @@
 section[popular-listing] {
   margin-top: 64px;
   margin-left: 32px;
-aside {
-  color: #757575;
-  font-size: 2.0em;
-  padding: 10px;
-}
+
+  aside {
+    font-family: juice;
+    color: #757575;
+    font-size: 2.0em;
+    padding: 10px;
+
+  }
 
   [content-listing-wrapper] {
     width: 100%;
@@ -171,7 +161,6 @@ aside {
         margin-right: 10px;
         border: 1px solid #d8d8d8;
         cursor: pointer;
-
 
         .content-item-children {
           border: none;
@@ -193,10 +182,10 @@ aside {
 
         [item-meta="info"] {
           width: 90%;
-
           margin-bottom: 24px;
-
-          * {margin: 0;}
+          * {
+            margin: 0;
+          }
 
           [content-item="title"] {
             @extend .content-item-children;
@@ -204,7 +193,7 @@ aside {
             height: auto;
             padding-top: 5px;
             border: none;
-          color: rgba(64, 64, 64, 0.54);
+            color: rgba(64, 64, 64, 0.54);
             font-size: 1.1em;
             font-weight: 800;
           }
@@ -213,14 +202,13 @@ aside {
             @extend .content-item-children;
             width: 90%;
             height: auto;
-            color:#A3A3A3;
+            color: #A3A3A3;
             font-size: 0.8em;
           }
         }
 
         [content-footer="category"] {
           width: 100%;
-
           padding: 8px;
           font-size: 0.8em;
           font-weight: 700;
@@ -229,16 +217,15 @@ aside {
           box-shadow: 0px 2px rgba(102, 102, 102, 0.3);
 
           span {
-            margin-left:0;
+            margin-left: 0;
             md-icon {
-             padding-right: 2px;
+              padding-right: 2px;
             }
           }
         }
 
         [content-footer="analytics"] {
           width: 100%;
-
           padding: 8px;
           font-size: 0.8em;
           font-weight: 700;

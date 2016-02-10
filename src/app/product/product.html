@@ -9,7 +9,7 @@
       <div layout="row">
         <div layout="column" layout-align="start start">
           <div dataTitle>{{product.info.title}}</div>
-          <div metaData ng-bind-html="product.info.Content"></div>
+          <div metaData ng-bind-html="product.info.content"></div>
           <div stars>
             <span class="starRating">
               <input id="rating5" type="radio">
@@ -47,8 +47,8 @@
           </md-button>
 
 
-          <p description>{{product.description}}</p>
-          <table ng-hide="product.author=='Youtube'">
+          <p description>{{product.info.description}}</p>
+          <table ng-hide="product.category=='youtube'">
             <thead>
             <tr>
               <th colspan="2">Product Details</th>
@@ -57,15 +57,15 @@
             <tbody>
             <tr>
               <td class="tableHeading">Grades</td>
-              <td>{{product.info.Grades}}</td>
+              <td>{{product.info.grades}}</td>
             </tr>
             <tr>
               <td class="tableHeading">Publisher</td>
-              <td>{{product.info.Publisher}}</td>
+              <td>{{product.info.publisher}}</td>
             </tr>
             <tr>
               <td class="tableHeading">Resource Types</td>
-              <td>{{product.info.Type}}</td>
+              <td>{{product.info.type}}</td>
             </tr>
             </tbody>
           </table>
@@ -76,15 +76,24 @@
         </div>
       </div>
       <div flex-gt-lg="40" flex-gt="50" flex-md="48" layout="column" flex="50"
-           ng-switch on="product.author" style="margin-right: 20px;">
-        <div ng-switch-when='Youtube'>
-          <iframe width="80%" height="300px" ng-src="{{product.yVideo}}" allowfullscreen>
+           ng-switch on="product.category" style="margin-right: 20px;">
+
+        <div ng-switch-when='youtube'>
+          <iframe width="80%" height="300px" ng-src="{{product.info.youtubeURL}}" allowfullscreen>
           </iframe>
+        </div>
+        <div ng-switch-when="audio" class="audioContainer">
+          <div imagebackaudio ng-style="{'background-image':'url({{product.info.image}})'}">
+          </div>
+          <audio width="80%" height="300px" controls ng-src="{{product.info.audioSrc}}"></audio>
+        </div>
+        <div ng-switch-when="video">
+          <video width="80%" height="300px" controls ng-src="{{product.info.videoSrc}}"></video>
         </div>
         <div ng-switch-default>
           <md-icon addedToLib
                    ng-show="product.book.added"></md-icon>
-          <div class="contentContainer" ng-style="{'background-image':'url({{product.info.Image}})'}">
+          <div class="contentContainer" ng-style="{'background-image':'url({{product.info.image}})'}">
             <md-button enlargerBackground aria-label="Product View"
                        ng-click="showEnlargedImage = !showEnlargedImage">
               <md-icon zoomIcon md-svg-icon="assets/images/fullscreen.svg"></md-icon>
@@ -99,12 +108,10 @@
       </div>
 
     </div>
-    <div notSignedInADDtolibraryBG ng-show="product.userLogin"
-         layout="center">
+    <div notSignedInADDtolibraryBG ng-show="product.userLogin" layout="center">
       <div notSignedInADDtolibrary>
         <md-icon crossInaddtolib md-svg-icon="assets/images/cross_icon.svg"
                  ng-click="product.userLogin = !product.userLogin"></md-icon>
-
         <div layout="column" layout-align="center center">
           <div>You need to login to Origin
             </br>before adding this resource.
@@ -119,15 +126,9 @@
             <span joinfree ui-sref="signUp">Join Free Now</span>
           </div>
         </div>
-
       </div>
-
-
     </div>
-
-
   </div>
-
   <div someMoreData layout="column" ng-if="product.likes.length > 0">
     <div layout="row" layout-align="start center">
       <div flex="19" style="font-weight: 600">You might also like</div>

@@ -44,14 +44,14 @@
           <span forgotPwd ng-model="forgotpwd" ng-hide="forgotpwd"
                 ng-click="forgotpwd = !forgotpwd">Forgot Password?</span>
         </div>
-        <div entity="check_box" ng-hide="forgotpwd">
-          <input type="checkbox" md-ink class="md-primary" ng-model="signIn.user.checkedBox" style="display: inline-block">
-          </input>
-        <span >
-         Remember me on this device
-        </span>
+        <!--  <div entity="check_box" ng-hide="forgotpwd">
+            <input type="checkbox" md-ink class="md-primary" ng-model="signIn.user.checkedBox" style="display: inline-block">
+            </input>
+          <span>
+           Remember me on this device
           </span>
-        </div>
+            </span>
+          </div>-->
       </form>
       <div registration="container" layout="row" layout-align="center center">
         <md-button registration="register-button" class="md-raised" ng-hide="forgotpwd"

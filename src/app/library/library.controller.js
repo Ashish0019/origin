@@ -1,10 +1,11 @@
 export class LibraryController {
-  constructor($scope, $log, $http, $service, $state, $timeout) {
+  constructor($scope, $log, $window, $service, $state, $timeout) {
     'ngInject';
     this.details = [];
     this.showFilter = false;
     this.showError = false;
     this.MAX_LIMIT = 1000;
+    this.recordCount = 1000;
     this.searchInfo = {$current: ''};
     this.requests = {youtube: 'pending', magic: 'pending'};
     this.sortStats = {prop: 'title', reverse: false};
@@ -32,7 +33,7 @@ export class LibraryController {
           this.refreshListing({
             requestParams: {
               pageNumber: 1,
-              maxRecordCount: 200,
+              maxRecordCount: this.recordCount,
               searchText: [info.$current]
             },
             youtube: {query: info.$current}
@@ -44,7 +45,7 @@ export class LibraryController {
         this.refreshListing({
           requestParams: {
             pageNumber: 1,
-            maxRecordCount: 200,
+            maxRecordCount: this.recordCount,
             searchText: info.search.arr
           },
           youtube: {query: info.search.youtube}
@@ -80,7 +81,7 @@ export class LibraryController {
             case 'magic':
               var pushDetails = {
                 title: item.title,
-                subject: item.subject || item.subject2 || "English",
+                subject: item.subject || "English",
                 author: item.author || "Magic",
                 id: item.productId,
                 meta: {
@@ -148,7 +149,7 @@ export class LibraryController {
     this.refreshListing = (params) => {
       var payload = params || {
           pageNumber: 1,
-          maxRecordCount: 200
+          maxRecordCount: this.recordCount
         };
       this.details = [];
       this.fetchData({
@@ -211,10 +212,14 @@ export class LibraryController {
         this.refreshListing({
           requestParams: _.merge({
             pageNumber: 1,
-            maxRecordCount: 200
+            maxRecordCount: this.recordCount
           }, buildRequest)
         });
       }, 400);
+    };
+
+    this.reset = () => {
+      $window.location.reload();
     };
 
     this.fetchData = (params) => {
@@ -224,7 +229,7 @@ export class LibraryController {
 
       var payload = {
         pageNumber: 1,
-        maxRecordCount: 200
+        maxRecordCount: this.recordCount
       };
 
       var youtubeQuery = 'common+core+english+grades+k12';
