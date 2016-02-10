@@ -24,10 +24,10 @@
     <section flex="7" layout="row" layout-align="center center" style="width: 12%"></section>
     <section login-panel flex="15" layout="row" layout-align="center center">
       <md-button ui-sref="signUp" JoinFree
-                 ng-hide="UserLogin==='loggedIn' || UserLogin==='none'">Join Free
+                 ng-show="UserLogin==='notLoggedIn'">Join Free
       </md-button>
       <md-button ui-sref="signIn" Login
-                 ng-hide="UserLogin==='loggedIn' || UserLogin==='none'">Login
+                 ng-show="UserLogin==='notLoggedIn'">Login
       </md-button>
 
       <md-button ng-show="UserLogin==='loggedIn'" loginIcons>

@@ -1,9 +1,7 @@
 [home-container] {
   position: absolute;
-
   width: 100%;
   height: 100%;
-
   background: url("../assets/images/background.jpg") no-repeat center center;
   background-size: cover;
 
@@ -13,30 +11,23 @@
       width: 253px;
       height: 50px;
       top: 0;
-
       margin-left: 40px;
       margin-top: 20px;
-
       z-index: 9;
-
       background-size: contain;
       background: url("../assets/images/rsz_babel.png") no-repeat center center;
     }
 
     [login-panel] {
       position: absolute;
-
       top: 0;
       right: 10px;
-
       z-index: 9;
-
       margin: 20px;
 
       [login-component] {
         text-transform: none;
         width: 90px;
-
         cursor: pointer;
       }
 
@@ -59,10 +50,8 @@
 
     [search-panel] {
       position: absolute;
-
       width: 100%;
       height: 100%;
-
       top: 0;
 
       [origin-contents] {
@@ -86,7 +75,6 @@
           color: #DFDDDE;
           font-size: 1.8em;
           letter-spacing: 2px;
-
           -webkit-user-select: none;
           -moz-user-select: none;
           -ms-user-select: none;
@@ -141,7 +129,6 @@
     [down-icon] {
       position: fixed;
       bottom: 0;
-
       left: 46%;
       margin: 12px;
     }
@@ -193,9 +180,7 @@ aside {
 
         [item-meta="info"] {
           width: 90%;
-
           margin-bottom: 24px;
-
           * {margin: 0;}
 
           [content-item="title"] {
@@ -204,7 +189,7 @@ aside {
             height: auto;
             padding-top: 5px;
             border: none;
-          color: rgba(64, 64, 64, 0.54);
+            color: rgba(64, 64, 64, 0.54);
             font-size: 1.1em;
             font-weight: 800;
           }
@@ -220,7 +205,6 @@ aside {
 
         [content-footer="category"] {
           width: 100%;
-
           padding: 8px;
           font-size: 0.8em;
           font-weight: 700;
@@ -238,7 +222,6 @@ aside {
 
         [content-footer="analytics"] {
           width: 100%;
-
           padding: 8px;
           font-size: 0.8em;
           font-weight: 700;
