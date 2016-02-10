@@ -81,7 +81,7 @@ export class LibraryController {
             case 'magic':
               var pushDetails = {
                 title: item.title,
-                subject: item.subject || item.subject2 || "English",
+                subject: item.subject || "English",
                 author: item.author || "Magic",
                 id: item.productId,
                 meta: {
