@@ -82,6 +82,14 @@
           <iframe width="80%" height="300px" ng-src="{{product.info.youtubeURL}}" allowfullscreen>
           </iframe>
         </div>
+        <div ng-switch-when="audio" class="audioContainer">
+          <div imagebackaudio ng-style="{'background-image':'url({{product.info.image}})'}">
+          </div>
+          <audio width="80%" height="300px" controls ng-src="{{product.info.audioSrc}}"></audio>
+        </div>
+        <div ng-switch-when="video">
+          <video width="80%" height="300px" controls ng-src="{{product.info.videoSrc}}"></video>
+        </div>
         <div ng-switch-default>
           <md-icon addedToLib
                    ng-show="product.book.added"></md-icon>

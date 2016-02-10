@@ -7,13 +7,14 @@
 
   *{
     text-transform: none;
+    font-weight: 500 !important;
   }
 
   [signIn-panel] {
     background-color: transparent;
     min-width: 540px;
     min-height: 570px;
-    font-family: sans-serif;
+    font-family: 'Open Sans', sans-serif;
     color: #ffffff;
 
     [logo-img] {
@@ -139,6 +140,7 @@
         border-radius: 3px;
         font-size: .8em;
         margin: 10px;
+        margin-top: -5px;
 
         [registration="register-button"] {
           background-color: #979797;

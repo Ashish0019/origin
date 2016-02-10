@@ -138,6 +138,8 @@ export class ProductController {
         this.info.type = "  " + detail.category.name;
         this.info.description = detail.description;
         this.info.image = $sce.trustAsResourceUrl(detail.coverImage);
+        this.info.audioSrc = $sce.trustAsResourceUrl("http://www.noiseaddicts.com/samples_1w72b820/2514.mp3");
+        this.info.videoSrc = $sce.trustAsResourceUrl("http://techslides.com/demos/sample-videos/small.mp4");
       }
     } else {
       $state.go('library');
