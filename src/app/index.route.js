@@ -16,12 +16,7 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
       url: '/home',
       templateUrl: 'app/home/home.html',
       controller: 'HomeController',
-      controllerAs: 'home',
-      resolve: {
-        $URLS: ($http) => {
-          return $http.get("http://origin.stg1.getmagicbox.com/services/user/account/sessionstatus.json");
-        }
-      }
+      controllerAs: 'home'
     })
     .state('library', {
       url: '/library',
