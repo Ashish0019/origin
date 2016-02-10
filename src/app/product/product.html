@@ -100,12 +100,10 @@
       </div>
 
     </div>
-    <div notSignedInADDtolibraryBG ng-show="product.userLogin"
-         layout="center">
+    <div notSignedInADDtolibraryBG ng-show="product.userLogin" layout="center">
       <div notSignedInADDtolibrary>
         <md-icon crossInaddtolib md-svg-icon="assets/images/cross_icon.svg"
                  ng-click="product.userLogin = !product.userLogin"></md-icon>
-
         <div layout="column" layout-align="center center">
           <div>You need to login to Origin
             </br>before adding this resource.
@@ -120,15 +118,9 @@
             <span joinfree ui-sref="signUp">Join Free Now</span>
           </div>
         </div>
-
       </div>
-
-
     </div>
-
-
   </div>
-
   <div someMoreData layout="column" ng-if="product.likes.length > 0">
     <div layout="row" layout-align="start center">
       <div flex="19" style="font-weight: 600">You might also like</div>
