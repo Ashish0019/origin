@@ -1,6 +1,6 @@
 {
   "name": "originWeb",
-  "version": "0.3.7",
+  "version": "0.3.8",
   "dependencies": {
     "gulp-util": "^3.0.8"
   },
