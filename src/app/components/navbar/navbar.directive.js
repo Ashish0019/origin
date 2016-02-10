@@ -12,6 +12,9 @@ export function NavbarDirective($log, $service, $document) {
       $scope.UserLogin = 'none';
       $scope.navbarText = $attrs.navText;
       $scope.myLibrary = $document.referrer;
+      $log.debug($scope.myLibrary, "hie");
+
+
       $scope.search = {
         $current: ''
       };
