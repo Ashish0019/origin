@@ -12,7 +12,7 @@ export function NavbarDirective($log, $service) {
       $scope.UserLogin = 'none';
       $scope.navbarText = $attrs.navText;
       $scope.myLibrary = document.referrer;
-
+      document.getElementsByAttribute("login-panel").style.display = "none";
       $scope.search = {
         $current: ''
       };
@@ -33,8 +33,10 @@ export function NavbarDirective($log, $service) {
         var sessionStat = response.userAccSrvRes.userSessionData;
         if (sessionStat) {
           $scope.UserLogin = 'loggedIn';
+          document.getElementsByAttribute("login-panel").style.display = "block";
         }else{
           $scope.UserLogin = 'notLoggedIn';
+          document.getElementsByAttribute("login-panel").style.display = "block";
         }
       })
 
