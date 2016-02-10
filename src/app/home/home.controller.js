@@ -84,8 +84,7 @@ export class HomeController {
       if (sessionStat) {
         this.UserLogin = 'loggedIn';
       } else {
-        this.UserLogin = 'notLoggedIn';
-
+        this.UserLogin = 'notLogged';
       }
     });
     $document[0].addEventListener('scroll', () => {
