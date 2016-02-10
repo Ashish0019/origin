@@ -1,4 +1,4 @@
-export function NavbarDirective($log, $service) {
+export function NavbarDirective($log, $service, $document) {
   'ngInject';
 
   let directive = {
@@ -11,8 +11,8 @@ export function NavbarDirective($log, $service) {
     link: ($scope, $el, $attrs) => {
       $scope.UserLogin = 'none';
       $scope.navbarText = $attrs.navText;
-      $scope.myLibrary = document.referrer;
-      document.getElementsByAttribute("login-panel").style.display = "none";
+      $scope.myLibrary = $document.referrer;
+      $document.getElementsByAttribute("login-panel").style.display = "none";
       $scope.search = {
         $current: ''
       };
