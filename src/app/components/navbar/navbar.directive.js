@@ -12,12 +12,9 @@ export function NavbarDirective($log, $service, $document) {
       $scope.UserLogin = 'none';
       $scope.navbarText = $attrs.navText;
       $scope.myLibrary = $document.referrer;
-
-
       $scope.search = {
         $current: ''
       };
-
       _.each($scope.$eval($attrs.searchText), (item) => {
         $scope.search.$current += item + ' '
       });
@@ -28,13 +25,11 @@ export function NavbarDirective($log, $service, $document) {
         }
       };
 
-
       var sessionStatus = $service.$connect('none', 'magic', 'sessionStatus');
       sessionStatus.success((response) => {
         var sessionStat = response.userAccSrvRes.userSessionData;
         if (sessionStat) {
           $scope.UserLogin = 'loggedIn';
-
         }else{
           $scope.UserLogin = 'notLoggedIn';
 
