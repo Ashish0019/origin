@@ -48,7 +48,7 @@
 
 
           <p description>{{product.info.description}}</p>
-          <table ng-hide="product.category=='YouTube'">
+          <table ng-hide="product.category=='youtube'">
             <thead>
             <tr>
               <th colspan="2">Product Details</th>
@@ -78,7 +78,7 @@
       <div flex-gt-lg="40" flex-gt="50" flex-md="48" layout="column" flex="50"
            ng-switch on="product.category" style="margin-right: 20px;">
 
-        <div ng-switch-when='YouTube'>
+        <div ng-switch-when='youtube'>
           <iframe width="80%" height="300px" ng-src="{{product.info.youtubeURL}}" allowfullscreen>
           </iframe>
         </div>

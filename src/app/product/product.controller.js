@@ -30,7 +30,7 @@ export class ProductController {
     if (!_.isEmpty(detail)) {
       this.author = detail.author;
       this.showDetails = true;
-      this.category = detail.category.name;
+      this.category = (detail.category.name).toLowerCase();
       this.showAddToLibrary = detail.section === 'magic';
 
       var sessionStatus = $service.$connect('none', 'magic', 'sessionStatus');
@@ -115,7 +115,7 @@ export class ProductController {
         });
       });
 
-      if (this.category == "YouTube") {
+      if (this.category == "youtube") {
         this.info.title = detail.title;
         this.info.description = detail.meta.description;
         this.info.type = " : Youtube Video";
