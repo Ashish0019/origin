@@ -1,4 +1,4 @@
-export function NavbarDirective($log, $service, $document) {
+export function NavbarDirective($log, $service, $window) {
   'ngInject';
 
   let directive = {
@@ -11,8 +11,7 @@ export function NavbarDirective($log, $service, $document) {
     link: ($scope, $el, $attrs) => {
       $scope.UserLogin = 'none';
       $scope.navbarText = $attrs.navText;
-      $scope.myLibrary = $document.referrer;
-      $log.debug($scope.myLibrary, "referer");
+
 
 
       $scope.search = {
@@ -27,13 +26,20 @@ export function NavbarDirective($log, $service, $document) {
           $scope.onSearch($scope.search);
         }
       };
+      $scope.goToLibrary = () => {
+        $window.location.href = '/mylibrary.htm';
+      };
+      $scope.goToProfile = () => {
+        $window.location.href = '/admin/profile.htm';
+      };
+
 
       var sessionStatus = $service.$connect('none', 'magic', 'sessionStatus');
       sessionStatus.success((response) => {
         var sessionStat = response.userAccSrvRes.userSessionData;
         if (sessionStat) {
           $scope.UserLogin = 'loggedIn';
-        }else{
+        } else {
           $scope.UserLogin = 'notLoggedIn';
 
         }
