@@ -7,6 +7,7 @@ export class ProductController {
     this.user = {};
     this.likes = [];
     this.userLogin = false;
+
     this.book = {
       hideAdd: false,
       added: false
@@ -29,18 +30,16 @@ export class ProductController {
     if (!_.isEmpty(detail)) {
       this.author = detail.author;
       this.showDetails = true;
-      this.type = detail.category.name;
+      this.category = detail.category.name;
       this.showAddToLibrary = detail.section === 'magic';
 
       var sessionStatus = $service.$connect('none', 'magic', 'sessionStatus');
-
       sessionStatus.success((response) => {
-        var userInfo = response.userAccSrvRes.userSessionData;
 
+        var userInfo = response.userAccSrvRes.userSessionData;
         if (!_.isEmpty(userInfo)) {
           this.user = userInfo;
         }
-
 
         var relatedProducts = $service.$connect('', 'magic', 'getProductDetails', {
           urlParams: {
@@ -51,9 +50,11 @@ export class ProductController {
         });
 
         relatedProducts.success((response) => {
+
           var data = response.response;
           if (data.responseCode === 200) {
             _.each(response.relatedProducts, (item) => {
+
               var pushDetails = {
                 title: item.title,
                 subject: item.subject || item.subject2 || "English",
@@ -101,6 +102,7 @@ export class ProductController {
         ownedBooks.success((response) => {
           $log.debug(response);
           if (response.response.responseCode === 200) {
+
             var query = _.find(response.userFreeBooks, (item) => {
               return item === parseInt($stateParams.id, 10);
             });
@@ -113,31 +115,29 @@ export class ProductController {
         });
       });
 
-      if (this.type == "YouTube") {
+      if (this.category == "YouTube") {
         this.info.title = detail.title;
-        this.description = detail.meta.description;
-        this.info.Type = " : Youtube Video";
+        this.info.description = detail.meta.description;
+        this.info.type = " : Youtube Video";
         // here I could have found video ID directly from response from you tube api but I didn't opted for that
         // approach because in some case we get playlists in response which dont have a videoID
         // hence I cropped the video Id from the Image path that I got from response for images
-        var regex = /\/vi\/(.*)\//;
-        var url = detail.coverImage;
         var id = '';
-        if (url.match(regex)) {
-          id = url.match(regex)[1];
+        if ((detail.coverImage).match(/\/vi\/(.*)\//)) {
+          id = (detail.coverImage).match(/\/vi\/(.*)\//)[1];
         }
         var videoPath = "http://www.youtube.com/embed/" + id;
-        this.yVideo = $sce.trustAsResourceUrl(videoPath);
+        this.info.youtubeURL = $sce.trustAsResourceUrl(videoPath);
       }
       else {
         this.info.title = detail.title;
-        this.info.Content = "in" + " " + "<b>" + detail.subject + "</b>" + " " + "by" + " "
+        this.info.content = "in" + " " + "<b>" + detail.subject + "</b>" + " " + "by" + " "
           + "<b>" + detail.author + "</b>";
-        this.info.Grades = "  " + 5 + " - " + 8;
-        this.info.Publisher = "  " + detail.author;
-        this.info.Type = "  " + detail.category.name;
-        this.description = detail.description;
-        this.info.Image = $sce.trustAsResourceUrl(detail.coverImage);
+        this.info.grades = "  " + 5 + " - " + 8;
+        this.info.publisher = "  " + detail.author;
+        this.info.type = "  " + detail.category.name;
+        this.info.description = detail.description;
+        this.info.image = $sce.trustAsResourceUrl(detail.coverImage);
       }
     } else {
       $state.go('library');

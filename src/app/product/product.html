@@ -9,7 +9,7 @@
       <div layout="row">
         <div layout="column" layout-align="start start">
           <div dataTitle>{{product.info.title}}</div>
-          <div metaData ng-bind-html="product.info.Content"></div>
+          <div metaData ng-bind-html="product.info.content"></div>
           <div stars>
             <span class="starRating">
               <input id="rating5" type="radio">
@@ -47,8 +47,8 @@
           </md-button>
 
 
-          <p description>{{product.description}}</p>
-          <table ng-hide="product.author=='Youtube'">
+          <p description>{{product.info.description}}</p>
+          <table ng-hide="product.category=='YouTube'">
             <thead>
             <tr>
               <th colspan="2">Product Details</th>
@@ -57,15 +57,15 @@
             <tbody>
             <tr>
               <td class="tableHeading">Grades</td>
-              <td>{{product.info.Grades}}</td>
+              <td>{{product.info.grades}}</td>
             </tr>
             <tr>
               <td class="tableHeading">Publisher</td>
-              <td>{{product.info.Publisher}}</td>
+              <td>{{product.info.publisher}}</td>
             </tr>
             <tr>
               <td class="tableHeading">Resource Types</td>
-              <td>{{product.info.Type}}</td>
+              <td>{{product.info.type}}</td>
             </tr>
             </tbody>
           </table>
@@ -76,16 +76,16 @@
         </div>
       </div>
       <div flex-gt-lg="40" flex-gt="50" flex-md="48" layout="column" flex="50"
-           ng-switch on="product.type" style="margin-right: 20px;">
+           ng-switch on="product.category" style="margin-right: 20px;">
 
         <div ng-switch-when='YouTube'>
-          <iframe width="80%" height="300px" ng-src="{{product.yVideo}}" allowfullscreen>
+          <iframe width="80%" height="300px" ng-src="{{product.info.youtubeURL}}" allowfullscreen>
           </iframe>
         </div>
         <div ng-switch-default>
           <md-icon addedToLib
                    ng-show="product.book.added"></md-icon>
-          <div class="contentContainer" ng-style="{'background-image':'url({{product.info.Image}})'}">
+          <div class="contentContainer" ng-style="{'background-image':'url({{product.info.image}})'}">
             <md-button enlargerBackground aria-label="Product View"
                        ng-click="showEnlargedImage = !showEnlargedImage">
               <md-icon zoomIcon md-svg-icon="assets/images/fullscreen.svg"></md-icon>
