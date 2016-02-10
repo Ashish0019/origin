@@ -14,12 +14,12 @@
       <span>Filter</span>
     </div>
     <div tabs layout="row" layout-align="start start" flex="60">
-      <span ng-class="{'selected': library.sortStats.prop === 'title' && !library.sortStats.reverse}">ALL</span>
+      <!--<span ng-class="{'selected': library.sortStats.prop === 'title' && !library.sortStats.reverse}">ALL</span>-->
       <span ng-class="{'selected': library.sortStats.prop === 'title' && !library.sortStats.reverse}"
             ng-click="library.sort('title', 'asc')">A - Z</span>
       <span ng-class="{'selected': library.sortStats.prop === 'title' && library.sortStats.reverse}"
             ng-click="library.sort('title', 'desc')">Z - A</span>
-      <span>Latest</span>
+      <!--<span>Latest</span>-->
     </div>
     <div libraryLength>{{library.details.length}} Results Found</div>
   </aside>
@@ -91,10 +91,14 @@
       </div>
     </aside>
   </section>
-  <section layout="column" layout-align="center center"
+  <section layout="row" layout-align="center center"
+           no-results=""
            ng-show="library.requests.youtube === 'complete' &&
            library.requests.magic === 'complete' && library.details.length === 0">
-    No results found. Try a different keyword.
+    <span>No results found. Try a different keyword.</span>
+    <md-button class="md-icon-button" aria-label="More" ng-click="library.reset()">
+      <md-icon md-svg-icon="assets/images/refresh.svg"></md-icon>
+    </md-button>
   </section>
   <section loader ng-if="library.details.length <= 0"
            ng-hide="library.requests.youtube === 'complete' && library.requests.magic === 'complete'">

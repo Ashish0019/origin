@@ -8,12 +8,16 @@
 
   [element="title"] {
     width: 100%;
-
+    font-family: juice;
     font-size: 1.7em;
     font-weight: 600;
     color: #00cc99;
 
     margin-top: 18px;
+  }
+
+  [no-results] {
+    margin-top: 32px;
   }
 
   [element="tab-header"] {
