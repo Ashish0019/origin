@@ -86,7 +86,6 @@ export class ProductController {
                 },
                 $type: 'array'
               });
-
               this.likes.push(pushDetails);
             });
           }
