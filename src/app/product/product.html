@@ -76,8 +76,9 @@
         </div>
       </div>
       <div flex-gt-lg="40" flex-gt="50" flex-md="48" layout="column" flex="50"
-           ng-switch on="product.author" style="margin-right: 20px;">
-        <div ng-switch-when='Youtube'>
+           ng-switch on="product.type" style="margin-right: 20px;">
+
+        <div ng-switch-when='YouTube'>
           <iframe width="80%" height="300px" ng-src="{{product.yVideo}}" allowfullscreen>
           </iframe>
         </div>

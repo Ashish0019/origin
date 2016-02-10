@@ -10,6 +10,7 @@ export class ProductController {
     this.book = {
       hideAdd: false,
       added: false
+
     };
 
     this.categoryMapping = {
@@ -28,6 +29,7 @@ export class ProductController {
     if (!_.isEmpty(detail)) {
       this.author = detail.author;
       this.showDetails = true;
+      this.type = detail.category.name;
       this.showAddToLibrary = detail.section === 'magic';
 
       var sessionStatus = $service.$connect('none', 'magic', 'sessionStatus');
@@ -112,7 +114,7 @@ export class ProductController {
         });
       });
 
-      if (detail.author == "Youtube") {
+      if (this.type == "YouTube") {
         this.info.title = detail.title;
         this.description = detail.meta.description;
         this.info.Type = " : Youtube Video";
