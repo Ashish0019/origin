@@ -7,10 +7,10 @@
   <aside element="tab-header" layout="row" layout-align="space-between center">
     <div filter layout="row" layout-align="center center"
          ng-click="library.showFilter = !library.showFilter">
-      <md-icon filterChevron ng-show="!library.showFilter" md-svg-icon="assets/images/chevron-right.svg"
-               ></md-icon>
-      <md-icon filterChevron ng-show="library.showFilter" md-svg-icon="assets/images/chevron-left.svg"
-               ></md-icon>
+      <md-icon filterChevron ng-show="!library.showFilter"
+               md-svg-icon="assets/images/chevron-right.svg"></md-icon>
+      <md-icon filterChevron ng-show="library.showFilter"
+               md-svg-icon="assets/images/chevron-left.svg"></md-icon>
       <span>Filter</span>
     </div>
     <div tabs layout="row" layout-align="start start" flex="60">
@@ -71,17 +71,17 @@
              ng-repeat="item in library.details | orderBy:library.sortStats.prop:library.sortStats.reverse"
              ng-click="library.openProduct(item.id)">
           <div thumbnail-container layout="column" layout-align="center center">
-            <div item-info="thumbnail" back-img="{{item.coverImage}}"></div>
+            <img item-info="thumbnail" ng-src="{{item.coverImage}}"/>
           </div>
           <div item-meta="info" layout="column" layout-align="center start">
             <div content-item="title">{{item.title | characters:15}}</div>
             <div content-item="author">{{item.author | characters:15 || "hello"}}</div>
           </div>
           <div content-footer="category">
-            <span>
-              <md-icon md-svg-icon="{{item.category.icon}}"></md-icon>
-              <span>{{item.category.name}}</span>
-            </span>
+             <span layout-align="center center">
+            <md-icon md-svg-icon="{{item.category.icon}}"></md-icon>
+             <label style="padding-left: 3px ">{{item.category.name}}</label>
+          </span>
           </div>
           <!--<div content-footer="analytics">
             <span><md-icon md-svg-icon="assets/images/share.svg"></md-icon> {{item.analytics.shares}}</span>

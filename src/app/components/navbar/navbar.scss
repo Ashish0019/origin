@@ -14,8 +14,8 @@
     }
 
     [origin-text] {
-      font-size: 0.9em;
-      padding-left: 8px;
+      font-size: 0.85em;
+      padding-left: 6px;
     }
   }
 
@@ -34,7 +34,7 @@
       border-bottom-color: #ffffff;
       color: #ffffff;
       padding-right: 25px;
-      width:100%
+      width: 100%
     }
 
     [searchButton] {
@@ -49,23 +49,37 @@
     * {
       font-size: 0.8em;
     }
-  [JoinFree]{
-    color: #4effed;
-  }
-    [JoinFree]:hover{
+    [JoinFree] {
+      color: #4effed;
+    }
+    [JoinFree]:hover {
       color: #ffffff;
     }
-  [login]{
-    color: #ffffff;
-  }
+    [login] {
+      color: #ffffff;
+    }
 
-    [login]:hover{
+    [login]:hover {
       color: #ffffff;
     }
-    [loginIcons]{
+    [loginIcons] {
       font-size: 0.7em;
+      line-height: 22px;
     }
 
+  }
+}
+
+[logMenu] {
+  position: absolute;
+  right: 20px;
+  top: 60px;
+  color: #000000;
+  [logoutButton] {
+    border: 1px solid #444444;
+    [log] {
+      color: #000000
+    }
   }
 }
 
