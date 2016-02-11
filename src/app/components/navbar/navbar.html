@@ -23,14 +23,14 @@
     </section>
     <section flex="7" layout="row" layout-align="center center" style="width: 12%"></section>
     <section login-panel flex="18" layout="row" layout-align="center center">
-      <!-- <md-button ui-sref="signUp" JoinFree
+      <md-button ui-sref="signUp" JoinFree
                   ng-show="UserLogin==='notLoggedIn'">Join Free
        </md-button>
        <md-button ui-sref="signIn" Login
                   ng-show="UserLogin==='notLoggedIn'">Login
-       </md-button>-->
+       </md-button>
 
-      <md-button ng-show="UserLogin==='notLoggedIn'" loginIcons>
+      <md-button ng-show="UserLogin==='loggedIn'" loginIcons>
         <div ng-click="goToLibrary()">
           <md-icon md-svg-icon="assets/images/library.svg">
           </md-icon>
@@ -38,7 +38,7 @@
         <div>My Library</div>
       </md-button>
 
-      <div ng-show="UserLogin==='notLoggedIn'" loginIcons>
+      <div ng-show="UserLogin==='loggedIn'" loginIcons>
 
         <div ng-click="goToProfile()">
           <md-icon md-svg-icon="assets/images/account.svg">
