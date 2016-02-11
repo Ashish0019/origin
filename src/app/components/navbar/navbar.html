@@ -1,7 +1,7 @@
 <md-toolbar menu-container layout="row" layout-align="start center">
 
   <div class="md-toolbar-tools" flex="auto" layout="row" layout-align="space-between start">
-    <section origin-container="" layout="row" layout-align="center center" flex="24" >
+    <section origin-container="" layout="row" layout-align="center center" flex="24">
       <div origin-logo="" ui-sref="home" ui-sref-opts="{reload: true}"></div>
       <div origin-text="">
         {{navbarText}}
@@ -9,41 +9,59 @@
     </section>
     <section search-container layout="row" layout-align="start center" flex="50" flex-md="40">
       <md-input-container layout-align="center" class="md-block" style="width:100%">
-        <div layout="row" layout-align="start-center" >
+        <div layout="row" layout-align="start-center">
           <div style="margin-top: 10px; width:50%; margin-left: 10px">
-        <input search-bar ng-model="search.$current" aria-label="Search">
-        <md-icon md-svg-icon="assets/images/search.svg" ng-click="clickSearch()"
-                 style="width: 20px; height: 20px;
+            <input search-bar ng-model="search.$current" aria-label="Search">
+            <md-icon md-svg-icon="assets/images/search.svg" ng-click="clickSearch()"
+                     style="width: 20px; height: 20px;
                  position: relative; cursor: pointer;
                  outline: none;
                  float: right; top: -22px;"></md-icon>
           </div>
-          </div>
+        </div>
       </md-input-container>
     </section>
     <section flex="7" layout="row" layout-align="center center" style="width: 12%"></section>
-    <section login-panel flex="15" layout="row" layout-align="center center">
-      <md-button ui-sref="signUp" JoinFree
-                 ng-show="UserLogin==='notLoggedIn'">Join Free
-      </md-button>
-      <md-button ui-sref="signIn" Login
-                 ng-show="UserLogin==='notLoggedIn'">Login
-      </md-button>
+    <section login-panel flex="18" layout="row" layout-align="center center">
+      <!-- <md-button ui-sref="signUp" JoinFree
+                  ng-show="UserLogin==='notLoggedIn'">Join Free
+       </md-button>
+       <md-button ui-sref="signIn" Login
+                  ng-show="UserLogin==='notLoggedIn'">Login
+       </md-button>-->
 
-      <md-button ng-show="UserLogin==='loggedIn'" loginIcons>
+      <md-button ng-show="UserLogin==='notLoggedIn'" loginIcons>
         <div ng-click="goToLibrary()">
           <md-icon md-svg-icon="assets/images/library.svg">
-        </md-icon></div>
+          </md-icon>
+        </div>
         <div>My Library</div>
       </md-button>
 
-      <md-button ng-show="UserLogin==='loggedIn'" loginIcons>
+      <div ng-show="UserLogin==='notLoggedIn'" loginIcons>
+
         <div ng-click="goToProfile()">
           <md-icon md-svg-icon="assets/images/account.svg">
-        </md-icon></div>
+          </md-icon>
+        </div>
         <div>User</div>
+      </div>
+
+      <md-button ng-click="showLogout=!showLogout" class="md-icon-button" loginIcons>
+        <md-icon style=" width: 20px;" md-svg-icon="assets/images/downchevron.svg"></md-icon>
       </md-button>
+
+
     </section>
+    <md-menu logMenu ng-show="showLogout">
+
+      <md-button logoutButton ui-sref="signIn">
+        <md-icon md-svg-icon="assets/images/logout.svg"></md-icon>
+        <label log>Logout</label>
+      </md-button>
+
+    </md-menu>
+
   </div>
 
 </md-toolbar>
