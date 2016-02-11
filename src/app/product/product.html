@@ -82,14 +82,14 @@
           <iframe width="80%" height="300px" ng-src="{{product.info.youtubeURL}}" allowfullscreen>
           </iframe>
         </div>
-        <div ng-switch-when="audio" class="audioContainer">
-          <div imagebackaudio ng-style="{'background-image':'url({{product.info.image}})'}">
-          </div>
-          <audio width="80%" height="300px" controls ng-src="{{product.info.audioSrc}}"></audio>
-        </div>
-        <div ng-switch-when="video">
-          <video width="80%" height="300px" controls ng-src="{{product.info.videoSrc}}"></video>
-        </div>
+        <!-- <div ng-switch-when="audio" class="audioContainer">
+           <div imagebackaudio ng-style="{'background-image':'url({{product.info.image}})'}">
+           </div>
+           <audio width="80%" height="300px" controls ng-src="{{product.info.audioSrc}}"></audio>
+         </div>
+         <div ng-switch-when="video">
+           <video width="80%" height="300px" controls ng-src="{{product.info.videoSrc}}"></video>
+         </div>-->
         <div ng-switch-default>
           <md-icon addedToLib
                    ng-show="product.book.added"></md-icon>
@@ -140,14 +140,17 @@
            ng-click="product.openProduct(item.id)"
            ng-repeat="item in product.likes">
         <div thumbnail-container layout="column" layout-align="center center">
-          <div item-info="thumbnail" back-img="{{item.coverImage}}"></div>
+          <img item-info="thumbnail" ng-src="{{item.coverImage}}"/>
         </div>
         <div item-meta="info" layout="column" layout-align="center start">
           <div content-item="title">{{item.title | characters:12}}</div>
           <div content-item="author">{{item.author | characters:15 || "hello"}}</div>
         </div>
         <div content-footer="category">
-          <span><md-icon md-svg-icon="{{item.category.icon}}" style="padding-right: 2px;"></md-icon> {{item.category.name}}</span>
+          <span layout-align="center center">
+            <md-icon md-svg-icon="{{item.category.icon}}"></md-icon>
+            <label>{{item.category.name}}</label>
+          </span>
         </div>
         <!-- <div content-footer="analytics">
            <span><md-icon md-svg-icon="assets/images/share.svg"></md-icon> {{item.analytics.shares}}</span>

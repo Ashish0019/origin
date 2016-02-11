@@ -171,18 +171,25 @@ section[popular-listing] {
         [thumbnail-container] {
           width: 160px;
           height: 160px;
+          text-align: center;
+          margin-top: 4px;
+
+
+
 
           [item-info="thumbnail"] {
             @extend .content-item-children;
-            height: 160px;
-            width: 180px;
-            margin-top: 8px;
+            max-width: 90%;
+            max-height: 90%;
+            width: auto;
+            height: auto;
+
           }
         }
 
         [item-meta="info"] {
           width: 90%;
-          margin-bottom: 24px;
+          margin-bottom: 4px;
           * {
             margin: 0;
           }

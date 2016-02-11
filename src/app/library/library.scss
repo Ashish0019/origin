@@ -140,12 +140,16 @@
         [thumbnail-container] {
           width: 160px;
           height: 160px;
+          text-align: center;
+          margin-top: 4px;
 
           [item-info="thumbnail"] {
             @extend .content-item-children;
-            height: 160px;
-            width: 180px;
-            margin-top: 8px;
+            max-width: 90%;
+            max-height: 80%;
+            width: auto;
+            height: auto;
+
           }
         }
 
