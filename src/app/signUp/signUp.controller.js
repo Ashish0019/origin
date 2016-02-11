@@ -29,7 +29,7 @@ export class SignUpController {
       $scope.showError = false;
       $scope.responseMessage = '';
 
-      let response = $http.post('http://www.k12origin.com/services/user/v1.0/' +
+      let response = $http.post('http://' + $service.config('HOSTS', 1) + '/services/user/v1.0/' +
         'registeruser?token=ORIGIN_MAGICBOX_TOKEN', {
         firstname: this.user.fullName,
         userName: this.user.email,

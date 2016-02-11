@@ -7,8 +7,8 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
       controller: 'SignUpController',
       controllerAs: 'signUp',
       resolve: {
-        $URLS: ($http) => {
-          return $http.get("http://www.k12origin.com/services/common/getgooglefacebookurl.json");
+        $URLS: ($http, $service) => {
+          return $http.get("http://" + $service.config('HOSTS', 1) + "/services/common/getgooglefacebookurl.json");
         }
       }
     })
