@@ -5,7 +5,7 @@ export class SignInController {
     this.forgot = false;
     this.urls = $URLS.data.data;
     this.postUrl = $sce.trustAsResourceUrl('http://' + $service.config('HOSTS', 1) + '/j_spring_security_check');
-    this.pwdErrtext = 'none';
+    this.pwdErr = 'none';
 
     this.keyMap = {
       teacher: {
@@ -55,19 +55,18 @@ export class SignInController {
       });
 
       forgot.success((response) => {
-          this.ForgotPwdText = response.userAccSrvRes.diagMessage ;
           this.frgtPwdSuccess=response.userAccSrvRes.code;
           if (this.frgtPwdSuccess == 200) {
             this.ForgotPwdTextSuccess = "Email Sent Successfully";
-            this.pwdErrtext = 'UserExist';
+            this.pwdErr = 'UserExist';
           }
           else if(this.frgtPwdSuccess == 2020 || this.frgtPwdSuccess == 705) {
             this.ForgotPwdText = "User does not exists";
-            this.pwdErrtext = 'UserNotExist';
+            this.pwdErr = 'UserNotExist';
           }
           else {
             this.ForgotPwdText = "User does not exists";
-            this.pwdErrtext = 'UserNotExist';
+            this.pwdErr = 'UserNotExist';
           }
         }
       );
