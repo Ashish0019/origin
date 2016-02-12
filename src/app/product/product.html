@@ -1,4 +1,4 @@
-<nav-menu nav-text="I want to LEARN / TEACH"></nav-menu>
+<nav-menu nav-text="I want to LEARN / TEACH" option="product.hideNavSearch"></nav-menu>
 <div product-container layout="column" layout-fill>
   <aside menuBar>
     <span library ui-sref="library">The ORIGINal Library</span>
@@ -101,7 +101,7 @@
           </div>
           <div enlargeBG ng-show="showEnlargedImage" ng-click="showEnlargedImage = !showEnlargedImage">
             <x-image-enlarge class="imageEnlarge"
-                             ng-style="{'background-image':'url({{product.info.Image}})'}">
+                             ng-style="{'background-image':'url({{product.info.image}})'}">
             </x-image-enlarge>
           </div>
         </div>

@@ -9,6 +9,7 @@ export class LibraryController {
     this.searchInfo = {$current: ''};
     this.requests = {youtube: 'pending', magic: 'pending'};
     this.sortStats = {prop: 'title', reverse: false};
+    this.hideNavSearch = false;
     this.filterGrid = {
       show: {
         grade: {
@@ -26,9 +27,9 @@ export class LibraryController {
       },
       filterArr: []
     };
-
     this.search = (info) => {
       if (!info.$bypass) {
+        this.showContentNumber = true;
         if (!_.isEmpty(info.$current)) {
           this.refreshListing({
             requestParams: {
