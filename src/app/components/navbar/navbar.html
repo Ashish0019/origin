@@ -53,14 +53,14 @@
 
 
     </section>
-    <md-menu logMenu ng-show="showLogout">
+    <md-content logMenu ng-show="showLogout">
 
-      <md-button logoutButton ui-sref="signIn">
+      <md-button logoutButton ng-click="logoutSession()">
         <md-icon md-svg-icon="assets/images/logout.svg"></md-icon>
         <label log>Logout</label>
       </md-button>
 
-    </md-menu>
+    </md-content>
 
   </div>
 

@@ -112,6 +112,18 @@ class $ServiceProvider {
             retrieved: false,
             appended: false,
             $stored: false
+          },
+          logout: {
+            HOST: 1,
+            url: '/services/user/account/logout.json',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            method: 'GET',
+            preProcess: true,
+            retrieved: false,
+            appended: false,
+            $stored: false
           }
         },
         google: {

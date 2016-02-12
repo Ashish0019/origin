@@ -1,4 +1,4 @@
-export function NavbarDirective($log, $service, $window) {
+export function NavbarDirective($log, $service, $window, $state) {
   'ngInject';
 
   let directive = {
@@ -11,7 +11,6 @@ export function NavbarDirective($log, $service, $window) {
     link: ($scope, $el, $attrs) => {
       $scope.UserLogin = 'none';
       $scope.navbarText = $attrs.navText;
-
 
 
       $scope.search = {
@@ -35,6 +34,15 @@ export function NavbarDirective($log, $service, $window) {
         $log.debug("click goToProfile");
       };
 
+      $scope.logoutSession = () => {
+        var logout = $service.$connect('none', 'magic', 'logout');
+        logout.success((response) => {
+          $log.debug(response);
+          $state.go('signIn');
+        });
+        return 1;
+
+      };
 
       var sessionStatus = $service.$connect('none', 'magic', 'sessionStatus');
       sessionStatus.success((response) => {
