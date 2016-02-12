@@ -13,8 +13,7 @@ export function NavbarDirective($log, $service, $window, $state) {
     link: ($scope, $el, $attrs) => {
       $scope.UserLogin = 'none';
       $scope.navbarText = $attrs.navText;
-      $log.debug($attrs.option);
-
+      $scope.userInfo = {};
 
       $scope.search = {
         $current: ''
@@ -50,6 +49,7 @@ export function NavbarDirective($log, $service, $window, $state) {
       var sessionStatus = $service.$connect('', 'magic', 'sessionStatus');
       sessionStatus.success((response) => {
         var sessionStat = response.userAccSrvRes.userSessionData;
+        $scope.userInfo = sessionStat;
         if (sessionStat) {
           $scope.UserLogin = 'loggedIn';
         } else {
