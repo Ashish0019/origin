@@ -19,8 +19,8 @@ class $ServiceProvider {
       production: {
         HOSTS: [
           'api.getmagicbox.com',
-          'www.k12origin.com',
-          'www.k12origin.com'
+          'origin.getmagicbox.com',
+          'origin.getmagicbox.com'
         ]
       }
     };
