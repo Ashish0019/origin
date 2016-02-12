@@ -28,7 +28,12 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
       url: '/signIn',
       templateUrl: 'app/signIn/signIn.html',
       controller: 'SignInController',
-      controllerAs: 'signIn'
+      controllerAs: 'signIn',
+      resolve: {
+        $URLS: ($http, $service) => {
+          return $http.get("http://" + $service.config('HOSTS', 1) + "/services/common/getgooglefacebookurl.json");
+        }
+      }
     })
     .state('product', {
       url: '/product?id',
