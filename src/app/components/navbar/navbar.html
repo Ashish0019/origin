@@ -42,19 +42,16 @@
         <div>My Library</div>
       </md-button>
 
-      <div ng-show="UserLogin==='loggedIn'" loginIcons layout="column" layout-align="center center">
+      <div ng-show="UserLogin==='loggedIn'" loginIcons layout="row" layout-align="center center">
         <div ng-click="goToProfile()">
           <md-icon md-svg-icon="assets/images/account.svg">
           </md-icon>
         </div>
         <div>Welcome, {{userInfo.firstName}}</div>
       </div>
-
       <md-button ng-click="showLogout=!showLogout" class="md-icon-button" ng-show="UserLogin==='loggedIn'" loginIcons>
         <md-icon style=" width: 20px;" md-svg-icon="assets/images/downchevron.svg"></md-icon>
       </md-button>
-
-
     </section>
     <md-content logMenu ng-show="showLogout">
 
