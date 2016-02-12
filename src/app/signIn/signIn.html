@@ -79,35 +79,37 @@
       </div>
       <div user-types layout="row" layout-align="center center" ng-hide="forgotpwd">
         <div user="student" layout="column" layout-align="center center" ng-model="imageProps"
-             ng-click="signUp.imageProps.current = 'student'">
-          <div icon ng-class="{'active': signUp.imageProps.current === 'student'}"></div>
+             ng-click="signIn.imageProps.current = 'student'">
+          <div icon ng-class="{'active': signIn.imageProps.current === 'student'}"></div>
           <div>Join as Student</div>
         </div>
         <div user="teacher" layout="column" layout-align="center center" ng-model="imageProps"
-             ng-click="signUp.imageProps.current = 'teacher'">
-          <div icon ng-class="{'active': signUp.imageProps.current === 'teacher'}"></div>
+             ng-click="signIn.imageProps.current = 'teacher'">
+          <div icon ng-class="{'active': signIn.imageProps.current === 'teacher'}"></div>
           <div>Join as Teacher</div>
         </div>
         <!-- <div user="publisher" layout="column" layout-align="center center" ng-model="imageProps"
-              ng-click="signUp.imageProps.current = 'publisher'">
-           <div icon ng-class="{'active': signUp.imageProps.current === 'publisher'}"></div>
+              ng-click="signIn.imageProps.current = 'publisher'">
+           <div icon ng-class="{'active': signIn.imageProps.current === 'publisher'}"></div>
            <div>Join as Publisher</div>
          </div>-->
       </div>
       <div entity="third-party-signIn" layout="column" layout-align="center center" ng-hide="forgotpwd">
         <md-button third-party="Facebook" class="md-raised md-primary"
-                   ng-disabled="!signUp.imageProps.current">
+                   ng-click="signIn.connect('facebook')"
+                   ng-disabled="!signIn.imageProps.current">
           <md-icon facebookIcon></md-icon>
           <label> Connect with Facebook </label>
         </md-button>
         <md-button third-party="Google" class="md-raised md-primary"
-                   ng-disabled="!signUp.imageProps.current">
+                   ng-click="signIn.connect('google')"
+                   ng-disabled="!signIn.imageProps.current">
           <md-icon googleIcon></md-icon>
           <label>Connect with Google</label>
         </md-button>
       </div>
       <div entity="hasAccount">
-        <span ui-sref="signUp"> Try Free </span>
+        <span ui-sref="signIn"> Try Free </span>
       </div>
     </div>
   </section>

@@ -7,8 +7,8 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
       controller: 'SignUpController',
       controllerAs: 'signUp',
       resolve: {
-        $URLS: ($http) => {
-          return $http.get("http://origin.stg1.getmagicbox.com/services/common/getgooglefacebookurl.json");
+        $URLS: ($http, $service) => {
+          return $http.get("http://" + $service.config('HOSTS', 1) + "/services/common/getgooglefacebookurl.json");
         }
       }
     })
@@ -28,7 +28,12 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
       url: '/signIn',
       templateUrl: 'app/signIn/signIn.html',
       controller: 'SignInController',
-      controllerAs: 'signIn'
+      controllerAs: 'signIn',
+      resolve: {
+        $URLS: ($http, $service) => {
+          return $http.get("http://" + $service.config('HOSTS', 1) + "/services/common/getgooglefacebookurl.json");
+        }
+      }
     })
     .state('product', {
       url: '/product?id',
