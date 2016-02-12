@@ -1,9 +1,32 @@
 export class SignInController {
-  constructor($log, $scope, $service, $sce) {
+  constructor($log, $window, $service, $sce, $URLS) {
     'ngInject';
     this.inputType = 'password';
     this.forgot = false;
+    this.urls = $URLS.data.data;
     this.postUrl = $sce.trustAsResourceUrl('http://' + $service.config('HOSTS', 1) + '/j_spring_security_check');
+
+    this.keyMap = {
+      teacher: {
+        google: 'googleIndTeacherUrl',
+        facebook: 'facebookIndTeacherUrl',
+        userType: 'IND_TEACHER'
+      },
+      student: {
+        google: 'googleIndUserUrl',
+        facebook: 'facebookIndUserUrl',
+        userType: 'IND_USER'
+      }
+    };
+
+    this.imageProps = {
+      current: ''
+    };
+
+    this.connect = (type) => {
+      var key = this.keyMap[this.imageProps.current][type];
+      $window.location.href = this.urls[key];
+    };
 
     this.user = {
       username: '',
@@ -31,7 +54,6 @@ export class SignInController {
       });
 
       forgot.success((response) => {
-          $log.debug(response);
           this.ForgotPwdText = response.userAccSrvRes.diagMessage ;
           this.frgtPwdSuccess=response.userAccSrvRes.code;
           if (this.frgtPwdSuccess == 200) {
