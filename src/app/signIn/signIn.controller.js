@@ -56,6 +56,7 @@ export class SignInController {
 
       forgot.success((response) => {
           this.frgtPwdSuccess=response.userAccSrvRes.code;
+
           if (this.frgtPwdSuccess == 200) {
             this.ForgotPwdTextSuccess = "Email Sent Successfully";
             this.pwdErr = 'UserExist';

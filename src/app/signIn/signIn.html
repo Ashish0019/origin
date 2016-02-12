@@ -11,10 +11,10 @@
       <span tagline ng-show="forgotpwd"  ng-if="!signIn.forgot">
         Enter your email address and we will send you a</br> link to reset your password.
       </span>
-        <span pwd-error ng-if="signIn.forgot" ng-show="signIn.pwdErrtext == 'UserNotExist'">
+        <span pwd-error ng-if="signIn.forgot" ng-show="signIn.pwdErr == 'UserNotExist'">
         {{signIn.ForgotPwdText}}
       </span>
-        <span pwd-success ng-if="signIn.frgtPwdSuccess == 200" ng-show="signIn.pwdErrtext == 'UserExist'">
+        <span pwd-success ng-if="signIn.frgtPwdSuccess == 200" ng-show="signIn.pwdErr == 'UserExist'">
         {{signIn.ForgotPwdTextSuccess}}
       </span>
 
