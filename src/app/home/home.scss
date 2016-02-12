@@ -177,16 +177,12 @@ section[popular-listing] {
           text-align: center;
           margin-top: 4px;
 
-
-
-
           [item-info="thumbnail"] {
             @extend .content-item-children;
             max-width: 90%;
             max-height: 90%;
             width: auto;
             height: auto;
-
           }
         }
 
