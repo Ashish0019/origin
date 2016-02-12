@@ -9,6 +9,7 @@ export class LibraryController {
     this.searchInfo = {$current: ''};
     this.requests = {youtube: 'pending', magic: 'pending'};
     this.sortStats = {prop: 'title', reverse: false};
+    this.hideNavSearch = false;
     this.filterGrid = {
       show: {
         grade: {

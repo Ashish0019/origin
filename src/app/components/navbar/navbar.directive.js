@@ -6,11 +6,15 @@ export function NavbarDirective($log, $service, $window, $state) {
     templateUrl: 'app/components/navbar/navbar.html',
     scope: {
       searchText: '@',
-      onSearch: '='
+      onSearch: '=',
+      option: '='
+
     },
     link: ($scope, $el, $attrs) => {
       $scope.UserLogin = 'none';
       $scope.navbarText = $attrs.navText;
+      $log.debug($attrs.option);
+
 
       $scope.search = {
         $current: ''

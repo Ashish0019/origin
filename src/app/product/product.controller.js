@@ -7,7 +7,7 @@ export class ProductController {
     this.user = {};
     this.likes = [];
     this.userLogin = false;
-
+    this.hideNavSearch = true;
     this.book = {
       hideAdd: false,
       added: false
