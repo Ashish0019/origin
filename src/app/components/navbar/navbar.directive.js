@@ -28,9 +28,11 @@ export function NavbarDirective($log, $service, $window) {
       };
       $scope.goToLibrary = () => {
         $window.location.href = '/mylibrary.htm';
+        $log.debug("click goToLibrary");
       };
       $scope.goToProfile = () => {
         $window.location.href = '/admin/profile.htm';
+        $log.debug("click goToProfile");
       };
 
 
