@@ -58,15 +58,15 @@ export class SignInController {
           this.frgtPwdSuccess=response.userAccSrvRes.code;
 
           if (this.frgtPwdSuccess == 200) {
-            this.ForgotPwdTextSuccess = "Email Sent Successfully";
+            this.ForgotPwdTextSuccess = "Password email sent successfully.";
             this.pwdErr = 'UserExist';
           }
           else if(this.frgtPwdSuccess == 2020 || this.frgtPwdSuccess == 705) {
-            this.ForgotPwdText = "User does not exists";
+            this.ForgotPwdText = "User does not exists.";
             this.pwdErr = 'UserNotExist';
           }
           else {
-            this.ForgotPwdText = "User does not exists";
+            this.ForgotPwdText = "User does not exists.";
             this.pwdErr = 'UserNotExist';
           }
         }
