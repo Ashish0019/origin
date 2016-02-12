@@ -1,6 +1,6 @@
 {
   "name": "originWeb",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "scripts": {
     "test": "gulp test"
   },
