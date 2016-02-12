@@ -35,7 +35,7 @@ export function NavbarDirective($log, $service, $window, $state) {
       };
 
       $scope.logoutSession = () => {
-        var logout = $service.$connect('none', 'magic', 'logout');
+        var logout = $service.$connect('', 'magic', 'logout');
         logout.success((response) => {
           $log.debug(response);
           $state.go('signIn');
@@ -44,7 +44,7 @@ export function NavbarDirective($log, $service, $window, $state) {
 
       };
 
-      var sessionStatus = $service.$connect('none', 'magic', 'sessionStatus');
+      var sessionStatus = $service.$connect('', 'magic', 'sessionStatus');
       sessionStatus.success((response) => {
         var sessionStat = response.userAccSrvRes.userSessionData;
         if (sessionStat) {
