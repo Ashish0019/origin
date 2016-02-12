@@ -21,7 +21,7 @@
             ng-click="library.sort('title', 'desc')">Z - A</span>
       <!--<span>Latest</span>-->
     </div>
-    <div libraryLength>{{library.details.length}} Results Found</div>
+    <div libraryLength ng-show="library.showContentNumber">{{library.details.length}} Results Found</div>
   </aside>
   <section library-content layout="row" layout-align="center start">
     <aside element="sidebar-filter"

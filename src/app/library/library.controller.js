@@ -26,9 +26,9 @@ export class LibraryController {
       },
       filterArr: []
     };
-
     this.search = (info) => {
       if (!info.$bypass) {
+        this.showContentNumber = true;
         if (!_.isEmpty(info.$current)) {
           this.refreshListing({
             requestParams: {

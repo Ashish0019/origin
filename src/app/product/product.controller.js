@@ -11,9 +11,7 @@ export class ProductController {
     this.book = {
       hideAdd: false,
       added: false
-
     };
-
     this.categoryMapping = {
       epub: {name: 'Epub', icon: 'assets/images/clipboard-text.svg'},
       game: {name: 'Game', icon: 'assets/images/gamepad-variant.svg'},

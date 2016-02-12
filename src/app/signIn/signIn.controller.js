@@ -4,6 +4,7 @@ export class SignInController {
     this.inputType = 'password';
     this.forgot = false;
     this.postUrl = $sce.trustAsResourceUrl('http://' + $service.config('HOSTS', 1) + '/j_spring_security_check');
+    this.pwdErrtext = 'none';
 
     this.user = {
       username: '',
@@ -32,10 +33,18 @@ export class SignInController {
 
       forgot.success((response) => {
           $log.debug(response);
-          this.ForgotPwdText = response.userAccSrvRes.diagMessage ;
           this.frgtPwdSuccess=response.userAccSrvRes.code;
           if (this.frgtPwdSuccess == 200) {
             this.ForgotPwdTextSuccess = "Email Sent Successfully";
+            this.pwdErrtext = 'UserExist';
+          }
+          else if(this.frgtPwdSuccess == 2020 || this.frgtPwdSuccess == 705) {
+            this.ForgotPwdText = "User does not exists";
+            this.pwdErrtext = 'UserNotExist';
+          }
+          else {
+            this.ForgotPwdText = "User does not exists";
+            this.pwdErrtext = 'UserNotExist';
           }
         }
       );

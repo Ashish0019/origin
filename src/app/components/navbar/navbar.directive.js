@@ -12,7 +12,6 @@ export function NavbarDirective($log, $service, $window, $state) {
       $scope.UserLogin = 'none';
       $scope.navbarText = $attrs.navText;
 
-
       $scope.search = {
         $current: ''
       };
