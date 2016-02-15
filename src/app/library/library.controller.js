@@ -75,6 +75,7 @@ export class LibraryController {
     };
 
     this.populateDetails = (type, infoList) => {
+      $log.debug("hi", infoList);
       var temp = [];
       _.each(infoList, (item, index) => {
         if (index < this.MAX_LIMIT) {
@@ -90,11 +91,7 @@ export class LibraryController {
                   gradeTo: item.gradeTo
                 },
                 coverImage: item.thumbnail,
-                description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry." +
-                "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer" +
-                "took a galley of type and scrambled it to make a type specimen book. " +
-                "It has survived not only five centuries, but also the leap into electronic " +
-                "typesetting, remaining essentially unchanged",
+                description: item.description,
                 analytics: {
                   shares: 43,
                   views: 78
