@@ -28,9 +28,10 @@ export class LibraryController {
       filterArr: []
     };
     this.search = (info) => {
+      $log.debug(info, "hi");
       if (!info.$bypass) {
         this.showContentNumber = true;
-        if (!_.isEmpty(info.$current)) {
+        if (!_.isEmpty(info.$current) || _.isEmpty(info.$current)) {
           this.refreshListing({
             requestParams: {
               pageNumber: 1,
@@ -42,7 +43,8 @@ export class LibraryController {
              filter: {0: ['section', 'magic']}*/
           });
         }
-      } else {
+      }
+      else {
         this.refreshListing({
           requestParams: {
             pageNumber: 1,
@@ -75,7 +77,7 @@ export class LibraryController {
     };
 
     this.populateDetails = (type, infoList) => {
-      $log.debug("hi", infoList);
+
       var temp = [];
       _.each(infoList, (item, index) => {
         if (index < this.MAX_LIMIT) {
@@ -301,12 +303,14 @@ export class LibraryController {
         youtubeSearch += item + '+';
         this.searchInfo.$current.push(item);
       });
-
       youtubeSearch = youtubeSearch.replace(/\++$/, '');
       this.search({$bypass: true, search: {arr: $service.search('get'), youtube: youtubeSearch}});
 
     } else {
-      this.fetchData();
+      this.fetchData("");
+
+
+
     }
   }
 }
