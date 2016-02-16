@@ -1,5 +1,5 @@
 export class ProductController {
-  constructor($scope, $log, $state, $service, $stateParams, $sce) {
+  constructor($scope, $log, $state, $service, $stateParams, $sce, $document) {
     'ngInject';
     this.showDetails = false;
     this.showEnlargedImage = false;
@@ -168,6 +168,7 @@ export class ProductController {
         }
         else {
           this.userLogin = true;
+          $log.debug($document.referrer)
         }
 
       });
