@@ -4,8 +4,15 @@
  */
 // bower:scss
 // endbower
+
 @import url(http://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Roboto:400,700,700italic,400italic);
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import url(../assets/fonts/JUICE_Bold_Italic.ttf);
+@import url(../assets/fonts/JUICE_Bold.ttf);
+@import url(../assets/fonts/JUICE_Italic.ttf);
+@import url(../assets/fonts/JUICE_Bold_Italic.ttf);
+@import url(../assets/fonts/JUICE_Light.ttf);
+@import url(../assets/fonts/JUICE_Light_Italic.ttf);
 
 @font-face {
   font-family: 'Material Icons';
@@ -16,13 +23,7 @@
   local('MaterialIcons-Regular'),
   url(../../bower_components/material-design-iconfont/iconfont/MaterialIcons-Regular.woff2) format('woff2'),
   url(../../bower_components/material-design-iconfont/iconfont/MaterialIcons-Regular.woff) format('woff'),
-  url(../../bower_components/material-design-iconfont/iconfont/MaterialIcons-Regular.ttf) format('truetype'),
-  url(../assets/fonts/JUICE_Bold_Italic.ttf),
-  url(../assets/fonts/JUICE_Bold.ttf) format('truetype'),
-  url(../assets/fonts/JUICE_Italic.ttf) format('truetype'),
-  url(../assets/fonts/JUICE_Bold_Italic.ttf) format('truetype'),
-  url(../assets/fonts/JUICE_Light.ttf) format('truetype'),
-  url(../assets/fonts/JUICE_Light_Italic.ttf) format('truetype');
+  url(../../bower_components/material-design-iconfont/iconfont/MaterialIcons-Regular.ttf) format('truetype');
 }
 
 .material-icons {
