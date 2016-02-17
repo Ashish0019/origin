@@ -120,6 +120,8 @@
           border-radius: 3px;
           border: 2px white solid;
           outline-color: transparent;
+          -webkit-user-select: text !important;
+          user-select: text !important;
         }
 
         .ng-touched.ng-invalid {

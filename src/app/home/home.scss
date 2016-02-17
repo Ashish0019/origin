@@ -60,6 +60,8 @@
           color: #757575;
         }
         .md-chips .md-chip-input-container input, .md-chips .md-chip-input-container input:not([type]) {
+          -webkit-user-select: text !important;
+          user-select: text !important;
           color: #ffffff;
         }
         .md-chips .md-chip .md-chip-remove md-icon {
@@ -139,16 +141,18 @@ section[popular-listing] {
   margin-top: 64px;
   margin-left: 32px;
 
-  aside {
+  [cto] {
     font-family: juice;
     color: #757575;
     font-size: 2.0em;
-    padding: 10px;
+    padding: 3px;
 
   }
 
   [content-listing-wrapper] {
     width: 100%;
+    position: relative;
+    top: 10px;
 
     [content-listing] {
       width: 100%;

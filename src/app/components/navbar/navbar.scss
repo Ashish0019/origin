@@ -34,7 +34,9 @@
       border-bottom-color: #ffffff;
       color: #ffffff;
       padding-right: 25px;
-      width: 100%
+      width: 100%;
+     -webkit-user-select: text !important;
+      user-select: text !important;
     }
 
     [searchButton] {
