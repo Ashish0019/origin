@@ -4,6 +4,6 @@ export function config ($logProvider, reCAPTCHAProvider, $serviceProvider) {
   reCAPTCHAProvider.setPublicKey('6LdUu_cSAAAAAJT-SnxZm_EL_NwazPuCwgfb70Wo');
   reCAPTCHAProvider.setOptions({theme: 'blackglass'});
 
-  $serviceProvider.setEnv('set', 'staging');
+  $serviceProvider.setEnv('set', 'production');
   $serviceProvider.setToken('ORIGIN_MAGICBOX_TOKEN'/* || 'MAGICBOX_DEMO_TOKEN'*/);
 }
