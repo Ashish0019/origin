@@ -35,8 +35,8 @@
                  ng-show="UserLogin==='notLoggedIn'">Login
       </md-button>
 
-      <md-button ng-show="UserLogin==='loggedIn'" loginIcons>
-        <div ng-click="goToLibrary()">
+      <md-button ng-show="UserLogin==='loggedIn'" ng-click="goToLibrary()" loginIcons>
+        <div>
           <md-icon md-svg-icon="assets/images/library.svg">
           </md-icon>
         </div>
@@ -48,7 +48,7 @@
           <md-icon md-svg-icon="assets/images/account.svg">
           </md-icon>
         </div>
-        <div>Welcome, {{userInfo.firstName}}</div>
+        <div ng-click="goToProfile()">Welcome, {{userInfo.firstName}}</div>
       </div>
       <md-button ng-click="showLogout=!showLogout" class="md-icon-button" ng-show="UserLogin==='loggedIn'" loginIcons>
         <md-icon style=" width: 20px;" md-svg-icon="assets/images/downchevron.svg"></md-icon>
