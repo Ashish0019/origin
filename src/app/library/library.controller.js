@@ -28,7 +28,6 @@ export class LibraryController {
       filterArr: []
     };
     this.search = (info) => {
-      $log.debug(info, "hi");
       if (!info.$bypass) {
         this.showContentNumber = true;
         if (!_.isEmpty(info.$current) || _.isEmpty(info.$current)) {
@@ -73,6 +72,7 @@ export class LibraryController {
 
     this.inform = (type, info) => {
       $log.warn(info);
+      $log.debug(info);
       this.showError = true;
     };
 
@@ -244,7 +244,8 @@ export class LibraryController {
         this.disabled.youtube = params.disableYoutube;
         this.disabled.magic = params.disableMagic;
         if (params.youtube) {
-          youtubeQuery += '+' + params.youtube.query;
+          let validQuery = ((params.youtube.query).match(/[a-zA-Z0-9 ]/));
+          youtubeQuery += '+' + validQuery;
           delete params.youtube;
         }
       }
