@@ -1,5 +1,5 @@
 [library-container] {
-  position: absolute;
+
   margin-top: 48px;
 
   height: 100%;
@@ -12,7 +12,8 @@
     font-size: 1.7em;
     font-weight: 600;
     color: #00cc99;
-    margin-top: 18px;
+    position: relative;
+    top: 10px;
   }
 
   [no-results] {
@@ -21,8 +22,8 @@
 
   [element="tab-header"] {
     width: 100%;
-    margin-top: 34px;
-    margin-bottom: 18px;
+    position: relative;
+    top: 10px;
 
     [filter] {
       cursor: pointer;
