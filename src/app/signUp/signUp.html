@@ -28,11 +28,11 @@
           <div icon ng-class="{'active': signUp.imageProps.current === 'teacher'}"></div>
           <div>Join as Teacher</div>
         </div>
-       <!-- <div user="publisher" layout="column" layout-align="center center" ng-model="imageProps"
-             ng-click="signUp.imageProps.current = 'publisher'">
-          <div icon ng-class="{'active': signUp.imageProps.current === 'publisher'}"></div>
-          <div>Join as Publisher</div>
-        </div>-->
+        <!-- <div user="publisher" layout="column" layout-align="center center" ng-model="imageProps"
+              ng-click="signUp.imageProps.current = 'publisher'">
+           <div icon ng-class="{'active': signUp.imageProps.current === 'publisher'}"></div>
+           <div>Join as Publisher</div>
+         </div>-->
       </div>
       <form name="registration" registration-details layout="column" layout-align="center center"
             ng-show="abc">
@@ -63,13 +63,13 @@
 
         <span>
           By signing up, you agree to our
-          <a href="http://magicbox.magicsw.com/privacypolicy.htm" target="_blank">
-          terms of use</a>  and <span style="margin-left: 7%;">
-          <a href="http://magicbox.magicsw.com/privacypolicy.htm" target="_blank">privacy policy</a>
+          <a ng-href={{signUp.privacyPolicy}} target="_blank">
+            terms of use</a>  and <span style="margin-left: 7%;">
+           <a ng-href={{signUp.privacyPolicy}} target="_blank">privacy policy</a>
         </span>
         </span>
         </div>
-      <!--  <div re-captcha captchaCode ng-model="signUp.user.captcha" ng-show="signUp.imageProps.current === 'publisher'" ></div>-->
+        <!--  <div re-captcha captchaCode ng-model="signUp.user.captcha" ng-show="signUp.imageProps.current === 'publisher'" ></div>-->
       </form>
 
       <div registration="container" layout="row" layout-align="center center" ng-show="abc">
@@ -84,14 +84,14 @@
         </md-button>
       </div>
       <div orline layout="row" layout-align="space-between center" ng-show="abc">
-        <hr />
-        <div orword> OR </div>
-        <hr />
+        <hr/>
+        <div orword> OR</div>
+        <hr/>
       </div>
       <div entity="third-party-login" layout="column" layout-align="center center">
-        <md-button  third-party="SignEmail" class="md-raised md-primary"
-                    ng-disabled="!signUp.imageProps.current"
-                    ng-model="abc" ng-hide="abc" ng-click="showData()">
+        <md-button third-party="SignEmail" class="md-raised md-primary"
+                   ng-disabled="!signUp.imageProps.current"
+                   ng-model="abc" ng-hide="abc" ng-click="showData()">
           <md-icon style="margin-left: -5px;" ng-disabled="!signUp.imageProps.current" emailIcon></md-icon>
           <label> Sign Up with Email ID </label>
         </md-button>
@@ -114,7 +114,7 @@
         </md-button>
       </div>
       <div entity="hasAccount">
-        Already have an account? <a href=" "  ui-sref="signIn"> Login now </a>
+        Already have an account? <a href=" " ui-sref="signIn"> Login now </a>
       </div>
     </div>
   </div>

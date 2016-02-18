@@ -4,7 +4,7 @@ export class SignUpController {
     this.user = {email: '', fullName: '', password: ''};
     this.urls = $URLS.data.data;
     this.postUrl = $sce.trustAsResourceUrl('http://' + $service.config('HOSTS', 1) + '/j_spring_security_check');
-
+    this.privacyPolicy = "http://magicbox.magicsw.com/privacypolicy.htm";
     $scope.showError = false;
     $scope.responseMessage = '';
 
