@@ -163,6 +163,7 @@ export class ProductController {
             addPromise.success(() => {
               this.book.hideAdd = true;
               this.book.added = true;
+              $log.debug(1)
 
             });
             return 1;
