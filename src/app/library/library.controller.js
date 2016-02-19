@@ -67,7 +67,8 @@ export class LibraryController {
       pdf: {name: 'PDF', icon: 'assets/images/file-pdf-box.svg'},
       simulation: {name: 'Simulation', icon: 'assets/images/desktop-mac.svg'},
       audio: {name: 'Audio', icon: 'assets/images/audio_icon.svg'},
-      youtube: {name: 'YouTube', icon: 'assets/images/youtubeVideo_icon.svg'}
+      youtube: {name: 'YouTube', icon: 'assets/images/youtubeVideo_icon.svg'},
+      unidentified: {name: 'Unidentified', icon: 'assets/images/anonymous_icon.svg'}
     };
 
     this.inform = (type, info) => {
@@ -77,9 +78,9 @@ export class LibraryController {
     };
 
     this.populateDetails = (type, infoList) => {
-
       var temp = [];
       _.each(infoList, (item, index) => {
+
         if (index < this.MAX_LIMIT) {
           switch (type) {
             case 'magic':
@@ -88,12 +89,14 @@ export class LibraryController {
                 subject: item.subject || "English",
                 author: item.author || "Magic",
                 id: item.productId,
+                free: item.free,
                 meta: {
                   gradeFrom: item.gradeFrom,
                   gradeTo: item.gradeTo
                 },
                 coverImage: item.thumbnail,
                 description: item.description,
+
                 analytics: {
                   shares: 43,
                   views: 78
@@ -103,8 +106,13 @@ export class LibraryController {
               if (item.productTypeTitle) {
                 pushDetails.category = this.categoryMapping[item.productTypeTitle.toLowerCase()];
               }
-
-              temp.push(pushDetails);
+              else {
+                pushDetails.category = "unidentified";
+              }
+//to hide premium comtent
+              if (pushDetails.free == true) {
+                temp.push(pushDetails);
+              }
               break;
 
             case 'google':
@@ -132,6 +140,7 @@ export class LibraryController {
       $service.$append('library', domain, cat, temp);
       this.details = $service.$query('library', '', 'full');
       this.details = _.shuffle(this.details);
+
     };
 
     this.openProduct = (id) => {
@@ -182,13 +191,13 @@ export class LibraryController {
     this.sort = (prop, order) => {
       switch (order) {
         case 'asc':
-         this.sortStats.prop = prop;
-         this.sortStats.reverse = false;
-         break;
+          this.sortStats.prop = prop;
+          this.sortStats.reverse = false;
+          break;
         case 'desc':
-         this.sortStats.prop = prop;
-         this.sortStats.reverse = true;
-         break;
+          this.sortStats.prop = prop;
+          this.sortStats.reverse = true;
+          break;
       }
     };
 
@@ -309,7 +318,6 @@ export class LibraryController {
 
     } else {
       this.fetchData("");
-
 
 
     }
