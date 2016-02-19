@@ -162,6 +162,7 @@ export class ProductController {
             });
             addPromise.success(() => {
               this.book.hideAdd = true;
+              this.book.added = true;
 
             });
             return 1;
