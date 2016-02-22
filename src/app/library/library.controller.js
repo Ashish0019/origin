@@ -67,8 +67,7 @@ export class LibraryController {
       pdf: {name: 'PDF', icon: 'assets/images/file-pdf-box.svg'},
       simulation: {name: 'Simulation', icon: 'assets/images/desktop-mac.svg'},
       audio: {name: 'Audio', icon: 'assets/images/audio_icon.svg'},
-      youtube: {name: 'YouTube', icon: 'assets/images/youtubeVideo_icon.svg'},
-      unidentified: {name: 'Unidentified', icon: 'assets/images/anonymous_icon.svg'}
+      youtube: {name: 'YouTube', icon: 'assets/images/youtubeVideo_icon.svg'}
     };
 
     this.inform = (type, info) => {
@@ -107,9 +106,9 @@ export class LibraryController {
                 pushDetails.category = this.categoryMapping[item.productTypeTitle.toLowerCase()];
               }
               else {
-                pushDetails.category = "unidentified";
+                return 1;
               }
-//to hide premium comtent
+              //to hide premium content
               if (pushDetails.free == true) {
                 temp.push(pushDetails);
               }

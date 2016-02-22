@@ -20,8 +20,7 @@ export class ProductController {
       pdf: {name: 'PDF', icon: 'assets/images/file-pdf-box.svg'},
       simulation: {name: 'Simulation', icon: 'assets/images/desktop-mac.svg'},
       audio: {name: 'Audio', icon: 'assets/images/audio_icon.svg'},
-      youtube: {name: 'YouTube', icon: 'assets/images/youtubeVideo_icon.svg'},
-      unidentified: {name: 'Unidentified', icon: 'assets/images/anonymous_icon.svg'}
+      youtube: {name: 'YouTube', icon: 'assets/images/youtubeVideo_icon.svg'}
     };
 
     var detail = $service.$query('library', $stateParams.id, 'unique');
