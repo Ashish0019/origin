@@ -28,11 +28,11 @@
           <div icon ng-class="{'active': signUp.imageProps.current === 'teacher'}"></div>
           <div>Join as Teacher</div>
         </div>
-        <!-- <div user="publisher" layout="column" layout-align="center center" ng-model="imageProps"
+         <div user="publisher" layout="column" layout-align="center center" ng-model="imageProps"
               ng-click="signUp.imageProps.current = 'publisher'">
            <div icon ng-class="{'active': signUp.imageProps.current === 'publisher'}"></div>
            <div>Join as Publisher</div>
-         </div>-->
+         </div>
       </div>
       <form name="registration" registration-details layout="column" layout-align="center center"
             ng-show="abc">
@@ -69,7 +69,9 @@
         </span>
         </span>
         </div>
-        <!--  <div re-captcha captchaCode ng-model="signUp.user.captcha" ng-show="signUp.imageProps.current === 'publisher'" ></div>-->
+        <div re-captcha captchaCode ng-model="signUp.user.captcha" ng-show="signUp.imageProps.current === 'publisher'" >
+
+        </div>
       </form>
 
       <div registration="container" layout="row" layout-align="center center" ng-show="abc">
@@ -98,14 +100,16 @@
         <md-button third-party="Facebook"
                    ng-click="signUp.connect('facebook')"
                    class="md-raised md-primary"
-                   ng-disabled="!signUp.imageProps.current">
+                   ng-disabled="!signUp.imageProps.current"
+                   ng-hide = "signUp.imageProps.current === 'publisher' || !signUp.imageProps.current">
           <md-icon facebookIcon></md-icon>
           <label> Connect with Facebook</label>
         </md-button>
         <md-button third-party="Google"
                    ng-click="signUp.connect('google')"
                    class="md-raised md-primary"
-                   ng-disabled="!signUp.imageProps.current">
+                   ng-disabled="!signUp.imageProps.current"
+                   ng-hide = "signUp.imageProps.current === 'publisher' || !signUp.imageProps.current">
 
           <!-- ng-hide = "signUp.imageProps.current === 'publisher' || !signUp.imageProps.current "-->
           <md-icon googleIcon></md-icon>

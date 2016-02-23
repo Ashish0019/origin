@@ -18,6 +18,11 @@ export class SignUpController {
         google: 'googleIndUserUrl',
         facebook: 'facebookIndUserUrl',
         userType: 'IND_USER'
+      },
+      publisher:{
+        google:'',
+        facebook:'',
+        userType:'SUP_ADMIN'
       }
     };
 
