@@ -34,7 +34,7 @@
                  placeholder="Password"
                  type={{signIn.inputType}} maxlength="20"
                  required/>
-          <div pwd-container ng-hide="forgotpwd" >
+          <div pwd-container ng-hide="forgotpwd" ng-disabled="registration.pwd.$touched">
             <div ng-class="{'showPwd': signIn.inputType == 'password', 'hidePwd':signIn.inputType == 'text' }"
                ng-click="signIn.showPassword()" ng-model="showPassword" ng-disabled="registration.pwd.$unto">
             </div>
