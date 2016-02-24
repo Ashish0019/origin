@@ -30,7 +30,7 @@ export class LibraryController {
     this.search = (info) => {
       if (!info.$bypass) {
         this.showContentNumber = true;
-        if (!_.isEmpty(info.$current) || _.isEmpty(info.$current)) {
+        if (!_.isEmpty(info.$current)) {
           this.refreshListing({
             requestParams: {
               pageNumber: 1,
@@ -41,9 +41,15 @@ export class LibraryController {
             /*,
              filter: {0: ['section', 'magic']}*/
           });
+        } else {
+          this.refreshListing({
+            requestParams: {
+              pageNumber: 1,
+              maxRecordCount: this.recordCount
+            }
+          });
         }
-      }
-      else {
+      } else {
         this.refreshListing({
           requestParams: {
             pageNumber: 1,
@@ -63,7 +69,7 @@ export class LibraryController {
       epub: {name: 'Epub', icon: 'assets/images/clipboard-text.svg'},
       game: {name: 'Game', icon: 'assets/images/gamepad-variant.svg'},
       video: {name: 'Video', icon: 'assets/images/video.svg'},
-      ebook: {name: 'E - Book', icon: 'assets/images/clipboard-text.svg'},
+      course: {name: 'Course', icon: 'assets/images/clipboard-text.svg'},
       pdf: {name: 'PDF', icon: 'assets/images/file-pdf-box.svg'},
       simulation: {name: 'Simulation', icon: 'assets/images/desktop-mac.svg'},
       audio: {name: 'Audio', icon: 'assets/images/audio_icon.svg'},
@@ -76,7 +82,7 @@ export class LibraryController {
       this.showError = true;
     };
 
-    this.populateDetails = (type, infoList) => {
+    this.populateDetails = (type, infoList, options) => {
       var temp = [];
       _.each(infoList, (item, index) => {
 
@@ -138,8 +144,15 @@ export class LibraryController {
       let cat = (type === 'magic') ? 'productListing' : 'youtube';
       $service.$append('library', domain, cat, temp);
       this.details = $service.$query('library', '', 'full');
+      if (!_.isEmpty(options)) {
+        if (options.disableYoutube) {
+          _.remove(this.details, (item) => item.section === 'google');
+        }
+        else {
+          return this.details;
+        }
+      }
       this.details = _.shuffle(this.details);
-
     };
 
     this.openProduct = (id) => {
@@ -164,7 +177,8 @@ export class LibraryController {
         action: 'refresh',
         requestParams: payload.requestParams,
         youtube: params.youtube,
-        filter: payload.filter
+        filter: payload.filter,
+        disableYoutube: params.disableYoutube || false
       });
     };
 
@@ -203,17 +217,21 @@ export class LibraryController {
     this.filterSelected = () => {
       var json = {};
       var buildRequest = {};
+      var disableYou;
       $timeout(() => {
         _.each(this.filterGrid.filterArr, (filterSection) => {
           json[filterSection.id] = filterSection.filterList;
           buildRequest[this.filterGrid.show[filterSection.id].filterKey] = [];
           _.each(filterSection.filterList, (item) => {
+            $log.debug(1,item);
             if (item.checked) {
               if (filterSection.id === 'grade') {
                 return buildRequest[this.filterGrid.show[filterSection.id].filterKey].push(item.name);
               }
               buildRequest[this.filterGrid.show[filterSection.id].filterKey].push(item.id);
+              disableYou = Boolean(item.checked);
             }
+
           });
         });
 
@@ -221,8 +239,10 @@ export class LibraryController {
           requestParams: _.merge({
             pageNumber: 1,
             maxRecordCount: this.recordCount
-          }, buildRequest)
+          }, buildRequest),
+          disableYoutube: disableYou
         });
+
       }, 400);
     };
 
@@ -276,7 +296,7 @@ export class LibraryController {
 
         youtube.success((response) => {
           this.requests.youtube = 'complete';
-          this.populateDetails('google', response.items);
+          this.populateDetails('google', response.items, params);
         });
 
         youtube.failure((error) => {
@@ -294,7 +314,7 @@ export class LibraryController {
 
         magic.success((response) => {
           this.requests.magic = 'complete';
-          this.populateDetails('magic', response.productSoList);
+          this.populateDetails('magic', response.productSoList, params);
         });
 
         magic.failure((error) => {
@@ -317,7 +337,6 @@ export class LibraryController {
 
     } else {
       this.fetchData("");
-
 
     }
   }

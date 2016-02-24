@@ -16,7 +16,7 @@ export class ProductController {
       epub: {name: 'Epub', icon: 'assets/images/clipboard-text.svg'},
       game: {name: 'Game', icon: 'assets/images/gamepad-variant.svg'},
       video: {name: 'Video', icon: 'assets/images/video.svg'},
-      ebook: {name: 'E - Book', icon: 'assets/images/clipboard-text.svg'},
+      course: {name: 'Course', icon: 'assets/images/clipboard-text.svg'},
       pdf: {name: 'PDF', icon: 'assets/images/file-pdf-box.svg'},
       simulation: {name: 'Simulation', icon: 'assets/images/desktop-mac.svg'},
       audio: {name: 'Audio', icon: 'assets/images/audio_icon.svg'},

@@ -24,7 +24,7 @@
     </div>
     <div libraryLength>{{library.details.length}} resources found</div>
   </div>
-  <section library-content layout="row" layout-align="center start">
+  <section library-content layout="row" layout-align="center start" flex="100" style="  width: 100%;">
     <div element="sidebar-filter"
            layout="column" layout-align="center center"
          ng-show="library.showFilter" ng-if="library.details.length > 0" style="width: 170px;">
@@ -48,6 +48,7 @@
             <div subjects="checkboxes" layout="column" layout-align="start start"
                  ng-repeat="item in filters.filterList">
               <md-checkbox ng-model="filters.filterList[$index].checked"
+                           ng-if="item.name!='Assessment'"
                            ng-click="library.filterSelected()"
                            aria-label="{{item.name}}">
                 <span>{{item.name}}</span>
@@ -57,13 +58,13 @@
         </div>
       </div>
     </div>
-    <div element="tab-error" layout="row" layout-align="center center" ng-if="library.showError">
+    <div element="tab-error"  layout="row" layout-align="center center" ng-if="library.showError">
       <div>{{library.errorMessage.message}}</div>
       <md-button class="md-icon-button" aria-label="More" ng-click="library.fetchData()">
         <md-icon md-svg-icon="assets/images/refresh.svg"></md-icon>
       </md-button>
     </div>
-    <div element="tab-content" layout="row" layout-align="space-between start" layout-wrap=""
+    <div element="tab-content" flex="85" layout="row" layout-align="space-between start" layout-wrap=""
            ng-if="library.details.length > 0"
            ng-hide="library.requests.magic === 'pending' && library.requests.youtube === 'pending'">
       <div content-listing layout="row" layout-align="start center" layout-wrap="">

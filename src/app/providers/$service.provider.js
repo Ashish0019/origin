@@ -292,6 +292,10 @@ class $ServiceProvider {
       return promise;
     };
 
+    var clear = (loc) => {
+      this[loc] = [];
+    };
+
     var append = (loc, domain, type, list) => {
       if (!this.$config.API[domain][type].appended) {
         _.each(list, (item) => {
@@ -371,6 +375,7 @@ class $ServiceProvider {
     return {
       $connect: connect,
       $append: append,
+      $clear: clear,
       $query: query,
       $insert: insert,
       token: token,
