@@ -215,7 +215,8 @@
       [entity="hasAccount"] {
         color: #ffffff;
         font-size: 0.9em;
-        margin: 15px;
+        margin-top: 5px;
+        margin-bottom: 15px;
 
         a {
           color: #ffffff;
@@ -223,7 +224,7 @@
       }
 
       [entity="third-party-login"] {
-        margin-top: 20px;
+        margin: 5px;
 
         * {
           cursor: pointer;

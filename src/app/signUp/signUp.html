@@ -104,7 +104,7 @@
                    ng-click="signUp.connect('facebook')"
                    class="md-raised md-primary"
                    ng-disabled="!signUp.imageProps.current"
-                   ng-hide = "signUp.imageProps.current === 'publisher' || !signUp.imageProps.current">
+                   ng-hide = "signUp.imageProps.current === 'publisher' ">
           <md-icon facebookIcon></md-icon>
           <label> Connect with Facebook</label>
         </md-button>
@@ -112,7 +112,7 @@
                    ng-click="signUp.connect('google')"
                    class="md-raised md-primary"
                    ng-disabled="!signUp.imageProps.current"
-                   ng-hide = "signUp.imageProps.current === 'publisher' || !signUp.imageProps.current">
+                   ng-hide = "signUp.imageProps.current === 'publisher' ">
 
           <!-- ng-hide = "signUp.imageProps.current === 'publisher' || !signUp.imageProps.current "-->
           <md-icon googleIcon></md-icon>
