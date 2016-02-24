@@ -37,7 +37,10 @@
       <form name="registration" registration-details layout="column" layout-align="center center"
             ng-show="abc">
         <input input-feature ng-model="signUp.user.fullName" placeholder="Full Name" type="text" maxlength="60"
+               name="userNAME"
                value="Full Name" required/>
+        <div email-errorText ng-if="registration.userNAME.$touched && registration.userNAME.$invalid">
+          <i>User name cannot be blank.</i></div>
         <input input-feature name="email" ng-model="signUp.user.email" placeholder="Email ID"
                ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
                type="email" required/>
