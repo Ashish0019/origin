@@ -73,11 +73,12 @@
             </p>-->
         </div>
       </div>
-      <div flex-gt-lg="40" flex-gt="50" flex-md="48" layout="column" flex="50"
-           ng-switch on="product.category" style="margin-right: 20px;">
+      <div flex-gt-lg="40" flex-gt="50" flex-md="48" layout="column" flex="40"
+           ng-switch on="product.category">
 
         <div ng-switch-when='youtube'>
-          <iframe width="80%" height="300px" ng-src="{{product.info.youtubeURL}}" allowfullscreen>
+          <iframe width="80%" height="300px" ng-src="{{product.info.youtubeURL}}"
+                  style="float: right;" allowfullscreen>
           </iframe>
         </div>
         <!-- <div ng-switch-when="audio" class="audioContainer">

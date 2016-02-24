@@ -11,7 +11,7 @@
   }
 
   [menuBar] {
-    margin: 70px 10px 10px 20px;
+    margin: 70px 20px 32px 32px;
 
     [library] {
       font-family: juice;
@@ -38,7 +38,7 @@
     color: #000000;
 
     [headers] {
-      margin-left: 2%;
+      margin-left: 32px;
 
       [dataTitle] {
         font-weight: 600;
@@ -94,7 +94,8 @@
     }
 
     [otherdata] {
-      margin-left: 2%;
+      margin-left: 32px;
+      margin-right: 32px;
 
       [description] {
         font-size: 14px;
@@ -158,19 +159,22 @@
       }
 
       .contentContainer {
-        margin-right: 30px;
+        float: right;
         height: 300px;
         width: 70%;
         background-repeat: no-repeat;
         background-size: 100% 100%;
         outline: 0;
+        margin-right: 32px;
 
         [enlargerBackground] {
           background-color: rgba(0, 0, 0, 0.64);
           position: relative;
-          top: 86%;
-          left: -8px;
+          left: 0px;
           width: 100%;
+          margin: 0px;
+          padding: 0px;
+          top: 87%;
           [zoomIcon] {
             background-size: 30px;
             position: relative;
@@ -259,7 +263,7 @@
   [someMoreData] {
     font-size: 20px;
     color: #333333;
-    margin: 10px 10px 10px 30px;
+    margin: 10px 10px 10px 32px;
     background-color: #ffffff;
 
     [separator] {
