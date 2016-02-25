@@ -14,11 +14,11 @@
   }
   [login-panel] {
     background-color: transparent;
-    min-width: 540px;
+    width: 540px;
     min-height: 748px;
     font-family: 'Open Sans', sans-serif;
     color: #ffffff;
-    margin: 0 auto;
+    margin: 10px auto;
 
 
     [logo-img] {
@@ -120,6 +120,8 @@
           border-radius: 3px;
           border: 2px white solid;
           outline-color: transparent;
+          -webkit-user-select: text !important;
+          user-select: text !important;
         }
 
         .ng-touched.ng-invalid {
@@ -213,7 +215,8 @@
       [entity="hasAccount"] {
         color: #ffffff;
         font-size: 0.9em;
-        margin: 15px;
+        margin-top: 5px;
+        margin-bottom: 15px;
 
         a {
           color: #ffffff;
@@ -221,7 +224,7 @@
       }
 
       [entity="third-party-login"] {
-        margin-top: 20px;
+        margin: 5px;
 
         * {
           cursor: pointer;

@@ -10,7 +10,7 @@
         <div layout="column" layout-align="start start">
           <div dataTitle>{{product.info.title}}</div>
           <div metaData ng-bind-html="product.info.content"></div>
-          <div stars>
+          <div stars style="margin-left: -9px;">
             <span class="starRating">
               <input id="rating5" type="radio">
               <label for="rating5"></label>
@@ -69,17 +69,16 @@
             </tr>
             </tbody>
           </table>
-          <p description> "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-            "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer"
-            "took a galley of type and scrambled it to make a type specimen book. "
-          </p>
+          <!--  <p description> description
+            </p>-->
         </div>
       </div>
-      <div flex-gt-lg="40" flex-gt="50" flex-md="48" layout="column" flex="50"
-           ng-switch on="product.category" style="margin-right: 20px;">
+      <div flex-gt-lg="35" flex-gt="50" flex-md="48" layout="column" flex="40"
+           ng-switch on="product.category">
 
         <div ng-switch-when='youtube'>
-          <iframe width="80%" height="300px" ng-src="{{product.info.youtubeURL}}" allowfullscreen>
+          <iframe width="80%" height="300px" ng-src="{{product.info.youtubeURL}}"
+                  style="float: right;" allowfullscreen>
           </iframe>
         </div>
         <!-- <div ng-switch-when="audio" class="audioContainer">
@@ -90,7 +89,7 @@
          <div ng-switch-when="video">
            <video width="80%" height="300px" controls ng-src="{{product.info.videoSrc}}"></video>
          </div>-->
-        <div ng-switch-default>
+        <div ng-switch-default style="position: relative">
           <md-icon addedToLib
                    ng-show="product.book.added"></md-icon>
           <div class="contentContainer" ng-style="{'background-image':'url({{product.info.image}})'}">
@@ -149,7 +148,7 @@
         <div content-footer="category">
           <span layout-align="center center">
             <md-icon md-svg-icon="{{item.category.icon}}"></md-icon>
-             <label style="padding-left: 3px "></label>
+             <label style="padding-left: 3px ">{{item.category.name}}</label>
           </span>
         </div>
         <!-- <div content-footer="analytics">

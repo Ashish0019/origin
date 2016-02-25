@@ -41,6 +41,13 @@ export class LibraryController {
             /*,
              filter: {0: ['section', 'magic']}*/
           });
+        } else {
+          this.refreshListing({
+            requestParams: {
+              pageNumber: 1,
+              maxRecordCount: this.recordCount
+            }
+          });
         }
       } else {
         this.refreshListing({
@@ -62,7 +69,7 @@ export class LibraryController {
       epub: {name: 'Epub', icon: 'assets/images/clipboard-text.svg'},
       game: {name: 'Game', icon: 'assets/images/gamepad-variant.svg'},
       video: {name: 'Video', icon: 'assets/images/video.svg'},
-      ebook: {name: 'E - Book', icon: 'assets/images/clipboard-text.svg'},
+      course: {name: 'Course', icon: 'assets/images/clipboard-text.svg'},
       pdf: {name: 'PDF', icon: 'assets/images/file-pdf-box.svg'},
       simulation: {name: 'Simulation', icon: 'assets/images/desktop-mac.svg'},
       audio: {name: 'Audio', icon: 'assets/images/audio_icon.svg'},
@@ -71,12 +78,14 @@ export class LibraryController {
 
     this.inform = (type, info) => {
       $log.warn(info);
+      $log.debug(info);
       this.showError = true;
     };
 
-    this.populateDetails = (type, infoList) => {
+    this.populateDetails = (type, infoList, options) => {
       var temp = [];
       _.each(infoList, (item, index) => {
+
         if (index < this.MAX_LIMIT) {
           switch (type) {
             case 'magic':
@@ -85,16 +94,14 @@ export class LibraryController {
                 subject: item.subject || "English",
                 author: item.author || "Magic",
                 id: item.productId,
+                free: item.free,
                 meta: {
                   gradeFrom: item.gradeFrom,
                   gradeTo: item.gradeTo
                 },
                 coverImage: item.thumbnail,
-                description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry." +
-                "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer" +
-                "took a galley of type and scrambled it to make a type specimen book. " +
-                "It has survived not only five centuries, but also the leap into electronic " +
-                "typesetting, remaining essentially unchanged",
+                description: item.description,
+
                 analytics: {
                   shares: 43,
                   views: 78
@@ -104,8 +111,13 @@ export class LibraryController {
               if (item.productTypeTitle) {
                 pushDetails.category = this.categoryMapping[item.productTypeTitle.toLowerCase()];
               }
-
-              temp.push(pushDetails);
+              else {
+                return 1;
+              }
+              //to hide premium content
+              if (pushDetails.free == true) {
+                temp.push(pushDetails);
+              }
               break;
 
             case 'google':
@@ -132,6 +144,14 @@ export class LibraryController {
       let cat = (type === 'magic') ? 'productListing' : 'youtube';
       $service.$append('library', domain, cat, temp);
       this.details = $service.$query('library', '', 'full');
+      if (!_.isEmpty(options)) {
+        if (options.disableYoutube) {
+          _.remove(this.details, (item) => item.section === 'google');
+        }
+        else {
+          return this.details;
+        }
+      }
       this.details = _.shuffle(this.details);
     };
 
@@ -157,7 +177,8 @@ export class LibraryController {
         action: 'refresh',
         requestParams: payload.requestParams,
         youtube: params.youtube,
-        filter: payload.filter
+        filter: payload.filter,
+        disableYoutube: params.disableYoutube || false
       });
     };
 
@@ -183,30 +204,34 @@ export class LibraryController {
     this.sort = (prop, order) => {
       switch (order) {
         case 'asc':
-         this.sortStats.prop = prop;
-         this.sortStats.reverse = false;
-         break;
+          this.sortStats.prop = prop;
+          this.sortStats.reverse = false;
+          break;
         case 'desc':
-         this.sortStats.prop = prop;
-         this.sortStats.reverse = true;
-         break;
+          this.sortStats.prop = prop;
+          this.sortStats.reverse = true;
+          break;
       }
     };
 
     this.filterSelected = () => {
       var json = {};
       var buildRequest = {};
+      var disableYou;
       $timeout(() => {
         _.each(this.filterGrid.filterArr, (filterSection) => {
           json[filterSection.id] = filterSection.filterList;
           buildRequest[this.filterGrid.show[filterSection.id].filterKey] = [];
           _.each(filterSection.filterList, (item) => {
+            $log.debug(1,item);
             if (item.checked) {
               if (filterSection.id === 'grade') {
                 return buildRequest[this.filterGrid.show[filterSection.id].filterKey].push(item.name);
               }
               buildRequest[this.filterGrid.show[filterSection.id].filterKey].push(item.id);
+              disableYou = Boolean(item.checked);
             }
+
           });
         });
 
@@ -214,8 +239,10 @@ export class LibraryController {
           requestParams: _.merge({
             pageNumber: 1,
             maxRecordCount: this.recordCount
-          }, buildRequest)
+          }, buildRequest),
+          disableYoutube: disableYou
         });
+
       }, 400);
     };
 
@@ -245,7 +272,8 @@ export class LibraryController {
         this.disabled.youtube = params.disableYoutube;
         this.disabled.magic = params.disableMagic;
         if (params.youtube) {
-          youtubeQuery += '+' + params.youtube.query;
+          let validQuery = ((params.youtube.query).match(/[a-zA-Z0-9 ]/));
+          youtubeQuery += '+' + validQuery;
           delete params.youtube;
         }
       }
@@ -268,7 +296,7 @@ export class LibraryController {
 
         youtube.success((response) => {
           this.requests.youtube = 'complete';
-          this.populateDetails('google', response.items);
+          this.populateDetails('google', response.items, params);
         });
 
         youtube.failure((error) => {
@@ -286,7 +314,7 @@ export class LibraryController {
 
         magic.success((response) => {
           this.requests.magic = 'complete';
-          this.populateDetails('magic', response.productSoList);
+          this.populateDetails('magic', response.productSoList, params);
         });
 
         magic.failure((error) => {
@@ -304,12 +332,12 @@ export class LibraryController {
         youtubeSearch += item + '+';
         this.searchInfo.$current.push(item);
       });
-
       youtubeSearch = youtubeSearch.replace(/\++$/, '');
       this.search({$bypass: true, search: {arr: $service.search('get'), youtube: youtubeSearch}});
 
     } else {
-      this.fetchData();
+      this.fetchData("");
+
     }
   }
 }

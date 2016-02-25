@@ -2,10 +2,10 @@
           search-text="{{library.searchInfo.$current}}" on-search="library.search"
           option="library.hideNavSearch"></nav-menu>
 <section library-container layout="column" layout-fill layout-align="start center">
-  <aside element="title">
+  <div element="title">
     The ORIGINal Library
-  </aside>
-  <aside element="tab-header" layout="row" layout-align="space-between center">
+  </div>
+  <div element="tab-header" layout="row" layout-align="space-between center">
     <div filter layout="row" layout-align="center center"
          ng-click="library.showFilter = !library.showFilter">
       <md-icon filterChevron ng-show="!library.showFilter"
@@ -23,11 +23,11 @@
       <!--<span>Latest</span>-->
     </div>
     <div libraryLength>{{library.details.length}} resources found</div>
-  </aside>
-  <section library-content layout="row" layout-align="center start">
-    <aside element="sidebar-filter"
+  </div>
+  <section library-content layout="row" layout-align="center start" flex="100" style="  width: 100%;">
+    <div element="sidebar-filter"
            layout="column" layout-align="center center"
-           ng-show="library.showFilter" ng-if="library.details.length > 0">
+         ng-show="library.showFilter" ng-if="library.details.length > 0" style="width: 170px;">
       <div filter-widget="grade" layout="column" layout-align="start start">
         <div filter-sub="title">Grade</div>
         <div grade="table">
@@ -48,6 +48,7 @@
             <div subjects="checkboxes" layout="column" layout-align="start start"
                  ng-repeat="item in filters.filterList">
               <md-checkbox ng-model="filters.filterList[$index].checked"
+                           ng-if="item.name!='Assessment'"
                            ng-click="library.filterSelected()"
                            aria-label="{{item.name}}">
                 <span>{{item.name}}</span>
@@ -56,17 +57,17 @@
           </div>
         </div>
       </div>
-    </aside>
-    <aside element="tab-error" layout="row" layout-align="center center" ng-if="library.showError">
+    </div>
+    <div element="tab-error"  layout="row" layout-align="center center" ng-if="library.showError">
       <div>{{library.errorMessage.message}}</div>
       <md-button class="md-icon-button" aria-label="More" ng-click="library.fetchData()">
         <md-icon md-svg-icon="assets/images/refresh.svg"></md-icon>
       </md-button>
-    </aside>
-    <aside element="tab-content" layout="row" layout-align="space-between start" layout-wrap=""
+    </div>
+    <div element="tab-content" flex="85" layout="row" layout-align="space-between start" layout-wrap=""
            ng-if="library.details.length > 0"
            ng-hide="library.requests.magic === 'pending' && library.requests.youtube === 'pending'">
-      <div content-listing layout="row" layout-align="space-between center" layout-wrap="">
+      <div content-listing layout="row" layout-align="start center" layout-wrap="">
         <div content-item flex-sm="90" flex-md="32" flex-lg="28" flex-gt-lg="22"
              layout="column" layout-align="center center"
              ng-repeat="item in library.details | orderBy:library.sortStats.prop:library.sortStats.reverse"
@@ -90,7 +91,7 @@
           </div>-->
         </div>
       </div>
-    </aside>
+    </div>
   </section>
   <section layout="row" layout-align="center center"
            no-results=""

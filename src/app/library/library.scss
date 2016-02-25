@@ -1,5 +1,5 @@
 [library-container] {
-  position: absolute;
+
   margin-top: 48px;
 
   height: 100%;
@@ -12,8 +12,8 @@
     font-size: 1.7em;
     font-weight: 600;
     color: #00cc99;
-
-    margin-top: 18px;
+    position: relative;
+    top: 10px;
   }
 
   [no-results] {
@@ -22,9 +22,8 @@
 
   [element="tab-header"] {
     width: 100%;
-
-    margin-top: 24px;
-    margin-bottom: 18px;
+    position: relative;
+    top: 10px;
 
     [filter] {
       cursor: pointer;
@@ -61,6 +60,7 @@
   }
 
   [element="sidebar-filter"] {
+
     md-checkbox.md-checked .md-icon {
       background-color: rgb(0, 204, 153);
     }
@@ -128,8 +128,8 @@
 
       [content-item] {
         width: 180px;
-        height: 245px;
-        margin-bottom: 30px;
+        height: auto;
+        margin: 13px;
         border: 1px solid #d8d8d8;
         cursor: pointer;
 
@@ -166,7 +166,7 @@
 
           [content-item="title"] {
             @extend .content-item-children;
-            width: 90%;
+            max-width: 90%;
             height: auto;
 
             border: none;
@@ -177,9 +177,8 @@
 
           [content-item="author"] {
             @extend .content-item-children;
-            width: 90%;
+            max-width: 90%;
             height: auto;
-
             font-size: 0.7em;
             color: #a0a0a0;
           }

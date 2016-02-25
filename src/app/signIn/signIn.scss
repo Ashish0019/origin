@@ -12,7 +12,7 @@
 
   [signIn-panel] {
     background-color: transparent;
-    min-width: 540px;
+    width: 540px;
     min-height: 748px;
     font-family: 'Open Sans', sans-serif;
     color: #ffffff;
@@ -71,12 +71,16 @@
           border-radius: 3px;
           border: 2px white solid;
           outline-color: transparent;
+          -webkit-user-select: text !important;
+          user-select: text !important;
         }
 
         [input-feature-pwd] {
           width: 83%;
           min-width: 348px;
           margin-left: 28px;
+          -webkit-user-select: text !important;
+          user-select: text !important;
         }
 
         *:focus {

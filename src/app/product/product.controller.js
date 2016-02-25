@@ -1,5 +1,5 @@
 export class ProductController {
-  constructor($scope, $log, $state, $service, $stateParams, $sce) {
+  constructor($scope, $log, $state, $service, $stateParams, $sce, $document) {
     'ngInject';
     this.showDetails = false;
     this.showEnlargedImage = false;
@@ -16,7 +16,7 @@ export class ProductController {
       epub: {name: 'Epub', icon: 'assets/images/clipboard-text.svg'},
       game: {name: 'Game', icon: 'assets/images/gamepad-variant.svg'},
       video: {name: 'Video', icon: 'assets/images/video.svg'},
-      ebook: {name: 'E - Book', icon: 'assets/images/clipboard-text.svg'},
+      course: {name: 'Course', icon: 'assets/images/clipboard-text.svg'},
       pdf: {name: 'PDF', icon: 'assets/images/file-pdf-box.svg'},
       simulation: {name: 'Simulation', icon: 'assets/images/desktop-mac.svg'},
       audio: {name: 'Audio', icon: 'assets/images/audio_icon.svg'},
@@ -63,11 +63,7 @@ export class ProductController {
                   gradeTo: item.gradeTo
                 },
                 coverImage: item.thumbnail,
-                description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry." +
-                "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer" +
-                "took a galley of type and scrambled it to make a type specimen book. " +
-                "It has survived not only five centuries, but also the leap into electronic " +
-                "typesetting, remaining essentially unchanged",
+                description: item.description,
                 analytics: {
                   shares: 43,
                   views: 78
@@ -149,6 +145,18 @@ export class ProductController {
       });
     };
 
+    // hide add to library for publisher
+    var forPub = $service.$connect('none', 'magic', 'sessionStatus');
+    forPub.success((response) => {
+      var forPublisher = response.userAccSrvRes.userSessionData;
+      if (!_.isEmpty(forPublisher)) {
+        if (forPublisher.userType == "SUP_ADMIN") {
+          this.book.hideAdd = true;
+          $log.debug("superadmin")
+        }
+      }
+    });
+
     this.addProduct = () => {
       var sessionStat = $service.$connect('none', 'magic', 'sessionStatus');
       sessionStat.success((response) => {
@@ -165,6 +173,8 @@ export class ProductController {
             });
             addPromise.success(() => {
               this.book.hideAdd = true;
+              this.book.added = true;
+              $log.debug(1)
 
             });
             return 1;
@@ -172,6 +182,7 @@ export class ProductController {
         }
         else {
           this.userLogin = true;
+          $log.debug($document.referrer)
         }
 
       });

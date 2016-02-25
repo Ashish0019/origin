@@ -60,6 +60,8 @@
           color: #757575;
         }
         .md-chips .md-chip-input-container input, .md-chips .md-chip-input-container input:not([type]) {
+          -webkit-user-select: text !important;
+          user-select: text !important;
           color: #ffffff;
         }
         .md-chips .md-chip .md-chip-remove md-icon {
@@ -139,16 +141,19 @@ section[popular-listing] {
   margin-top: 64px;
   margin-left: 32px;
 
-  aside {
+  [cto] {
     font-family: juice;
     color: #757575;
     font-size: 2.0em;
-    padding: 10px;
+    padding-bottom: 10px;
+    padding-top: 5px;
 
   }
 
   [content-listing-wrapper] {
     width: 100%;
+    position: relative;
+    top: 20px;
 
     [content-listing] {
       width: 100%;
@@ -157,11 +162,9 @@ section[popular-listing] {
         box-shadow: 3px 3px 5px #d8d8d8;
       }
       [content-item] {
-        width: 180px;
-        height: 245px;
-        margin-bottom: 27px;
-        margin-left: 20px;
-        margin-right: 10px;
+        width: 170px;
+        height: auto;
+        margin: 13px;
         border: 1px solid #d8d8d8;
         cursor: pointer;
 
@@ -195,7 +198,7 @@ section[popular-listing] {
 
           [content-item="title"] {
             @extend .content-item-children;
-            width: 90%;
+            max-width: 90%;
             height: auto;
             padding-top: 5px;
             border: none;
@@ -206,7 +209,7 @@ section[popular-listing] {
 
           [content-item="author"] {
             @extend .content-item-children;
-            width: 90%;
+            max-width: 90%;
             height: auto;
             color: #A3A3A3;
             font-size: 0.8em;
