@@ -73,7 +73,7 @@
             </p>-->
         </div>
       </div>
-      <div flex-gt-lg="40" flex-gt="50" flex-md="48" layout="column" flex="40"
+      <div flex-gt-lg="35" flex-gt="50" flex-md="48" layout="column" flex="40"
            ng-switch on="product.category">
 
         <div ng-switch-when='youtube'>
@@ -89,7 +89,7 @@
          <div ng-switch-when="video">
            <video width="80%" height="300px" controls ng-src="{{product.info.videoSrc}}"></video>
          </div>-->
-        <div ng-switch-default>
+        <div ng-switch-default style="position: relative">
           <md-icon addedToLib
                    ng-show="product.book.added"></md-icon>
           <div class="contentContainer" ng-style="{'background-image':'url({{product.info.image}})'}">
