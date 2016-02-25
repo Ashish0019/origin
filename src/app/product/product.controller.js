@@ -145,6 +145,18 @@ export class ProductController {
       });
     };
 
+    // hide add to library for publisher
+    var forPub = $service.$connect('none', 'magic', 'sessionStatus');
+    forPub.success((response) => {
+      var forPublisher = response.userAccSrvRes.userSessionData;
+      if (!_.isEmpty(forPublisher)) {
+        if (forPublisher.userType == "SUP_ADMIN") {
+          this.book.hideAdd = true;
+          $log.debug("superadmin")
+        }
+      }
+    });
+
     this.addProduct = () => {
       var sessionStat = $service.$connect('none', 'magic', 'sessionStatus');
       sessionStat.success((response) => {
